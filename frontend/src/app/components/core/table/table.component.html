@@ -1,1 +1,36 @@
-<p>table works!</p>
+<div class="container-fluid">
+    <h1 class="mt-3 mb-3">{{ title }}</h1>
+    <div class="d-flex justify-content-between">
+        <div>
+            <input type="text" placeholder="Search..." class="form-control" (keyup)="filter($event.target.value)">
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <select name="" id="" class="form-control">
+                            <option value="">10</option>
+                            <option value="">20</option>
+                            <option value="">30</option>
+                        </select>
+                    </td>
+                    <td>records per page</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <table class="table table-bordered mt-3">
+        <thead class="bg-light">
+            <tr>
+                <th>#</th>
+                <th *ngFor="let item of headers">{{ item.key }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of columns">
+                <td><input type="checkbox"></td>
+                <td *ngFor="let item of row | keyvalue">{{ item.key }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
