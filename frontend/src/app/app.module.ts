@@ -16,6 +16,7 @@ import { UsersComponent } from './components/pages/auth/users/users.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { TableComponent } from './components/core/table/table.component';
 import { RouterModule } from '@angular/router';
+import { FormComponent } from './components/core/form/form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     UsersComponent,
     HomeComponent,
-    TableComponent
+    TableComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

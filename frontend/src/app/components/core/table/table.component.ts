@@ -6,7 +6,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  @Input() title: string = '';
+  /* 
+  ------------------------------
+  Header/Columns Formatting Data
+  ------------------------------
+  headers = [
+      { id:1, key: 'id'},
+      { id:2, key: 'name'},
+      { id:3, key: 'age'},
+    ];
+    columns = [
+      { id: 1, name: 'rehanz', age: 27 },
+      { id: 2, name: 'rehany', age: 27 },
+      { id: 3, name: 'rehanx', age: 27 },
+    ]
+  */
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   BACKUP: any[] = [];
@@ -15,7 +29,7 @@ export class TableComponent implements OnInit {
     this.BACKUP = JSON.parse(JSON.stringify(this.columns));
   }
   filter(keyword: string) {
-    if(keyword.length > 0) {
+    if (keyword.length > 0) {
       this.columns = this.BACKUP.filter(x => {
         let flag = false;
         this.headers.forEach((header) => {
