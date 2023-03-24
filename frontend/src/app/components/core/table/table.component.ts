@@ -21,6 +21,8 @@ export class TableComponent implements OnInit {
       { id: 3, name: 'rehanx', age: 27 },
     ]
   */
+  currentPage = 1;
+  itemsPerPage = 5;
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   BACKUP: any[] = [];
@@ -46,5 +48,13 @@ export class TableComponent implements OnInit {
       })
     }
     else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
+  }
+  totalPageNumbers() {
+    let pageNumbers = [];
+    const num = this.columns.length / this.itemsPerPage;
+    for (let i = 1; i <= num; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
   }
 }

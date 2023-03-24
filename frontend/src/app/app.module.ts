@@ -32,7 +32,7 @@ import { FormComponent } from './components/core/form/form.component';
     UsersComponent,
     HomeComponent,
     TableComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
