@@ -3,7 +3,7 @@
 }
 .bg-light {
     --bs-bg-opacity: 1;
-    background-color: #dc3545!important;
+    background-color: crimson!important;
 }
 .nav-link {
     color: rgba(255, 255, 255, 0.9);
