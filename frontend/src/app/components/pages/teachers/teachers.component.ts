@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeachersComponent implements OnInit {
   headers = [
-    'Id',
+    'id',
     'FirstName',
     'LastName',
     'Gender',

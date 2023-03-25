@@ -1,3 +1,7 @@
+.navbar {
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
 .navbar-nav {
     --bs-nav-link-color: rgb(255 255 255);
 }
@@ -10,9 +14,9 @@
     margin-left: 12px;
 }
 .nav-link.active {
-    color: rgba(8, 0, 0, 0.9);
+    color: #fff;
     margin-left: 12px;
-    border-bottom: 2.8px solid rgba(0, 0, 0, 0.404);
+    border-bottom:3px solid rgba(0, 0, 0, 0.404);
 }
 .navbar-brand {
     color: #fff;
