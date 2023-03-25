@@ -35,7 +35,7 @@
     </thead>
     <tbody>
         <tr *ngIf="columns.length < 1">
-            <td colspan="100" class="text-center">
+            <td [colSpan]="headers.length + 2" class="text-center">
                 No data available in table.
             </td>
         </tr>
