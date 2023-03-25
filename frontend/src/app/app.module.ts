@@ -17,6 +17,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { TableComponent } from './components/core/table/table.component';
 import { RouterModule } from '@angular/router';
 import { FormComponent } from './components/core/form/form.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormComponent } from './components/core/form/form.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    CommonModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'students', component: StudentsComponent },

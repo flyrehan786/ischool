@@ -57,4 +57,8 @@ export class TableComponent implements OnInit {
     }
     return pageNumbers;
   }
+  checkStatusColumnsInHeader() {
+    return this.headers.includes(x => (x.key as string).toLowerCase().includes('status'))
+  }
+  
 }
