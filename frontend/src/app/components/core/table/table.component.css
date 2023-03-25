@@ -1,3 +1,6 @@
+table {
+    font-size: 14px;
+}
 .border-left-active {
         border-left: 4px solid green;
 }

@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
     ]
   */
   currentPage = 1;
-  itemsPerPage = 5;
+  itemsPerPage = 10;
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   BACKUP: any[] = [];
@@ -35,15 +35,11 @@ export class TableComponent implements OnInit {
       this.columns = this.BACKUP.filter(x => {
         let flag = false;
         this.headers.forEach((header) => {
-          const value = x[header.key];
-          console.log(value)
+          const value = x[header];
           if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
-            console.log('trueeee')
             flag = true;
           }
         });
-        console.log('--- true')
-        console.log(flag)
         return flag;
       })
     }
@@ -57,8 +53,21 @@ export class TableComponent implements OnInit {
     }
     return pageNumbers;
   }
-  checkStatusColumnsInHeader() {
-    return this.headers.includes(x => (x.key as string).toLowerCase().includes('status'))
+  getPagedCols() {
+    return this.columns.slice((this.currentPage-1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
-  
+  getStatus(id) {
+    const row = this.columns.filter(x => x.id === id);
+    if(row.length > 0) {
+      const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
+      if(statusHeader.length > 0) {
+        console.log(statusHeader[0]);
+        const status  = row[0][statusHeader[0]];
+        console.log(status)
+        if (status) return status;
+        else return 'x';
+      }
+      else return 'x';
+    } else return 'x'
+  }
 }

@@ -24,7 +24,7 @@
     <thead class="bg-light">
         <tr>
             <th>#</th>
-            <th *ngFor="let item of headers">{{ item.key  }}</th>
+            <th *ngFor="let item of headers">{{ item }}</th>
         </tr>
     </thead>
     <tbody>
@@ -33,9 +33,12 @@
                 No data available in table.
             </td>
         </tr>
-        <tr *ngFor="let row of columns.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage)">
-                <td><input type="checkbox"></td>
-                <td *ngFor="let item of row | keyvalue">{{ item.value }}</td>
+        <tr *ngFor="let row of getPagedCols()">
+            <td [class.border-left-active]="getStatus(row.id) == 1"
+                [class.border-left-not-active]="getStatus(row.id) == 'x'">
+                <input type="checkbox"> {{ getStatus(row.id) }}
+            </td> 
+            <td *ngFor="let item of headers">{{ row[item] }}</td>
         </tr>
     </tbody>
 </table>
