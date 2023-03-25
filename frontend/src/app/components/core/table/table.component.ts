@@ -10,11 +10,7 @@ export class TableComponent implements OnInit {
   ------------------------------
   Header/Columns Formatting Data
   ------------------------------
-  headers = [
-      { id:1, key: 'id'},
-      { id:2, key: 'name'},
-      { id:3, key: 'age'},
-    ];
+  headers = [ heading1, heading2, heading3 ];
     columns = [
       { id: 1, name: 'rehanz', age: 27 },
       { id: 2, name: 'rehany', age: 27 },
@@ -53,10 +49,10 @@ export class TableComponent implements OnInit {
     }
     return pageNumbers;
   }
-  getPagedCols() {
+  getPagedColumns() {
     return this.columns.slice((this.currentPage-1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
-  getStatus(id) {
+  getStatusColumn(id) {
     const row = this.columns.filter(x => x.id === id);
     if(row.length > 0) {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
