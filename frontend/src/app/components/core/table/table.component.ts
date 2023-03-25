@@ -21,6 +21,7 @@ export class TableComponent implements OnInit {
   itemsPerPage = 10;
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
+  @Input() filters: any[] = [];
   BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
