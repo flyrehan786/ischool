@@ -2,24 +2,9 @@
     padding-top: 5px;
     padding-bottom: 0px;
 }
-.navbar-nav {
-    --bs-nav-link-color: rgb(255 255 255);
-}
-.bg-light {
-    --bs-bg-opacity: 1;
-    background-color: #e12424!important;
-}
-.nav-link {
-    color: rgba(255, 255, 255, 0.9);
-    margin-left: 12px;
-}
 .nav-link.active {
-    color: #fff;
     margin-left: 12px;
     border-bottom:3px solid rgba(0, 0, 0, 0.404);
-}
-.navbar-brand {
-    color: #fff;
 }
 .form-control {
     width: 320px;
