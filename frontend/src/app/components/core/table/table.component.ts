@@ -67,4 +67,16 @@ export class TableComponent implements OnInit {
       else return 'x';
     } else return 'x'
   }
+
+  filterDataByDate(fromDate, toDate) {
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+
+    const filteredData = this.columns.filter((item) => {
+      const date = new Date(item['created_at']);
+      return date >= from && date <= to;
+    });
+    return filteredData;
+  }
+  
 }
