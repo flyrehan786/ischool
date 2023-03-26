@@ -8,14 +8,14 @@ table {
     border-left: 5px solid red;
 }
 .thead-border-top {
-    border-top: 1px solid #dee2e6;
+    border-top: 5px solid #dee2e6;
 }
 .th-border-left {
     border-left: 5px solid #dee2e6;
 }
 .th-border-right {
-    border-right: 1px solid #dee2e6;
+    border-right: 5px solid #dee2e6;
 }
 .td-border-right {
-    border-right: 1px solid #dee2e6;
+    border-right: 5px solid #dee2e6;
 }
