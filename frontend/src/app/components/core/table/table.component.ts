@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'core-table',
@@ -23,6 +23,7 @@ export class TableComponent implements OnInit {
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   @Input() filters: any[] = [];
+  
   BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
@@ -47,8 +48,29 @@ export class TableComponent implements OnInit {
   onFilterOptionClick(option) {
     console.log(option);
     const el = document.getElementById(option);
-    el.after(document.createElement('input'));
+
+    const inputElement = document.createElement('input');
+    inputElement.setAttribute('type', 'text');
+    inputElement.setAttribute('name', 'input');
+    inputElement.setAttribute('id', option + '_input');
+    inputElement.addEventListener('keydown', (event: any) => {
+      const eventVal = event.target.value;
+      if (event.key === 'Enter') {
+        console.log('Enter was pressed!');
+        const el = document.getElementById(option);
+        const inputElement = document.getElementById(option + '_input');
+        inputElement.remove();
+        el.style.display = 'initial';
+        el.classList.add('badge');
+        el.classList.add('bg-primary');
+        el.innerText = eventVal;
+        this.filter(eventVal);
+      }
+    });
+
     el.style.display = 'none';
+    el.after(inputElement);
+
   }
   totalPageNumbers() {
     let pageNumbers = [];
@@ -131,7 +153,6 @@ export class TableComponent implements OnInit {
     headers += `<tr />`;
     return headers;
   }
-
   getRows() {
     let rows = ``;
     for (let i = 0; i < this.columns.length; i++) {
