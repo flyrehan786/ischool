@@ -17,6 +17,7 @@ export class TableComponent implements OnInit {
       { id: 3, name: 'rehanx', age: 27 },
     ]
   */
+  @Input() title: string = '';
   currentPage = 1;
   itemsPerPage = 10;
   @Input() headers: any[] = [];
@@ -58,14 +59,14 @@ export class TableComponent implements OnInit {
     return pageNumbers;
   }
   getPagedColumns() {
-    return this.columns.slice((this.currentPage-1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
+    return this.columns.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
   getStatusColumn(id) {
     const row = this.columns.filter(x => x.id === id);
-    if(row.length > 0) {
+    if (row.length > 0) {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
-      if(statusHeader.length > 0) {
-        const status  = row[0][statusHeader[0]];
+      if (statusHeader.length > 0) {
+        const status = row[0][statusHeader[0]];
         if (status) return status;
         else return 'x';
       }
@@ -88,7 +89,7 @@ export class TableComponent implements OnInit {
     popupWin.document.write(`
       <html>
         <head>
-          <title>Table Data</title>
+          <title>${this.title}</title>
           <style>
             table {
               border-collapse: collapse;
@@ -105,30 +106,13 @@ export class TableComponent implements OnInit {
           </style>
         </head>
         <body>
-          <h1>Table Data</h1>
+          <h1>${this.title} Report</h1>
           <table>
-            <thead>
-              <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-                <!-- Add more table header columns as needed -->
-              </tr>
+            <thead
+              ${this.getHeaders()}
             </thead>
             <tbody>
-              <tr>
-                <td>Row 1, Column 1</td>
-                <td>Row 1, Column 2</td>
-                <td>Row 1, Column 3</td>
-                <!-- Add more table data columns as needed -->
-              </tr>
-              <tr>
-                <td>Row 2, Column 1</td>
-                <td>Row 2, Column 2</td>
-                <td>Row 2, Column 3</td>
-                <!-- Add more table data columns as needed -->
-              </tr>
-              <!-- Add more table rows as needed -->
+             ${this.getRows()}
             </tbody>
           </table>
         </body>
@@ -136,5 +120,29 @@ export class TableComponent implements OnInit {
     `);
     popupWin.document.close();
     popupWin.print();
+
+  }
+  getHeaders() {
+    let headers = `<tr><th>#</th>`;
+    for (let i = 0; i < this.headers.length; i++) {
+      const element = this.headers[i];
+      headers += `<th>${element}</th>`;
+    }
+    headers += `<tr />`;
+    return headers;
+  }
+
+  getRows() {
+    let rows = ``;
+    for (let i = 0; i < this.columns.length; i++) {
+      rows += `<tr><td>#</td>`;
+      const row = this.columns[i];
+      for (let j = 0; j < this.headers.length; j++) {
+        const head = this.headers[j];
+        rows += `<td>${row[head]}</td>`;
+      }
+      rows += `<tr />`;
+    }
+    return rows;
   }
 }
