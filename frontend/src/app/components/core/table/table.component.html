@@ -1,6 +1,8 @@
 <div class="mt-2 mb-2">
     <strong>Filter Results </strong>
-    <span class="ms-1 me-1 btn btn-link" *ngFor="let f of filters">{{ f }}</span>
+    <span class="ms-1 me-1 btn btn-link" *ngFor="let f of filters">
+        <span id="{{ f }}" (click)="onFilterOptionClick(f)">{{ f }}</span>
+    </span>
 </div>
 <hr />
 <div class="mt-5 d-flex justify-content-between">
@@ -10,6 +12,7 @@
         <label for="" class="mt-2 me-2">To:</label>  <input type="date" placeholder="Find..." class="form-control me-2" (keyup)="filter($event.target.value)">
         <button class="btn btn-primary me-2"><i class="bi bi-funnel-fill"></i></button>
         <button class="btn btn-secondary" (click)="columns = BACKUP"><i class="bi bi-arrow-clockwise"></i></button>
+        <button class="btn btn-default" (click)="printTable()"><i class="bi bi-printer-fill"></i></button>
     </div>
     <div>
         <table>

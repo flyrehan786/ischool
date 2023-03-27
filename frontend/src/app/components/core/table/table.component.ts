@@ -42,6 +42,13 @@ export class TableComponent implements OnInit {
     }
     else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
   }
+  // ... working on it.
+  onFilterOptionClick(option) {
+    console.log(option);
+    const el = document.getElementById(option);
+    el.after(document.createElement('input'));
+    el.style.display = 'none';
+  }
   totalPageNumbers() {
     let pageNumbers = [];
     const num = this.columns.length / this.itemsPerPage;
@@ -58,16 +65,13 @@ export class TableComponent implements OnInit {
     if(row.length > 0) {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
       if(statusHeader.length > 0) {
-        console.log(statusHeader[0]);
         const status  = row[0][statusHeader[0]];
-        console.log(status)
         if (status) return status;
         else return 'x';
       }
       else return 'x';
     } else return 'x'
   }
-
   filterDataByDate(fromDate, toDate) {
     const from = new Date(fromDate);
     const to = new Date(toDate);
@@ -78,5 +82,59 @@ export class TableComponent implements OnInit {
     });
     return filteredData;
   }
-  
+  printTable() {
+    const popupWin = window.open('', '_blank', 'width=800,height=600');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Table Data</title>
+          <style>
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+            th, td {
+              text-align: left;
+              padding: 8px;
+              border-bottom: 1px solid #ddd;
+            }
+            th {
+              background-color: #f2f2f2;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Table Data</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <!-- Add more table header columns as needed -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row 1, Column 1</td>
+                <td>Row 1, Column 2</td>
+                <td>Row 1, Column 3</td>
+                <!-- Add more table data columns as needed -->
+              </tr>
+              <tr>
+                <td>Row 2, Column 1</td>
+                <td>Row 2, Column 2</td>
+                <td>Row 2, Column 3</td>
+                <!-- Add more table data columns as needed -->
+              </tr>
+              <!-- Add more table rows as needed -->
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `);
+    popupWin.document.close();
+    popupWin.print();
+  }
 }
