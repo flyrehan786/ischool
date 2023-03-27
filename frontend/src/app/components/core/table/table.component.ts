@@ -53,6 +53,7 @@ export class TableComponent implements OnInit {
     inputElement.setAttribute('type', 'text');
     inputElement.setAttribute('name', 'input');
     inputElement.setAttribute('id', option + '_input');
+    inputElement.classList.add('form-control');
     inputElement.addEventListener('keydown', (event: any) => {
       const eventVal = event.target.value;
       if (event.key === 'Enter') {
@@ -62,7 +63,8 @@ export class TableComponent implements OnInit {
         inputElement.remove();
         el.style.display = 'initial';
         el.classList.add('badge');
-        el.classList.add('bg-primary');
+        el.classList.add('bg-info');
+        el.classList.add('p-2');
         el.innerText = eventVal;
         this.filter(eventVal);
       }
