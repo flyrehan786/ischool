@@ -46,7 +46,6 @@ export class TableComponent implements OnInit {
   }
   // ... working on it.
   onFilterOptionClick(option) {
-    console.log(option);
     const el = document.getElementById(option);
 
     const inputElement = document.createElement('input');
@@ -66,8 +65,6 @@ export class TableComponent implements OnInit {
     inputButton.classList.add('btn-link');
     inputButton.style.display = 'inline';
     inputButton.addEventListener('click', (event: any) => {
-        console.log('event3');
-        console.log('Enter was pressed!');
         el.classList.remove('badge');
         el.classList.remove('bg-info');
         el.classList.remove('p-2');
@@ -79,9 +76,6 @@ export class TableComponent implements OnInit {
       const eventVal = event.target.value;
       if (event.key === 'Enter') {
         if(eventVal) {
-          console.log('event1');
-          console.log(eventVal);
-          console.log('Enter was pressed!');
           const el = document.getElementById(option);
           const inputElement = document.getElementById(option + '_input');
           inputElement.remove();
@@ -93,7 +87,6 @@ export class TableComponent implements OnInit {
           el.innerText = eventVal;
           this.filter(eventVal);
         } else {
-          console.log('event2');
           inputElement.remove();
           inputButton.remove();
           el.style.display = 'initial';
