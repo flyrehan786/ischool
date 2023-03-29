@@ -54,24 +54,61 @@ export class TableComponent implements OnInit {
     inputElement.setAttribute('name', 'input');
     inputElement.setAttribute('id', option + '_input');
     inputElement.classList.add('form-control');
+    inputElement.style.display = 'inline';
+    inputElement.autofocus = true;
+
+    const inputButton = document.createElement('input');
+    inputButton.value = 'Close'
+    inputButton.setAttribute('type', 'button');
+    inputButton.setAttribute('name', 'x-button');
+    inputButton.setAttribute('id', option + '_button');
+    inputButton.classList.add('btn');
+    inputButton.classList.add('btn-link');
+    inputButton.style.display = 'inline';
+    inputButton.addEventListener('click', (event: any) => {
+        console.log('event3');
+        console.log('Enter was pressed!');
+        el.classList.remove('badge');
+        el.classList.remove('bg-info');
+        el.classList.remove('p-2');
+        el.style.display = 'initial';
+        el.classList.add('p-2');
+    });
+
     inputElement.addEventListener('keydown', (event: any) => {
       const eventVal = event.target.value;
       if (event.key === 'Enter') {
-        console.log('Enter was pressed!');
-        const el = document.getElementById(option);
-        const inputElement = document.getElementById(option + '_input');
-        inputElement.remove();
-        el.style.display = 'initial';
-        el.classList.add('badge');
-        el.classList.add('bg-info');
-        el.classList.add('p-2');
-        el.innerText = eventVal;
-        this.filter(eventVal);
+        if(eventVal) {
+          console.log('event1');
+          console.log(eventVal);
+          console.log('Enter was pressed!');
+          const el = document.getElementById(option);
+          const inputElement = document.getElementById(option + '_input');
+          inputElement.remove();
+          inputButton.remove();
+          el.style.display = 'initial';
+          el.classList.add('badge');
+          el.classList.add('bg-info');
+          el.classList.add('p-2');
+          el.innerText = eventVal;
+          this.filter(eventVal);
+        } else {
+          console.log('event2');
+          inputElement.remove();
+          inputButton.remove();
+          el.style.display = 'initial';
+          el.classList.remove('badge');
+          el.classList.remove('bg-info');
+          el.classList.remove('p-2');
+          el.innerText = option;
+          this.filter('');
+        }
       }
     });
 
     el.style.display = 'none';
     el.after(inputElement);
+    inputElement.after(inputButton);
 
   }
   totalPageNumbers() {
