@@ -46,63 +46,39 @@ export class TableComponent implements OnInit {
   }
   // ... working on it.
   onFilterOptionClick(option) {
-    const el = document.getElementById(option);
+    const span = document.getElementById(option);
 
-    const inputElement = document.createElement('input');
-    inputElement.setAttribute('type', 'text');
-    inputElement.setAttribute('name', 'input');
-    inputElement.setAttribute('id', option + '_input');
-    inputElement.classList.add('form-control');
-    inputElement.style.display = 'inline';
-    inputElement.autofocus = true;
+    span.addEventListener("click", function () {
+        const input = document.createElement("input");
+        input.classList.add('form-control');
+        input.value = span.innerText;
+        // input.setAttribute('autofocus', 'autofocus');
 
-    const inputButton = document.createElement('input');
-    inputButton.value = 'Close'
-    inputButton.setAttribute('type', 'button');
-    inputButton.setAttribute('name', 'x-button');
-    inputButton.setAttribute('id', option + '_button');
-    inputButton.classList.add('btn');
-    inputButton.classList.add('btn-link');
-    inputButton.style.display = 'inline';
-    inputButton.addEventListener('click', (event: any) => {
-        el.classList.remove('badge');
-        el.classList.remove('bg-info');
-        el.classList.remove('p-2');
-        el.style.display = 'initial';
-        el.classList.add('p-2');
+        const closeButton = document.createElement("button");
+        closeButton.classList.add('btn');
+        closeButton.classList.add('btn-sm');
+        closeButton.classList.add('btn-primary');
+        closeButton.classList.add('ms-1');
+        closeButton.innerText = "x";
+        span.replaceWith(input, closeButton);
+        closeButton.addEventListener("click", function () {
+            if (input.value !== "") {
+                span.innerText = input.value;
+            } else {
+                span.innerText = option;
+            }
+
+            input.replaceWith(span);
+            closeButton.remove();
+        });
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                closeButton.click();
+            }
+        });
+
+        input.focus();
     });
-
-    inputElement.addEventListener('keydown', (event: any) => {
-      const eventVal = event.target.value;
-      if (event.key === 'Enter') {
-        if(eventVal) {
-          const el = document.getElementById(option);
-          const inputElement = document.getElementById(option + '_input');
-          inputElement.remove();
-          inputButton.remove();
-          el.style.display = 'initial';
-          el.classList.add('badge');
-          el.classList.add('bg-info');
-          el.classList.add('p-2');
-          el.innerText = eventVal;
-          this.filter(eventVal);
-        } else {
-          inputElement.remove();
-          inputButton.remove();
-          el.style.display = 'initial';
-          el.classList.remove('badge');
-          el.classList.remove('bg-info');
-          el.classList.remove('p-2');
-          el.innerText = option;
-          this.filter('');
-        }
-      }
-    });
-
-    el.style.display = 'none';
-    el.after(inputElement);
-    inputElement.after(inputButton);
-
   }
   totalPageNumbers() {
     let pageNumbers = [];
