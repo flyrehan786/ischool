@@ -23,7 +23,7 @@ export class TableComponent implements OnInit {
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   @Input() filters: any[] = [];
-  
+
   BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
@@ -48,36 +48,40 @@ export class TableComponent implements OnInit {
   onFilterOptionClick(option) {
     const span = document.getElementById(option);
 
+    const that = this;
+
     span.addEventListener("click", function () {
-        const input = document.createElement("input");
-        input.classList.add('form-control');
-        input.value = span.innerText;
-        // input.setAttribute('autofocus', 'autofocus');
+      const input = document.createElement("input");
+      input.classList.add('form-control');
+      input.value = span.innerText;
+      // input.setAttribute('autofocus', 'autofocus');
 
-        const closeButton = document.createElement("button");
-        closeButton.classList.add('btn');
-        closeButton.classList.add('btn-sm');
-        closeButton.classList.add('btn-primary');
-        closeButton.classList.add('ms-1');
-        closeButton.innerText = "x";
-        span.replaceWith(input, closeButton);
-        closeButton.addEventListener("click", function () {
-            if (input.value !== "") {
-                span.innerText = input.value;
-            } else {
-                span.innerText = option;
-            }
+      const closeButton = document.createElement("button");
+      closeButton.classList.add('btn');
+      closeButton.classList.add('btn-sm');
+      closeButton.classList.add('btn-primary');
+      closeButton.classList.add('ms-1');
+      closeButton.innerText = "x";
+      span.replaceWith(input, closeButton);
+      closeButton.addEventListener("click", function () {
+        if (input.value !== "") {
+          span.innerText = input.value;
+        } else {
+          span.innerText = option;
+        }
 
-            input.replaceWith(span);
-            closeButton.remove();
-        });
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                closeButton.click();
-            }
-        });
+        input.replaceWith(span);
+        closeButton.remove();
+      });
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          closeButton.click();
+          if (input.value.trim().length > 0 && input.value !== option) that.filter(input.value);
+          else that.filter('');
+        }
+      });
 
-        input.focus();
+      input.focus();
     });
   }
   totalPageNumbers() {
