@@ -53,7 +53,7 @@ export class TableComponent implements OnInit {
     span.addEventListener("click", function () {
       const input = document.createElement("input");
       input.classList.add('form-control');
-      input.value = span.innerText;
+      // input.value = span.innerText;
 
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
