@@ -62,7 +62,6 @@ export class TableComponent implements OnInit {
   // ... working on it.
   onFilterOptionClick(option) {
     const span = document.getElementById(option);
-
     const that = this;
 
     span.addEventListener("click", function () {
