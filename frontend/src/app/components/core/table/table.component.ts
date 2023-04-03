@@ -54,7 +54,6 @@ export class TableComponent implements OnInit {
       const input = document.createElement("input");
       input.classList.add('form-control');
       input.value = span.innerText;
-      // input.setAttribute('autofocus', 'autofocus');
 
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
