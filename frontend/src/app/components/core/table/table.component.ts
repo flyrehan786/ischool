@@ -44,6 +44,21 @@ export class TableComponent implements OnInit {
     }
     else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
   }
+
+  filterWithOption(keyword: string, option) {
+    if (keyword.length > 0) {
+      this.columns = this.BACKUP.filter(x => {
+        let flag = false;
+          const value = x[option];
+          if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
+            flag = true;
+          }
+        return flag;
+      })
+    }
+    else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
+  }
+
   // ... working on it.
   onFilterOptionClick(option) {
     const span = document.getElementById(option);
@@ -53,7 +68,7 @@ export class TableComponent implements OnInit {
     span.addEventListener("click", function () {
       const input = document.createElement("input");
       input.classList.add('form-control');
-      // input.value = span.innerText;
+      input.value = (span.innerText !== option) ? span.innerText : '';
 
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
@@ -75,8 +90,8 @@ export class TableComponent implements OnInit {
       input.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
           closeButton.click();
-          if (input.value.trim().length > 0 && input.value !== option) that.filter(input.value);
-          else that.filter('');
+          if (input.value.trim().length > 0 && input.value !== option) that.filterWithOption(input.value, option);
+          else that.filterWithOption('', option);
         }
       });
 
