@@ -1,1 +1,72 @@
 <h1 class="mt-3">Dashboard</h1>
+
+<core-form [formData]="{
+    controls: [
+      {
+        name: 'firstName',
+        label: 'First Name',
+        type: 'text',
+        value: '',
+        validators: [
+          { name: 'required' },
+          { name: 'minLength', value: 2 },
+          { name: 'maxLength', value: 10 }
+        ]
+      },
+      {
+        name: 'lastName',
+        label: 'Last Name',
+        type: 'text',
+        value: '',
+        validators: [
+          { name: 'required' },
+          { name: 'minLength', value: 2 },
+          { name: 'maxLength', value: 10 }
+        ]
+      },
+      {
+        name: 'email',
+        label: 'Email Address',
+        type: 'text',
+        value: '',
+        validators: [
+          { name: 'required' },
+          { name: 'email' }
+        ]
+      },
+      {
+        name: 'gender',
+        label: 'Gender',
+        type: 'radio',
+        options: [
+          { label: 'Male', value: 'male' },
+          { label: 'Female', value: 'female' },
+          { label: 'Other', value: 'other' }
+        ],
+        value: '',
+        validators: [
+          { name: 'required' }
+        ]
+      },
+      {
+        name: 'terms',
+        label: 'Terms and Conditions',
+        type: 'checkbox',
+        value: '',
+        validators: [
+          { name: 'requiredTrue' }
+        ]
+      },
+      {
+        name: 'message',
+        label: 'Message',
+        type: 'textarea',
+        value: '',
+        validators: [
+          { name: 'maxLength', value: 100 }
+        ]
+      }
+    ]
+  }">
+  </core-form>
+  
