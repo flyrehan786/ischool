@@ -1,14 +1,18 @@
 <hr />
+<hr />
+<hr />
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <div class="form-group" *ngFor="let c of config">
     <label for="{{ c.key }}">{{ c.key }}</label>
     <input type="text" formControlName="{{ c.key }}" id="{{ c.key }}" class="form-control">
-    <div *ngIf="(c.key).touched && c.invalid">
+    <!-- <div *ngIf="(c.key).touched && c.invalid"> -->
      <div *ngFor="let validator of c.validators">
-      <div *ngIf="form.get(c.key).hasError(validator.key)">
+      {{ validator.key | json   }}
+      {{ form.get(c.key).hasError(validator.key) }}
+      <!-- <div *ngIf="form.get(c.key).hasError(validator.key)">
         {{ validator.message }}
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
     </div>
   </div>
   <button type="submit">Submit</button>

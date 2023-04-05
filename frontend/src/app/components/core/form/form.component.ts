@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 enum EValidators {
   required = 'required', minLength = 'minLength', maxLength = 'maxLength', email = 'email'
@@ -26,7 +26,8 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Username should be required' },
-          { key: 'minLength', value: '10', message: 'Username should be minimun 10 characters long' }
+          { key: 'minLength', value: '1', message: 'Username should be minimun 10 characters long' },
+          { key: 'maxLength', value: '5', message: 'Username should be minimun 10 characters long' }
         ]
     },
     {
@@ -44,35 +45,31 @@ export class FormComponent implements OnInit {
     let controls = {};
     for (let i = 0; i < this.config.length; i++) {
       let control = this.config[i];
-      let controlValidators = [];
+      let controlValidators: ValidatorFn[] = [];
       for (let j = 0; j < control.validators.length; j++) {
         const validator = control.validators[j];
+        console.log(validator.key);
         if(validator.key === 'required') {
           controlValidators.push(Validators.required);
-          break;
         }
-        if(validator.key === 'maxLength') {
+        else if(validator.key === 'maxLength') {
           controlValidators.push(Validators.maxLength(+validator.value));
-          break;
         }
-        if(validator.key === 'minLength') {
+        else if(validator.key === 'minLength') {
           controlValidators.push(Validators.minLength(+validator.value));
-          break;
         }
-        if(validator.key === 'email') {
+        else if(validator.key === 'email') {
           controlValidators.push(Validators.email);
-          break;
         }
-        if(validator.key === 'pattern') {
+        else if(validator.key === 'pattern') {
           controlValidators.push(Validators.pattern(validator.value));
-          break;
         }
+        else {}
       }
 
       controls[control.key] = new FormControl('', controlValidators)
     }
     this.form = new FormGroup(controls);
-    console.log(this.form);
   }
   submit(e) {
     console.log(e.value);
