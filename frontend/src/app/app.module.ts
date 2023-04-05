@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { StudentsComponent } from './components/pages/students/students.component';
 import { TeachersComponent } from './components/pages/teachers/teachers.component';
@@ -38,6 +38,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     CommonModule,
     RouterModule.forRoot([

@@ -1,25 +1,14 @@
-<hr />
-<form [formGroup]="form">
-    <div *ngFor="let control of formData.controls">
-      <label [for]="control.name">{{ control.label }}</label>
-      <div [ngSwitch]="control.type">
-        <input *ngSwitchCase="'text'" [type]="control.type" [formControlName]="control.name">
-        <textarea *ngSwitchCase="'textarea'" [formControlName]="control.name"></textarea>
-        <div *ngSwitchCase="'checkbox'">
-          <input [type]="control.type" [formControlName]="control.name"> {{ control.label }}
-        </div>
-        <div *ngSwitchCase="'radio'">
-          <div *ngFor="let option of control.options">
-            <input [type]="control.type" [value]="option.value" [formControlName]="control.name"> {{ option.label }}
-          </div>
-        </div>
-      </div>
-      <div *ngIf="form.get(control.name).invalid && (form.get(control.name).dirty || form.get(control.name).touched)">
-        <div *ngIf="form.get(control.name).errors.required">{{ control.label }} is required.</div>
-        <div *ngIf="form.get(control.name).errors.minLength">{{ control.label }} must be at least {{ control.validators.find(v => v.name === 'minLength').value }} characters long.</div>
-        <div *ngIf="form.get(control.name).errors.maxLength">{{ control.label }} must be no more than {{ control.validators.find(v => v.name === 'maxLength').value }} characters long.</div>
-        <!-- add more error messages as needed -->
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+  <div class="form-group" *ngFor="let c of config">
+    <label for="{{ c.key }}">{{ c.key }}</label>
+    <input type="text" formControlName="{{ c.key }}" id="{{ c.key }}" class="form-control">
+    <div *ngIf="(c.key).touched && c.invalid">
+     <div *ngFor="let validator of c.validators">
+      <div *ngIf="form.get(c.key).hasError(validator.key)">
+        {{ validator.message }}
       </div>
     </div>
-  </form>
-  
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>

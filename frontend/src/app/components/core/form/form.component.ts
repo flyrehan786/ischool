@@ -1,37 +1,80 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+enum EValidators {
+  required = 'required', minLength = 'minLength', maxLength = 'maxLength', email = 'email'
+}
+interface IValidators {
+  key: string,
+  value: string,
+  message: string
+}
+interface IControl {
+  key: string,
+  defaultValue: string,
+  validators: IValidators[]
+}
 @Component({
   selector: 'core-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  // @Input() config; 
-  // @Output() onSubmit = new EventEmitter();
-
-  @Input() formData: any;
+  config: IControl[] = [
+    {
+      key: 'username', defaultValue: '', 
+      validators:
+        [
+          { key: 'required', value: 'required', message: 'Username should be required' },
+          { key: 'minLength', value: '10', message: 'Username should be minimun 10 characters long' }
+        ]
+    },
+    {
+      key: 'password', defaultValue: '', 
+      validators:
+      [
+        { key: 'required', value: 'required', message: 'Password should be required' },
+        { key: 'minLength', value: '10', message: 'Password should be minimun 10 characters long' }
+      ]
+    },
+  ];
   form: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
   ngOnInit() {
-    this.form = this.fb.group({});
-    for (let control of this.formData.controls) {
-      let validators = [];
-      for (let validator of control.validators) {
-        switch (validator.name) {
-          case 'required':
-            validators.push(Validators.required);
-            break;
-          case 'minLength':
-            validators.push(Validators.minLength(validator.value));
-            break;
-          case 'maxLength':
-            validators.push(Validators.maxLength(validator.value));
-            break;
-          // add more validators as needed
+    let controls = {};
+    for (let i = 0; i < this.config.length; i++) {
+      let control = this.config[i];
+      let controlValidators = [];
+      for (let j = 0; j < control.validators.length; j++) {
+        const validator = control.validators[j];
+        if(validator.key === 'required') {
+          controlValidators.push(Validators.required);
+          break;
+        }
+        if(validator.key === 'maxLength') {
+          controlValidators.push(Validators.maxLength(+validator.value));
+          break;
+        }
+        if(validator.key === 'minLength') {
+          controlValidators.push(Validators.minLength(+validator.value));
+          break;
+        }
+        if(validator.key === 'email') {
+          controlValidators.push(Validators.email);
+          break;
+        }
+        if(validator.key === 'pattern') {
+          controlValidators.push(Validators.pattern(validator.value));
+          break;
         }
       }
-      this.form.addControl(control.name, this.fb.control(control.value, validators));
+
+      controls[control.key] = new FormControl('', controlValidators)
     }
+    this.form = new FormGroup(controls);
+    console.log(this.form);
+  }
+  submit(e) {
+    console.log(e.value);
   }
 }
