@@ -26,8 +26,9 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Username should be required' },
-          { key: 'minLength', value: '1', message: 'Username should be minimun 10 characters long' },
-          { key: 'maxLength', value: '5', message: 'Username should be minimun 10 characters long' }
+          { key: 'email', value: 'email', message: 'Username should be minimun 10 characters long' },
+          { key: 'maxLength', value: '10', message: 'Username should be minimun 10 characters long' },
+          { key: 'pattern', value: 'rehan', message: 'Username should be minimun 10 characters long' }
         ]
     },
     {
@@ -35,7 +36,7 @@ export class FormComponent implements OnInit {
       validators:
       [
         { key: 'required', value: 'required', message: 'Password should be required' },
-        { key: 'minLength', value: '10', message: 'Password should be minimun 10 characters long' }
+        { key: 'email', value: 'email', message: 'Password should be minimun 10 characters long' }
       ]
     },
   ];
@@ -70,6 +71,7 @@ export class FormComponent implements OnInit {
       controls[control.key] = new FormControl('', controlValidators)
     }
     this.form = new FormGroup(controls);
+    console.log(this.form);
   }
   submit(e) {
     console.log(e.value);
