@@ -49,7 +49,6 @@ export class FormComponent implements OnInit {
       let controlValidators: ValidatorFn[] = [];
       for (let j = 0; j < control.validators.length; j++) {
         const validator = control.validators[j];
-        console.log(validator.key);
         if(validator.key === 'required') {
           controlValidators.push(Validators.required);
         }
@@ -71,7 +70,6 @@ export class FormComponent implements OnInit {
       controls[control.key] = new FormControl('', controlValidators)
     }
     this.form = new FormGroup(controls);
-    console.log(this.form);
   }
   submit(e) {
     console.log(e.value);

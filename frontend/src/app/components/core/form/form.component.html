@@ -1,18 +1,15 @@
 <hr />
-<hr />
-<hr />
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <div class="form-group" *ngFor="let c of config">
     <label for="{{ c.key }}">{{ c.key }}</label>
-    <input type="text" formControlName="{{ c.key }}" id="{{ c.key }}" class="form-control">
-    <!-- <div *ngIf="(c.key).touched && c.invalid"> -->
-     <div *ngFor="let validator of c.validators">
-      {{ validator.key | json   }}
-      {{ form.get(c.key).hasError(validator.key) }}
-      <!-- <div *ngIf="form.get(c.key).hasError(validator.key)">
-        {{ validator.message }}
-      </div> -->
-    <!-- </div> -->
+    <input type="text" formControlName="{{ c.key }}" id="{{ c.key }}"
+      [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid" class="form-control" />
+    <div *ngIf="form.get(c.key).touched && form.get(c.key).invalid">
+      <div *ngFor="let validator of c.validators">
+        <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).hasError(validator.key)">
+          {{ validator.message }}
+        </div>
+      </div>
     </div>
   </div>
   <button type="submit">Submit</button>
