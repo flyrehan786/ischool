@@ -11,9 +11,6 @@
         <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).errors.minlength && (v.key === 'minlength' || v.key === 'minLength')">{{ v.message }}</div>
         <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).errors.maxlength && (v.key === 'maxlength' || v.key === 'maxLength')">{{ v.message }}</div>
         <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).errors.pattern && (v.key === 'pattern')">{{ v.message }}</div>
-        <!-- <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).hasErrors">
-          {{ v.message }}
-        </div> -->
       </div>
     </div>
   </div>
