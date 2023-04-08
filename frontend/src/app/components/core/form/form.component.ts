@@ -26,26 +26,10 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'username should be required' },
-          {
-            key: 'email',
-            value: 'email',
-            message: 'email'
-          },
-          {
-            key: 'maxLength',
-            value: '10',
-            message: 'maxLength'
-          },
-          {
-            key: 'minLength',
-            value: '10',
-            message: 'minLength'
-          },
-          {
-            key: 'pattern',
-            value: 'rehan',
-            message: 'pattern'
-          }
+          { key: 'email', value: 'email', message: 'email' },
+          { key: 'maxLength', value: '10', message: 'maxLength' },
+          { key: 'minLength', value: '10', message: 'minLength' },
+          { key: 'pattern', value: 'rehan', message: 'pattern' }
         ]
     },
     {
