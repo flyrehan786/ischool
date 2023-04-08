@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
-enum EValidators {
-  required = 'required', minLength = 'minLength', maxLength = 'maxLength', email = 'email'
-}
 interface IValidators {
   key: string,
   value: string,
