@@ -16,6 +16,7 @@ interface IControl {
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  @Output() submitted = new EventEmitter();
   config: IControl[] = [
     {
       key: 'username', defaultValue: '',
@@ -58,6 +59,6 @@ export class FormComponent implements OnInit {
     this.form = new FormGroup(controls);
   }
   submit(e) {
-    console.log(e.value);
+    this.submitted.emit(e.value);
   }
 }
