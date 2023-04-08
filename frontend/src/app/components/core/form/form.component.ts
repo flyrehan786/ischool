@@ -22,11 +22,11 @@ export class FormComponent implements OnInit {
       key: 'username', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'username should be required' },
-          { key: 'email', value: 'email', message: 'email' },
-          { key: 'maxLength', value: '10', message: 'maxLength' },
-          { key: 'minLength', value: '10', message: 'minLength' },
-          { key: 'pattern', value: 'rehan', message: 'pattern' }
+          { key: 'required', value: 'required', message: 'Username field is required. Please enter a value.' },
+          { key: 'email', value: 'email', message: 'Invalid email format. Please check your email and try again' },
+          { key: 'minLength', value: '5', message: 'Username should be atleast minimun 5 characters long.' },
+          { key: 'maxLength', value: '10', message: 'Username should be atleast maximun 5 characters long.' },
+          { key: 'pattern', value: 'rehan@gmail.com', message: 'Sorry, the input provided is not valid. Please revise your input to match the required format' }
         ]
     },
     {
@@ -34,7 +34,7 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
-          { key: 'email', value: 'email', message: 'Password should be minimun 10 characters long' }
+          { key: 'email', value: 'email', message: 'email' }
         ]
     },
   ];
