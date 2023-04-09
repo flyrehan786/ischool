@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 interface IDropdown {
   key: string;
@@ -18,11 +18,11 @@ interface ILink {
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  appName: string;
-  appLogo: string;
+  @Input() appName: string;
+  @Input() appLogo: string;
 
-  leftSideLinks: ILink[];
-  rightSideLinks: ILink[];
+  @Input() leftSideLinks: ILink[];
+  @Input() rightSideLinks: ILink[];
   constructor() { }
 
   ngOnInit(): void {
