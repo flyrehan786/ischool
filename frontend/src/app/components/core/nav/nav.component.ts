@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 interface IDropdown {
   key: string;
   value: string
@@ -24,8 +23,6 @@ export class NavComponent implements OnInit {
   @Input() leftSideLinks: ILink[];
   @Input() rightSideLinks: ILink[];
   constructor() { }
-
   ngOnInit(): void {
   }
-
 }
