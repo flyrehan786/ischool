@@ -6,32 +6,68 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/students"><i class="bi bi-people-fill"></i> Resources</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/certificates"> <i class="bi bi-card-checklist"></i> Certificates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/reports">
-              <i class="bi bi-graph-up"></i> Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page">
-                <i class="bi bi-bell-fill"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <input type="text" placeholder="Search for students, teachers..." class="form-control">
+            <li class="nav-item" *ngFor="let l of leftSideLinks">
+                <a *ngIf="l.isAnchor == true" 
+                    class="nav-link" 
+                    aria-current="page" 
+                    routerLinkActive="active" 
+                    routerLink="{{ l.routerLink }}">
+                    {{ l.icon }} {{ i.title }}
+                </a>
+                <input 
+                    *ngIf="l.isInput == true"
+                    type="text" 
+                    placeholder="{{ l.title }}" 
+                    class="form-control"
+                    (keyup)=""
+                />
+
+                <a 
+                    *ngIf="l.isDropDown == true" 
+                    class="nav-link dropdown-toggle" 
+                    routerLinkActive="active" 
+                    id="navbarDropdown" 
+                    role="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngFor="let o of dropDownOptions"><a class="dropdown-item" routerLink="{{ o.routerLink }}">{{ o.key }}</a></li>
+                  </ul>
+            </li>
         </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/settings"><i class="bi bi-gear-wide-connected"></i> Settings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage">Rehan Shah</a>
+            <li class="nav-item" *ngFor="let l of rightSideLinks">
+                <a *ngIf="l.isAnchor == true" 
+                    class="nav-link" 
+                    aria-current="page" 
+                    routerLinkActive="active" 
+                    routerLink="{{ l.routerLink }}">
+                    {{ l.icon }} {{ i.title }}
+                </a>
+                <input 
+                    *ngIf="l.isInput == true"
+                    type="text" 
+                    placeholder="{{ l.title }}" 
+                    class="form-control"
+                    (keyup)=""
+                />
+
+                <a 
+                    *ngIf="l.isDropDown == true" 
+                    class="nav-link dropdown-toggle" 
+                    routerLinkActive="active" 
+                    id="navbarDropdown" 
+                    role="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngFor="let o of dropDownOptions"><a class="dropdown-item" routerLink="{{ o.routerLink }}">{{ o.key }}</a></li>
+                  </ul>
             </li>
           </ul>
       </div>

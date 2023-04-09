@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 interface IDropdown {
   key: string;
-  value: string
+  routerLink: string
 }
 interface ILink {
   title: string;
@@ -9,6 +9,7 @@ interface ILink {
   routerLink: string;
   isAnchor: boolean;
   isDropDown: boolean;
+  isInput: boolean;
   dropDownOptions: IDropdown[]
 }
 @Component({
