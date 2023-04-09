@@ -16,17 +16,29 @@ interface IControl {
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  VALIDATION_MESSAGES = {
+    required: 'This field is required. Please enter a value.',
+    email: 'Invalid email format. Please check your email and try again',
+    minlength: (value) => {
+      return `This field hould be atleast minimun ${value} characters long.`
+    },
+    maxlength: (value) => {
+      return `This field hould be atleast maximum ${value} characters long.`
+    },
+    pattern: 'Sorry, the input provided is not valid. Please revise your input to match the required format.'    
+  };
   @Output() submitted = new EventEmitter();
-  config: IControl[] = [
+  @Input() title: string;
+  @Input() config: IControl[] = [
     {
       key: 'username', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'Username field is required. Please enter a value.' },
-          { key: 'email', value: 'email', message: 'Invalid email format. Please check your email and try again' },
-          { key: 'minLength', value: '5', message: 'Username should be atleast minimun 5 characters long.' },
-          { key: 'maxLength', value: '10', message: 'Username should be atleast maximun 5 characters long.' },
-          { key: 'pattern', value: 'rehan@gmail.com', message: 'Sorry, the input provided is not valid. Please revise your input to match the required format' }
+          { key: 'required', value: 'required', message: this.VALIDATION_MESSAGES.required },
+          { key: 'email', value: 'email', message: this.VALIDATION_MESSAGES.email },
+          { key: 'minLength', value: '5', message: this.VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '10', message: this.VALIDATION_MESSAGES.maxlength(10) },
+          { key: 'pattern', value: 'rehan@gmail.com', message: this.VALIDATION_MESSAGES.pattern }
         ]
     },
     {
