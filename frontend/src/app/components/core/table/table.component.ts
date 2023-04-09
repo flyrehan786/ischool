@@ -22,7 +22,6 @@ export class TableComponent implements OnInit {
   @Input() headers: any[] = [];
   @Input() columns: any[] = [];
   @Input() filters: any[] = [];
-
   BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
@@ -119,12 +118,10 @@ export class TableComponent implements OnInit {
   filterDataByDate(fromDate, toDate) {
     const from = new Date(fromDate);
     const to = new Date(toDate);
-
-    const filteredData = this.columns.filter((item) => {
+    return this.columns.filter((item) => {
       const date = new Date(item['created_at']);
       return date >= from && date <= to;
     });
-    return filteredData;
   }
   printTable() {
     const popupWin = window.open('', '_blank', 'width=800,height=600');
