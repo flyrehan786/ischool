@@ -20,6 +20,7 @@ interface ILink {
 export class NavComponent implements OnInit {
   @Input() appName: string;
   @Input() appLogo: string;
+  @Input() router: string;
 
   @Input() leftSideLinks: ILink[];
   @Input() rightSideLinks: ILink[];
