@@ -18,6 +18,7 @@ import { TableComponent } from './components/core/table/table.component';
 import { RouterModule } from '@angular/router';
 import { FormComponent } from './components/core/form/form.component';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from './components/core/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     TableComponent,
     FormComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
