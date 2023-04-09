@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'core-table',
   templateUrl: './table.component.html',
@@ -7,15 +6,15 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   /* 
-  ------------------------------
-  Header/Columns Formatting Data
-  ------------------------------
-  headers = [ heading1, heading2, heading3 ];
-    columns = [
-      { id: 1, name: 'rehanz', age: 27 },
-      { id: 2, name: 'rehany', age: 27 },
-      { id: 3, name: 'rehanx', age: 27 },
-    ]
+      ------------------------------
+      Header/Columns Formatting Data
+      ------------------------------
+      headers = [ heading1, heading2, heading3 ];
+        columns = [
+          { id: 1, name: 'rehan1', age: 27 },
+          { id: 2, name: 'rehan2', age: 27 },
+          { id: 3, name: 'rehan3', age: 27 },
+      ]
   */
   @Input() title: string = '';
   currentPage = 1;
@@ -44,7 +43,6 @@ export class TableComponent implements OnInit {
     }
     else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
   }
-
   filterWithOption(keyword: string, option) {
     if (keyword.length > 0) {
       this.columns = this.BACKUP.filter(x => {
@@ -58,8 +56,6 @@ export class TableComponent implements OnInit {
     }
     else this.columns = JSON.parse(JSON.stringify(this.BACKUP));
   }
-
-  // ... working on it.
   onFilterOptionClick(option) {
     const span = document.getElementById(option);
     const that = this;
