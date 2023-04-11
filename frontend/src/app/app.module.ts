@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { FormComponent } from './components/core/form/form.component';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './components/core/details/details.component';
+import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-drop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { DetailsComponent } from './components/core/details/details.component';
     TableComponent,
     FormComponent,
     DetailsComponent,
+    DragAndDropComponent,
   ],
   imports: [
     BrowserModule,
