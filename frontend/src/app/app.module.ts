@@ -19,6 +19,7 @@ import { FormComponent } from './components/core/form/form.component';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './components/core/details/details.component';
 import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-drop.component';
+import { TabComponent } from './components/core/tab/tab.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-d
     FormComponent,
     DetailsComponent,
     DragAndDropComponent,
+    TabComponent,
   ],
   imports: [
     BrowserModule,
