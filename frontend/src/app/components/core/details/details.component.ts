@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-
+  @Input() id: string;
+  @Input() backToListRoute: string; 
+  @Input() data: string;
+  
   constructor() { }
 
   ngOnInit(): void {
