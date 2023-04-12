@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { StudentsComponent } from './components/pages/students/students.component';
-import { TeachersComponent } from './components/pages/teachers/teachers.component';
 import { CertificatesComponent } from './components/pages/certificates/certificates.component';
 import { ReportsComponent } from './components/pages/reports/reports.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
@@ -20,6 +18,10 @@ import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './components/core/details/details.component';
 import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-drop.component';
 import { TabComponent } from './components/core/tab/tab.component';
+import { StudentsComponent } from './components/pages/students/students/students.component';
+import { StudentDetailComponent } from './components/pages/students/student-detail/student-detail.component';
+import { TeacherDetailComponent } from './components/pages/teachers/teacher-detail/teacher-detail.component';
+import { TeachersComponent } from './components/pages/teachers/teachers/teachers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { TabComponent } from './components/core/tab/tab.component';
     DetailsComponent,
     DragAndDropComponent,
     TabComponent,
+    StudentDetailComponent,
+    TeacherDetailComponent,
   ],
   imports: [
     BrowserModule,
