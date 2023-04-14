@@ -25,6 +25,7 @@ import { FormComponent } from './components/core/form/form.component';
 import { DetailsComponent } from './components/core/details/details.component';
 import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-drop.component';
 import { TabComponent } from './components/core/tab/tab.component';
+import { LoaderComponent } from './components/core/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TabComponent } from './components/core/tab/tab.component';
     TabComponent,
     StudentDetailComponent,
     TeacherDetailComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
