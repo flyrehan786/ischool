@@ -1,11 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-interface IValidators {
+
+
+export const TYPE_TEXT = 'text';
+export const TYPE_PASSWORD = 'password';
+export const TYPE_TEXTAREA = 'textarea';
+export const TYPE_RADIO = 'radio';
+export const TYPE_CHECKBOX = 'checkbox';
+export const TYPE_DROPDOWN = 'dropdown';
+
+export interface IValidators {
   key: string,
   value: string,
   message: string
 }
-interface IControl {
+
+export interface IControl {
+  type: string,
   key: string,
   defaultValue: string,
   validators: IValidators[]
@@ -31,6 +42,7 @@ export class FormComponent implements OnInit {
   @Input() title: string;
   @Input() config: IControl[] = [
     {
+      type: TYPE_TEXT,
       key: 'username', defaultValue: '',
       validators:
         [
@@ -42,6 +54,7 @@ export class FormComponent implements OnInit {
         ]
     },
     {
+      type: TYPE_PASSWORD,
       key: 'password', defaultValue: '',
       validators:
         [
