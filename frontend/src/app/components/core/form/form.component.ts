@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
-
 export const TYPE_TEXT = 'text';
 export const TYPE_PASSWORD = 'password';
 export const TYPE_TEXTAREA = 'textarea';
@@ -14,12 +13,16 @@ export interface IValidators {
   value: string,
   message: string
 }
-
+export interface IDropdownOption {
+  key: string,
+  value: string,
+}
 export interface IControl {
   type: string,
   key: string,
   defaultValue: string,
-  validators: IValidators[]
+  validators: IValidators[],
+  options?: IDropdownOption[]
 }
 @Component({
   selector: 'core-form',
