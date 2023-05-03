@@ -7,6 +7,9 @@
       [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid" class="form-control" />
     <input *ngIf="c.type == 'password" type="text" formControlName="{{ c.key }}" id="{{ c.key }}"
       [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid" class="form-control" />
+    <textarea *ngIf="c.type == 'textarea" name="" id="" cols="30" rows="10" formControlName="{{ c.key }}"
+      id="{{ c.key }}" [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid"
+      class="form-control"></textarea>
     <div *ngIf="form.get(c.key).touched && form.get(c.key).invalid">
       <div *ngFor="let v of c.validators">
         <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).errors.required && (v.key === 'required')">{{
