@@ -54,11 +54,16 @@ export class FormComponent implements OnInit {
       let controlValidators: ValidatorFn[] = [];
       for (let j = 0; j < control.validators.length; j++) {
         const validator = control.validators[j];
-        if (validator.key === 'required') controlValidators.push(Validators.required);
-        else if (validator.key === 'maxLength') controlValidators.push(Validators.maxLength(+validator.value));
-        else if (validator.key === 'minLength') controlValidators.push(Validators.minLength(+validator.value));
-        else if (validator.key === 'email') controlValidators.push(Validators.email);
-        else if (validator.key === 'pattern') controlValidators.push(Validators.pattern(validator.value));
+        if (validator.key === 'required') 
+          controlValidators.push(Validators.required);
+        else if (validator.key === 'maxLength') 
+          controlValidators.push(Validators.maxLength(+validator.value));
+        else if (validator.key === 'minLength') 
+          controlValidators.push(Validators.minLength(+validator.value));
+        else if (validator.key === 'email') 
+          controlValidators.push(Validators.email);
+        else if (validator.key === 'pattern') 
+          controlValidators.push(Validators.pattern(validator.value));
         else { }
       }
       controls[control.key] = new FormControl('', controlValidators)
