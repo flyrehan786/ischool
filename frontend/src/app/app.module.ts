@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 // PAGES
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -21,7 +20,7 @@ import { TeacherDetailComponent } from './components/pages/teachers/teacher-deta
 import { TeachersComponent } from './components/pages/teachers/teachers/teachers.component';
 // CORE.
 import { TableComponent } from './components/core/table/table.component';
-import { FormComponent } from './components/core/form/form.component';
+// import { FormComponent } from './components/core/form/form.component';
 import { DetailsComponent } from './components/core/details/details.component';
 import { DragAndDropComponent } from './components/core/drag-and-drop/drag-and-drop.component';
 import { TabComponent } from './components/core/tab/tab.component';
@@ -41,7 +40,7 @@ import { LoaderComponent } from './components/core/loader/loader.component';
     UsersComponent,
     HomeComponent,
     TableComponent,
-    FormComponent,
+    // FormComponent,
     DetailsComponent,
     DragAndDropComponent,
     TabComponent,
