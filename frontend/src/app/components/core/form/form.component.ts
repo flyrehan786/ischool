@@ -61,9 +61,7 @@ export class FormComponent implements OnInit {
       type: TYPE_CHECKBOX,
       key: 'subscriptions', defaultValue: '',
       options: [
-        { key: 'check1', value: '1'},
-        { key: 'check2', value: '2'},
-        { key: 'check3', value: '3'},
+        { key: 'check3', value: '3'}
       ],
       validators:
         [
