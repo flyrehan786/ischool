@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX } from 'src/app/components/core/form/deps/CONTROL_TYPES';
+import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX } from 'src/app/components/core/form/deps/control-types';
 import { IControl } from 'src/app/components/core/form/deps/IControl';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validation-messages';
 
