@@ -37,8 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(e) {
-    console.log('Login Form Submitted');
-    console.log(e);
   }
 
 }
