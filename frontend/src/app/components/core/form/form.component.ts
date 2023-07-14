@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { TYPE_TEXT, TYPE_PASSWORD } from './deps/CONTROL_TYPES';
+import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX } from './deps/CONTROL_TYPES';
 import { IControl } from './deps/IControl';
 
 @Component({
@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
     pattern: 'Sorry, the input provided is not valid. Please revise your input to match the required format.'    
   };
   @Output() submitted = new EventEmitter();
-  @Input() title: string;
+  @Input() title: string = 'Form Title @Input()';
   @Input() config: IControl[] = [
     {
       type: TYPE_TEXT,
@@ -31,8 +31,8 @@ export class FormComponent implements OnInit {
           { key: 'required', value: 'required', message: this.VALIDATION_MESSAGES.required },
           { key: 'email', value: 'email', message: this.VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: this.VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '10', message: this.VALIDATION_MESSAGES.maxlength(10) },
-          { key: 'pattern', value: 'rehan@gmail.com', message: this.VALIDATION_MESSAGES.pattern }
+          { key: 'maxLength', value: '30', message: this.VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'pattern', value: 'x@gmail.com', message: this.VALIDATION_MESSAGES.pattern }
         ]
     },
     {
@@ -44,6 +44,32 @@ export class FormComponent implements OnInit {
           { key: 'email', value: 'email', message: 'email' }
         ]
     },
+    {
+      type: TYPE_RADIO,
+      key: 'gender', defaultValue: '',
+      options: [
+        { key: 'key1', value: '1'},
+        { key: 'key2', value: '2'},
+        { key: 'key3', value: '3'},
+      ],
+      validators:
+        [
+          { key: 'required', value: 'required', message: 'Password should be required' },
+        ]
+    },
+    {
+      type: TYPE_CHECKBOX,
+      key: 'subscriptions', defaultValue: '',
+      options: [
+        { key: 'check1', value: '1'},
+        { key: 'check2', value: '2'},
+        { key: 'check3', value: '3'},
+      ],
+      validators:
+        [
+          { key: 'required', value: 'required', message: 'Password should be required' },
+        ]
+    }
   ];
   form: FormGroup;
   constructor() { }
@@ -71,6 +97,7 @@ export class FormComponent implements OnInit {
     this.form = new FormGroup(controls);
   }
   submit(e) {
+    console.log(e.value);
     this.submitted.emit(e.value);
   }
 }
