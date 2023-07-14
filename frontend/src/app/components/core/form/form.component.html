@@ -1,45 +1,5 @@
 <h1>{{ title }}</h1>
 <hr />
-<!-- <form [formGroup]="form" (ngSubmit)="submit(form)">
-  <div class="form-group" *ngFor="let c of config">
-    <label for="{{ c.key }}">{{ c.key | titlecase }}</label>
-    <input 
-      *ngIf="c.type == 'text" type="text" 
-      formControlName="{{ c.key }}" id="{{ c.key }}"
-        [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid" 
-        class="form-control" />
-    <input 
-      *ngIf="c.type == 'password" 
-      type="text" formControlName="{{ c.key }}" id="{{ c.key }}"
-        [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid" class="form-control" />
-    <textarea 
-      *ngIf="c.type == 'textarea'" cols="30" rows="10" 
-      formControlName="{{ c.key }}"
-      id="{{ c.key }}" [class.input-error]="form.get(c.key).touched && form.get(c.key).invalid"
-      class="form-control"></textarea>
-    <div 
-      *ngIf="form.get(c.key).touched && form.get(c.key).invalid">
-      <div *ngFor="let v of c.validators">
-        <div class="mt-2 alert alert-danger" 
-          *ngIf="form.get(c.key).errors.required && (v.key === 'required')">{{
-          v.message }}</div>
-        <div class="mt-2 alert alert-danger" 
-          *ngIf="form.get(c.key).errors.email && (v.key === 'email')">{{ v.message }}
-        </div>
-        <div class="mt-2 alert alert-danger"
-          *ngIf="form.get(c.key).errors.minlength && (v.key === 'minlength' || v.key === 'minLength')">{{ v.message }}
-        </div>
-        <div class="mt-2 alert alert-danger"
-          *ngIf="form.get(c.key).errors.maxlength && (v.key === 'maxlength' || v.key === 'maxLength')">{{ v.message }}
-        </div>
-        <div class="mt-2 alert alert-danger" *ngIf="form.get(c.key).errors.pattern && (v.key === 'pattern')">{{
-          v.message }}</div>
-      </div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
-</form> -->
-
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <div class="form-group" *ngFor="let control of config">
     <label for="{{ control.key }}">{{ control.key | titlecase }}</label>
@@ -64,7 +24,6 @@
         id="{{ control.key }}" [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid"
         class="form-control">
       </textarea>
-
       <div *ngSwitchCase="'checkbox'">
         <div *ngFor="let option of control.options">
           <label>
