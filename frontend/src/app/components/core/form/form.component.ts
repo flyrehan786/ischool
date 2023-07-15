@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX } from './deps/control-types';
+import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX, TYPE_DROPDOWN } from './deps/control-types';
 import { IControl } from './deps/IControl';
 import { VALIDATION_MESSAGES } from './deps/validation-messages';
 
@@ -52,6 +52,18 @@ export class FormComponent implements OnInit {
       key: 'subscriptions', defaultValue: '',
       options: [
         { key: 'check3', value: '3'}
+      ],
+      validators:
+        [
+          { key: 'required', value: 'required', message: 'Password should be required' },
+        ]
+    },
+    {
+      type: TYPE_DROPDOWN,
+      key: 'select', defaultValue: '',
+      options: [
+        { key: 'option1', value: '3'},
+        { key: 'option2', value: '3'},
       ],
       validators:
         [
