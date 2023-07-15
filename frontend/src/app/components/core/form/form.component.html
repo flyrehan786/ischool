@@ -8,7 +8,6 @@
         [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
       <input *ngSwitchCase="'password'" [type]="control.type" [formControlName]="control.key"
         [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
-        {{ control.options | json }}
       <select *ngSwitchCase="'dropdown'" class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option *ngFor="let option of control.options" [value]="option.key">{{ option.value }}</option>
