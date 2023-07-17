@@ -97,7 +97,6 @@ export class FormComponent implements OnInit {
     this.form = new FormGroup(controls);
   }
   submit(e) {
-    console.log(e.value);
     this.submitted.emit(e.value);
   }
 }
