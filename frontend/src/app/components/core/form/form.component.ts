@@ -23,7 +23,8 @@ export class FormComponent implements OnInit {
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
           { key: 'pattern', value: 'x@gmail.com', message: VALIDATION_MESSAGES.pattern }
-        ]
+        ],
+      visible: true
     },
     {
       type: TYPE_PASSWORD,
@@ -32,7 +33,8 @@ export class FormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
           { key: 'email', value: 'email', message: 'email' }
-        ]
+        ],
+      visible: true
     },
     {
       type: TYPE_RADIO,
@@ -45,7 +47,8 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
-        ]
+        ],
+      visible: true
     },
     {
       type: TYPE_CHECKBOX,
@@ -54,7 +57,8 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
-        ]
+        ],
+      visible: true
     },
     {
       type: TYPE_DROPDOWN,
@@ -66,7 +70,8 @@ export class FormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
-        ]
+        ],
+      visible: true
     }
   ];
   form: FormGroup;
