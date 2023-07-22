@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
+  isLoading = false;
   headers = [
     'id',
     'FirstName',
@@ -17,7 +18,7 @@ export class StudentsComponent implements OnInit {
     'FatherCNIC', 
     'PostOffice', 
     'Tehsil', 
-    'Distric', 
+    'District', 
     'Status', 
     'Createdt',
     'UpdatedAt',
@@ -75,7 +76,6 @@ export class StudentsComponent implements OnInit {
     { id: 50, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
   ]
   constructor() { }
-
   ngOnInit(): void {
   }
 
