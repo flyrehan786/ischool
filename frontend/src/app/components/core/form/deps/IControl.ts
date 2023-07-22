@@ -8,10 +8,15 @@ export interface IDropdownOption {
   key: string;
   value: string;
 }
+export interface ICheckboxOption {
+  key: string;
+  value: string;
+}
 export interface IControl {
   type: string;
   key: string;
   defaultValue: string;
   validators: IValidators[];
   options?: IDropdownOption[];
+  option?: ICheckboxOption;
 }

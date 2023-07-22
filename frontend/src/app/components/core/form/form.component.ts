@@ -50,9 +50,7 @@ export class FormComponent implements OnInit {
     {
       type: TYPE_CHECKBOX,
       key: 'subscriptions', defaultValue: '',
-      options: [
-        { key: 'check3', value: '3'}
-      ],
+      option: { key: 'check3', value: '3'},
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
