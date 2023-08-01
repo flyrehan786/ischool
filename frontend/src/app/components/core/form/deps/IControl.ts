@@ -20,4 +20,5 @@ export interface IControl {
   visible: boolean;
   options?: IDropdownOption[];
   option?: ICheckboxOption;
+  bootstrapColumn?: string; 
 }
