@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
         visible: true,
-        bootstrapColumn: 'col-md-3'
+        bootstrapColClass: 'col-md-3'
     },
     {
       type: TYPE_PASSWORD,
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           { key: 'email', value: 'email', message: 'email' }
         ],
         visible: true,
-        bootstrapColumn: 'col-md-12'
+        bootstrapColClass: 'col-md-12'
     },
   ];
   constructor() { }
