@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeachersService } from 'src/app/services/teachers/teachers.service';
 
 @Component({
   selector: 'app-teachers',
@@ -82,9 +83,26 @@ export class TeachersComponent implements OnInit {
     { id: 49, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
     { id: 50, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
   ]
-  constructor() { }
+  constructor(private _teacherService: TeachersService) { }
 
   ngOnInit(): void {
   }
+
+  getTeachers() {
+    this._teacherService.getTeachers();
+  }
+
+  addTeacher() {
+    this._teacherService.postTeacher();
+  }
+
+  updateTeacher() {
+    this._teacherService.putTeacher(1);
+  }
+
+  deleteTeacher() {
+    this._teacherService.deleteTeacher(1);
+  }
+
 
 }

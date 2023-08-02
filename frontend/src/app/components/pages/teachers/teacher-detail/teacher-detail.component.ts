@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeachersService } from 'src/app/services/teachers/teachers.service';
 
 @Component({
   selector: 'app-teacher-detail',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _teacherService: TeachersService) { }
 
   ngOnInit(): void {
+  }
+
+  updateTeacher() {
+    this._teacherService.putTeacher(1);
+  }
+
+  deleteTeacher() {
+    this._teacherService.deleteTeacher(1);
   }
 
 }

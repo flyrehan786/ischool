@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentsService } from 'src/app/services/students/students.service';
 
 @Component({
   selector: 'app-students',
@@ -75,8 +76,24 @@ export class StudentsComponent implements OnInit {
     { id: 49, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
     { id: 50, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
   ]
-  constructor() { }
+  constructor(private _studentService: StudentsService) { }
   ngOnInit(): void {
+  }
+
+  getStudents() {
+    this._studentService.getStudents();
+  }
+
+  addStudent() {
+    this._studentService.postStudent();
+  }
+
+  updateStudent() {
+    this._studentService.putStudent(1);
+  }
+
+  deleteStudent() {
+    this._studentService.deleteStudent(1);
   }
 
 }

@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class TeachersService {
 
   constructor() { }
+  getTeachers() { }
+  postTeacher() { }
+  putTeacher(id) { }
+  deleteTeacher(id) {}
 }
