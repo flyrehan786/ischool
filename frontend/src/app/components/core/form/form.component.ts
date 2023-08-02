@@ -105,6 +105,8 @@ export class FormComponent implements OnInit {
     this.form = new FormGroup(controls);
   }
   submit(e) {
-    this.submitted.emit(e.value);
+    if(confirm('Are you sure you want to submit the form?'))  {
+      this.submitted.emit(e.value);
+    }
   }
 }
