@@ -32,7 +32,7 @@ export class FormComponent implements OnInit {
       key: 'password', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'email', value: 'email', message: 'email' }
         ],
       visible: true,
@@ -48,7 +48,7 @@ export class FormComponent implements OnInit {
       ],
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
       bsCols: 'col-md-12'
@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
       option: { key: 'check3', value: '3'},
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
       bsCols: 'col-md-12'
@@ -73,7 +73,7 @@ export class FormComponent implements OnInit {
       ],
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
       bsCols: 'col-md-12'
