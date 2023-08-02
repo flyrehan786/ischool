@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
           { key: 'pattern', value: 'x@gmail.com', message: VALIDATION_MESSAGES.pattern }
         ],
       visible: true,
-      bootstrapColClass: 'col-md-12'
+      bsCols: 'col-md-12'
     },
     {
       type: TYPE_PASSWORD,
@@ -36,7 +36,7 @@ export class FormComponent implements OnInit {
           { key: 'email', value: 'email', message: 'email' }
         ],
       visible: true,
-      bootstrapColClass: 'col-md-12'
+      bsCols: 'col-md-12'
     },
     {
       type: TYPE_RADIO,
@@ -51,7 +51,7 @@ export class FormComponent implements OnInit {
           { key: 'required', value: 'required', message: 'Password should be required' },
         ],
       visible: true,
-      bootstrapColClass: 'col-md-12'
+      bsCols: 'col-md-12'
     },
     {
       type: TYPE_CHECKBOX,
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
           { key: 'required', value: 'required', message: 'Password should be required' },
         ],
       visible: true,
-      bootstrapColClass: 'col-md-12'
+      bsCols: 'col-md-12'
     },
     {
       type: TYPE_DROPDOWN,
@@ -76,7 +76,7 @@ export class FormComponent implements OnInit {
           { key: 'required', value: 'required', message: 'Password should be required' },
         ],
       visible: true,
-      bootstrapColClass: 'col-md-12'
+      bsCols: 'col-md-12'
     }
   ];
   form: FormGroup;
