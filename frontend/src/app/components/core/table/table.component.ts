@@ -58,12 +58,10 @@ export class TableComponent implements OnInit {
   onFilterOptionClick(option) {
     const span = document.getElementById(option);
     const that = this;
-    
     span.addEventListener("click", function () {
       const input = document.createElement("input");
       input.classList.add('form-control');
       input.value = (span.innerText !== option) ? span.innerText : '';
-
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
       closeButton.classList.add('btn-sm');
