@@ -77,7 +77,6 @@ export class TableComponent implements OnInit {
           span.classList.remove('tag');
           span.innerText = option;
         }
-
         input.replaceWith(span);
         closeButton.remove();
       });
@@ -88,7 +87,6 @@ export class TableComponent implements OnInit {
           else that.filterWithOption('', option);
         }
       });
-
       input.focus();
     });
   }
@@ -160,7 +158,6 @@ export class TableComponent implements OnInit {
     `);
     popupWin.document.close();
     popupWin.print();
-
   }
   getHeaders() {
     let headers = `<tr><th>#</th>`;
