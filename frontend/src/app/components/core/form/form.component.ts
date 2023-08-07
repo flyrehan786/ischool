@@ -80,7 +80,7 @@ export class FormComponent implements OnInit {
         bsCols: 'col-md-12'
       }
     ];
-    */
+  */
   @Input() config: IControl[] = [
     {
       type: TYPE_text,
