@@ -2,7 +2,7 @@
 <hr />
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <div class="row">
-    <div class="form-group {{ control.bootstrapColumn }}" *ngFor="let control of config">
+    <div class="form-group {{ control.bsCols }}" *ngFor="let control of config">
       <label for="{{ control.key }}">{{ control.key | titlecase }}</label>
       <ng-container *ngIf="control.visible == true">
         <ng-container [ngSwitch]="control.type">
