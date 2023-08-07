@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       key: 'password', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
         visible: true,
         bsCols: 'col-md-12'
