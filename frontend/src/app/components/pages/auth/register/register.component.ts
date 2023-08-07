@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       key: 'Email', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'Email should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'email', value: 'email', message: 'email' }
         ],
         visible: true,
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
       key: 'password', defaultValue: '',
       validators:
         [
-          { key: 'required', value: 'required', message: 'Password should be required' },
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
         visible: true,
         bsCols: 'col-md-6'
