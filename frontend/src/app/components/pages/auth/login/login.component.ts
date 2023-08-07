@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX } from 'src/app/components/core/form/deps/control-types';
+import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox } from 'src/app/components/core/form/deps/control-types';
 import { IControl } from 'src/app/components/core/form/deps/IControl';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validation-messages';
 
@@ -11,7 +11,7 @@ import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validatio
 export class LoginComponent implements OnInit {
   config: IControl[] = [
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'username', defaultValue: '',
       validators:
         [
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         bsCols: 'col-md-3'
     },
     {
-      type: TYPE_PASSWORD,
+      type: TYPE_password,
       key: 'password', defaultValue: '',
       validators:
         [

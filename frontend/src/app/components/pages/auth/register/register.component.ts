@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IControl } from 'src/app/components/core/form/deps/IControl';
-import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO } from 'src/app/components/core/form/deps/control-types';
+import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validation-messages';
 
 @Component({
@@ -11,7 +11,7 @@ import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validatio
 export class RegisterComponent implements OnInit {
   config: IControl[] = [
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'firstname', defaultValue: '',
       validators:
         [
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
         bsCols: 'col-md-6'
     },
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'lastname', defaultValue: '',
       validators:
         [
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         bsCols: 'col-md-6'
     },
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'Email', defaultValue: '',
       validators:
         [
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         bsCols: 'col-md-6'
     },
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'username', defaultValue: '',
       validators:
         [
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
         bsCols: 'col-md-6'
     },
     {
-      type: TYPE_PASSWORD,
+      type: TYPE_password,
       key: 'password', defaultValue: '',
       validators:
         [
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
         bsCols: 'col-md-6'
     },
     {
-      type: TYPE_RADIO,
+      type: TYPE_radio,
       key: 'admin', defaultValue: '',
       options: [
         { key: 'Yes', value: '0'},

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { TYPE_TEXT, TYPE_PASSWORD, TYPE_RADIO, TYPE_CHECKBOX, TYPE_DROPDOWN } from './deps/control-types';
+import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox, TYPE_dropdown } from './deps/control-types';
 import { IControl } from './deps/IControl';
 import { VALIDATION_MESSAGES } from './deps/validation-messages';
 
@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   @Input() title: string = 'Form Title @Input()';
   @Input() config: IControl[] = [
     {
-      type: TYPE_TEXT,
+      type: TYPE_text,
       key: 'username', defaultValue: '',
       validators:
         [
@@ -22,13 +22,13 @@ export class FormComponent implements OnInit {
           { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
-          { key: 'pattern', value: 'x@gmail.com', message: VALIDATION_MESSAGES.pattern }
+          { key: 'pattern', value: 'example@domain.com', message: VALIDATION_MESSAGES.pattern }
         ],
       visible: true,
       bsCols: 'col-md-12'
     },
     {
-      type: TYPE_PASSWORD,
+      type: TYPE_password,
       key: 'password', defaultValue: '',
       validators:
         [
@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
       bsCols: 'col-md-12'
     },
     {
-      type: TYPE_RADIO,
+      type: TYPE_radio,
       key: 'gender', defaultValue: '',
       options: [
         { key: 'key1', value: '1'},
@@ -54,7 +54,7 @@ export class FormComponent implements OnInit {
       bsCols: 'col-md-12'
     },
     {
-      type: TYPE_CHECKBOX,
+      type: TYPE_checkbox,
       key: 'subscriptions', defaultValue: '',
       option: { key: 'check3', value: '3'},
       validators:
@@ -65,7 +65,7 @@ export class FormComponent implements OnInit {
       bsCols: 'col-md-12'
     },
     {
-      type: TYPE_DROPDOWN,
+      type: TYPE_dropdown,
       key: 'select', defaultValue: '',
       options: [
         { key: 'option1', value: '3'},
