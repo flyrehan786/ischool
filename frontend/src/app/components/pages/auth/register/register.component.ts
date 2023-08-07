@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
@@ -29,7 +28,6 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
@@ -53,7 +51,6 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
@@ -66,7 +63,6 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: 'Password should be required' },
-          { key: 'email', value: 'email', message: 'email' }
         ],
         visible: true,
         bsCols: 'col-md-6'
