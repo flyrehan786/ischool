@@ -10,8 +10,77 @@ import { VALIDATION_MESSAGES } from './deps/validation-messages';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  @Output() submitted = new EventEmitter();
-  @Input() title: string = 'Form Title @Input()';
+  /**
+   * Config JSON template
+   * --------------------
+   * [
+      {
+        type: TYPE_text,
+        key: 'username', defaultValue: '',
+        validators:
+          [
+            { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+            { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
+            { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
+            { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
+            { key: 'pattern', value: 'example@domain.com', message: VALIDATION_MESSAGES.pattern }
+          ],
+        visible: true,
+        bsCols: 'col-md-12'
+      },
+      {
+        type: TYPE_password,
+        key: 'password', defaultValue: '',
+        validators:
+          [
+            { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+            { key: 'email', value: 'email', message: 'email' }
+          ],
+        visible: true,
+        bsCols: 'col-md-12'
+      },
+      {
+        type: TYPE_radio,
+        key: 'gender', defaultValue: '',
+        options: [
+          { key: 'key1', value: '1'},
+          { key: 'key2', value: '2'},
+          { key: 'key3', value: '3'},
+        ],
+        validators:
+          [
+            { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          ],
+        visible: true,
+        bsCols: 'col-md-12'
+      },
+      {
+        type: TYPE_checkbox,
+        key: 'subscriptions', defaultValue: '',
+        option: { key: 'check3', value: '3'},
+        validators:
+          [
+            { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          ],
+        visible: true,
+        bsCols: 'col-md-12'
+      },
+      {
+        type: TYPE_dropdown,
+        key: 'select', defaultValue: '',
+        options: [
+          { key: 'option1', value: '3'},
+          { key: 'option2', value: '3'},
+        ],
+        validators:
+          [
+            { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          ],
+        visible: true,
+        bsCols: 'col-md-12'
+      }
+    ];
+    */
   @Input() config: IControl[] = [
     {
       type: TYPE_text,
@@ -79,6 +148,8 @@ export class FormComponent implements OnInit {
       bsCols: 'col-md-12'
     }
   ];
+  @Output() submitted = new EventEmitter();
+  @Input() title: string = 'Form Title @Input()';
   form: FormGroup;
   constructor() { }
   ngOnInit() {
