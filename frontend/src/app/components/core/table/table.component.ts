@@ -98,7 +98,7 @@ export class TableComponent implements OnInit {
     }
     return pageNumbers;
   }
-  getPagedColumns() {
+  getPagedRows() {
     return this.rows.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
   getStatusColumn(id) {
