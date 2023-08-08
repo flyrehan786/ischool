@@ -49,8 +49,8 @@
             </td>
         </tr>
         <tr *ngFor="let row of getPagedRows()">
-            <td [class.border-left-active]="getStatusColumn(row.id) == 1"
-                [class.border-left-not-active]="getStatusColumn(row.id) == 'x'">
+            <td [class.border-left-active]="getRowStatus(row.id) == 1"
+                [class.border-left-not-active]="getRowStatus(row.id) == 'x'">
                 <input type="checkbox">
             </td> 
             <td *ngFor="let item of headers">{{ row[item] }}</td>

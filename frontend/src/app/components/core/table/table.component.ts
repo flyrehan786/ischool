@@ -101,7 +101,7 @@ export class TableComponent implements OnInit {
   getPagedRows() {
     return this.rows.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
-  getStatusColumn(id) {
+  getRowStatus(id) {
     const row = this.rows.filter(x => x.id === id);
     if (row.length > 0) {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
