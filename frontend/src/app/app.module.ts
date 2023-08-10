@@ -49,6 +49,7 @@ import { DetailsComponent } from './components/core/details/details.component';
     AppRoutingModule,
     CommonModule,
     RouterModule.forRoot([
+      { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'teachers', component: TeachersComponent },
