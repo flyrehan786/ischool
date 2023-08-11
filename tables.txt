@@ -26,3 +26,23 @@ updated_at               datetime
 created_by               int
 updated_by               int
 
+
+students
+--------
+id                       int
+first_name               v45
+last_name                v45
+gender                   v1
+cnic			 v45
+age                      v3
+father_name              v45
+father_cnic              v45
+post_office              v45
+tehsil                   v45
+destrict                 v45
+status                   v45
+created_at               datetime
+updated_at               datetime
+created_by               int
+updated_by               int
+
