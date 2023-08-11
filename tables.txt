@@ -1,0 +1,12 @@
+Users
+id                        int
+first_name                v45
+last_name                 v45
+email_address             v45
+username                  v60
+password                  v60
+is_admin                  v1
+created_at                datetime
+updated_at                datetime
+created_by                int
+updated_by                int
