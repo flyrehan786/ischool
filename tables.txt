@@ -1,4 +1,5 @@
 Users
+-----
 id                        int
 first_name                v45
 last_name                 v45
@@ -10,3 +11,18 @@ created_at                datetime
 updated_at                datetime
 created_by                int
 updated_by                int
+
+
+teachers
+--------
+id                       int
+first_name               v45
+last_name                v45
+qualification            v45
+designation              v45
+joining_date             datetime
+created_at               datetime
+updated_at               datetime
+created_by               int
+updated_by               int
+
