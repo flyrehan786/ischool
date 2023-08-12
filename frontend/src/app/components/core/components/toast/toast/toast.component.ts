@@ -7,19 +7,19 @@ import * as bootstrap from 'bootstrap'; // Import Bootstrap JavaScript
   styleUrls: ['./toast.component.css']
 })
 export class ToastComponent implements OnInit {
-  message: string;
-  success: boolean;
-  error: boolean;
-  warning: boolean;
+  _message: string;
+  _success: boolean;
+  _error: boolean;
+  _warning: boolean;
   constructor() { }
   ngOnInit(): void {
   }
-  show(message, _success, _error, _warning) {
-    this.message = message;
-    this.success = _success;
-    this.error = _error;
-    this.warning = _warning;
-    
+  show(message, success, error, warning) {
+    this._message = message;
+    this._success = success;
+    this._error = error;
+    this._warning = warning;
+
     const liveToast = document.getElementById('liveToast');
     const toast = new bootstrap.Toast(liveToast); 
     toast.show(); 
