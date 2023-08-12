@@ -107,6 +107,7 @@ export class RegisterComponent implements OnInit {
     };
 
     console.log('Payload: User Registration::');
+    console.log(payload);
     this.toastComponent.show('User Registered Successfully.', true, false, false);
   }
 }
