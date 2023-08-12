@@ -48,6 +48,6 @@ export class LoginComponent implements OnInit {
     const payload = { username, password };
     console.log('Login Payload::');
     console.log(payload);
-    this.toastComponent.show
+    this.toastComponent.show('Login Successfully', true, false, false)
   }
 }

@@ -14,7 +14,7 @@ export class ToastComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  show(message, success, error, warning) {
+  show(message: string, success: boolean, error: boolean, warning: boolean) {
     this._message = message;
     this._success = success;
     this._error = error;
