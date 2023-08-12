@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox } from 'src/app/components/core/form/deps/control-types';
-import { IControl } from 'src/app/components/core/form/deps/IControl';
-import { VALIDATION_MESSAGES } from 'src/app/components/core/form/deps/validation-messages';
+import { IControl } from 'src/app/components/core/components/form/deps/IControl';
+import { TYPE_text, TYPE_password } from 'src/app/components/core/components/form/deps/control-types';
+import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 
 @Component({
   selector: 'app-login',

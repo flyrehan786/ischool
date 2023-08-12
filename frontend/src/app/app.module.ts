@@ -19,9 +19,10 @@ import { StudentDetailComponent } from './components/pages/students/student-deta
 import { TeacherDetailComponent } from './components/pages/teachers/teacher-detail/teacher-detail.component';
 import { TeachersComponent } from './components/pages/teachers/teachers/teachers.component';
 // CORE.
-import { TableComponent } from './components/core/table/table.component';
-import { FormComponent } from './components/core/form/form.component';
-import { DetailsComponent } from './components/core/details/details.component';
+import { DetailsComponent } from './components/core/components/details/details.component';
+import { FormComponent } from './components/core/components/form/form.component';
+import { TableComponent } from './components/core/components/table/table.component';
+import { ToastComponent } from './components/core/components/toast/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DetailsComponent } from './components/core/details/details.component';
     DetailsComponent,
     StudentDetailComponent,
     TeacherDetailComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
