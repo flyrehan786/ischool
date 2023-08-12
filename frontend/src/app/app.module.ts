@@ -11,7 +11,7 @@ import { CertificatesComponent } from './components/pages/certificates/certifica
 import { ReportsComponent } from './components/pages/reports/reports.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
 import { LoginComponent } from './components/pages/auth/login/login.component';
-import { RegisterComponent } from './components/admin/pages/user-registration/register/register.component';
+import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { UsersComponent } from './components/pages/auth/users/users.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { StudentsComponent } from './components/pages/students/students/students.component';
