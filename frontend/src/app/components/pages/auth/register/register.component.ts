@@ -1,14 +1,15 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
-import * as bootstrap from 'bootstrap'; // Import Bootstrap JavaScript
+import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
       type: TYPE_text,
@@ -87,11 +88,7 @@ export class RegisterComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  show() {
-    const liveToast = document.getElementById('liveToast');
-    const toast = new bootstrap.Toast(liveToast); 
-    toast.show(); 
-  }
+  
   onSubmit(e) {
     const firstName = e.firstname;
     const lastName = e.lastname;
@@ -110,9 +107,6 @@ export class RegisterComponent implements OnInit {
     };
 
     console.log('Payload: User Registration::');
-    console.log(payload);
-
-    this.show();
-
+    this.toastComponent.show('User Registered Successfully.', true, false, false);
   }
 }

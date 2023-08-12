@@ -1,1 +1,14 @@
-<p>toast works!</p>
+<div class=" mt-4  position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide bg-success" 
+    [class.bg-success]="success" 
+    [class.bg-danger]="error"
+    [class.bg-warning]="warning" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto" [class.text-success]="success" [class.text-danger]="error"
+                [class.text-warning]="warning">Message</strong>
+            <!-- <small>11 mins ago</small> -->
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body"> {{ message }} </div>
+        </div>
+    </div>
