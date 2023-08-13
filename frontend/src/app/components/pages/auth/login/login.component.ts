@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     {
       type: TYPE_text,
       key: 'username', defaultValue: '',
+      label: 'Username',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     {
       type: TYPE_password,
       key: 'password', defaultValue: '',
+      label: 'Password',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
