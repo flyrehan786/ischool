@@ -17,7 +17,7 @@ export class StudentFormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -29,7 +29,7 @@ export class StudentFormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -55,7 +55,7 @@ export class StudentFormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -66,8 +66,8 @@ export class StudentFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '1', message: VALIDATION_MESSAGES.minlength(1) },
+          { key: 'maxLength', value: '3', message: VALIDATION_MESSAGES.maxlength(3) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -79,7 +79,7 @@ export class StudentFormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -90,8 +90,8 @@ export class StudentFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -102,8 +102,8 @@ export class StudentFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -114,8 +114,8 @@ export class StudentFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -126,8 +126,8 @@ export class StudentFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
