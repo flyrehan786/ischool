@@ -1,8 +1,10 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -85,10 +87,10 @@ export class RegisterComponent implements OnInit {
       bsCols: 'col-md-6'
     },
   ];
-  constructor() { }
+  constructor(private authService: AuthService) { }
   ngOnInit(): void {
   }
-  
+
   onSubmit(e) {
     const firstName = e.firstname;
     const lastName = e.lastname;
@@ -108,6 +110,17 @@ export class RegisterComponent implements OnInit {
 
     console.log('Payload: User Registration::');
     console.log(payload);
-    this.toastComponent.show('User Registered Successfully.', true, false, false);
+    this.authService.register(payload).subscribe(
+      (res: HttpResponse<any>) => {
+        this.toastComponent.show('User Registered Successfully.', true, false, false);
+      },
+      (error) => {
+        // Handle error here if needed
+        console.error('An error occurred:', error);
+        if (error.status === 400) {
+          this.toastComponent.show('User Already Exists.', false, true, false);
+        }
+      }
+    );
   }
 }
