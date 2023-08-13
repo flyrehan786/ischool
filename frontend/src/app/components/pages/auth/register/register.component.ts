@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         [
           { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'maxLength', value: '255', message: VALIDATION_MESSAGES.maxlength(255) },
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
@@ -56,8 +56,8 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
+          { key: 'minLength', value: '30', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '255', message: VALIDATION_MESSAGES.maxlength(255) },
         ],
       visible: true,
       bsCols: 'col-md-8'
@@ -68,6 +68,8 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '1024', message: VALIDATION_MESSAGES.minlength(1024) },
+          { key: 'maxLength', value: '12', message: VALIDATION_MESSAGES.maxlength(12) },
         ],
       visible: true,
       bsCols: 'col-md-8'

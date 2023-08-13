@@ -24,6 +24,7 @@ import { DetailsComponent } from './components/core/components/details/details.c
 import { FormComponent } from './components/core/components/form/form.component';
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
+import { StudentFormComponent } from './components/pages/students/student-form/student-form/student-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
     StudentDetailComponent,
     TeacherDetailComponent,
     ToastComponent,
+    StudentFormComponent,
   ],
   imports: [
     BrowserModule,
