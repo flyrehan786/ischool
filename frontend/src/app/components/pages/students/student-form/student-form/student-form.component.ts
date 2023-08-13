@@ -35,43 +35,8 @@ export class StudentFormComponent implements OnInit {
       bsCols: 'col-md-8'
     },
     {
-      type: TYPE_text,
-      key: 'email', defaultValue: '',
-      validators:
-        [
-          { key: 'email', value: 'email', message: VALIDATION_MESSAGES.email },
-          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
-          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-        ],
-      visible: true,
-      bsCols: 'col-md-8'
-    },
-    {
-      type: TYPE_text,
-      key: 'username', defaultValue: '',
-      validators:
-        [
-          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '30', message: VALIDATION_MESSAGES.maxlength(30) },
-        ],
-      visible: true,
-      bsCols: 'col-md-8'
-    },
-    {
-      type: TYPE_password,
-      key: 'password', defaultValue: '',
-      validators:
-        [
-          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-        ],
-      visible: true,
-      bsCols: 'col-md-8'
-    },
-    {
       type: TYPE_radio,
-      key: 'admin', defaultValue: '',
+      key: 'gender', defaultValue: '',
       options: [
         { key: '  Yes', value: '0' },
         { key: '  No', value: '1' },
@@ -82,6 +47,90 @@ export class StudentFormComponent implements OnInit {
         ],
       visible: true,
       bsCols: 'col-md-6'
+    },
+    {
+      type: TYPE_text,
+      key: 'cnic', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'age', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'father_name', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'father_cnic', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'post_office', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'tehsil', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
+    },
+    {
+      type: TYPE_text,
+      key: 'district', defaultValue: '',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
+        ],
+      visible: true,
+      bsCols: 'col-md-8'
     },
   ];
   constructor() { }
