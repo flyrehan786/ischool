@@ -51,6 +51,7 @@ export class StudentFormComponent implements OnInit {
     {
       type: TYPE_text,
       key: 'cnic', defaultValue: '',
+      label: 'CNIC',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -136,6 +137,8 @@ export class StudentFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  onSubmit(e) {
   }
 
 }

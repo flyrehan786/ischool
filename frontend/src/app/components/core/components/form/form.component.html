@@ -3,7 +3,14 @@
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <div class="row">
     <div class="form-group {{ control.bsCols }}" *ngFor="let control of config">
-      <label for="{{ control.key }}">{{ control.key | titlecase }}</label>
+      <label for="{{ control.key }}">
+        <span *ngIf="!control.label">
+          {{ control.key | titlecase }}
+        </span>
+        <span  *ngIf="control.label">
+          {{ control.label }}
+        </span>
+      </label>
       <ng-container *ngIf="control.visible == true">
         <ng-container [ngSwitch]="control.type">
           <input *ngSwitchCase="'text'" [type]="control.type" [formControlName]="control.key"
