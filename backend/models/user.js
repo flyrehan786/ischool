@@ -1,49 +1,32 @@
-const config = require("config");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const Joi = require("joi");
-const mongoose = require("mongoose");
+const db = require('../services/mysql').db;
+const bcrypt = require("bcrypt");
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 50
-  },
-  email: {
-    type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 255,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 1024
-  },
-  isAdmin: Boolean
-});
-
-userSchema.methods.generateAuthToken = function() {
-  const token = jwt.sign(
-    {
-      _id: this._id,
-      name: this.name,
-      email: this.email,
-      isAdmin: this.isAdmin
-    },
-    config.get("jwtPrivateKey")
-  );
-  return token;
-};
-
-const User = mongoose.model("User", userSchema);
-
+async function findUser(username) {
+  return new Promise((resolve, reject) => {
+    db.execute(`SELECT * FROM users WHERE username=?`, [username], (err, result) => {
+      if (err) reject(err);
+      if (result.length > 0) resolve(result);
+      else resolve(null);
+    });
+  })
+}
+async function saveUser(newUser) {
+  console.log(newUser);
+}
+async function encryptPassword(password) {
+  const salt = await bcrypt.genSalt(10);
+  const encryptedPassword = await bcrypt.hash(password, salt);
+  return encryptedPassword;
+}
 function validateUser(user) {
   const schema = {
-    name: Joi.string()
+    first_name: Joi.string()
+      .min(5)
+      .max(50)
+      .required(),
+    last_name: Joi.string()
       .min(2)
       .max(50)
       .required(),
@@ -52,14 +35,23 @@ function validateUser(user) {
       .max(255)
       .required()
       .email(),
-    password: Joi.string()
+    username: Joi.string()
       .min(5)
       .max(255)
+      .required(),
+    password: Joi.string()
+      .min(5)
+      .max(1024)
+      .required(),
+    is_admin: Joi.string()
+      .min(1)
+      .max(1)
       .required()
   };
 
   return Joi.validate(user, schema);
 }
-
-exports.User = User;
 exports.validate = validateUser;
+exports.findUser = findUser;
+exports.encryptedPassword = encryptPassword;
+exports.saveUser = saveUser;

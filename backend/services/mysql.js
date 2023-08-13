@@ -15,5 +15,5 @@ function checkConnection() {
         connection.release();
     });
 }
-module.exports.db_connection = checkConnection;
+module.exports.check_connection = checkConnection;
 module.exports.db = pool;
