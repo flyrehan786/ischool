@@ -10,8 +10,6 @@
     width: 320px;
     margin-left: 20px;
 }
-
-
 :host ::ng-deep #navbarSupportedContent > ul.navbar-nav.me-auto.mb-2.mb-lg-0 > li:nth-child(6) > input {
     background-color: #4f4f4f;
     color: #fdfdfd;
