@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
   if (queryResult) return res.status(400).send("User already registered.");
   const encryptPassword = await encryptedPassword(req.body.username);
 
-
+  
   const newUser = {
     id: null,
     first_name: req.body.first_name,
@@ -31,9 +31,7 @@ router.post("/register", async (req, res) => {
 
   const insertedId = await saveUser(newUser);
   newUser.id = insertedId;
-  const token = generateAuthToken(newUser);
   res
-    .header("x-auth-token", token)
     .send({
       id: newUser.id,
       first_name: newUser.first_name,
