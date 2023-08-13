@@ -1,6 +1,6 @@
 // const auth = require("../middleware/auth");
 // const _ = require("lodash");
-const { validate, findUser, encryptedPassword, saveUser } = require("../models/user");
+const { validate, findUser, encryptedPassword, saveUser, generateAuthToken   } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
@@ -20,6 +20,7 @@ router.post("/register", async (req, res) => {
 
 
   const newUser = {
+    id: null,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email,
@@ -28,15 +29,19 @@ router.post("/register", async (req, res) => {
     is_admin: req.body.is_admin
   };
 
-  saveUser(newUser);
-
-  res.send(newUser);
-
-
-  // const token = user.generateAuthToken();
-  // res
-  //   .header("x-auth-token", token)
-  //   .send(_.pick(user, ["_id", "name", "email"]));
+  const insertedId = await saveUser(newUser);
+  newUser.id = insertedId;
+  const token = generateAuthToken(newUser);
+  res
+    .header("x-auth-token", token)
+    .send({
+      id: newUser.id,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
+      email: newUser.email,
+      username: newUser.username,
+      is_admin: newUser.is_admin
+    });
 });
 
 module.exports = router;
