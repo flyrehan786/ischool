@@ -58,6 +58,7 @@ import { StudentFormComponent } from './components/pages/students/student-form/s
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'students', component: StudentsComponent },
+      { path: 'student/new', component: StudentFormComponent },
       { path: 'teachers', component: TeachersComponent },
       { path: 'certificates', component: CertificatesComponent },
       { path: 'reports', component: ReportsComponent },
