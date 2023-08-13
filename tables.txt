@@ -3,9 +3,9 @@ Users
 id                        int
 first_name                v45
 last_name                 v45
-email_address             v45
-username                  v60
-password                  v60
+email_address             v255
+username                  v255
+password                  v1024
 is_admin                  v1
 created_at                datetime
 updated_at                datetime
