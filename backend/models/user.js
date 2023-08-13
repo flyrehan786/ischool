@@ -39,7 +39,7 @@ async function findUser(username) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM users WHERE username=?`, [username], (err, result) => {
       if (err) reject(err);
-      if (result.length > 0) resolve(result);
+      if (result.length > 0) resolve(result[0]);
       else resolve(null);
     });
   })
@@ -61,15 +61,15 @@ async function encryptPassword(password) {
   const encryptedPassword = await bcrypt.hash(password, salt);
   return encryptedPassword;
 }
-function generateAuthToken(newUser) {
+function generateAuthToken(user) {
   const token = jwt.sign(
     {
-      id: newUser.id,
-      first_name: newUser.first_name,
-      last_name: newUser.last_name,
-      email: newUser.email,
-      username: newUser.username,
-      isAdmin: newUser.is_admin
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      username: user.username,
+      isAdmin: user.is_admin
     },
     config.jwtPrivateKey, {
       expiresIn: 3000

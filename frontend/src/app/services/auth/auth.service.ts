@@ -13,13 +13,18 @@ export class AuthService {
     private route: ActivatedRoute) { 
   }
 
-  login() {
+  login(credentials) {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
-    // ..    
+    return this.http.post(this.endPoint + 'api/auth', credentials)
+    
   }
   logOut() {}
-  isloggedIn() {}
+  isloggedIn() {
+    const token = localStorage.getItem('token');
+    if(token) return true;
+    else false;
+  }
   getLoggedInUser() {
   }
   register(user) {

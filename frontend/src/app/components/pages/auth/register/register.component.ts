@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '30', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'minLength', value: '10', message: VALIDATION_MESSAGES.minlength(10) },
           { key: 'maxLength', value: '255', message: VALIDATION_MESSAGES.maxlength(255) },
         ],
       visible: true,
@@ -68,8 +68,8 @@ export class RegisterComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '1024', message: VALIDATION_MESSAGES.minlength(1024) },
-          { key: 'maxLength', value: '12', message: VALIDATION_MESSAGES.maxlength(12) },
+          { key: 'minLength', value: '12', message: VALIDATION_MESSAGES.minlength(12) },
+          { key: 'maxLength', value: '1024', message: VALIDATION_MESSAGES.maxlength(1024) },
         ],
       visible: true,
       bsCols: 'col-md-8'

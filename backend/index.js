@@ -6,7 +6,9 @@ app.use(cors());
 app.use(express.json());
 
 const usersRoutes = require('./routes/users');
+const authRoute = require('./routes/auth');
 app.use('/api/users', usersRoutes);
+app.use('/api/auth', authRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
