@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
+import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
 
 @Component({
   selector: 'app-student-form',
@@ -9,6 +10,7 @@ import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/dep
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
+  @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
       type: TYPE_text,
