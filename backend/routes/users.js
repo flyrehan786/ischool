@@ -6,7 +6,11 @@ const router = express.Router();
 
 router.get("", async (req, res) => {
   const users = await findAll();
-  res.send(users);
+  const listWithoutPassword = users.map(obj => {
+    const { password, ...rest } = obj; 
+    return rest; 
+  });
+  res.send(listWithoutPassword);
 });
 
 router.post("/register", async (req, res) => {
