@@ -6,17 +6,19 @@ const router = express.Router();
 
 router.get("", async (req, res) => {
   const users = await findAll();
-  const listWithoutPassword = users.map(obj => {
+  const filteredList = users.map(obj => {
     const { password, created_by, updated_by, ...rest } = obj; 
     return rest; 
   });
-  const keys = Object.keys(listWithoutPassword[0]);
-  listWithoutPassword.filter(x => {
+  const keys = Object.keys(filteredList[0]);
+  filteredList.filter(x => {
     x.created_at = new Date(x.created_at).toLocaleString();
     x.updated_at = new Date(x.updated_at).toLocaleString();
+    if(+x.is_admin === 1) x.is_admin = 'Yes';
+    else x.is_admin = 'No';
   })
   res.send({
-    rows: listWithoutPassword,
+    rows: filteredList,
     headers: keys,
     filters: [keys[1], keys[2]]
   });
