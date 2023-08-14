@@ -69,7 +69,6 @@ export class TableComponent implements OnInit {
       closeButton.classList.add('btn-sm');
       closeButton.classList.add('btn-primary');
       closeButton.classList.add('ms-1');
-      closeButton.style.marginRight = '8px';
       closeButton.style.borderRadius = '0px';
       closeButton.innerText = "x";
       span.replaceWith(input, closeButton);
