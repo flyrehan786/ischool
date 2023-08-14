@@ -53,7 +53,9 @@
                 [class.border-left-not-active]="getRowStatus(row.id) == 'x'">
                 <input type="checkbox">
             </td> 
-            <td *ngFor="let item of headers">{{ row[item] }}</td>
+            <td *ngFor="let item of headers">
+                <p>{{ row[item] }}</p>
+            </td>
             <td class="td-border-right">
                 <button class="btn btn-sm btn-info me-2">
                     <i class="bi bi-info-circle"></i>

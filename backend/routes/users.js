@@ -11,6 +11,10 @@ router.get("", async (req, res) => {
     return rest; 
   });
   const keys = Object.keys(listWithoutPassword[0]);
+  listWithoutPassword.filter(x => {
+    x.created_at = new Date(x.created_at).toLocaleString();
+    x.updated_at = new Date(x.updated_at).toLocaleString();
+  })
   res.send({
     rows: listWithoutPassword,
     headers: keys,
@@ -25,7 +29,6 @@ router.post("/register", async (req, res) => {
   const queryResult = await findUser(req.body.username);
   if (queryResult) return res.status(400).send("User already registered.");
   const encryptPassword = await encryptedPassword(req.body.username);
-
   
   const newUser = {
     id: null,
