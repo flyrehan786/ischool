@@ -11,17 +11,14 @@ export class UsersComponent implements OnInit {
   isLoading = false;
   users: any[];
   headers: any[];
+  filters: any[];
   constructor(private userService: UsersService, private commonService: CommonService) { }
 
   ngOnInit(): void {
-    this.userService.get().subscribe((res: any[]) => {
-      this.users = res;
-      if(this.users.length > 0)
-      this.headers = this.commonService.getKeys(this.users[0]);
-    else this.headers = [];
-    console.log(this.users);
-    console.log(this.headers);
-      
+    this.userService.get().subscribe((res: any) => {
+      this.users = res.rows;
+      this.headers = res.headers;
+      this.filters = res.filters;
     })
   }
 }

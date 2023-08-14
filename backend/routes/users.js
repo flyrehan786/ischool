@@ -10,7 +10,12 @@ router.get("", async (req, res) => {
     const { password, ...rest } = obj; 
     return rest; 
   });
-  res.send(listWithoutPassword);
+  const keys = Object.keys(listWithoutPassword[0]);
+  res.send({
+    rows: listWithoutPassword,
+    headers: keys,
+    filters: [keys[1], keys[2]]
+  });
 });
 
 router.post("/register", async (req, res) => {

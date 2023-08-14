@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'core-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
   /* 
       ------------------------------
       Header/Columns Formatting Data
@@ -25,7 +25,9 @@ export class TableComponent implements OnInit {
   BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
-    this.BACKUP = JSON.parse(JSON.stringify(this.rows));
+  }
+  ngAfterViewInit(): void {
+    this.BACKUP = this.rows;
   }
   filter(keyword: string) {
     if (keyword.length > 0) {
