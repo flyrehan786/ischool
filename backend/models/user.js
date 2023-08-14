@@ -35,6 +35,15 @@ function validateUser(user) {
 
   return Joi.validate(user, schema);
 }
+async function findAll() {
+  return new Promise((resolve, reject) => {
+    db.execute((`SELECT * FROM users`), [], (err, result) => {
+      if(err) reject(err);
+      if(result.length > 0) resolve(result);
+      else resolve([]);
+    })
+  })
+}
 async function findUser(username) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM users WHERE username=?`, [username], (err, result) => {
@@ -83,3 +92,4 @@ exports.findUser = findUser;
 exports.encryptedPassword = encryptPassword;
 exports.saveUser = saveUser;
 exports.generateAuthToken = generateAuthToken;
+exports.findAll = findAll;

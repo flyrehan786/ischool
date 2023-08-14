@@ -1,14 +1,13 @@
 // const auth = require("../middleware/auth");
 // const _ = require("lodash");
-const { validate, findUser, encryptedPassword, saveUser, generateAuthToken   } = require("../models/user");
+const { validate, findUser, encryptedPassword, saveUser, findAll   } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
-// router.get("", async (req, res) => {
-//   // const user = await User.findById(req.user._id).select("-password");
-//   // res.send(user);
-//   res.send('ok')
-// });
+router.get("", async (req, res) => {
+  const users = await findAll();
+  res.send(users);
+});
 
 router.post("/register", async (req, res) => {
   const { error } = validate(req.body);
