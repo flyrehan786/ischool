@@ -25,6 +25,7 @@ import { FormComponent } from './components/core/components/form/form.component'
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
 import { StudentFormComponent } from './components/pages/students/student-form/student-form/student-form.component';
+import { AuthGuard } from './guards/auth-guard';
 
 @NgModule({
   declarations: [
@@ -56,17 +57,59 @@ import { StudentFormComponent } from './components/pages/students/student-form/s
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'students', component: StudentsComponent },
-      { path: 'student/new', component: StudentFormComponent },
-      { path: 'teachers', component: TeachersComponent },
-      { path: 'certificates', component: CertificatesComponent },
-      { path: 'reports', component: ReportsComponent },
-      { path: 'settings', component: SettingsComponent },
-      { path: 'auth/login', component: LoginComponent },
-      { path: 'auth/register', component: RegisterComponent },
-      { path: 'auth/users', component: UsersComponent },
-      { path: 'auth/manage', component: UsersComponent },
+      {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'students',
+        component: StudentsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'student/new',
+        component: StudentFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'teachers', 
+        component: TeachersComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'certificates', 
+        component: CertificatesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'reports', 
+        component: ReportsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'settings', 
+        component: SettingsComponent,
+        canActivate: [AuthGuard]
+      },
+      { 
+        path: 'auth/login', 
+        component: LoginComponent },
+      {
+        path: 'auth/register', 
+        component: RegisterComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'auth/users', 
+        component: UsersComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'auth/manage', 
+        component: UsersComponent,
+        canActivate: [AuthGuard]
+      },
     ])
   ],
   providers: [],
