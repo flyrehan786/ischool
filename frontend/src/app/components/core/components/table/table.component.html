@@ -43,8 +43,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngIf="rows.length < 1">
-            <td [colSpan]="headers.length + 2" class="text-center">
+        <tr *ngIf="rows?.length < 1">
+            <td [colSpan]="headers?.length + 2" class="text-center">
                 No data available in table.
             </td>
         </tr>
@@ -77,7 +77,7 @@
         to 
         {{ currentPage*itemsPerPage | number }} 
         of 
-        {{ rows.length }} entries.
+        {{ rows?.length }} entries.
     </p>
     <nav aria-label="...">
         <ul class="pagination justify-content-end">
@@ -91,10 +91,10 @@
                 *ngFor="let page of totalPageNumbers(); let i=index">
                 <a class="page-link" (click)="currentPage = i+1">{{i+1}}</a>
             </li>
-            <li class="page-item" [class.disabled]="currentPage >= rows.length/itemsPerPage">
+            <li class="page-item" [class.disabled]="currentPage >= rows?.length/itemsPerPage">
                 <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
             </li>
-            <li class="page-item" [class.disabled]="currentPage >= rows.length/itemsPerPage">
+            <li class="page-item" [class.disabled]="currentPage >= rows?.length/itemsPerPage">
                 <a class="page-link" (click)="currentPage = rows.length/itemsPerPage">Last</a>
             </li>
         </ul>

@@ -95,17 +95,17 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
   totalPageNumbers() {
     let pageNumbers = [];
-    const num = this.rows.length / this.itemsPerPage;
+    const num = this.rows?.length / this.itemsPerPage;
     for (let i = 1; i <= num; i++) {
       pageNumbers.push(i);
     }
     return pageNumbers;
   }
   getPagedRows() {
-    return this.rows.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
+    return this.rows?.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   }
   getRowStatus(id) {
-    const row = this.rows.filter(x => x.id === id);
+    const row = this.rows?.filter(x => x.id === id);
     if (row.length > 0) {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
       if (statusHeader.length > 0) {
@@ -119,8 +119,9 @@ export class TableComponent implements OnInit, AfterViewInit {
   filterDataByDate(fromDate, toDate) {
     const from = new Date(fromDate);
     const to = new Date(toDate);
-    return this.rows.filter((item) => {
+    return this.rows?.filter((item) => {
       const date = new Date(item['created_at']);
+      console.log(date);
       return date >= from && date <= to;
     });
   }
@@ -173,7 +174,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
   getRows() {
     let rows = ``;
-    for (let i = 0; i < this.rows.length; i++) {
+    for (let i = 0; i < this.rows?.length; i++) {
       rows += `<tr><td>#</td>`;
       const row = this.rows[i];
       for (let j = 0; j < this.headers.length; j++) {
