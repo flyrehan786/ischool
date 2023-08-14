@@ -1,10 +1,10 @@
 .navbar {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
 }
 .nav-link.active {
-    margin-left: 12px;
-    border-bottom:3px solid rgba(0, 0, 0, 0.404);
+    margin-left: 14px;
+    border-bottom:1px solid rgba(255, 255, 255, 0.638);
 }
 .form-control {
     width: 320px;
