@@ -30,6 +30,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.BACKUP = this.rows;
   }
   filter(keyword: string) {
+    this.currentPage = 1;
     if (keyword.length > 0) {
       this.rows = this.BACKUP.filter(x => {
         let flag = false;

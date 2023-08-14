@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("", async (req, res) => {
   const users = await findAll();
   const listWithoutPassword = users.map(obj => {
-    const { password, ...rest } = obj; 
+    const { password, created_by, updated_by, ...rest } = obj; 
     return rest; 
   });
   const keys = Object.keys(listWithoutPassword[0]);
