@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   users: any[];
   headers: any[];
   filters: any[];
+  backup: any[];
   constructor(private userService: UsersService, private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
       this.users = res.rows;
       this.headers = res.headers;
       this.filters = res.filters;
+      this.backup = res.rows;
     })
   }
 }

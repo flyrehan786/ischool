@@ -4,7 +4,7 @@ import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input,
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterContentChecked {
+export class TableComponent implements OnInit {
   /* 
       ------------------------------
       Header/Columns Formatting Data
@@ -22,15 +22,13 @@ export class TableComponent implements OnInit, AfterContentChecked {
   @Input() headers: any[] = [];
   @Input() rows: any[] = [];
   @Input() filters: any[] = [];
-  BACKUP: any[] = [];
+  @Input() BACKUP: any[] = [];
   constructor() { }
   ngOnInit(): void {
   }
-  ngAfterContentChecked(): void {
-    if(this.rows) this.BACKUP = JSON.parse(JSON.stringify(this.rows));
-  }
   filter(keyword: string) {
     this.currentPage = 1;
+    this.rows = JSON.parse(JSON.stringify(this.rows));
     if (keyword.length > 0) {
       this.rows = this.BACKUP.filter(x => {
         let flag = false;
@@ -117,8 +115,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
     } else return 'x'
   }
   reset() { 
-    console.log(this.rows.length);
-    console.log(this.BACKUP.length);
+    this.rows = JSON.parse(JSON.stringify(this.BACKUP));
    }
   filterDataByDate() {
     let fromDateControl = document.getElementById('from_date') ;
@@ -127,17 +124,12 @@ export class TableComponent implements OnInit, AfterContentChecked {
     const toDate = (toDateControl as any).value;
 
     if (fromDate && toDate) {
-      console.log(fromDate);
-      console.log(toDate);
       const from = new Date(fromDate).toLocaleDateString();
       const to = new Date(toDate).toLocaleDateString();
-      this.rows =  [...this.BACKUP?.filter((item) => {
+      this.rows =  this.BACKUP.filter((item) => {
         const date = new Date(item['created_at']).toLocaleDateString();
-        console.log(date);
-        console.log(from);
-        console.log(to);
         return date >= from && date <= to;
-      })];
+      });
     } else console.log('No from & to date selected!');
   }
   printTable() {
