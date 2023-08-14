@@ -1,8 +1,9 @@
 <div class="mt-2 mb-2" style="display:flex; justify-content: flex-start ">
     <strong class="me-3">Filter Results </strong>
-    <span class="ms-1 me-5" *ngFor="let f of filters" style="display:flex; justify-content: space-between; cursor: pointer;">
+    <span class="ms-1 me-5" *ngFor="let f of filters"
+        style="display:flex; justify-content: space-between; cursor: pointer;">
         <span id="{{ f }}" (click)="onFilterOptionClick(f)">
-                {{ f }}
+            {{ f }}
         </span>
     </span>
 </div>
@@ -10,10 +11,12 @@
 <div class="mt-5 d-flex justify-content-between">
     <div class="d-flex">
         <input type="text" placeholder="Find..." class="form-control me-2" (keyup)="filter($event.target.value)">
-        <label for="" class="mt-2 me-2">From:</label> <input type="date" placeholder="Find..." class="form-control me-2" (keyup)="filter($event.target.value)">
-        <label for="" class="mt-2 me-2">To:</label>  <input type="date" placeholder="Find..." class="form-control me-2" (keyup)="filter($event.target.value)">
-        <button class="btn btn-primary me-2"><i class="bi bi-funnel-fill"></i></button>
-        <button class="btn btn-warning me-2" (click)="rows = BACKUP"><i class="bi bi-arrow-clockwise"></i></button>
+        <label for="" class="mt-2 me-2">From:</label> <input id="from_date" type="date" placeholder="Find..."
+            class="form-control me-2" (keyup)="filter($event.target.value)">
+        <label for="" class="mt-2 me-2">To:</label> <input id="to_date" type="date" placeholder="Find..."
+            class="form-control me-2" (keyup)="filter($event.target.value)">
+        <button class="btn btn-primary me-2" (click)="filterDataByDate()"><i class="bi bi-funnel-fill"></i></button>
+        <button class="btn btn-warning me-2" (click)="reset()"><i class="bi bi-arrow-clockwise"></i></button>
         <button class="btn btn-info" (click)="printTable()"><i class="bi bi-printer-fill"></i></button>
     </div>
     <div>
@@ -52,7 +55,7 @@
             <td [class.border-left-active]="getRowStatus(row.id) == 1"
                 [class.border-left-not-active]="getRowStatus(row.id) == 'x'">
                 <input type="checkbox">
-            </td> 
+            </td>
             <td *ngFor="let item of headers">
                 <p>{{ row[item] }}</p>
             </td>
@@ -72,11 +75,11 @@
 </table>
 <div class="d-flex justify-content-between">
     <p>
-        Showing 
-        {{ (currentPage-1)*itemsPerPage | number }} 
-        to 
-        {{ currentPage*itemsPerPage | number }} 
-        of 
+        Showing
+        {{ (currentPage-1)*itemsPerPage | number }}
+        to
+        {{ currentPage*itemsPerPage | number }}
+        of
         {{ rows?.length }} entries.
     </p>
     <nav aria-label="...">

@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'core-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements OnInit, AfterContentChecked {
   /* 
       ------------------------------
       Header/Columns Formatting Data
@@ -26,8 +26,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   constructor() { }
   ngOnInit(): void {
   }
-  ngAfterViewInit(): void {
-    this.BACKUP = this.rows;
+  ngAfterContentChecked(): void {
+    if(this.rows) this.BACKUP = JSON.parse(JSON.stringify(this.rows));
   }
   filter(keyword: string) {
     this.currentPage = 1;
@@ -116,14 +116,29 @@ export class TableComponent implements OnInit, AfterViewInit {
       else return 'x';
     } else return 'x'
   }
-  filterDataByDate(fromDate, toDate) {
-    const from = new Date(fromDate);
-    const to = new Date(toDate);
-    return this.rows?.filter((item) => {
-      const date = new Date(item['created_at']);
-      console.log(date);
-      return date >= from && date <= to;
-    });
+  reset() { 
+    console.log(this.rows.length);
+    console.log(this.BACKUP.length);
+   }
+  filterDataByDate() {
+    let fromDateControl = document.getElementById('from_date') ;
+    let toDateControl = document.getElementById('to_date');
+    const fromDate = (fromDateControl as any).value;
+    const toDate = (toDateControl as any).value;
+
+    if (fromDate && toDate) {
+      console.log(fromDate);
+      console.log(toDate);
+      const from = new Date(fromDate).toLocaleDateString();
+      const to = new Date(toDate).toLocaleDateString();
+      this.rows =  [...this.BACKUP?.filter((item) => {
+        const date = new Date(item['created_at']).toLocaleDateString();
+        console.log(date);
+        console.log(from);
+        console.log(to);
+        return date >= from && date <= to;
+      })];
+    } else console.log('No from & to date selected!');
   }
   printTable() {
     const popupWin = window.open('', '_blank', 'width=800,height=600');
@@ -184,5 +199,6 @@ export class TableComponent implements OnInit, AfterViewInit {
       rows += `<tr />`;
     }
     return rows;
-  }
+  } 
+
 }
