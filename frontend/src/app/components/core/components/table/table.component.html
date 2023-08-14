@@ -1,6 +1,6 @@
 <div class="mt-2 mb-2" style="display:flex; justify-content: flex-start ">
     <strong class="me-3">Filter Results </strong>
-    <span class="ms-1 me-5" *ngFor="let f of filters"
+    <span class="ms-1 me-5 filters" *ngFor="let f of filters"
         style="display:flex; justify-content: space-between; cursor: pointer;">
         <span id="{{ f }}" (click)="onFilterOptionClick(f)">
             {{ f }}

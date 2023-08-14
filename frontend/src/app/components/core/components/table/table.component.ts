@@ -62,12 +62,15 @@ export class TableComponent implements OnInit {
     span.addEventListener("click", function () {
       const input = document.createElement("input");
       input.classList.add('form-control');
+      input.style.padding = '4px 9px';
       input.value = (span.innerText !== option) ? span.innerText : '';
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
       closeButton.classList.add('btn-sm');
       closeButton.classList.add('btn-primary');
       closeButton.classList.add('ms-1');
+      closeButton.style.marginRight = '8px';
+      closeButton.style.borderRadius = '0px';
       closeButton.innerText = "x";
       span.replaceWith(input, closeButton);
       closeButton.addEventListener("click", function () {

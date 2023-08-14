@@ -53,3 +53,7 @@ table {
     color: #fff;
     border-color: #0077cc;
 }
+
+:host ng::deep .form-control .filters {
+    padding: 0px;
+}
