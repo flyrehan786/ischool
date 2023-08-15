@@ -39,7 +39,8 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     username: req.body.username,
     password: encryptPassword,
-    is_admin: req.body.is_admin
+    is_admin: req.body.is_admin,
+    status: 1
   };
 
   const insertedId = await saveUser(newUser);
@@ -51,7 +52,8 @@ router.post("/register", async (req, res) => {
       last_name: newUser.last_name,
       email: newUser.email,
       username: newUser.username,
-      is_admin: newUser.is_admin
+      is_admin: newUser.is_admin,
+      status: newUser.status
     });
 });
 

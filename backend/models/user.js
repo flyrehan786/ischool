@@ -55,7 +55,7 @@ async function findUser(username) {
 }
 async function saveUser(newUser) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO users VALUES(default, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 1, 1)`, [ newUser.first_name, newUser.last_name, newUser.email, newUser.username, newUser.password, newUser.is_admin ], (err, result) => {
+    db.execute(`INSERT INTO users VALUES(default, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 1, 1)`, [ newUser.first_name, newUser.last_name, newUser.email, newUser.username, newUser.password, newUser.is_admin, newUser.status ], (err, result) => {
       if (err) reject(err);
       db.execute(`SELECT id FROM users WHERE id = LAST_INSERT_ID();`, (err, result) => {
         if (err) reject(err);

@@ -3,11 +3,11 @@ table {
 }
 
 .border-left-active {
-    border-left: 5px solid green;
+    border-left: 8px solid rgb(20, 177, 20);
 }
 
 .border-left-not-active {
-    border-left: 5px solid red;
+    border-left: 8px solid #ff5959;
 }
 
 .thead-border-top {
