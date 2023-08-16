@@ -7,7 +7,6 @@ function validateSubject(Subject) {
     phone: Joi.string().min(5).max(50).required(),
     isGold: Joi.boolean()
   };
-
   return Joi.validate(Subject, schema);
 }
 async function findAll() {

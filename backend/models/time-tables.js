@@ -7,7 +7,6 @@ function validateTimeTable(timeTable) {
     phone: Joi.string().min(5).max(50).required(),
     isGold: Joi.boolean()
   };
-
   return Joi.validate(timeTable, schema);
 }
 async function findAll() {

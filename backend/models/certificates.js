@@ -7,7 +7,6 @@ function validateCertificate(certificate) {
     phone: Joi.string().min(5).max(50).required(),
     isGold: Joi.boolean()
   };
-
   return Joi.validate(certificate, schema);
 }
 async function findAll() {

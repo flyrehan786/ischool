@@ -32,7 +32,6 @@ function validateUser(user) {
       .max(1)
       .required()
   };
-
   return Joi.validate(user, schema);
 }
 async function findAll() {

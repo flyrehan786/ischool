@@ -7,7 +7,6 @@ function validateExam(exam) {
     phone: Joi.string().min(5).max(50).required(),
     isGold: Joi.boolean()
   };
-
   return Joi.validate(exam, schema);
 }
 async function findAll() {
