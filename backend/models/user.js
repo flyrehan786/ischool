@@ -86,7 +86,6 @@ function generateAuthToken(user) {
   );
   return token;
 };
-
 exports.validate = validateUser;
 exports.findUser = findUser;
 exports.encryptedPassword = encryptPassword;
