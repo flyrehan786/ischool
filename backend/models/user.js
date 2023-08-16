@@ -65,6 +65,9 @@ async function saveUser(newUser) {
     });
   })
 }
+async function updateUser(id, updatedUser) {}
+async function deleteUser(id) {}
+async function deActivateUser(id) {}
 async function encryptPassword(password) {
   const salt = await bcrypt.genSalt(10);
   const encryptedPassword = await bcrypt.hash(password, salt);
@@ -93,3 +96,6 @@ exports.encryptedPassword = encryptPassword;
 exports.saveUser = saveUser;
 exports.generateAuthToken = generateAuthToken;
 exports.findAll = findAll;
+exports.updateUser = updateUser;
+exports.deleteUser = deleteUser;
+exports.deActivateUser = deActivateUser;
