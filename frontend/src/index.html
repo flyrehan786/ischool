@@ -19,23 +19,32 @@
 </head>
 
 <body>
-  <div id="loader">
-    <div style="
-      padding: 5px; 
-      background-color: rgb(189, 12, 12); 
-      color: #fff; 
-      margin: auto 0;
-      text-align: center;">
-      <h4>App</h4>
-    </div>
-    <br />
-    <center>...</center>
-    <br />
-   <center><h3>Loading</h3></center>
-  </div>
-  <div id="app-root">
+  <main>
+    <section id="loader">
+      <section style="
+        padding: 0px; 
+        background-color: rgb(124, 15, 15); 
+        color: #fff; 
+        margin: auto 0;
+        text-align: center;">
+        <section style="display: flex; justify-content: space-between;">
+          <h2></h2>
+          <h2>
+            <strong>
+              School
+            </strong>
+          </h2>
+          <center class="flex-end">
+            <h5 style="margin-top: 8px;">Loading...&nbsp;	&nbsp;</h5>
+          </center>
+        </section>
+      </section>
+      <br />
+    </section>
+  </main>
+  <section id="app-root">
     <app-root></app-root>
-  </div>
+  </section>
   <script>
     var appRoot = document.getElementById('app-root');
     appRoot.style.display = 'none';
