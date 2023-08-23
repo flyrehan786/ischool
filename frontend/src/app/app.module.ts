@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 // PAGES.
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { CertificatesComponent } from './components/pages/certificates/certificates.component';
 import { ReportsComponent } from './components/pages/reports/reports.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
 import { LoginComponent } from './components/pages/auth/login/login.component';
@@ -26,6 +25,9 @@ import { TableComponent } from './components/core/components/table/table.compone
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
 import { StudentFormComponent } from './components/pages/students/student-form/student-form/student-form.component';
 import { AuthGuard } from './guards/auth-guard';
+import { TeacherFormComponent } from './components/pages/teachers/teacher-form/teacher-form/teacher-form.component';
+import { CertificateFormComponent } from './components/pages/certificates/certificate-form/certificate-form/certificate-form.component';
+import { CertificatesComponent } from './components/pages/certificates/certificates/certificates.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { AuthGuard } from './guards/auth-guard';
     TeacherDetailComponent,
     ToastComponent,
     StudentFormComponent,
+    TeacherFormComponent,
+    CertificateFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,8 +82,18 @@ import { AuthGuard } from './guards/auth-guard';
         canActivate: [AuthGuard]
       },
       {
+        path: 'teacher/new', 
+        component: TeacherFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'certificates', 
         component: CertificatesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'certificate/new', 
+        component: CertificateFormComponent,
         canActivate: [AuthGuard]
       },
       {
