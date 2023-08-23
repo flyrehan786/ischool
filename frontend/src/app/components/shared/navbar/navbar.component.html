@@ -1,47 +1,71 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+  <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home"><i class="bi bi-alexa"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul *ngIf="!authService.isloggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <ul *ngIf="authService.isloggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul *ngIf="authService.isloggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" ></a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/students"> <i class="bi bi-people-fill"></i> Students</a>
+          <a class="nav-link" aria-current="page"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/teachers"> <i class="bi bi-people-fill"></i> Teachers</a>
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/students"> <i
+              class="bi bi-people-fill"></i> Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/certificates"> <i class="bi bi-card-checklist"></i> Certificates</a>
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/teachers"> <i
+              class="bi bi-people-fill"></i> Teachers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/certificates"> <i
+              class="bi bi-card-checklist"></i> Certificates</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/reports">
-            <i class="bi bi-graph-up"></i> Reports
+            <i class="bi bi-graph-up"></i> RTS Reports
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page">
-              <i class="bi bi-bell-fill"></i>
+            <i class="bi bi-card-checklist"></i> Subjects
           </a>
         </li>
         <li class="nav-item">
-          <input type="text" placeholder="Search for students, teachers..." class="form-control">
-      </li>
+          <a class="nav-link" aria-current="page">
+            <i class="bi bi-card-checklist"></i> Exams
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page">
+            <i class="bi bi-card-checklist"></i> Time Tables
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page">
+            <i class="bi bi-card-checklist"></i> Results
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page">
+            <i class="bi bi-bell-fill"></i> Notifications
+          </a>
+        </li>
+        <li class="nav-item">
+          <input type="text" placeholder="Search..." class="form-control">
+        </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/settings"><i class="bi bi-gear-wide-connected"></i> Settings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage">Rehan Shah</a>
-          </li>
-        </ul>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/settings"><i
+              class="bi bi-gear-wide-connected"></i> Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage">Rehan Shah</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
