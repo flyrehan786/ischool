@@ -63,6 +63,8 @@ export class TableComponent implements OnInit {
       const input = document.createElement("input");
       input.classList.add('form-control');
       input.style.padding = '4px 9px';
+      input.style.borderRadius = '0px';
+      input.style.marginRight = '-3px';
       input.value = (span.innerText !== option) ? span.innerText : '';
       const closeButton = document.createElement("button");
       closeButton.classList.add('btn');
