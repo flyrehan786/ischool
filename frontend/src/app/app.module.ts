@@ -5,29 +5,43 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+
 // PAGES.
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { ReportsComponent } from './components/pages/reports/reports.component';
+import { HomeComponent } from './components/pages/home/home.component';
+
 import { SettingsComponent } from './components/pages/settings/settings.component';
+
 import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { UsersComponent } from './components/pages/auth/users/users.component';
-import { HomeComponent } from './components/pages/home/home.component';
+
 import { StudentsComponent } from './components/pages/students/students/students.component';
+import { StudentFormComponent } from './components/pages/students/student-form/student-form/student-form.component';
 import { StudentDetailComponent } from './components/pages/students/student-detail/student-detail.component';
-import { TeacherDetailComponent } from './components/pages/teachers/teacher-detail/teacher-detail.component';
+
 import { TeachersComponent } from './components/pages/teachers/teachers/teachers.component';
+import { TeacherFormComponent } from './components/pages/teachers/teacher-form/teacher-form/teacher-form.component';
+import { TeacherDetailComponent } from './components/pages/teachers/teacher-detail/teacher-detail.component';
+
+import { CertificateFormComponent } from './components/pages/certificates/certificate-form/certificate-form/certificate-form.component';
+import { CertificatesComponent } from './components/pages/certificates/certificates/certificates.component';
+import { CertificateDetailsComponent } from './components/pages/certificates/certificate-details/certificate-details/certificate-details.component';
+
+import { SubjectsComponent } from './components/pages/subjects/subjects/subjects/subjects.component';
+import { SubjectFormComponent } from './components/pages/subjects/subject-form/subject-form/subject-form.component';
+import { SubjectDetailsComponent } from './components/pages/subjects/subject-details/subject-details/subject-details.component';
+
+import { ReportsComponent } from './components/pages/reports/reports/reports.component';
+import { ReportDetailsComponent } from './components/pages/reports/reports-details/report-details/report-details.component';
+
+import { AuthGuard } from './guards/auth-guard';
 // CORE.
 import { DetailsComponent } from './components/core/components/details/details.component';
 import { FormComponent } from './components/core/components/form/form.component';
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
-import { StudentFormComponent } from './components/pages/students/student-form/student-form/student-form.component';
-import { AuthGuard } from './guards/auth-guard';
-import { TeacherFormComponent } from './components/pages/teachers/teacher-form/teacher-form/teacher-form.component';
-import { CertificateFormComponent } from './components/pages/certificates/certificate-form/certificate-form/certificate-form.component';
-import { CertificatesComponent } from './components/pages/certificates/certificates/certificates.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +65,11 @@ import { CertificatesComponent } from './components/pages/certificates/certifica
     StudentFormComponent,
     TeacherFormComponent,
     CertificateFormComponent,
+    SubjectFormComponent,
+    SubjectsComponent,
+    SubjectDetailsComponent,
+    CertificateDetailsComponent,
+    ReportDetailsComponent,
   ],
   imports: [
     BrowserModule,
