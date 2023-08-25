@@ -44,9 +44,9 @@ import { FormComponent } from './components/core/components/form/form.component'
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
 
-import { ExamFormComponent } from './components/pages/reports/exam-form/exam-form/exam-form.component';
 import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
 import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
+import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
 
 @NgModule({
   declarations: [
