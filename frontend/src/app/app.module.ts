@@ -49,6 +49,7 @@ import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam
 import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
 import { TimeTableFormComponent } from './components/pages/time-tables/time-table-form/time-table-form.component';
 import { TimeTablesComponent } from './components/pages/time-tables/time-tables/time-tables.component';
+import { NotificationsComponent } from './components/pages/notifications/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { TimeTablesComponent } from './components/pages/time-tables/time-tables/
     ExamsComponent,
     ExamFormComponent,
     ExamDetailsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -166,6 +168,11 @@ import { TimeTablesComponent } from './components/pages/time-tables/time-tables/
       {
         path: 'reports', 
         component: ReportsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'notifications', 
+        component: NotificationsComponent,
         canActivate: [AuthGuard]
       },
       {
