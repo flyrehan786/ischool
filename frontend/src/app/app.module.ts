@@ -47,8 +47,8 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
 import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
 import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
 import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
-import { TimeTablesComponent } from './components/pages/time-table/time-tables/time-tables.component';
-import { TimeTableFormComponent } from './components/pages/time-table/time-table-form/time-table-form.component';
+import { TimeTableFormComponent } from './components/pages/time-tables/time-table-form/time-table-form.component';
+import { TimeTablesComponent } from './components/pages/time-tables/time-tables/time-tables.component';
 
 @NgModule({
   declarations: [
