@@ -47,6 +47,8 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
 import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
 import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
 import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
+import { TimeTablesComponent } from './components/pages/time-table/time-tables/time-tables.component';
+import { TimeTableFormComponent } from './components/pages/time-table/time-table-form/time-table-form.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +131,36 @@ import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/
       {
         path: 'certificate/new', 
         component: CertificateFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'subjects', 
+        component: SubjectsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'subject/new', 
+        component: SubjectFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exams', 
+        component: ExamsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam/new', 
+        component: ExamFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'time-tables', 
+        component: TimeTablesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'time-table/new', 
+        component: TimeTableFormComponent,
         canActivate: [AuthGuard]
       },
       {
