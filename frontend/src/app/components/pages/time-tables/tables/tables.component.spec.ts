@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimeTableFormComponent } from './time-table-form.component';
+import { TablesComponent } from './tables.component';
 
-describe('TimeTableFormComponent', () => {
-  let component: TimeTableFormComponent;
-  let fixture: ComponentFixture<TimeTableFormComponent>;
+describe('TablesComponent', () => {
+  let component: TablesComponent;
+  let fixture: ComponentFixture<TablesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimeTableFormComponent ]
+      declarations: [ TablesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimeTableFormComponent);
+    fixture = TestBed.createComponent(TablesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
