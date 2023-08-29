@@ -1,10 +1,6 @@
+const config = require('../config/default.json');
 let mysql2 = require('mysql2');
-let pool = mysql2.createPool({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "school_db"
-});
+let pool = mysql2.createPool(config.mysql);
 function checkConnection() {
     pool.getConnection((err, connection) => {
         if (err) {
