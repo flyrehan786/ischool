@@ -10,19 +10,19 @@ export class StudentsComponent implements OnInit {
   isLoading = false;
   headers = [
     'id',
-    'FirstName',
-    'LastName',
+    'Firs tName',
+    'Last Name',
     'Gender',
     'CNIC',
     'Age', 
-    'FatherName', 
-    'FatherCNIC', 
-    'PostOffice', 
+    'Father Name', 
+    'Father CNIC', 
+    'Post Office', 
     'Tehsil', 
     'District', 
     'Status', 
-    'Createdt',
-    'UpdatedAt',
+    'Created At',
+    'Updated At',
   ];
   columns = [
     { id: 1, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 0, CreatedAt: 'a', UpdatedAt: 'a' },
