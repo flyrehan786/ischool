@@ -65,6 +65,5 @@ export class LoginComponent implements OnInit {
         this.toastComponent.show('Login Failed.', false, true, false);
       }
     );
-    this.toastComponent.show('Login Successfully', true, false, false)
   }
 }
