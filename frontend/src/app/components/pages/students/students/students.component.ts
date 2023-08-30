@@ -10,19 +10,19 @@ export class StudentsComponent implements OnInit {
   isLoading = false;
   headers = [
     'id',
-    'Firs tName',
-    'Last Name',
-    'Gender',
-    'CNIC',
-    'Age', 
-    'Father Name', 
-    'Father CNIC', 
-    'Post Office', 
-    'Tehsil', 
-    'District', 
-    'Status', 
-    'Created At',
-    'Updated At',
+    'first_name',
+    'last_name',
+    'gender',
+    'cnic',
+    'age', 
+    'father_name', 
+    'father_cnic', 
+    'post_office', 
+    'tehsil', 
+    'district', 
+    'status', 
+    'created_at',
+    'updated_at',
   ];
   columns = [
     { id: 1, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 0, CreatedAt: 'a', UpdatedAt: 'a' },
@@ -76,12 +76,22 @@ export class StudentsComponent implements OnInit {
     { id: 49, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
     { id: 50, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
   ]
+  filters = [
+    'First Name',
+    'Last Name',
+    'CNIC',
+    'District'
+  ];
+  rows: any = [];
   constructor(private _studentService: StudentsService) { }
   ngOnInit(): void {
+    this.getStudents();
   }
 
   getStudents() {
-    this._studentService.getStudents();
+    this._studentService.getStudents().subscribe(res => {
+      this.rows = res;
+    });
   }
 
   addStudent() {

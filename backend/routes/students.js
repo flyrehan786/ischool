@@ -1,12 +1,10 @@
-const { Student, validate } = require("../models/students");
+const { Student, validate, findAll } = require("../models/students");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", auth, async (req, res) => {
-  const students = await Student.find()
-    .select("-__v")
-    .sort("name");
+router.get("/", async (req, res) => {
+  const students = await findAll()
   res.send(students);
 });
 
