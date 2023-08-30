@@ -20,17 +20,21 @@ export class AuthService {
     return this.http.post(this.endPoint + 'api/auth', credentials);
     
   }
+
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/auth/login']);
   }
+
   isloggedIn() {
     const token = localStorage.getItem('token');
     if(token) return true;
     else false;
   }
+
   getLoggedInUser() {
   }
+  
   register(user) {
     return this.http.post(this.endPoint + 'api/users/register', user)
   }
