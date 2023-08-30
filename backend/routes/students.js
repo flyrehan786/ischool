@@ -4,7 +4,14 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const students = await findAll()
+  const students = await findAll();
+  students.forEach(s => {
+    if (s.gender == 1) s.gender = 'Male';
+    else if (s.gender == 0) s.gender = 'Female';
+
+    s.created_at = new Date(s.created_at).toLocaleString();
+    s.updated_at = new Date(s.updated_at).toLocaleString();
+  })
   res.send(students);
 });
 
