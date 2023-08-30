@@ -63,7 +63,10 @@
               class="bi bi-gear-wide-connected"></i> Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage">Rehan Shah</a>
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage"><i class="bi bi-person-lock"></i> Rehan Shah</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLinkActive="active" (click)="authService.logOut()"> <i class="bi bi-lock-fill"></i> Log Out</a>
         </li>
       </ul>
     </div>

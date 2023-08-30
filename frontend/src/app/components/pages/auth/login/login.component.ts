@@ -51,22 +51,18 @@ export class LoginComponent implements OnInit {
     const password = e.password;
 
     const payload = { username, password };
-    console.log('Login Payload::');
-    console.log(payload);
 
     this.authService.login(payload).subscribe(
       (res: HttpResponse<any>) => {
         console.log('Response:::');
-        this.toastComponent.show('User Login Successfully.', true, false, false);
         localStorage.setItem('token', (res as any).token);
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/');
+        this.toastComponent.show('User Login Successfully.', true, false, false);
       },
       (error) => {
         // Handle error here if needed
         console.error('An error occurred:', error);
-        if (error.status === 400) {
-          this.toastComponent.show('Login Failed.', false, true, false);
-        }
+        this.toastComponent.show('Login Failed.', false, true, false);
       }
     );
     this.toastComponent.show('Login Successfully', true, false, false)
