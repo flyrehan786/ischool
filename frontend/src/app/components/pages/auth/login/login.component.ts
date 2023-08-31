@@ -42,21 +42,18 @@ export class LoginComponent implements OnInit {
         bsCols: 'col-md-7'
     },
   ];
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private _authService: AuthService,private _router: Router) { }
   ngOnInit(): void {
   }
   onSubmit(e) {
-    console.log(e);
     const username = e.username;
     const password = e.password;
-
     const payload = { username, password };
-
-    this.authService.login(payload).subscribe(
+    this._authService.login(payload).subscribe(
       (res: HttpResponse<any>) => {
         console.log('Response:::');
         localStorage.setItem('token', (res as any).token);
-        this.router.navigateByUrl('/');
+        this._router.navigateByUrl('/');
         this.toastComponent.show('User Login Successfully.', true, false, false);
       },
       (error) => {
