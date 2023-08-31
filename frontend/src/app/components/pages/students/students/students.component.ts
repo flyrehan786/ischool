@@ -92,7 +92,6 @@ export class StudentsComponent implements OnInit {
 
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
-        console.log('Opening Details Page of Specific Student.');
         this._router.navigateByUrl("/student/details/" + e.id);
       }
     })
