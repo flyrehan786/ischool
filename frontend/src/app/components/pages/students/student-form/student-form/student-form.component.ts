@@ -147,6 +147,7 @@ export class StudentFormComponent implements OnInit {
   ngOnInit(): void {
     this.studentId = this._route.snapshot.paramMap.get('id');
     if(this.studentId) {
+      this.editMode = true;
       this.formTitle = 'Edit Student';
       this.getStudent();
 
@@ -170,6 +171,9 @@ export class StudentFormComponent implements OnInit {
     })
   }
   onSubmit(e) {
+    if(this.editMode) console.log('updating.');
+    else console.log('new student.');
+    console.log(e);
   }
 
 }
