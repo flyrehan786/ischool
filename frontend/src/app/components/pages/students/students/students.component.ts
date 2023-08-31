@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common/common.service';
 import { StudentsService } from 'src/app/services/students/students.service';
 
@@ -85,13 +86,14 @@ export class StudentsComponent implements OnInit {
     'District'
   ];
   rows: any = [];
-  constructor(private _studentService: StudentsService, private _commonService: CommonService) { }
+  constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }
   ngOnInit(): void {
     this.getStudents();
 
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
         console.log('Opening Details Page of Specific Student.');
+        this._router.navigateByUrl("/student/details/" + e.id);
       }
     })
   }
