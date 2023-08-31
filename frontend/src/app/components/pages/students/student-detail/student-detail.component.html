@@ -39,8 +39,8 @@
             <td>{{ student?.father_name }}</td>
             <td>{{ student?.father_cnic }}</td>
             <td>
-                <span class="badge bg-success" *ngIf="+student?.status == 1">Active</span>
-                <span class="badge bg-secondary" *ngIf="+student?.status == 0">Not Active</span>
+                <span class="badge bg-success" *ngIf="+student?.status === 1">Active</span>
+                <span class="badge bg-secondary" *ngIf="+student?.status === 0">Not Active</span>
             </td>
             <td>{{ student?.created_at }}</td>
             <td>{{ student?.updated_at }}</td>
@@ -60,7 +60,10 @@
                             <button class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i> Enroll</button>
                         </td>
                         <td>
-                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteStudent()"><i class="bi bi-node-minus-fill"></i> De-Activate</button>
+                            <button class="ms-2 btn btn-secondary btn-sm" (click)="deleteStudent()"><i class="bi bi-node-minus-fill"></i> Disable</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-info btn-sm"><i class="bi bi-list-check"></i> Results</button>
                         </td>
                     </tr>
                 </table>
