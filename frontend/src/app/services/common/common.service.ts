@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ export class CommonService {
   constructor() { }
   publishEvent(eventData: any) {
     this.dynamicEventSubject.next(eventData);
+  }
+  getEvent(): Observable<any> {
+    return this.dynamicEventSubject.asObservable();
   }
   getKeys(obj) {
     const keys = Object.keys(obj);

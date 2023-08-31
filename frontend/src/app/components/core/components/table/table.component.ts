@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common/common.service';
 @Component({
   selector: 'core-table',
   templateUrl: './table.component.html',
@@ -24,7 +25,7 @@ export class TableComponent implements OnInit {
   @Input() rows: any[] = [];
   @Input() filters: any[] = [];
   @Input() BACKUP: any[] = [];
-  constructor() { }
+  constructor(private commonService: CommonService) { }
   ngOnInit(): void {
   }
   filter(keyword: string) {
@@ -197,5 +198,10 @@ export class TableComponent implements OnInit {
     }
     return rows;
   } 
-
+  infoButtonClick(id) {
+    this.commonService.publishEvent({
+        event: this.eventLabel,
+        id
+    });
+  }
 }
