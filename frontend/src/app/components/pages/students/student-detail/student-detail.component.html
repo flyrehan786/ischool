@@ -49,9 +49,9 @@
             <td>{{ student?.tehsil }}</td>
             <td>{{ student?.district }}</td>
             <td>
-                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-info" routerLink="/student/edit/{{studentId}}">Edit</button>
             </td>
-            <td><button class="ms-2 btn btn-danger">Delete</button></td>
+            <td><button class="ms-2 btn btn-danger" (click)="deleteStudent()">Delete</button></td>
         </tr>
     </tbody>
 </table>

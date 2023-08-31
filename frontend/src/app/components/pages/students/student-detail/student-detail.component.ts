@@ -24,6 +24,8 @@ export class StudentDetailComponent implements OnInit {
     })
   }
   deleteStudent() {
-    this._studentService.deleteStudent(this.studentId);
+    if(confirm('Are you sure you want to delete this student?')) {
+      this._studentService.deleteStudent(this.studentId);
+    }
   }
 }

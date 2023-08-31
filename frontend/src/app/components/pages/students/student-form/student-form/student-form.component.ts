@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
@@ -10,6 +11,9 @@ import { ToastComponent } from 'src/app/components/core/components/toast/toast/t
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
+  studentId;
+  editMode = false;
+  formTitle = 'New Student';
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
@@ -136,9 +140,13 @@ export class StudentFormComponent implements OnInit {
       bsCols: 'col-md-6'
     },
   ];
-  constructor() { }
+  constructor(private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.studentId = this._route.snapshot.paramMap.get('id');
+    if(this.studentId) {
+      this.formTitle = 'Edit Student';
+    }
   } 
   onSubmit(e) {
   }
