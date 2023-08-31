@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
 export class StudentsService {
 
   constructor(private http: HttpClient) { }
+  getStudent(id) {
+    return this.http.get(environment.api + `api/students/${id}`);
+  }
   getStudents() { 
     return this.http.get(environment.api + 'api/students');
   }

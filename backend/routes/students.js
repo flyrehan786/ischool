@@ -68,6 +68,12 @@ router.get("/:id", async (req, res) => {
     return res
       .status(404)
       .send("The student with the given ID was not found.");
+
+  if (student.gender == 1) student.gender = 'Male';
+  else if (student.gender == 0) student.gender = 'Female';
+
+  student.created_at = new Date(student.created_at).toLocaleString();
+  student.updated_at = new Date(student.updated_at).toLocaleString();
   res.send(student);
 });
 
