@@ -48,10 +48,22 @@
             <td>{{ student?.tehsil }}</td>
             <td>{{ student?.district }}</td>
             <td>
-                <button class="btn btn-info" routerLink="/student/edit/{{studentId}}">Edit</button>
-                <button class="ms-2 btn btn-danger" (click)="deleteStudent()">Delete</button>
-                <button class="ms-2 btn btn-primary" (click)="deleteStudent()">Enroll</button>
-                <button class="ms-2 btn btn-danger" (click)="deleteStudent()">De-Activate</button>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" routerLink="/student/edit/{{studentId}}"> <i class="bi bi-pencil-square"></i> Edit</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteStudent()"><i class="bi bi-person-x"></i> Delete</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i> Enroll</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteStudent()"><i class="bi bi-node-minus-fill"></i> De-Activate</button>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </tbody>
