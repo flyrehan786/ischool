@@ -7,6 +7,7 @@ import { StudentsService } from 'src/app/services/students/students.service';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
+  eventLabel = '_students_events';
   isLoading = false;
   headers = [
     'id',
@@ -92,14 +93,6 @@ export class StudentsComponent implements OnInit {
     this._studentService.getStudents().subscribe(res => {
       this.rows = res;
     });
-  }
-
-  addStudent() {
-    this._studentService.postStudent();
-  }
-
-  updateStudent() {
-    this._studentService.putStudent(1);
   }
 
   deleteStudent() {

@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
           { id: 3, name: 'rehan3', age: 27 },
       ]
   */
+  @Input() eventLabel: string = '';
   @Input() title: string = '';
   currentPage = 1;
   itemsPerPage = 10;
@@ -112,7 +113,7 @@ export class TableComponent implements OnInit {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
       if (statusHeader.length > 0) {
         const status = row[0][statusHeader[0]];
-        if (status) return status;
+        if (status == 1) return status;
         else return 'x';
       }
       else return 'x';
