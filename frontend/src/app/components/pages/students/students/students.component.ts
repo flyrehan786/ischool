@@ -89,22 +89,15 @@ export class StudentsComponent implements OnInit {
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }
   ngOnInit(): void {
     this.getStudents();
-
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
         this._router.navigateByUrl("/student/details/" + e.id);
       }
     })
   }
-
   getStudents() {
     this._studentService.getStudents().subscribe(res => {
       this.rows = res;
     });
   }
-
-  deleteStudent() {
-    this._studentService.deleteStudent(1);
-  }
-
 }
