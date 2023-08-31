@@ -18,7 +18,7 @@ export class StudentFormComponent implements OnInit {
   config: IControl[] = [
     {
       type: TYPE_text,
-      key: 'firstname', defaultValue: '',
+      key: 'firstname', defaultValue: 'oooooooo',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
