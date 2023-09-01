@@ -1,8 +1,11 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
+import { TeachersService } from 'src/app/services/teachers/teachers.service';
 
 @Component({
   selector: 'app-teacher-form',
@@ -10,6 +13,10 @@ import { ToastComponent } from 'src/app/components/core/components/toast/toast/t
   styleUrls: ['./teacher-form.component.css']
 })
 export class TeacherFormComponent implements OnInit {
+  teacherId;
+  editMode = false;
+  teacher;
+  formTitle = 'New Student';
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
@@ -113,11 +120,61 @@ export class TeacherFormComponent implements OnInit {
       bsCols: 'col-md-4'
     }
   ];
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private  _router: Router) { }
 
   ngOnInit(): void {
+    this.teacherId = this._route.snapshot.paramMap.get('id');
+    if (this.teacherId) {
+      this.editMode = true;
+      this.formTitle = 'Edit Student';
+      this.getStudent();
+
+    }
   } 
+  getStudent() {
+    this._teacherService.getTeacher(this.teacherId).subscribe(teacher => {
+      this.teacher = teacher;
+      this.config.forEach(c => {
+        if (c.key == 'first_name') c.defaultValue = this.teacher.first_name;
+        if (c.key == 'last_name') c.defaultValue = this.teacher.last_name;
+        if (c.key == 'gender') c.defaultValue = (this.teacher.gender == 'Male') ? '1' : '0';
+        if (c.key == 'cnic') c.defaultValue = this.teacher.cnic;
+        if (c.key == 'age') c.defaultValue = this.teacher.age;
+        if (c.key == 'father_name') c.defaultValue = this.teacher.father_name;
+        if (c.key == 'father_cnic') c.defaultValue = this.teacher.father_cnic;
+        if (c.key == 'post_office') c.defaultValue = this.teacher.post_office;
+        if (c.key == 'tehsil') c.defaultValue = this.teacher.tehsil;
+        if (c.key == 'district') c.defaultValue = this.teacher.district;
+      })
+    })
+  }
   onSubmit(e) {
+    if (this.editMode) {
+      this._teacherService.putTeacher(this.teacherId, e).subscribe(
+        (res: HttpResponse<any>) => {
+          this.toastComponent.show('(Student Updated Successfully).', true, false, false);
+          setTimeout(() => {
+            this._router.navigateByUrl('/students');
+          }, 1500)
+        },
+        (error) => {
+          console.error('An error occurred:', error);
+          this.toastComponent.show('(Updating Student API Failed.', false, true, false);
+        })
+    }
+    else {
+      this._teacherService.postTeacher(e).subscribe(
+        (res: HttpResponse<any>) => {
+          this.toastComponent.show('(Student Created Successfully).', true, false, false);
+          setTimeout(() => {
+            this._router.navigateByUrl('/students');
+          }, 1500);
+        },
+        (error) => {
+          console.error('An error occurred:', error);
+          this.toastComponent.show('Adding Student API Failed.', false, true, false);
+        })
+    }
   }
 
 }
