@@ -86,7 +86,7 @@ async function updateStudent(id, updatedStudent) {
         if (err) reject(err);
         db.execute(`SELECT * FROM students WHERE id = ${id};`, (err, result) => {
           if (err) reject(err);
-          if (result.length > 0) resolve(result[0].id);
+          if (result.length > 0) resolve(result[0]);
           else resolve(null);
         })
       })
