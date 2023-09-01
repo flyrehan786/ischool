@@ -69,18 +69,18 @@
                                     class="bi bi-node-plus-fill"></i> Activate</button>
                         </td>
                         <td>
-                            <button class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i
+                            <button [disabled]="+student?.status === 0" class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i
                                     class="bi bi-plugin"></i> Enroll</button>
                         </td>
                         <td>
-                            <button class="ms-2 btn btn-info btn-sm"><i class="bi bi-list-check"></i> Results</button>
+                            <button [disabled]="+student?.status === 0" class="ms-2 btn btn-info btn-sm"><i class="bi bi-list-check"></i> Results</button>
                         </td>
                         <td>
-                            <button class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                            <button [disabled]="+student?.status === 0" class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
                                 Certificate</button>
                         </td>
                         <td>
-                            <button class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                            <button [disabled]="+student?.status === 0" class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
                                 Fee</button>
                         </td>
                     </tr>
