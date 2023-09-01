@@ -15,7 +15,7 @@ export class StudentsService {
     return this.http.get(environment.api + 'api/students');
   }
   postStudent(newStudent) {
-    return this.http.get(environment.api + 'api/students');
+    return this.http.post(environment.api + 'api/students', newStudent);
    }
   putStudent(id) { }
   deleteStudent(id) {}
