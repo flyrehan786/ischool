@@ -47,8 +47,8 @@ export class StudentFormComponent implements OnInit {
       type: TYPE_radio,
       key: 'gender', defaultValue: '', label: 'Gender',
       options: [
-        { key: '  Yes', value: '0' },
-        { key: '  No', value: '1' },
+        { key: '  Male', value: '0' },
+        { key: '  Female', value: '1' },
       ],
       validators:
         [
