@@ -51,4 +51,15 @@ export class StudentDetailComponent implements OnInit {
       });
     }
   }
+  activateStudent() {
+    if(confirm('Are you sure you want to activate this student?')) {
+      this._studentService.activateStudent(this.studentId).subscribe(res => {
+        this._router.navigateByUrl('/students');
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+        this.toastComponent.show('(Updating Student API Failed.', false, true, false);
+      });
+    }
+  }
 }

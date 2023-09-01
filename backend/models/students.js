@@ -112,6 +112,17 @@ async function deActivateStudent(id) {
     })
   })
 }
+async function activateStudent(id) { 
+  console.log(id);
+  return new Promise((resolve,reject) => {
+    db.execute(`UPDATE students SET status=? WHERE id=?`, [1, id], (err, result) => {
+      console.log(result);
+      if (err) reject(err);
+      if (result.affectedRows == 1) resolve(true);
+      else resolve(false);
+    })
+  })
+}
 
 exports.validate = validateStudent;
 exports.findAll = findAll;
@@ -120,3 +131,4 @@ exports.saveStudent = saveStudent;
 exports.updateStudent = updateStudent;
 exports.deleteStudent = deleteStudent;
 exports.deActivateStudent = deActivateStudent;
+exports.activateStudent = activateStudent;

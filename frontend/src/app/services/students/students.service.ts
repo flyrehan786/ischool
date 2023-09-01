@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class StudentsService {
-
   constructor(private http: HttpClient) { }
   getStudent(id) {
     return this.http.get(environment.api + `api/students/${id}`);
@@ -25,5 +24,8 @@ export class StudentsService {
   }
   disableStudent(id) {
     return this.http.put(environment.api + 'api/students/disable/' + id, {});
+  }
+  activateStudent(id) {
+    return this.http.put(environment.api + 'api/students/activate/' + id, {});
   }
 }

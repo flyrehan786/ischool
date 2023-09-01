@@ -5,7 +5,8 @@ const {
   saveStudent, 
   updateStudent, 
   deleteStudent,
-  deActivateStudent
+  deActivateStudent,
+  activateStudent
 } = require("../models/students");
 const auth = require("../middleware/auth");
 const express = require("express");
@@ -31,6 +32,21 @@ router.post("/", async (req, res) => {
 });
 router.put("/disable/:id", async (req, res) => {
   const rowsAffected = await deActivateStudent(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    console.log(404);
+    return res
+    .status(404)
+    .send("The student with the given ID was not found.");
+  }
+  
+  res.send({ updated: true });
+});
+router.put("/activate/:id", async (req, res) => {
+  const rowsAffected = await activateStudent(
     req.params.id,
     req.body
   );
