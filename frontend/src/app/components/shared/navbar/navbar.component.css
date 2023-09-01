@@ -1,6 +1,7 @@
 .navbar {
     padding-top: 14px;
     padding-bottom: 14px;
+    background-color: #010409 !important;
 }
 .nav-link.active {
     margin-left: 14px;
