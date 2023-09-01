@@ -29,7 +29,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -41,21 +41,21 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_radio,
       key: 'gender', defaultValue: '',
       options: [
-        { key: '  Yes', value: '0' },
-        { key: '  No', value: '1' },
+        { key: '  Male', value: '1' },
+        { key: '  Female', value: '0' },
       ],
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -68,7 +68,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -80,7 +80,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '3', message: VALIDATION_MESSAGES.maxlength(3) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -92,7 +92,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -104,7 +104,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -117,7 +117,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-4'
+      bsCols: 'col-md-3'
     }
   ];
   constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private  _router: Router) { }
