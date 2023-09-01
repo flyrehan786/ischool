@@ -1,4 +1,11 @@
-const { Student, validate, findAll, findStudent, deleteStudent, updateStudent, saveStudent } = require("../models/students");
+const { 
+  validate, 
+  findAll, 
+  findStudent, 
+  saveStudent, 
+  updateStudent, 
+  deleteStudent 
+} = require("../models/students");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -39,7 +46,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const student = await this.deleteStudent(req.params.id);
+  const student = await deleteStudent(req.params.id);
 
   if (!student)
     return res
