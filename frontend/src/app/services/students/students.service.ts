@@ -23,4 +23,7 @@ export class StudentsService {
   deleteStudent(id) {
     return this.http.delete(environment.api + 'api/students/' + id);
   }
+  disableStudent(id) {
+    return this.http.put(environment.api + 'api/students/' + id, {});
+  }
 }
