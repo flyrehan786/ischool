@@ -46,14 +46,17 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const student = await deleteStudent(req.params.id);
-
-  if (!student)
+  const rowsAffected = await deleteStudent(req.params.id);
+  console.log(rowsAffected);
+  if (rowsAffected == false) {
+    console.log(404);
     return res
-      .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+    .status(404)
+    .send("The student with the given ID was not found.");
+  }
+  
+  console.log(200);
+  res.send({ deleted: true });
 });
 
 router.get("/:id", async (req, res) => {

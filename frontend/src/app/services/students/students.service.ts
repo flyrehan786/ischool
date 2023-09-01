@@ -19,6 +19,8 @@ export class StudentsService {
   }
   putStudent(id, updatedStudent) {
     return this.http.put(environment.api + 'api/students/' + id, updatedStudent);
-   }
-  deleteStudent(id) {}
+  }
+  deleteStudent(id) {
+    return this.http.delete(environment.api + 'api/students/' + id);
+  }
 }
