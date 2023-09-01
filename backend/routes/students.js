@@ -1,4 +1,4 @@
-const { Student, validate, findAll, findStudent } = require("../models/students");
+const { Student, validate, findAll, findStudent, deleteStudent, updateStudent, saveStudent } = require("../models/students");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -18,14 +18,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
-  let student = new Student({
-    name: req.body.name,
-    isGold: req.body.isGold,
-    phone: req.body.phone
-  });
-  student = await student.save();
-
+  const student = await saveStudent(req.body);
+  console.log(student);
   res.send(student);
 });
 
@@ -33,14 +27,9 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const student = await Student.findByIdAndUpdate(
+  const student = await updateStudent(
     req.params.id,
-    {
-      name: req.body.name,
-      isGold: req.body.isGold,
-      phone: req.body.phone
-    },
-    { new: true }
+    req.body
   );
 
   if (!student)
@@ -52,7 +41,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const student = await Student.findByIdAndRemove(req.params.id);
+  const student = await this.deleteStudent(req.params.id);
 
   if (!student)
     return res

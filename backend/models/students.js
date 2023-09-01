@@ -4,9 +4,16 @@ const db = require('../services/mysql').db;
 
 function validateStudent(student) {
   const schema = {
-    name: Joi.string().min(5).max(50).required(),
-    phone: Joi.string().min(5).max(50).required(),
-    isGold: Joi.boolean()
+    first_name: Joi.string().min(3).max(45).required(),
+    last_name: Joi.string().min(3).max(45).required(),
+    gender: Joi.string().min(1).max(1).required(),
+    cnic: Joi.string().min(10).max(45).required(),
+    age: Joi.string().min(1).max(3).required(),
+    father_name: Joi.string().min(5).max(45).required(),
+    father_cnic: Joi.string().min(10).max(45).required(),
+    post_office: Joi.string().min(5).max(45).required(),
+    tehsil: Joi.string().min(5).max(45).required(),
+    district: Joi.string().min(5).max(45).required(),
   };
   return Joi.validate(student, schema);
 }
@@ -34,19 +41,27 @@ async function saveStudent(newStudent) {
       [
         newStudent.first_name,
         newStudent.last_name,
-        updatedStudent.gender,
-        updatedStudent.cnic,
-        updatedStudent.age,
-        updatedStudent.father_name,
-        updatedStudent.father_cnic,
-        updatedStudent.post_office,
-        updatedStudent.tehsil,
-        updatedStudent.district,
+        newStudent.gender,
+        newStudent.cnic,
+        newStudent.age,
+        newStudent.father_name,
+        newStudent.father_cnic,
+        newStudent.post_office,
+        newStudent.tehsil,
+        newStudent.district,
       ], (err, result) => {
         if (err) reject(err);
         db.execute(`SELECT id FROM students WHERE id = LAST_INSERT_ID();`, (err, result) => {
           if (err) reject(err);
-          if (result.length > 0) resolve(result[0].id);
+          if (result.length > 0) {
+            const insertedId = result[0].id;
+            db.execute(`SELECT * FROM students WHERE id = ?;`,[insertedId], (err, result) => {
+              if (err) reject(err);
+              if (result.length > 0) {
+                resolve(result[0]);
+              } else {}
+            });
+          }
           else resolve(null);
         })
       });
