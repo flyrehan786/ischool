@@ -102,10 +102,14 @@ async function deleteStudent(id) {
     });
  }
 async function deActivateStudent(id) { 
-  db.execute(`updated students SET status=? FROM students WHERE id = ?;`,[ id, 0 ], (err, result) => {
-    if (err) reject(err);
-    if (result.length > 0) resolve(result);
-    else resolve(null);
+  console.log(id);
+  return new Promise((resolve,reject) => {
+    db.execute(`UPDATE students SET status=? WHERE id=?`, [0, id], (err, result) => {
+      console.log(result);
+      if (err) reject(err);
+      if (result.affectedRows == 1) resolve(true);
+      else resolve(false);
+    })
   })
 }
 
