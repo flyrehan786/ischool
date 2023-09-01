@@ -172,13 +172,20 @@ export class StudentFormComponent implements OnInit {
     })
   }
   onSubmit(e) {
-    if (this.editMode) console.log('updating.');
+    if (this.editMode) {
+      this._studentService.putStudent(this.studentId, e).subscribe(
+        (res: HttpResponse<any>) => this._router.navigateByUrl('/students'),
+        (error) => {
+          console.error('An error occurred:', error);
+          this.toastComponent.show('(Updating Student API Failed.', false, true, false);
+        })
+    }
     else {
       this._studentService.postStudent(e).subscribe(
         (res: HttpResponse<any>) => this._router.navigateByUrl('/students'),
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('API Failed.', false, true, false);
+          this.toastComponent.show('Adding Student API Failed.', false, true, false);
         })
     }
   }
