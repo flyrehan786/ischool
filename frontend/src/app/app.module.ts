@@ -139,7 +139,7 @@ import { TablesComponent } from './components/pages/time-tables/tables/tables.co
       },
       {
         path: 'teacher/details/:id',
-        component: StudentDetailComponent,
+        component: TeacherDetailComponent,
         canActivate: [AuthGuard]
       },
       {
