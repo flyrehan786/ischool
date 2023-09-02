@@ -37,7 +37,7 @@ export class TeachersComponent implements OnInit {
   rows: any = [];
   constructor(private _teacherService: TeachersService, private _commonService: CommonService, private _router: Router) { }
   ngOnInit(): void {
-    this.getTeachers();
+    // this.getTeachers();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
         this._router.navigateByUrl("/student/details/" + e.id);

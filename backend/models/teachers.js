@@ -31,7 +31,14 @@ async function findTeacher(id) {
 }
 async function saveTeacher(newTeacher) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 1, 1)`, [ newTeacher.first_name, newTeacher.last_name, newTeacher.email, newTeacher.username, newTeacher.password, newTeacher.is_admin, newTeacher.status ], (err, result) => {
+    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`, 
+    [ 
+      newTeacher.first_name, 
+      newTeacher.last_name, 
+      newTeacher.qualification, 
+      newTeacher.designation, 
+      newTeacher.joining_date, 
+    ], (err, result) => {
       if (err) reject(err);
       db.execute(`SELECT id FROM teachers WHERE id = LAST_INSERT_ID();`, (err, result) => {
         if (err) reject(err);

@@ -14,11 +14,11 @@ export class TeacherDetailComponent implements OnInit {
   }
 
   updateTeacher() {
-    this._teacherService.putTeacher(1);
+    // this._teacherService.putTeacher(1);
   }
 
   deleteTeacher() {
-    this._teacherService.deleteTeacher(1);
+    // this._teacherService.deleteTeacher(1);
   }
 
 }
