@@ -102,12 +102,12 @@ export class TeacherFormComponent implements OnInit {
     this.teacherId = this._route.snapshot.paramMap.get('id');
     if (this.teacherId) {
       this.editMode = true;
-      this.formTitle = 'Edit Student';
-      this.getStudent();
+      this.formTitle = 'Edit Teacher';
+      this.getTeacher();
 
     }
   } 
-  getStudent() {
+  getTeacher() {
     this._teacherService.getTeacher(this.teacherId).subscribe(teacher => {
       this.teacher = teacher;
       this.config.forEach(c => {
@@ -128,27 +128,27 @@ export class TeacherFormComponent implements OnInit {
     if (this.editMode) {
       this._teacherService.putTeacher(this.teacherId, e).subscribe(
         (res: HttpResponse<any>) => {
-          this.toastComponent.show('(Student Updated Successfully).', true, false, false);
+          this.toastComponent.show('(Teacher Updated Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/students');
+            this._router.navigateByUrl('/teachers');
           }, 1500)
         },
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('(Updating Student API Failed.', false, true, false);
+          this.toastComponent.show('(Updating Teacher API Failed).', false, true, false);
         })
     }
     else {
       this._teacherService.postTeacher(e).subscribe(
         (res: HttpResponse<any>) => {
-          this.toastComponent.show('(Student Created Successfully).', true, false, false);
+          this.toastComponent.show('(Teacher Created Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/students');
+            this._router.navigateByUrl('/teachers');
           }, 1500);
         },
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('Adding Student API Failed.', false, true, false);
+          this.toastComponent.show('Adding Teacher API Failed.', false, true, false);
         })
     }
   }
