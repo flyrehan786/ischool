@@ -182,7 +182,7 @@ export class StudentFormComponent implements OnInit {
         },
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('(Updating Student API Failed.', false, true, false);
+          this.toastComponent.show('(Updating Student API Failed).', false, true, false);
         })
     }
     else {
@@ -195,7 +195,7 @@ export class StudentFormComponent implements OnInit {
         },
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('Adding Student API Failed.', false, true, false);
+          this.toastComponent.show('(Adding Student API Failed).', false, true, false);
         })
     }
   }

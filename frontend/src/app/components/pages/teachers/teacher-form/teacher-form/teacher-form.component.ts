@@ -148,7 +148,7 @@ export class TeacherFormComponent implements OnInit {
         },
         (error) => {
           console.error('An error occurred:', error);
-          this.toastComponent.show('Adding Teacher API Failed.', false, true, false);
+          this.toastComponent.show('(Adding Teacher API Failed).', false, true, false);
         })
     }
   }
