@@ -1,4 +1,5 @@
 export const TYPE_text = 'text';
+export const TYPE_date = 'date';
 export const TYPE_password = 'password';
 export const TYPE_textarea = 'textarea';
 export const TYPE_radio = 'radio';

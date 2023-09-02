@@ -13,7 +13,11 @@
       </label>
       <ng-container *ngIf="control.visible == true">
         <ng-container [ngSwitch]="control.type">
-          <input *ngSwitchCase="'text'" [type]="control.type" [(ngModel)]="control.defaultValue" [formControlName]="control.key"
+          <input *ngSwitchCase="'text'" [type]="control.type" [(ngModel)]="control.defaultValue"
+            [formControlName]="control.key"
+            [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
+          <input *ngSwitchCase="'date'" [type]="control.type" [(ngModel)]="control.defaultValue"
+            [formControlName]="control.key"
             [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
           <input *ngSwitchCase="'password'" [type]="control.type" [formControlName]="control.key"
             [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
@@ -21,14 +25,14 @@
             <option selected>Open this select menu</option>
             <option *ngFor="let option of control.options" [value]="option.key">{{ option.value }}</option>
           </select>
-          <textarea *ngSwitchCase="'textarea'" cols="30" rows="10" formControlName="{{ control.key }}" [(ngModel)]="control.defaultValue"
-            id="{{ control.key }}" [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid"
-            class="form-control">
+          <textarea *ngSwitchCase="'textarea'" cols="30" rows="10" formControlName="{{ control.key }}"
+            [(ngModel)]="control.defaultValue" id="{{ control.key }}"
+            [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control">
           </textarea>
           <div *ngSwitchCase="'checkbox'">
             <div *ngFor="let option of control.options">
               <label>
-                <input type="checkbox" [formControlName]="control.key" [value]="option.value" >
+                <input type="checkbox" [formControlName]="control.key" [value]="option.value">
                 {{ option.key }}
               </label>
             </div>
@@ -36,7 +40,8 @@
           <div *ngSwitchCase="'radio'">
             <div *ngFor="let option of control.options">
               <label>
-                <input type="radio" [value]="option.value" [formControlName]="control.key" [checked]="option.value == control.defaultValue">{{ option.key }}
+                <input type="radio" [value]="option.value" [formControlName]="control.key"
+                  [checked]="option.value == control.defaultValue">{{ option.key }}
               </label>
             </div>
           </div>
