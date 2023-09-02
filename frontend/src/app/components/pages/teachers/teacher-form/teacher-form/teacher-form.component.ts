@@ -2,7 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
-import { TYPE_text, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
+import { TYPE_text, TYPE_radio, TYPE_date } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
 import { TeachersService } from 'src/app/services/teachers/teachers.service';
@@ -83,7 +83,7 @@ export class TeacherFormComponent implements OnInit {
       bsCols: 'col-md-2'
     },
     {
-      type: TYPE_text,
+      type: TYPE_date,
       key: 'joining_date', defaultValue: '',
       label: 'Joining Date',
       validators:
