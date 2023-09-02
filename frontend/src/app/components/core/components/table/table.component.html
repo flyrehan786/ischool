@@ -58,8 +58,8 @@
                     <input type="checkbox">
                 </td>
                 <td *ngFor="let item of headers">
-                    <p *ngIf="item != 'status'">{{ row[item] }}</p>
-                    <p *ngIf="item == 'status'">
+                    <p *ngIf="item !== 'status'">{{ row[item] }}</p>
+                    <p *ngIf="item === 'status'">
                         <span class="badge bg-success" *ngIf="+row[item] === 1">Active</span>
                         <span class="badge bg-secondary" *ngIf="+row[item] === 0">Not Active</span>
                     </p>
