@@ -12,32 +12,25 @@ export class TeachersComponent implements OnInit {
   eventLabel="_teachers_events";
   headers = [
     'id',
-    'FirstName',
-    'LastName',
-    'Gender',
-    'CNIC',
-    'Age', 
-    'FatherName', 
-    'FatherCNIC', 
-    'PostOffice', 
-    'Tehsil', 
-    'Distric', 
-    'Status', 
-    'Createdt',
-    'UpdatedAt',
+    'first_name',
+    'last_name',
+    'qualification',
+    'designation',
+    'joining_date', 
+    'post_office', 
+    'tehsil', 
+    'district', 
   ];
   filters = [
-    'FirstName',
-    'LastName',
-    'Gender',
-    'CNIC',
-    'Age', 
-    'FatherName', 
+    'first_name',
+    'last_name',
+    'designation',
+    'qualification',
   ]
   rows: any = [];
   constructor(private _teacherService: TeachersService, private _commonService: CommonService, private _router: Router) { }
   ngOnInit(): void {
-    // this.getTeachers();
+    this.getTeachers();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
         this._router.navigateByUrl("/student/details/" + e.id);
