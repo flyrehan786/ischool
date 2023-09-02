@@ -23,4 +23,10 @@ export class TeachersService {
   deleteTeacher(id) {
     return this.http.delete(environment.api + 'api/teachers/' + id);
   }
+  disableTeacher(id) {
+    return this.http.put(environment.api + 'api/teachers/disable/' + id, {});
+  }
+  activateTeacher(id) {
+    return this.http.put(environment.api + 'api/teachers/activate/' + id, {});
+  }
 }
