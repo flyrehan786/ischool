@@ -16,12 +16,12 @@ export class TeacherFormComponent implements OnInit {
   teacherId;
   editMode = false;
   teacher;
-  formTitle = 'New Student';
+  formTitle = 'New Teacher';
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
       type: TYPE_text,
-      key: 'firstname', defaultValue: '',
+      key: 'first_name', defaultValue: '', label: 'First Name',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -29,11 +29,11 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
-      key: 'lastname', defaultValue: '',
+      key: 'last_name', defaultValue: '', label: 'Last Name',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -41,11 +41,11 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_radio,
-      key: 'gender', defaultValue: '',
+      key: 'gender', defaultValue: '', label: 'Gender',
       options: [
         { key: '  Male', value: '1' },
         { key: '  Female', value: '0' },
@@ -55,12 +55,12 @@ export class TeacherFormComponent implements OnInit {
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
-      key: 'cnic', defaultValue: '',
-      label: 'CNIC',
+      key: 'qualification', defaultValue: '',
+      label: 'Qualification',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -68,11 +68,11 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
-      key: 'age', defaultValue: '',
+      key: 'designation', defaultValue: '', label: 'Designation',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -80,31 +80,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '3', message: VALIDATION_MESSAGES.maxlength(3) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
-    },
-    {
-      type: TYPE_text,
-      key: 'qualification', defaultValue: '',
-      validators:
-        [
-          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
-        ],
-      visible: true,
-      bsCols: 'col-md-3'
-    },
-    {
-      type: TYPE_text,
-      key: 'designation', defaultValue: '',
-      validators:
-        [
-          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
-        ],
-      visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -117,7 +93,7 @@ export class TeacherFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     }
   ];
   constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private  _router: Router) { }
