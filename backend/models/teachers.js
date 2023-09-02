@@ -98,10 +98,8 @@ async function deleteTeacher(id) {
   });
 }
 async function deActivateTeacher(id) {
-  console.log(id);
   return new Promise((resolve, reject) => {
     db.execute(`UPDATE teachers SET status=? WHERE id=?`, [0, id], (err, result) => {
-      console.log(result);
       if (err) reject(err);
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
@@ -109,10 +107,8 @@ async function deActivateTeacher(id) {
   })
 }
 async function activateTeacher(id) {
-  console.log(id);
   return new Promise((resolve, reject) => {
     db.execute(`UPDATE teachers SET status=? WHERE id=?`, [1, id], (err, result) => {
-      console.log(result);
       if (err) reject(err);
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
