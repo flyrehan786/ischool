@@ -76,8 +76,8 @@ export class TeacherFormComponent implements OnInit {
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
-          { key: 'minLength', value: '1', message: VALIDATION_MESSAGES.minlength(1) },
-          { key: 'maxLength', value: '3', message: VALIDATION_MESSAGES.maxlength(3) },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(1) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(3) },
         ],
       visible: true,
       bsCols: 'col-md-2'
@@ -94,7 +94,43 @@ export class TeacherFormComponent implements OnInit {
         ],
       visible: true,
       bsCols: 'col-md-2'
-    }
+    },
+    {
+      type: TYPE_text,
+      key: 'post_office', defaultValue: '', label: 'Post Office',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(1) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(3) },
+        ],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
+    {
+      type: TYPE_text,
+      key: 'tehsil', defaultValue: '', label: 'Tehsil',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(1) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(3) },
+        ],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
+    {
+      type: TYPE_text,
+      key: 'district', defaultValue: '', label: 'District',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(1) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(3) },
+        ],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
   ];
   constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private  _router: Router) { }
 

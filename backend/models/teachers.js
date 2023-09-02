@@ -3,15 +3,15 @@ const db = require('../services/mysql').db;
 
 function validateTeacher(teacher) {
   const schema = {
-    first_name: Joi.string().min(5).max(45).required(),
-    last_name: Joi.string().min(5).max(45).required(),
+    first_name: Joi.string().min(2).max(45).required(),
+    last_name: Joi.string().min(2).max(45).required(),
     gender: Joi.string().min(1).max(1).required(),
-    qualification: Joi.string().min(5).max(45).required(),
-    designation: Joi.string().min(5).max(45).required(),
-    joining_date: Joi.string().min(5).max(45).required(),
-    post_office: Joi.string().min(5).max(45).required(),
-    tehsil: Joi.string().min(5).max(45).required(),
-    district: Joi.string().min(5).max(45).required(),
+    qualification: Joi.string().min(2).max(45).required(),
+    designation: Joi.string().min(2).max(45).required(),
+    joining_date: Joi.string().min(2).max(45).required(),
+    post_office: Joi.string().min(2).max(45).required(),
+    tehsil: Joi.string().min(2).max(45).required(),
+    district: Joi.string().min(2).max(45).required(),
   };
   return Joi.validate(teacher, schema);
 }
@@ -50,7 +50,15 @@ async function saveTeacher(newTeacher) {
         if (err) reject(err);
         db.execute(`SELECT id FROM teachers WHERE id = LAST_INSERT_ID();`, (err, result) => {
           if (err) reject(err);
-          if (result.length > 0) resolve(result[0].id);
+          if (result.length > 0) {
+            const insertedId = result[0].id;
+            db.execute(`SELECT * FROM teachers WHERE id = ?;`,[insertedId], (err, result) => {
+              if (err) reject(err);
+              if (result.length > 0) {
+                resolve(result[0]);
+              } else {}
+            });
+          }
           else resolve(null);
         })
       });
