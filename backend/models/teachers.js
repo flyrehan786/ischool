@@ -3,9 +3,11 @@ const db = require('../services/mysql').db;
 
 function validateTeacher(teacher) {
   const schema = {
-    name: Joi.string().min(5).max(50).required(),
-    phone: Joi.string().min(5).max(50).required(),
-    isGold: Joi.boolean()
+    first_name: Joi.string().min(5).max(45).required(),
+    last_name: Joi.string().min(5).max(45).required(),
+    qualification: Joi.string().min(5).max(45).required(),
+    designation: Joi.string().min(5).max(45).required(),
+    joining_date: Joi.string().min(5).max(45).required(),
   };
   return Joi.validate(teacher, schema);
 }
