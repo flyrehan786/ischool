@@ -75,8 +75,6 @@ router.put("/:id", async (req, res) => {
       .send("The student with the given ID was not found.");
   res.send(updatedStudent);
 });
-
-
 router.delete("/:id", async (req, res) => {
   const rowsAffected = await deleteStudent(req.params.id);
   if (rowsAffected == false) {
@@ -88,7 +86,6 @@ router.delete("/:id", async (req, res) => {
   
   res.send({ deleted: true });
 });
-
 router.get("/:id", async (req, res) => {
   const student = await findStudent(req.params.id);
   if (!student)
