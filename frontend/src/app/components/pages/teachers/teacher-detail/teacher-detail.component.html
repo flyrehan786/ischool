@@ -1,5 +1,5 @@
 <br />
-<a class="mt-4" routerLink="/students">Go Back</a>
+<a class="mt-4" routerLink="/teachers">Go Back</a>
 <h1 class="mt-4 mb-4">Teacher Details</h1>
 <table class="table">
     <thead class="table-primary">
@@ -27,4 +27,49 @@
             <th></th>
         </tr>
     </thead>
+    <tbody>
+        <tr>
+            <td>{{ teacher?.id }}</td>
+            <td>{{ teacher?.first_name }}</td>
+            <td>{{ teacher?.last_name }}</td>
+            <td>{{ teacher?.qualification }}</td>
+            <td>{{ teacher?.designation }}</td>
+            <td>{{ teacher?.joining_date }}</td>
+            <td>{{ teacher?.status }}</td>
+            <td>{{ teacher?.created_at }}</td>
+            <td>{{ teacher?.updated_at }}</td>
+            <td>{{ teacher?.post_office }}</td>
+            <td>{{ teacher?.tehsil }}</td>
+            <td>{{ teacher?.district }}</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" routerLink="/teacher/edit/{{teacherId}}"> <i
+                                    class="bi bi-pencil-square"></i> Edit</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteTeacher()"><i
+                                    class="bi bi-person-x"></i> Delete</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-secondary btn-sm" (click)="disableTeacher()"><i
+                                    class="bi bi-node-minus-fill"></i> Disable</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-success btn-sm" (click)="activateTeacher()"><i
+                                    class="bi bi-node-plus-fill"></i> Activate</button>
+                        </td>
+                        <td>
+                            <button [disabled]="+teacher?.status === 0" class="ms-2 btn btn-primary btn-sm" (click)="deleteTeacher()"><i
+                                    class="bi bi-plugin"></i> Classes</button>
+                        </td>
+                        <td>
+                            <button [disabled]="+teacher?.status === 0" class="ms-2 btn btn-info btn-sm"><i class="bi bi-list-check"></i> Salary</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
 </table>
