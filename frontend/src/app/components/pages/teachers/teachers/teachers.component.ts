@@ -20,6 +20,7 @@ export class TeachersComponent implements OnInit {
     'post_office', 
     'tehsil', 
     'district', 
+    'status', 
   ];
   filters = [
     'first_name',

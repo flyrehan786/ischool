@@ -58,7 +58,11 @@
                     <input type="checkbox">
                 </td>
                 <td *ngFor="let item of headers">
-                    <p>{{ row[item] }}</p>
+                    <p *ngIf="item != 'status'">{{ row[item] }}</p>
+                    <p *ngIf="item == 'status'">
+                        <span class="badge bg-success" *ngIf="+row[item] === 1">Active</span>
+                        <span class="badge bg-secondary" *ngIf="+row[item] === 0">Not Active</span>
+                    </p>
                 </td>
                 <td class="td-border-right">
                     <button class="btn btn-sm btn-info me-2" (click)="infoButtonClick(row.id)">
