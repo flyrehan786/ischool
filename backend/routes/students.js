@@ -37,7 +37,6 @@ router.put("/disable/:id", async (req, res) => {
   );
 
   if (rowsAffected == false) {
-    console.log(404);
     return res
     .status(404)
     .send("The student with the given ID was not found.");
@@ -52,7 +51,6 @@ router.put("/activate/:id", async (req, res) => {
   );
 
   if (rowsAffected == false) {
-    console.log(404);
     return res
     .status(404)
     .send("The student with the given ID was not found.");
@@ -78,7 +76,6 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const rowsAffected = await deleteStudent(req.params.id);
   if (rowsAffected == false) {
-    console.log(404);
     return res
     .status(404)
     .send("The student with the given ID was not found.");

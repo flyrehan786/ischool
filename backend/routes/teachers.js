@@ -33,7 +33,6 @@ router.put("/disable/:id", async (req, res) => {
   );
 
   if (rowsAffected == false) {
-    console.log(404);
     return res
     .status(404)
     .send("The teacher with the given ID was not found.");
