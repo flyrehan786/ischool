@@ -5,6 +5,7 @@ function validateTeacher(teacher) {
   const schema = {
     first_name: Joi.string().min(5).max(45).required(),
     last_name: Joi.string().min(5).max(45).required(),
+    gender: Joi.string().min(1).max(1).required(),
     qualification: Joi.string().min(5).max(45).required(),
     designation: Joi.string().min(5).max(45).required(),
     joining_date: Joi.string().min(5).max(45).required(),
@@ -34,10 +35,11 @@ async function findTeacher(id) {
 }
 async function saveTeacher(newTeacher) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`,
+    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`,
       [
         newTeacher.first_name,
         newTeacher.last_name,
+        newTeacher.gender,
         newTeacher.qualification,
         newTeacher.designation,
         newTeacher.joining_date,
@@ -56,10 +58,11 @@ async function saveTeacher(newTeacher) {
 }
 async function updateTeacher(id, updatedTeacher) {
   return new Promise((resolve, reject) => {
-    db.execute(`Update teachers SET first_name=?, last_name=?, qualification=?, designation=?, joining_date=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
+    db.execute(`Update teachers SET first_name=?, last_name=?, gender=?, qualification=?, designation=?, joining_date=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
       [
         updatedTeacher.first_name,
         updatedTeacher.last_name,
+        updatedTeacher.gender,
         updatedTeacher.qualification,
         updatedTeacher.designation,
         updatedTeacher.joining_date,
