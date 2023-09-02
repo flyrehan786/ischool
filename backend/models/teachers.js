@@ -8,6 +8,9 @@ function validateTeacher(teacher) {
     qualification: Joi.string().min(5).max(45).required(),
     designation: Joi.string().min(5).max(45).required(),
     joining_date: Joi.string().min(5).max(45).required(),
+    post_office: Joi.string().min(5).max(45).required(),
+    tehsil: Joi.string().min(5).max(45).required(),
+    district: Joi.string().min(5).max(45).required(),
   };
   return Joi.validate(teacher, schema);
 }
@@ -31,13 +34,16 @@ async function findTeacher(id) {
 }
 async function saveTeacher(newTeacher) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`,
+    db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`,
       [
         newTeacher.first_name,
         newTeacher.last_name,
         newTeacher.qualification,
         newTeacher.designation,
         newTeacher.joining_date,
+        newTeacher.post_office,
+        newTeacher.tehsil,
+        newTeacher.district,
       ], (err, result) => {
         if (err) reject(err);
         db.execute(`SELECT id FROM teachers WHERE id = LAST_INSERT_ID();`, (err, result) => {
@@ -50,17 +56,20 @@ async function saveTeacher(newTeacher) {
 }
 async function updateTeacher(id, updatedTeacher) {
   return new Promise((resolve, reject) => {
-    db.execute(`Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
+    db.execute(`Update teachers SET first_name=?, last_name=?, qualification=?, designation=?, joining_date=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
       [
         updatedTeacher.first_name,
         updatedTeacher.last_name,
         updatedTeacher.qualification,
         updatedTeacher.designation,
         updatedTeacher.joining_date,
+        updatedTeacher.post_office,
+        updatedTeacher.tehsil,
+        updatedTeacher.district,
         id
       ], (err, result) => {
         if (err) reject(err);
-        db.execute(`SELECT * FROM students WHERE id = ${id};`, (err, result) => {
+        db.execute(`SELECT * FROM teachers WHERE id = ${id};`, (err, result) => {
           if (err) reject(err);
           if (result.length > 0) resolve(result[0]);
           else resolve(null);
