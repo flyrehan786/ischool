@@ -9,6 +9,7 @@ const usersRoutes = require('./routes/users');
 const authRoute = require('./routes/auth');
 const studentRoute = require('./routes/students');
 const teacherRoute = require('./routes/teachers');
+
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoute);
 app.use('/api/students', studentRoute);
