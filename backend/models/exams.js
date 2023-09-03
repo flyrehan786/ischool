@@ -1,26 +1,26 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-function validateExam(exam) {
+
+function validateExam(student) {
   const schema = {
-    name: Joi.string().min(5).max(50).required(),
-    phone: Joi.string().min(5).max(50).required(),
-    isGold: Joi.boolean()
+    type_id: Joi.string().min(1).max(1).required(),
+    name: Joi.string().min(1).max(1).required(),
   };
-  return Joi.validate(exam, schema);
+  return Joi.validate(student, schema);
 }
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM exams`), [], (err, result) => {
-      if(err) reject(err);
-      if(result.length > 0) resolve(result);
+      if (err) reject(err);
+      if (result.length > 0) resolve(result);
       else resolve([]);
     })
   })
 }
 async function findExam(id) {
   return new Promise((resolve, reject) => {
-    db.execute(`SELECT * FROM exam WHERE id=?`, [id], (err, result) => {
+    db.execute(`SELECT * FROM exams WHERE id=?`, [id], (err, result) => {
       if (err) reject(err);
       if (result.length > 0) resolve(result[0]);
       else resolve(null);
@@ -29,24 +29,58 @@ async function findExam(id) {
 }
 async function saveExam(newExam) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO exam VALUES(default, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 1, 1)`, [ newExam.first_name, newExam.last_name, newExam.email, newExam.username, newExam.password, newExam.is_admin, newExam.status ], (err, result) => {
-      if (err) reject(err);
-      db.execute(`SELECT id FROM exam WHERE id = LAST_INSERT_ID();`, (err, result) => {
+    db.execute(`INSERT INTO exams VALUES(default,?,?, NOW(), NOW())`,
+      [
+        newExam.type_id,
+        newExam.name,
+      ], (err, result) => {
         if (err) reject(err);
-        if (result.length > 0) resolve(result[0].id);
-        else resolve(null);
-      })
-    });
+        db.execute(`SELECT id FROM exams WHERE id = LAST_INSERT_ID();`, (err, result) => {
+          if (err) reject(err);
+          if (result.length > 0) {
+            const insertedId = result[0].id;
+            db.execute(`SELECT * FROM exams WHERE id = ?;`,[insertedId], (err, result) => {
+              if (err) reject(err);
+              if (result.length > 0) {
+                resolve(result[0]);
+              } else {}
+            });
+          }
+          else resolve(null);
+        })
+      });
   })
 }
-async function updateExam(id, updatedExam) {}
-async function deleteExam(id) {}
-async function deActivateExam(id) {}
+async function updateExam(id, updatedExam) {
+  return new Promise((resolve, reject) => {
+    db.execute(`Update exams SET type_id=?, name=? WHERE id=?;`,
+      [
+        updatedExam.type_id,
+        updatedExam.name,
+        id
+      ], (err, result) => {
+        if (err) reject(err);
+        db.execute(`SELECT * FROM exams WHERE id = ${id};`, (err, result) => {
+          if (err) reject(err);
+          if (result.length > 0) resolve(result[0]);
+          else resolve(null);
+        })
+      })
+  })
+}
+async function deleteExam(id) {
+  return new Promise((resolve, reject) => {
+    db.execute(`DELETE FROM exams WHERE id = ${id};`, (err, result) => {
+      if (err) reject(err);
+      if (result.affectedRows == 1) resolve(true);
+      else resolve(false);
+    })
+    });
+ }
 
 exports.validate = validateExam;
 exports.findAll = findAll;
 exports.findExam = findExam;
-exports.saveExam = saveExam; 
+exports.saveExam = saveExam;
 exports.updateExam = updateExam;
 exports.deleteExam = deleteExam;
-exports.deActivateExam = deActivateExam;
