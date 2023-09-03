@@ -157,11 +157,9 @@ export class FormComponent implements OnInit, AfterViewChecked {
       const inputElement = document.querySelector("input.radio-form");
       if(inputElement) {
         const changeEvent = new Event('change', {
-          bubbles: true,  // Allow the event to bubble up the DOM tree
-          cancelable: true  // Allow the event to be canceled
-        });
-  
-        // Trigger the change event on the input element
+          bubbles: true,  
+          cancelable: true  
+        });  
         inputElement.dispatchEvent(changeEvent);
       }
     }, 1000);
