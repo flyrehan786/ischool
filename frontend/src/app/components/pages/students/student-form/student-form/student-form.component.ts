@@ -29,7 +29,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -41,7 +41,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_radio,
@@ -55,7 +55,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -68,7 +68,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -80,7 +80,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '3', message: VALIDATION_MESSAGES.maxlength(3) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -92,7 +92,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -104,7 +104,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -116,7 +116,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -128,7 +128,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
     {
       type: TYPE_text,
@@ -140,7 +140,7 @@ export class StudentFormComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-3'
+      bsCols: 'col-md-2'
     },
   ];
   constructor(private _route: ActivatedRoute, private _studentService: StudentsService, private _router: Router) { }
