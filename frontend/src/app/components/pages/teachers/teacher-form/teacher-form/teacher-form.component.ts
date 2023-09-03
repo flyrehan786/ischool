@@ -132,7 +132,7 @@ export class TeacherFormComponent implements OnInit {
       bsCols: 'col-md-2'
     },
   ];
-  constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private  _router: Router) { }
+  constructor(private _route: ActivatedRoute, private _teacherService: TeachersService, private _router: Router) { }
 
   ngOnInit(): void {
     this.teacherId = this._route.snapshot.paramMap.get('id');
@@ -142,7 +142,7 @@ export class TeacherFormComponent implements OnInit {
       this.getTeacher();
 
     }
-  } 
+  }
   getTeacher() {
     this._teacherService.getTeacher(this.teacherId).subscribe(teacher => {
       this.teacher = teacher;
@@ -152,7 +152,15 @@ export class TeacherFormComponent implements OnInit {
         if (c.key == 'gender') c.defaultValue = (this.teacher.gender == 'Male') ? '1' : '0';
         if (c.key == 'qualification') c.defaultValue = this.teacher.qualification;
         if (c.key == 'designation') c.defaultValue = this.teacher.designation;
-        if (c.key == 'joining_date') c.defaultValue = this.teacher.joining_date;
+
+        const joiningDate = new Date(this.teacher.joining_date);
+        const year = joiningDate.getFullYear();
+        const month = String(joiningDate.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are zero-indexed
+        const day = String(joiningDate.getDate()).padStart(2, '0');
+
+        const formattedDate = `${year}-${month}-${day}`;
+
+        if (c.key == 'joining_date') c.defaultValue = formattedDate;
         if (c.key == 'post_office') c.defaultValue = this.teacher.post_office;
         if (c.key == 'tehsil') c.defaultValue = this.teacher.tehsil;
         if (c.key == 'district') c.defaultValue = this.teacher.district;
@@ -160,6 +168,7 @@ export class TeacherFormComponent implements OnInit {
     })
   }
   onSubmit(e) {
+    console.log(e);
     if (this.editMode) {
       this._teacherService.putTeacher(this.teacherId, e).subscribe(
         (res: HttpResponse<any>) => {

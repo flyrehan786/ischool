@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox, TYPE_dropdown } from './deps/control-types';
 import { IControl } from './deps/IControl';
@@ -9,7 +9,7 @@ import { VALIDATION_MESSAGES } from './deps/validation-messages';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, AfterViewChecked {
   /**
    * Config JSON template
    * --------------------
@@ -111,9 +111,9 @@ export class FormComponent implements OnInit {
       type: TYPE_radio,
       key: 'gender', defaultValue: '',
       options: [
-        { key: 'key1', value: '1'},
-        { key: 'key2', value: '2'},
-        { key: 'key3', value: '3'},
+        { key: 'key1', value: '1' },
+        { key: 'key2', value: '2' },
+        { key: 'key3', value: '3' },
       ],
       validators:
         [
@@ -125,7 +125,7 @@ export class FormComponent implements OnInit {
     {
       type: TYPE_checkbox,
       key: 'subscriptions', defaultValue: '',
-      option: { key: 'check3', value: '3'},
+      option: { key: 'check3', value: '3' },
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
@@ -137,8 +137,8 @@ export class FormComponent implements OnInit {
       type: TYPE_dropdown,
       key: 'select', defaultValue: '',
       options: [
-        { key: 'option1', value: '3'},
-        { key: 'option2', value: '3'},
+        { key: 'option1', value: '3' },
+        { key: 'option2', value: '3' },
       ],
       validators:
         [
@@ -152,6 +152,20 @@ export class FormComponent implements OnInit {
   @Input() title: string = 'Form Title @Input()';
   form: FormGroup;
   constructor() { }
+  ngAfterViewChecked(): void {
+    setTimeout(() => {
+      const inputElement = document.querySelector("input.radio-form");
+      if(inputElement) {
+        const changeEvent = new Event('change', {
+          bubbles: true,  // Allow the event to bubble up the DOM tree
+          cancelable: true  // Allow the event to be canceled
+        });
+  
+        // Trigger the change event on the input element
+        inputElement.dispatchEvent(changeEvent);
+      }
+    }, 1000);
+  }
   ngOnInit() {
     let controls = {};
     for (let i = 0; i < this.config.length; i++) {
@@ -159,15 +173,15 @@ export class FormComponent implements OnInit {
       let controlValidators: ValidatorFn[] = [];
       for (let j = 0; j < control.validators.length; j++) {
         const validator = control.validators[j];
-        if (validator.key === 'required') 
+        if (validator.key === 'required')
           controlValidators.push(Validators.required);
-        else if (validator.key === 'maxLength') 
+        else if (validator.key === 'maxLength')
           controlValidators.push(Validators.maxLength(+validator.value));
-        else if (validator.key === 'minLength') 
+        else if (validator.key === 'minLength')
           controlValidators.push(Validators.minLength(+validator.value));
-        else if (validator.key === 'email') 
+        else if (validator.key === 'email')
           controlValidators.push(Validators.email);
-        else if (validator.key === 'pattern') 
+        else if (validator.key === 'pattern')
           controlValidators.push(Validators.pattern(validator.value));
         else { }
       }
@@ -176,7 +190,7 @@ export class FormComponent implements OnInit {
     this.form = new FormGroup(controls);
   }
   submit(e) {
-    if(confirm('Are you sure you want to submit the form?'))  {
+    if (confirm('Are you sure you want to submit the form?')) {
       this.submitted.emit(e.value);
     }
   }

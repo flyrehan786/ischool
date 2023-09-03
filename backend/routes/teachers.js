@@ -1,12 +1,12 @@
-const { 
-  validate, 
-  findAll, 
+const {
+  validate,
+  findAll,
   findTeacher,
   deleteTeacher,
   updateTeacher,
   activateTeacher,
   deActivateTeacher,
-  saveTeacher} = require("../models/teachers");
+  saveTeacher } = require("../models/teachers");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -14,6 +14,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const teachers = await findAll();
   teachers.forEach(s => {
+    if (s.gender == 1) s.gender = 'Male';
+    else if (s.gender == 0) s.gender = 'Female';
     s.joining_date = new Date(s.joining_date).toLocaleString();
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -36,10 +38,10 @@ router.put("/disable/:id", async (req, res) => {
 
   if (rowsAffected == false) {
     return res
-    .status(404)
-    .send("The teacher with the given ID was not found.");
+      .status(404)
+      .send("The teacher with the given ID was not found.");
   }
-  
+
   res.send({ updated: true });
 });
 
@@ -51,10 +53,10 @@ router.put("/activate/:id", async (req, res) => {
 
   if (rowsAffected == false) {
     return res
-    .status(404)
-    .send("The teacher with the given ID was not found.");
+      .status(404)
+      .send("The teacher with the given ID was not found.");
   }
-  
+
   res.send({ updated: true });
 });
 
@@ -78,15 +80,22 @@ router.delete("/:id", async (req, res) => {
   const rowsAffected = await deleteTeacher(req.params.id);
   if (rowsAffected == false) {
     return res
-    .status(404)
-    .send("The teacher with the given ID was not found.");
+      .status(404)
+      .send("The teacher with the given ID was not found.");
   }
-  
+
   res.send({ deleted: true });
 });
 
 router.get("/:id", async (req, res) => {
   const teacher = await findTeacher(req.params.id);
+  if (teacher.gender == 1) teacher.gender = 'Male';
+  else if (teacher.gender == 0) teacher.gender = 'Female';
+
+  teacher.joining_date = new Date(teacher.joining_date).toLocaleString();
+  teacher.created_at = new Date(teacher.created_at).toLocaleString();
+  teacher.updated_at = new Date(teacher.updated_at).toLocaleString();
+
   if (!teacher)
     return res
       .status(404)
