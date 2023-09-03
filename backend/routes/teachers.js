@@ -14,6 +14,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const teachers = await findAll();
   teachers.forEach(s => {
+    s.joining_date = new Date(s.joining_date).toLocaleString();
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
   })

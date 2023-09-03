@@ -21,6 +21,8 @@ export class TeachersComponent implements OnInit {
     'tehsil', 
     'district', 
     'status', 
+    'created_at', 
+    'updated_at', 
   ];
   filters = [
     'first_name',
