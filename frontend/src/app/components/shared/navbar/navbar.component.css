@@ -20,3 +20,10 @@
 #auth-options {
     margin-left: -40px;
 }
+#search-option {    
+    background-color: black;
+    color: #fff;
+}
+#search-option::placeholder {
+    color: #707070;
+  }
