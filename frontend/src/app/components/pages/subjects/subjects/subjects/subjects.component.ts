@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subjects.component.css']
 })
 export class SubjectsComponent implements OnInit {
-
+  eventLabel = '_subject_event';
+  title;
+  headers;
+  rows;
+  filters;
   constructor() { }
 
   ngOnInit(): void {
