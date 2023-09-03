@@ -10,7 +10,7 @@ export class SubjectsComponent implements OnInit {
   title;
   headers;
   rows;
-  filters;
+  filters = [ 'name' ];
   constructor() { }
 
   ngOnInit(): void {
