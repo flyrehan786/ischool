@@ -18,6 +18,9 @@ router.get("/", async (req, res) => {
     if (s.gender == 1) s.gender = 'Male';
     else if (s.gender == 0) s.gender = 'Female';
 
+    if (s.status == 1) s.status = 'Active';
+    else if (s.status == 0) s.status = 'Not Active';
+
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
   })
@@ -92,6 +95,9 @@ router.get("/:id", async (req, res) => {
 
   if (student.gender == 1) student.gender = 'Male';
   else if (student.gender == 0) student.gender = 'Female';
+
+  if (student.status == 1) student.status = 'Active';
+  else if (student.status == 0) student.status = 'Not Active';
 
   student.created_at = new Date(student.created_at).toLocaleString();
   student.updated_at = new Date(student.updated_at).toLocaleString();

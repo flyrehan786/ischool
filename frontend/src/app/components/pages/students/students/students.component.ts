@@ -80,10 +80,11 @@ export class StudentsComponent implements OnInit {
     { id: 50, FirstName: 'rehanz', LastName: 27, Gender: 'Male', CNIC: '123', Age: '20', FatherName: 'asdad', FatherCNIC: '123123', PostOffice: 'ad', Tehsil: 'a', District: 'a', Status: 1, CreatedAt: 'a', UpdatedAt: 'a' },
   ]
   filters = [
-    'First Name',
-    'Last Name',
-    'CNIC',
-    'District'
+    'first_name',
+    'last_name',
+    'cnic',
+    'district',
+    'status'
   ];
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }

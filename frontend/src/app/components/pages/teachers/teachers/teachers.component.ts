@@ -30,6 +30,7 @@ export class TeachersComponent implements OnInit {
     'last_name',
     'designation',
     'qualification',
+    'status'
   ]
   rows: any = [];
   constructor(private _teacherService: TeachersService, private _commonService: CommonService, private _router: Router) { }

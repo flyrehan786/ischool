@@ -17,6 +17,10 @@ router.get("/", async (req, res) => {
   teachers.forEach(s => {
     if (s.gender == 1) s.gender = 'Male';
     else if (s.gender == 0) s.gender = 'Female';
+
+    if (s.status == 1) s.status = 'Active';
+    else if (s.status == 0) s.status = 'Not Active';
+
     s.joining_date = new Date(s.joining_date).toLocaleString();
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -92,6 +96,9 @@ router.get("/:id", async (req, res) => {
   const teacher = await findTeacher(req.params.id);
   if (teacher.gender == 1) teacher.gender = 'Male';
   else if (teacher.gender == 0) teacher.gender = 'Female';
+
+  if (teacher.status == 1) teacher.status = 'Active';
+  else if (teacher.status == 0) teacher.status = 'Not Active';
 
   teacher.joining_date = new Date(teacher.joining_date).toLocaleString();
   teacher.created_at = new Date(teacher.created_at).toLocaleString();

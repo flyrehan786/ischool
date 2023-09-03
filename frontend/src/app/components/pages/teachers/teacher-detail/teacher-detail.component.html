@@ -35,10 +35,7 @@
             <td>{{ teacher?.qualification }}</td>
             <td>{{ teacher?.designation }}</td>
             <td>{{ teacher?.joining_date }}</td>
-            <td>
-                <span class="badge bg-success" *ngIf="+teacher?.status === 1">Active</span>
-                <span class="badge bg-secondary" *ngIf="+teacher?.status === 0">Not Active</span>
-            </td>
+            <td>{{ teacher?.status }}</td>
             <td>{{ teacher?.created_at }}</td>
             <td>{{ teacher?.updated_at }}</td>
             <td>{{ teacher?.post_office }}</td>
