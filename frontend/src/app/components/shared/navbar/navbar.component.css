@@ -5,7 +5,9 @@
 }
 .nav-link.active {
     margin-left: 14px;
-    border-bottom:1px solid rgba(255, 255, 255, 0.638);
+    font-weight: bold;
+    font-size: 15px;
+    /* border-bottom:1px solid rgba(255, 255, 255, 0.638); */
 }
 .form-control {
     width: 350px;
