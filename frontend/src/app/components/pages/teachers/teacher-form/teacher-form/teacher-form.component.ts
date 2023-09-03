@@ -150,10 +150,9 @@ export class TeacherFormComponent implements OnInit {
         if (c.key == 'first_name') c.defaultValue = this.teacher.first_name;
         if (c.key == 'last_name') c.defaultValue = this.teacher.last_name;
         if (c.key == 'gender') c.defaultValue = (this.teacher.gender == 'Male') ? '1' : '0';
-        if (c.key == 'cnic') c.defaultValue = this.teacher.cnic;
-        if (c.key == 'age') c.defaultValue = this.teacher.age;
-        if (c.key == 'father_name') c.defaultValue = this.teacher.father_name;
-        if (c.key == 'father_cnic') c.defaultValue = this.teacher.father_cnic;
+        if (c.key == 'qualification') c.defaultValue = this.teacher.qualification;
+        if (c.key == 'designation') c.defaultValue = this.teacher.designation;
+        if (c.key == 'joining_date') c.defaultValue = this.teacher.joining_date;
         if (c.key == 'post_office') c.defaultValue = this.teacher.post_office;
         if (c.key == 'tehsil') c.defaultValue = this.teacher.tehsil;
         if (c.key == 'district') c.defaultValue = this.teacher.district;

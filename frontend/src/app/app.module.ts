@@ -138,6 +138,11 @@ import { TablesComponent } from './components/pages/time-tables/tables/tables.co
         canActivate: [AuthGuard]
       },
       {
+        path: 'teacher/edit/:id',
+        component: TeacherFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'teacher/details/:id',
         component: TeacherDetailComponent,
         canActivate: [AuthGuard]
