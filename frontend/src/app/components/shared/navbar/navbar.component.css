@@ -23,6 +23,7 @@
 #search-option {    
     background-color: black;
     color: #fff;
+    border: 1px solid #373636;
 }
 #search-option::placeholder {
     color: #707070;
