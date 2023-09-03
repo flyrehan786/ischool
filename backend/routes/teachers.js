@@ -6,7 +6,8 @@ const {
   updateTeacher,
   activateTeacher,
   deActivateTeacher,
-  saveTeacher } = require("../models/teachers");
+  saveTeacher
+} = require("../models/teachers");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
