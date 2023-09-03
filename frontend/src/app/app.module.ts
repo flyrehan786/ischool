@@ -50,6 +50,7 @@ import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/
 import { NotificationsComponent } from './components/pages/notifications/notifications/notifications.component';
 import { TableFormComponent } from './components/pages/time-tables/table-form/table-form.component';
 import { TablesComponent } from './components/pages/time-tables/tables/tables.component';
+import { TableDetailComponent } from './components/pages/time-tables/table-detail/table-detail/table-detail.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { TablesComponent } from './components/pages/time-tables/tables/tables.co
     NotificationsComponent,
     TableFormComponent,
     TablesComponent,
+    TableDetailComponent,
   ],
   imports: [
     BrowserModule,
