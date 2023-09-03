@@ -14,6 +14,7 @@ export class TeachersComponent implements OnInit {
     'id',
     'first_name',
     'last_name',
+    'gender',
     'qualification',
     'designation',
     'joining_date', 
