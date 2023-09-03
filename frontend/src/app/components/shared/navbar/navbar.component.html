@@ -24,33 +24,28 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <i class="bi bi-card-checklist"></i> Manage
+            <i class="bi bi-card-checklist"></i> Manage Data
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLinkActive="active" routerLink="/grades">Grade</a></li>
             <li><a class="dropdown-item" routerLinkActive="active" routerLink="/subjects">Subjects</a></li>
             <li><a class="dropdown-item" routerLinkActive="active" routerLink="/certificates">Certificates</a></li>
-            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/exams">Exams</a></li>
+            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/time-tables">Time-Tables</a></li>
           </ul>
         </li>
-
-        <!-- 
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/grades"> <i class="bi bi-bar-chart-steps"></i> Grades</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" aria-current="page">
-            <i class="bi bi-card-checklist"></i> Results
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="bi bi-card-checklist"></i> Manage Exams
           </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/exams">Exams</a></li>
+            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/exams">Exams Results</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/reports">
             <i class="bi bi-graph-up"></i> RTS Reports
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/time-tables">
-            <i class="bi bi-card-checklist"></i> Time Tables
           </a>
         </li>
         <li class="nav-item">
@@ -60,20 +55,19 @@
         </li>
         <li class="nav-item">
           <input type="text" placeholder="Search..." class="form-control">
-        </li> -->
+        </li>
       </ul>
       <ul *ngIf="authService.isloggedIn()" class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/settings"><i
-              class="bi bi-gear-wide-connected"></i> Settings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage"><i
-              class="bi bi-person-lock"></i> Rehan Shah</a>
-        </li>
-        <li class="nav-item" (click)="authService.logOut()">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/auth/manage"><i
-              class="bi bi-lock"></i> Logout</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="bi bi-gear-wide-connected"></i> Rehan Shah
+          </a>
+          <ul id="auth-options" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/auth/change/password">Change Password</a></li>
+            <li><a class="dropdown-item" routerLink="/auth/manage">Manage Users</a></li>
+            <li><a class="dropdown-item" (click)="authService.logOut()">Logout</a></li>
+          </ul>
         </li>
       </ul>
     </div>
