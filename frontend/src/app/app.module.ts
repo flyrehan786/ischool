@@ -93,10 +93,13 @@ import { GradeFormComponent } from './components/pages/grades/grade-form/grade-f
     ExamsComponent,
     ExamFormComponent,
     ExamDetailsComponent,
+
     NotificationsComponent,
+    
     TableFormComponent,
     TablesComponent,
     TableDetailComponent,
+    
     GradesComponent,
     GradeFormComponent,
     GradeDetailsComponent,
