@@ -176,7 +176,7 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
       },
       {
         path: 'grade/edit/:id',
-        component: TeacherFormComponent,
+        component: GradeFormComponent,
         canActivate: [AuthGuard]
       },
       {

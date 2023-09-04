@@ -11,7 +11,7 @@ import { GradesService } from 'src/app/services/grades/grades.service';
 export class GradesComponent implements OnInit {
   eventLabel = '_grade_event';
   title;
-  headers;
+  headers = [ 'id', 'name', 'created_at', 'updated_at'];
   rows;
   filters = [ 'name' ];
   constructor(private _gradeService: GradesService, private _commonService: CommonService, private _router: Router) { }
@@ -19,7 +19,7 @@ export class GradesComponent implements OnInit {
     this.getGrades();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
-        this._router.navigateByUrl("/student/details/" + e.id);
+        this._router.navigateByUrl("/grade/details/" + e.id);
       }
     })
   }

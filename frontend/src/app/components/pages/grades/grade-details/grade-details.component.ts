@@ -14,7 +14,7 @@ export class GradeDetailsComponent implements OnInit {
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   constructor(private _gradeService: GradesService, private _route: ActivatedRoute, private _router: Router) { }
   ngOnInit(): void {
-    this.grade = +this._route.snapshot.paramMap.get('id');
+    this.gradeId = +this._route.snapshot.paramMap.get('id');
     this.getSubject();
   }
   getSubject() {
@@ -28,7 +28,7 @@ export class GradeDetailsComponent implements OnInit {
   }
   deleteGrade() {
     if(confirm('Are you sure you want to delete this grade?')) {
-      this._gradeService.deleteGrade(this.grade).subscribe(res => {
+      this._gradeService.deleteGrade(this.gradeId).subscribe(res => {
         this._router.navigateByUrl('/grades');
       },
       (error) => {
