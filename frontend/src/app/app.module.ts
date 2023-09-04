@@ -190,8 +190,18 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
         canActivate: [AuthGuard]
       },
       {
-        path: 'certificate/new', 
+        path: 'certificates/new', 
         component: CertificateFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'certificates/edit/:id',
+        component: CertificateFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'certificates/details/:id',
+        component: CertificateDetailsComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -205,6 +215,16 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
         canActivate: [AuthGuard]
       },
       {
+        path: 'subject/edit/:id',
+        component: SubjectFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'subject/details/:id',
+        component: SubjectDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'exams', 
         component: ExamsComponent,
         canActivate: [AuthGuard]
@@ -215,6 +235,16 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
         canActivate: [AuthGuard]
       },
       {
+        path: 'exam/edit/:id',
+        component: ExamFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam/details/:id',
+        component: ExamDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'time-tables', 
         component: TablesComponent,
         canActivate: [AuthGuard]
@@ -222,6 +252,16 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
       {
         path: 'time-table/new', 
         component: TableFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'time-table/edit/:id',
+        component: TableFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'time-table/details/:id',
+        component: TableDetailComponent,
         canActivate: [AuthGuard]
       },
       {
