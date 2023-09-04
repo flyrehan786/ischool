@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
         visible: true,
-        bsCols: 'col-md-7'
+        bsCols: 'col-md-3'
     },
     {
       type: TYPE_password,
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
         visible: true,
-        bsCols: 'col-md-7'
+        bsCols: 'col-md-3'
     },
   ];
   constructor(private _authService: AuthService,private _router: Router) { }
