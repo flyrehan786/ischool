@@ -159,6 +159,26 @@ import { GradeFormComponent } from './components/pages/grades/grade-form/grade-f
         canActivate: [AuthGuard]
       },
       {
+        path: 'grades', 
+        component: GradesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'grade/new', 
+        component: GradeFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'grade/edit/:id',
+        component: TeacherFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'grade/details/:id',
+        component: GradeDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'certificates', 
         component: CertificatesComponent,
         canActivate: [AuthGuard]
