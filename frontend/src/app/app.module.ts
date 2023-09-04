@@ -245,6 +245,26 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
         canActivate: [AuthGuard]
       },
       {
+        path: 'exam-types', 
+        component: TypesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam-type/new', 
+        component: TypeFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam-type/edit/:id',
+        component: TypeFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam-type/details/:id',
+        component: TypeDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'time-tables', 
         component: TablesComponent,
         canActivate: [AuthGuard]
