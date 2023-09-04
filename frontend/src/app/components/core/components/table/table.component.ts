@@ -114,7 +114,7 @@ export class TableComponent implements OnInit {
       const statusHeader = this.headers.filter(x => (x as string).toLowerCase().includes('status'));
       if (statusHeader.length > 0) {
         const status = row[0][statusHeader[0]];
-        if (status == 1) return status;
+        if (status == 'Active') return status;
         else return 'x';
       }
       else return 'x';
