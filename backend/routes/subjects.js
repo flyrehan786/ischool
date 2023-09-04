@@ -1,71 +1,64 @@
-const { Student, validate } = require("../models/students");
+const { 
+  validate, 
+  findAll, 
+  findSubject, 
+  saveSubject, 
+  updateSubject, 
+  deleteSubject,
+} = require("../models/subjects");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", auth, async (req, res) => {
-  const students = await Student.find()
-    .select("-__v")
-    .sort("name");
-  res.send(students);
+router.get("/", async (req, res) => {
+  const subjects = await findAll();
+  subjects.forEach(s => {
+    s.created_at = new Date(s.created_at).toLocaleString();
+    s.updated_at = new Date(s.updated_at).toLocaleString();
+  })
+  res.send(subjects);
 });
 
-router.post("/", auth, async (req, res) => {
+router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  const createdSubject = await saveSubject(req.body);
+  res.send(createdSubject);
+});
+router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let student = new Student({
-    name: req.body.name,
-    isGold: req.body.isGold,
-    phone: req.body.phone
-  });
-  student = await student.save();
-
-  res.send(student);
-});
-
-router.put("/:id", auth, async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const student = await Student.findByIdAndUpdate(
+  const updatedSubject = await updateSubject(
     req.params.id,
-    {
-      name: req.body.name,
-      isGold: req.body.isGold,
-      phone: req.body.phone
-    },
-    { new: true }
+    req.body
   );
 
-  if (!student)
+  if (!updatedSubject)
     return res
       .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+      .send("The subject with the given ID was not found.");
+  res.send(updatedSubject);
 });
-
-router.delete("/:id", auth, async (req, res) => {
-  const student = await Student.findByIdAndRemove(req.params.id);
-
-  if (!student)
+router.delete("/:id", async (req, res) => {
+  const rowsAffected = await deleteSubject(req.params.id);
+  if (rowsAffected == false) {
     return res
-      .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+    .status(404)
+    .send("The subject with the given ID was not found.");
+  }
+  res.send({ deleted: true });
 });
-
-router.get("/:id", auth, async (req, res) => {
-  const student = await Student.findById(req.params.id).select("-__v");
-
-  if (!student)
+router.get("/:id", async (req, res) => {
+  const subject = await findSubject(req.params.id);
+  if (!subject)
     return res
       .status(404)
-      .send("The student with the given ID was not found.");
+      .send("The subject with the given ID was not found.");
 
-  res.send(student);
+  subject.created_at = new Date(subject.created_at).toLocaleString();
+  subject.updated_at = new Date(subject.updated_at).toLocaleString();
+  res.send(subject);
 });
 
 module.exports = router;
