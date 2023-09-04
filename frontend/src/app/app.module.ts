@@ -54,6 +54,9 @@ import { TableDetailComponent } from './components/pages/time-tables/table-detai
 import { GradeDetailsComponent } from './components/pages/grades/grade-details/grade-details.component';
 import { GradesComponent } from './components/pages/grades/grades/grades.component';
 import { GradeFormComponent } from './components/pages/grades/grade-form/grade-form.component';
+import { TypesComponent } from './components/pages/exam-types/types/types.component';
+import { TypeDetailsComponent } from './components/pages/exam-types/type-details/type-details.component';
+import { TypeFormComponent } from './components/pages/exam-types/type-form/type-form.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +106,9 @@ import { GradeFormComponent } from './components/pages/grades/grade-form/grade-f
     GradesComponent,
     GradeFormComponent,
     GradeDetailsComponent,
+    TypesComponent,
+    TypeDetailsComponent,
+    TypeFormComponent,
   ],
   imports: [
     BrowserModule,
