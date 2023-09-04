@@ -26,7 +26,7 @@ export class SubjectDetailsComponent implements OnInit {
       this.toastComponent.show('(Updating Subject API Failed).', false, true, false);
     })
   }
-  deleteTeacher() {
+  deleteSubject() {
     if(confirm('Are you sure you want to delete this subject?')) {
       this._subjectService.deleteSubject(this.subjectId).subscribe(res => {
         this._router.navigateByUrl('/subjects');

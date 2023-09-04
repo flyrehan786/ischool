@@ -10,8 +10,8 @@ import { SubjectsService } from 'src/app/services/subjects/subjects.service';
 })
 export class SubjectsComponent implements OnInit {
   eventLabel = '_subject_event';
-  title;
-  headers;
+  title = 'Subjects';
+  headers = [ 'id', 'name', 'created_at', 'updated_at'];
   rows;
   filters = [ 'name' ];
   constructor(private _subjectService: SubjectsService, private _commonService: CommonService, private _router: Router) { }
@@ -19,7 +19,7 @@ export class SubjectsComponent implements OnInit {
     this.getSubjects();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
-        this._router.navigateByUrl("/student/details/" + e.id);
+        this._router.navigateByUrl("/subject/details/" + e.id);
       }
     })
   }

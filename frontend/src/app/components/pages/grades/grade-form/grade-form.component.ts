@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text } from 'src/app/components/core/components/form/deps/control-types';
@@ -32,7 +32,11 @@ export class GradeFormComponent implements OnInit {
       bsCols: 'col-md-2'
     },
   ];
-  constructor(private _route: ActivatedRoute, private _gradeService: GradesService, private _router: Router) { }
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private _route: ActivatedRoute, 
+    private _gradeService: GradesService, 
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.gradeId = this._route.snapshot.paramMap.get('id');
@@ -48,6 +52,7 @@ export class GradeFormComponent implements OnInit {
       this.grade = student;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.grade.name;
+        this.cdr.detectChanges();
       })
     })
   }

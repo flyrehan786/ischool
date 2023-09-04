@@ -13,10 +13,10 @@ export class SubjectsService {
   getSubjects() { 
     return this.http.get(environment.api + 'api/subjects');
   }
-  postSubjects(newSubject) {
+  postSubject(newSubject) {
     return this.http.post(environment.api + 'api/subjects', newSubject);
   }
-  putStubjects(id, updatedSubject) {
+  putStubject(id, updatedSubject) {
     return this.http.put(environment.api + 'api/subjects/' + id, updatedSubject);
   }
   deleteSubject(id) {

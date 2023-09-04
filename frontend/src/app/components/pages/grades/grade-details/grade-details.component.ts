@@ -15,9 +15,9 @@ export class GradeDetailsComponent implements OnInit {
   constructor(private _gradeService: GradesService, private _route: ActivatedRoute, private _router: Router) { }
   ngOnInit(): void {
     this.gradeId = +this._route.snapshot.paramMap.get('id');
-    this.getSubject();
+    this.getGrade();
   }
-  getSubject() {
+  getGrade() {
     this._gradeService.getGrade(this.gradeId).subscribe(grade => {
       this.grade = grade;
     },
