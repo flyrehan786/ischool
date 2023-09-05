@@ -33,7 +33,6 @@ export class GradeFormComponent implements OnInit {
     },
   ];
   constructor(
-    private cdr: ChangeDetectorRef,
     private _route: ActivatedRoute, 
     private _gradeService: GradesService, 
     private _router: Router) { }
@@ -52,7 +51,6 @@ export class GradeFormComponent implements OnInit {
       this.grade = student;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.grade.name;
-        this.cdr.detectChanges();
       })
     })
   }
