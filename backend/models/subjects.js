@@ -7,6 +7,7 @@ function validateSubject(subject) {
   };
   return Joi.validate(subject, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM subjects`), [], (err, result) => {
@@ -16,6 +17,7 @@ async function findAll() {
     })
   })
 }
+
 async function findSubject(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM subjects WHERE id=?`, [id], (err, result) => {
@@ -25,6 +27,7 @@ async function findSubject(id) {
     });
   })
 }
+
 async function saveSubject(newSubject) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO subjects VALUES(default,?, NOW(), NOW())`,
@@ -36,11 +39,11 @@ async function saveSubject(newSubject) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM subjects WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM subjects WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -48,6 +51,7 @@ async function saveSubject(newSubject) {
       });
   })
 }
+
 async function updateSubject(id, updatedSubject) {
   return new Promise((resolve, reject) => {
     db.execute(`Update subjects SET name=? WHERE id=?;`,
@@ -64,6 +68,7 @@ async function updateSubject(id, updatedSubject) {
       })
   })
 }
+
 async function deleteSubject(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM subjects WHERE id = ${id};`, (err, result) => {
@@ -71,8 +76,9 @@ async function deleteSubject(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
+
 exports.validate = validateSubject;
 exports.findAll = findAll;
 exports.findSubject = findSubject;
