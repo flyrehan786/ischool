@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-
 function validateCertificate(certificate) {
   const schema = {
     name: Joi.string().min(3).max(45).required(),
@@ -9,6 +8,7 @@ function validateCertificate(certificate) {
   };
   return Joi.validate(certificate, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM certificates`), [], (err, result) => {
@@ -18,6 +18,7 @@ async function findAll() {
     })
   })
 }
+
 async function findCertificate(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM certificates WHERE id=?`, [id], (err, result) => {
@@ -27,6 +28,7 @@ async function findCertificate(id) {
     });
   })
 }
+
 async function saveCertificate(newCertificate) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO certificates VALUES(default,?,?, NOW(), NOW())`,
@@ -39,11 +41,11 @@ async function saveCertificate(newCertificate) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM certificates WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM certificates WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -51,6 +53,7 @@ async function saveCertificate(newCertificate) {
       });
   })
 }
+
 async function updateCertificate(id, updatedCertificate) {
   return new Promise((resolve, reject) => {
     db.execute(`Update certificates SET name=?, template=? WHERE id=?;`,
@@ -68,6 +71,7 @@ async function updateCertificate(id, updatedCertificate) {
       })
   })
 }
+
 async function deleteCertificate(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM certificates WHERE id = ${id};`, (err, result) => {
@@ -75,8 +79,8 @@ async function deleteCertificate(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
 
 exports.validate = validateCertificate;
 exports.findAll = findAll;
