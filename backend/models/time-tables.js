@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-function validateSubject(subject) {
+function validateTimeTable(subject) {
   const schema = {
     day_name: Joi.string().min(3).max(45).required(),
     time_7AM_8AM: Joi.string().min(3).max(45).required(),
@@ -72,14 +72,14 @@ async function updateTimeTable(id, updatedSubject) {
 }
 async function deleteTimeTable(id) {
   return new Promise((resolve, reject) => {
-    db.execute(`DELETE FROM subjects WHERE id = ${id};`, (err, result) => {
+    db.execute(`DELETE FROM time_table WHERE id = ${id};`, (err, result) => {
       if (err) reject(err);
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
     });
  }
-exports.validate = validateSubject;
+exports.validate = validateTimeTable;
 exports.findAll = findAll;
 exports.findTimeTable = findTimeTable;
 exports.saveTimeTable = saveTimeTable;
