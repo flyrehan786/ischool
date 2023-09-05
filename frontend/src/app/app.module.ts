@@ -38,25 +38,30 @@ import { ReportDetailsComponent } from './components/pages/reports/reports-detai
 
 import { AuthGuard } from './guards/auth-guard';
 
+import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
+import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
+import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
+
+import { NotificationsComponent } from './components/pages/notifications/notifications/notifications.component';
+
+// Time Table Components.
+import { TableFormComponent } from './components/pages/time-tables/table-form/table-form.component';
+import { TablesComponent } from './components/pages/time-tables/tables/tables.component';
+import { TableDetailComponent } from './components/pages/time-tables/table-detail/table-detail/table-detail.component';
+
+import { GradeDetailsComponent } from './components/pages/grades/grade-details/grade-details.component';
+import { GradesComponent } from './components/pages/grades/grades/grades.component';
+import { GradeFormComponent } from './components/pages/grades/grade-form/grade-form.component';
+
+import { TypesComponent } from './components/pages/exam-types/types/types.component';
+import { TypeDetailsComponent } from './components/pages/exam-types/type-details/type-details.component';
+import { TypeFormComponent } from './components/pages/exam-types/type-form/type-form.component';
+
 // CORE.
 import { DetailsComponent } from './components/core/components/details/details.component';
 import { FormComponent } from './components/core/components/form/form.component';
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
-
-import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
-import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
-import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
-import { NotificationsComponent } from './components/pages/notifications/notifications/notifications.component';
-import { TableFormComponent } from './components/pages/time-tables/table-form/table-form.component';
-import { TablesComponent } from './components/pages/time-tables/tables/tables.component';
-import { TableDetailComponent } from './components/pages/time-tables/table-detail/table-detail/table-detail.component';
-import { GradeDetailsComponent } from './components/pages/grades/grade-details/grade-details.component';
-import { GradesComponent } from './components/pages/grades/grades/grades.component';
-import { GradeFormComponent } from './components/pages/grades/grade-form/grade-form.component';
-import { TypesComponent } from './components/pages/exam-types/types/types.component';
-import { TypeDetailsComponent } from './components/pages/exam-types/type-details/type-details.component';
-import { TypeFormComponent } from './components/pages/exam-types/type-form/type-form.component';
 
 @NgModule({
   declarations: [
