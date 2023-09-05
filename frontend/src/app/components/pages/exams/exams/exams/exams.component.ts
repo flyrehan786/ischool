@@ -12,8 +12,14 @@ export class ExamsComponent implements OnInit {
   eventLabel = '_exams_events';
   isLoading = false;
   headers = [
+    'id',
+    'type',
+    'name',
+    'create_at',
+    'updated_at'
   ];
   filters = [
+    'name'
   ];
   rows: any = [];
   constructor(private _examService: ExamsService, private _commonService: CommonService, private _router: Router) { }
