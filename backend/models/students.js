@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-
 function validateStudent(student) {
   const schema = {
     first_name: Joi.string().min(3).max(45).required(),
@@ -17,6 +16,7 @@ function validateStudent(student) {
   };
   return Joi.validate(student, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM students`), [], (err, result) => {
@@ -26,6 +26,7 @@ async function findAll() {
     })
   })
 }
+
 async function findStudent(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM students WHERE id=?`, [id], (err, result) => {
@@ -35,6 +36,7 @@ async function findStudent(id) {
     });
   })
 }
+
 async function saveStudent(newStudent) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO students VALUES(default,?,?,?,?,?,?,?,?,?,?,1, NOW(), NOW(), 1, 1)`,
@@ -67,6 +69,7 @@ async function saveStudent(newStudent) {
       });
   })
 }
+
 async function updateStudent(id, updatedStudent) {
   return new Promise((resolve, reject) => {
     db.execute(`Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
@@ -92,6 +95,7 @@ async function updateStudent(id, updatedStudent) {
       })
   })
 }
+
 async function deleteStudent(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM students WHERE id = ${id};`, (err, result) => {
@@ -100,7 +104,8 @@ async function deleteStudent(id) {
       else resolve(false);
     })
     });
- }
+}
+
 async function deActivateStudent(id) { 
   return new Promise((resolve,reject) => {
     db.execute(`UPDATE students SET status=? WHERE id=?`, [0, id], (err, result) => {
@@ -110,6 +115,7 @@ async function deActivateStudent(id) {
     })
   })
 }
+
 async function activateStudent(id) { 
   return new Promise((resolve,reject) => {
     db.execute(`UPDATE students SET status=? WHERE id=?`, [1, id], (err, result) => {
