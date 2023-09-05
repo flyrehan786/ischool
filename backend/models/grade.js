@@ -7,6 +7,7 @@ function validateGrade(grade) {
   };
   return Joi.validate(grade, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM grades`), [], (err, result) => {
@@ -16,6 +17,7 @@ async function findAll() {
     })
   })
 }
+
 async function findGrade(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM grades WHERE id=?`, [id], (err, result) => {
@@ -25,6 +27,7 @@ async function findGrade(id) {
     });
   })
 }
+
 async function saveGrade(newGrade) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO grades VALUES(default,?, NOW(), NOW())`,
@@ -36,11 +39,11 @@ async function saveGrade(newGrade) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM grades WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM grades WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -48,6 +51,7 @@ async function saveGrade(newGrade) {
       });
   })
 }
+
 async function updateGrade(id, updatedGrade) {
   return new Promise((resolve, reject) => {
     db.execute(`Update grades SET name=? WHERE id=?;`,
@@ -64,6 +68,7 @@ async function updateGrade(id, updatedGrade) {
       })
   })
 }
+
 async function deleteGrade(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM grades WHERE id = ${id};`, (err, result) => {
@@ -71,8 +76,9 @@ async function deleteGrade(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
+
 exports.validate = validateGrade;
 exports.findAll = findAll;
 exports.findGrade = findGrade;
