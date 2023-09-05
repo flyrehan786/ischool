@@ -112,6 +112,7 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
     GradesComponent,
     GradeFormComponent,
     GradeDetailsComponent,
+    
     TypesComponent,
     TypeDetailsComponent,
     TypeFormComponent,
