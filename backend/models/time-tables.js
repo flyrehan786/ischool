@@ -14,6 +14,7 @@ function validateTimeTable(subject) {
   };
   return Joi.validate(subject, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM time_table`), [], (err, result) => {
@@ -23,6 +24,7 @@ async function findAll() {
     })
   })
 }
+
 async function findTimeTable(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM time_table WHERE id=?`, [id], (err, result) => {
@@ -32,6 +34,7 @@ async function findTimeTable(id) {
     });
   })
 }
+
 async function saveTimeTable(newTimeTable) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?)`,
@@ -50,11 +53,11 @@ async function saveTimeTable(newTimeTable) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM subjects WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM subjects WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -62,6 +65,7 @@ async function saveTimeTable(newTimeTable) {
       });
   })
 }
+
 async function updateTimeTable(id, updatedSubject) {
   return new Promise((resolve, reject) => {
     db.execute(`Update time_table SET name=? WHERE id=?;`,
@@ -78,6 +82,7 @@ async function updateTimeTable(id, updatedSubject) {
       })
   })
 }
+
 async function deleteTimeTable(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM time_table WHERE id = ${id};`, (err, result) => {
@@ -85,8 +90,9 @@ async function deleteTimeTable(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
+
 exports.validate = validateTimeTable;
 exports.findAll = findAll;
 exports.findTimeTable = findTimeTable;

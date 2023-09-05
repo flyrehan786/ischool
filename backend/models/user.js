@@ -34,6 +34,7 @@ function validateUser(user) {
   };
   return Joi.validate(user, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM users`), [], (err, result) => {
@@ -43,6 +44,7 @@ async function findAll() {
     })
   })
 }
+
 async function findUser(username) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM users WHERE username=?`, [username], (err, result) => {
@@ -52,6 +54,7 @@ async function findUser(username) {
     });
   })
 }
+
 async function saveUser(newUser) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO users VALUES(default, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 1, 1)`, [ newUser.first_name, newUser.last_name, newUser.email, newUser.username, newUser.password, newUser.is_admin, newUser.status ], (err, result) => {
@@ -64,14 +67,19 @@ async function saveUser(newUser) {
     });
   })
 }
+
 async function updateUser(id, updatedUser) {}
+
 async function deleteUser(id) {}
+
 async function deActivateUser(id) {}
+
 async function encryptPassword(password) {
   const salt = await bcrypt.genSalt(10);
   const encryptedPassword = await bcrypt.hash(password, salt);
   return encryptedPassword;
 }
+
 function generateAuthToken(user) {
   const token = jwt.sign(
     {

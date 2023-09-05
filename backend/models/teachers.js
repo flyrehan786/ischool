@@ -15,6 +15,7 @@ function validateTeacher(teacher) {
   };
   return Joi.validate(teacher, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM teachers`), [], (err, result) => {
@@ -24,6 +25,7 @@ async function findAll() {
     })
   })
 }
+
 async function findTeacher(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM teachers WHERE id=?`, [id], (err, result) => {
@@ -33,6 +35,7 @@ async function findTeacher(id) {
     });
   })
 }
+
 async function saveTeacher(newTeacher) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO teachers VALUES(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1 , NOW(), NOW(), 1, 1)`,
@@ -52,11 +55,11 @@ async function saveTeacher(newTeacher) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM teachers WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM teachers WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -64,6 +67,7 @@ async function saveTeacher(newTeacher) {
       });
   })
 }
+
 async function updateTeacher(id, updatedTeacher) {
   return new Promise((resolve, reject) => {
     db.execute(`Update teachers SET first_name=?, last_name=?, gender=?, qualification=?, designation=?, joining_date=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
@@ -88,6 +92,7 @@ async function updateTeacher(id, updatedTeacher) {
       })
   })
 }
+
 async function deleteTeacher(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM teachers WHERE id = ${id};`, (err, result) => {
@@ -97,6 +102,7 @@ async function deleteTeacher(id) {
     })
   });
 }
+
 async function deActivateTeacher(id) {
   return new Promise((resolve, reject) => {
     db.execute(`UPDATE teachers SET status=? WHERE id=?`, [0, id], (err, result) => {
@@ -106,6 +112,7 @@ async function deActivateTeacher(id) {
     })
   })
 }
+
 async function activateTeacher(id) {
   return new Promise((resolve, reject) => {
     db.execute(`UPDATE teachers SET status=? WHERE id=?`, [1, id], (err, result) => {
@@ -115,6 +122,7 @@ async function activateTeacher(id) {
     })
   })
 }
+
 exports.validate = validateTeacher;
 exports.findAll = findAll;
 exports.findTeacher = findTeacher;
