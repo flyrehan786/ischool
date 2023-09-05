@@ -1,1 +1,9 @@
-<p>type-form works!</p>
+<br />
+<span *ngIf="!editMode">
+    <a routerLink="/exam-types">Back to List</a>
+</span>
+<span *ngIf="editMode">
+    <a routerLink="/exam-type/details/{{ examTypeId }}">Go Back</a>
+</span>
+<core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
+<core-toast></core-toast>
