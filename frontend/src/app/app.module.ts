@@ -36,8 +36,6 @@ import { SubjectDetailsComponent } from './components/pages/subjects/subject-det
 import { ReportsComponent } from './components/pages/reports/reports/reports.component';
 import { ReportDetailsComponent } from './components/pages/reports/reports-details/report-details/report-details.component';
 
-import { AuthGuard } from './guards/auth-guard';
-
 import { ExamsComponent } from './components/pages/exams/exams/exams/exams.component';
 import { ExamDetailsComponent } from './components/pages/exams/exam-details/exam-details.component';
 import { ExamFormComponent } from './components/pages/exams/exam-form/exam-form/exam-form.component';
@@ -56,6 +54,9 @@ import { GradeFormComponent } from './components/pages/grades/grade-form/grade-f
 import { TypesComponent } from './components/pages/exam-types/types/types.component';
 import { TypeDetailsComponent } from './components/pages/exam-types/type-details/type-details.component';
 import { TypeFormComponent } from './components/pages/exam-types/type-form/type-form.component';
+
+import { AuthGuard } from './guards/auth-guard';
+
 
 // CORE.
 import { DetailsComponent } from './components/core/components/details/details.component';
