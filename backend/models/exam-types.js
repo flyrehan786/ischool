@@ -1,13 +1,13 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-
 function validateExamType(examType) {
   const schema = {
     name: Joi.string().min(2).max(45).required(),
   };
   return Joi.validate(examType, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM exam_types`), [], (err, result) => {
@@ -17,6 +17,7 @@ async function findAll() {
     })
   })
 }
+
 async function findExamType(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM exam_types WHERE id=?`, [id], (err, result) => {
@@ -26,6 +27,7 @@ async function findExamType(id) {
     });
   })
 }
+
 async function saveExamType(newExamType) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO exam_types VALUES(default,?,?, NOW(), NOW())`,
@@ -37,11 +39,11 @@ async function saveExamType(newExamType) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM exam_type WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM exam_type WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -49,6 +51,7 @@ async function saveExamType(newExamType) {
       });
   })
 }
+
 async function updateExamType(id, updatedExamType) {
   return new Promise((resolve, reject) => {
     db.execute(`Update exam_type SET name=? WHERE id=?;`,
@@ -65,6 +68,7 @@ async function updateExamType(id, updatedExamType) {
       })
   })
 }
+
 async function deleteExamType(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM exam_types WHERE id = ${id};`, (err, result) => {
@@ -72,8 +76,8 @@ async function deleteExamType(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
 
 exports.validate = validateExamType;
 exports.findAll = findAll;
