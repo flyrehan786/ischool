@@ -1,1 +1,46 @@
-<p>table-detail works!</p>
+<br />
+<a class="mt-4" routerLink="/time-tables">Go Back</a>
+<h1 class="mt-4 mb-4">Time Table Details</h1>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Day Name</th>
+            <th>7:00 AM - 8:00 AM</th>
+            <th>8:00 AM - 9:00 AM</th>
+            <th>9:00 AM - 10:00 AM</th>
+            <th>10:00 AM - 11:00 AM</th>
+            <th>11:00 AM - 12:00 PM</th>
+            <th>12:00 PM - 1:00 PM</th>
+            <th>1:00 PM - 2:00 PM</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ timeTable?.id }}</td>
+            <td>{{ timeTable?.day_name }}</td>
+            <td>{{ timeTable?.time_7AM_8AM }}</td>
+            <td>{{ timeTable?.time_8AM_9AM }}</td>
+            <td>{{ timeTable?.time_9AM_10AM }}</td>
+            <td>{{ timeTable?.time_10AM_11AM }}</td>
+            <td>{{ timeTable?.time_11AM_12PM }}</td>
+            <td>{{ timeTable?.time_12PM_1PM }}</td>
+            <td>{{ timeTable?.time_1PM_2PM }}</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" routerLink="/time-table/edit/{{timeTableId}}"> <i
+                                    class="bi bi-pencil-square"></i> Edit</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteTimeTable()"><i
+                                    class="bi bi-person-x"></i> Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
