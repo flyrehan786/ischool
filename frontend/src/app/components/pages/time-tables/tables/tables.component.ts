@@ -22,7 +22,7 @@ export class TablesComponent implements OnInit {
     'time_1PM_2PM' 
   ];
   rows;
-  filters = [ 'name' ];
+  filters = [ 'day_name' ];
   constructor(
     private _timeTableService: TimeTableService, 
     private _commonService: CommonService, 

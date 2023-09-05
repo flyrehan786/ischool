@@ -8,7 +8,8 @@ function validateTimeTable(subject) {
     time_8AM_9AM: Joi.string().min(3).max(45).required(),
     time_9AM_10AM: Joi.string().min(3).max(45).required(),
     time_10AM_11AM: Joi.string().min(3).max(45).required(),
-    time_12AM_1PM: Joi.string().min(3).max(45).required(),
+    time_11AM_12PM: Joi.string().min(3).max(45).required(),
+    time_12PM_1PM: Joi.string().min(3).max(45).required(),
     time_1PM_2PM: Joi.string().min(3).max(45).required(),
   };
   return Joi.validate(subject, schema);
@@ -17,7 +18,7 @@ async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM time_table`), [], (err, result) => {
       if (err) reject(err);
-      if (result.length > 0) resolve(result);
+      if (result && result.length > 0) resolve(result);
       else resolve([]);
     })
   })
@@ -33,9 +34,16 @@ async function findTimeTable(id) {
 }
 async function saveTimeTable(newTimeTable) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO time_table VALUES(default,?, NOW(), NOW())`,
+    db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?)`,
       [
-        newTimeTable.name,
+        newTimeTable.day_name,
+        newTimeTable.time_7AM_8AM,
+        newTimeTable.time_8AM_9AM,
+        newTimeTable.time_9AM_10AM,
+        newTimeTable.time_10AM_11AM,
+        newTimeTable.time_11AM_12PM,
+        newTimeTable.time_12PM_1PM,
+        newTimeTable.time_1PM_2PM,
       ], (err, result) => {
         if (err) reject(err);
         db.execute(`SELECT id FROM time_table WHERE id = LAST_INSERT_ID();`, (err, result) => {

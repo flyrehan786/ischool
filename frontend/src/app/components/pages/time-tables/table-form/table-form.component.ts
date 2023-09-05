@@ -125,13 +125,13 @@ export class TableFormComponent implements OnInit {
     this.timeTableId = this._route.snapshot.paramMap.get('id');
     if (this.timeTableId) {
       this.editMode = true;
-      this.formTitle = 'Edit Subject';
+      this.formTitle = 'Edit Time Table';
       this.getTimeTables();
     }
   }
   getTimeTables() {
-    this._timeTableService.getTimeTable(this.timeTableId).subscribe(subject => {
-      this.timeTable = subject;
+    this._timeTableService.getTimeTable(this.timeTableId).subscribe(timeTable => {
+      this.timeTable = timeTable;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.timeTable.name;
       })
@@ -143,7 +143,7 @@ export class TableFormComponent implements OnInit {
         (res: HttpResponse<any>) => {
           this.toastComponent.show('(Time Table Updated Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/subjects');
+            this._router.navigateByUrl('/time-tables');
           }, 1500)
         },
         (error) => {
@@ -156,7 +156,7 @@ export class TableFormComponent implements OnInit {
         (res: HttpResponse<any>) => {
           this.toastComponent.show('(Time Table Created Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/subjects');
+            this._router.navigateByUrl('/time-tables');
           }, 1500);
         },
         (error) => {

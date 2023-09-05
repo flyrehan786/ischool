@@ -1,71 +1,57 @@
-const { Student, validate } = require("../models/students");
+const { 
+  validate, 
+  findAll, 
+  findTimeTable, 
+  saveTimeTable, 
+  updateTimeTable, 
+  deleteTimeTable,
+} = require("../models/time-tables");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", auth, async (req, res) => {
-  const students = await Student.find()
-    .select("-__v")
-    .sort("name");
-  res.send(students);
+router.get("/", async (req, res) => {
+  const timeTables = await findAll();
+  res.send(timeTables);
 });
 
-router.post("/", auth, async (req, res) => {
+router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  const createdTimeTable = await saveTimeTable(req.body);
+  res.send(createdTimeTable);
+});
+router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let student = new Student({
-    name: req.body.name,
-    isGold: req.body.isGold,
-    phone: req.body.phone
-  });
-  student = await student.save();
-
-  res.send(student);
-});
-
-router.put("/:id", auth, async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const student = await Student.findByIdAndUpdate(
+  const updatedTimeTable = await updateTimeTable(
     req.params.id,
-    {
-      name: req.body.name,
-      isGold: req.body.isGold,
-      phone: req.body.phone
-    },
-    { new: true }
+    req.body
   );
 
-  if (!student)
+  if (!updatedTimeTable)
     return res
       .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+      .send("The time-table with the given ID was not found.");
+  res.send(updatedTimeTable);
 });
-
-router.delete("/:id", auth, async (req, res) => {
-  const student = await Student.findByIdAndRemove(req.params.id);
-
-  if (!student)
+router.delete("/:id", async (req, res) => {
+  const rowsAffected = await deleteTimeTable(req.params.id);
+  if (rowsAffected == false) {
     return res
-      .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+    .status(404)
+    .send("The time-table with the given ID was not found.");
+  }
+  res.send({ deleted: true });
 });
-
-router.get("/:id", auth, async (req, res) => {
-  const student = await Student.findById(req.params.id).select("-__v");
-
-  if (!student)
+router.get("/:id", async (req, res) => {
+  const timeTable = await findTimeTable(req.params.id);
+  if (!timeTable)
     return res
       .status(404)
-      .send("The student with the given ID was not found.");
-
-  res.send(student);
+      .send("The time-table with the given ID was not found.");
+  res.send(timeTable);
 });
 
 module.exports = router;

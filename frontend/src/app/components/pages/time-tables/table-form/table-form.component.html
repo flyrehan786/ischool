@@ -1,1 +1,9 @@
-<p>table-form works!</p>
+<br />
+<span *ngIf="!editMode">
+    <a routerLink="/time-tables">Back to List</a>
+</span>
+<span *ngIf="editMode">
+    <a routerLink="/time-table/details/{{ timeTableId }}">Go Back</a>
+</span>
+<core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
+<core-toast></core-toast>
