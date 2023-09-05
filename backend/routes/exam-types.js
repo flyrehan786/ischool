@@ -25,6 +25,7 @@ router.post("/", async (req, res) => {
   const createdExamType = await saveExamType(req.body);
   res.send(createdExamType);
 });
+
 router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -40,6 +41,7 @@ router.put("/:id", async (req, res) => {
       .send("The exam with the given ID was not found.");
   res.send(updatedExamType);
 });
+
 router.delete("/:id", async (req, res) => {
   const rowsAffected = await deleteExamType(req.params.id);
   if (rowsAffected == false) {
@@ -49,6 +51,7 @@ router.delete("/:id", async (req, res) => {
   }
   res.send({ deleted: true });
 });
+
 router.get("/:id", async (req, res) => {
   const examType = await findExamType(req.params.id);
   if (!examType)
