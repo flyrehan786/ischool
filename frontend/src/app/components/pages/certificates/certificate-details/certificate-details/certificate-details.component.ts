@@ -14,7 +14,7 @@ export class CertificateDetailsComponent implements OnInit {
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   constructor(private _certificateService: CertificatesService, private _route: ActivatedRoute, private _router: Router) { }
   ngOnInit(): void {
-    this.certificate = +this._route.snapshot.paramMap.get('id');
+    this.certificateId = +this._route.snapshot.paramMap.get('id');
     this.getCertificate();
   }
   getCertificate() {
@@ -28,7 +28,7 @@ export class CertificateDetailsComponent implements OnInit {
   }
   deleteCertificate() {
     if(confirm('Are you sure you want to delete this certificate?')) {
-      this._certificateService.deleteCertificate(this.certificate).subscribe(res => {
+      this._certificateService.deleteCertificate(this.certificateId).subscribe(res => {
         this._router.navigateByUrl('/certificates');
       },
       (error) => {

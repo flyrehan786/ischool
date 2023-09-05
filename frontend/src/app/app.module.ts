@@ -190,17 +190,17 @@ import { TypeFormComponent } from './components/pages/exam-types/type-form/type-
         canActivate: [AuthGuard]
       },
       {
-        path: 'certificates/new', 
+        path: 'certificate/new', 
         component: CertificateFormComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'certificates/edit/:id',
+        path: 'certificate/edit/:id',
         component: CertificateFormComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'certificates/details/:id',
+        path: 'certificate/details/:id',
         component: CertificateDetailsComponent,
         canActivate: [AuthGuard]
       },

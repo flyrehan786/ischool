@@ -33,7 +33,6 @@ export class SubjectFormComponent implements OnInit {
     },
   ];
   constructor(
-    private cdr: ChangeDetectorRef,
     private _route: ActivatedRoute, 
     private _subjectService: SubjectsService, 
     private _router: Router) { }
@@ -51,7 +50,6 @@ export class SubjectFormComponent implements OnInit {
       this.subject = subject;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.subject.name;
-        this.cdr.detectChanges();
       })
     })
   }

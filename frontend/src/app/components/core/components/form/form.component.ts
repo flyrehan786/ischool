@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox, TYPE_dropdown } from './deps/control-types';
 import { IControl } from './deps/IControl';
@@ -151,7 +151,7 @@ export class FormComponent implements OnInit, AfterViewChecked {
   @Output() submitted = new EventEmitter();
   @Input() title: string = 'Form Title @Input()';
   form: FormGroup;
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef,) { }
   ngAfterViewChecked(): void {
     setTimeout(() => {
       const inputElement = document.querySelector("input.radio-form");
@@ -163,6 +163,7 @@ export class FormComponent implements OnInit, AfterViewChecked {
         inputElement.dispatchEvent(changeEvent);
       }
     }, 1000);
+    this.cdr.detectChanges();
   }
   ngOnInit() {
     let controls = {};

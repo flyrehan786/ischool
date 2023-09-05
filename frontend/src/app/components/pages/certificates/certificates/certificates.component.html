@@ -7,5 +7,11 @@
     <button class="btn btn-info mt-4" routerLink="/certificate/new"> <i class="bi bi-card-checklist"></i> Issue</button>
    </div>
 </div>
-<core-table [title]="'Certificates'" [headers]="[]" [rows]="[]"
-    [filters]="[1,2,3,4]"></core-table>
+<core-table 
+    [eventLabel]="eventLabel"
+    [title]="'Certificate'"
+    [headers]="headers" 
+    [rows]="rows" 
+    [BACKUP]="rows" 
+    [filters]="filters">
+</core-table>

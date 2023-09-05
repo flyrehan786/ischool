@@ -11,7 +11,7 @@ import { CommonService } from 'src/app/services/common/common.service';
 export class CertificatesComponent implements OnInit {
   eventLabel = '_certificate_event';
   title;
-  headers;
+  headers = [ 'name', 'template' ];
   rows;
   filters = [ 'name' ];
   constructor(private _certificatesService: CertificatesService, private _commonService: CommonService, private _router: Router) { }
@@ -19,7 +19,7 @@ export class CertificatesComponent implements OnInit {
     this.getCertificates();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
-        this._router.navigateByUrl("/certifcate/details/" + e.id);
+        this._router.navigateByUrl("/certificate/details/" + e.id);
       }
     })
   }

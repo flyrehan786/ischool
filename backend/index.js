@@ -11,6 +11,7 @@ const studentRoute = require('./routes/students');
 const teacherRoute = require('./routes/teachers');
 const gradesRoute = require('./routes/grades');
 const subjectsRoute = require('./routes/subjects');
+const certificateRoute = require('./routes/certificates');
 
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoute);
@@ -18,6 +19,7 @@ app.use('/api/students', studentRoute);
 app.use('/api/teachers', teacherRoute);
 app.use('/api/grades', gradesRoute);
 app.use('/api/subjects', subjectsRoute);
+app.use('/api/certificates', certificateRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

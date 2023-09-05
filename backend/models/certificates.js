@@ -29,7 +29,7 @@ async function findCertificate(id) {
 }
 async function saveCertificate(newCertificate) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO certificates VALUES(default,?,? NOW(), NOW())`,
+    db.execute(`INSERT INTO certificates VALUES(default,?,?, NOW(), NOW())`,
       [
         newCertificate.name,
         newCertificate.template,
