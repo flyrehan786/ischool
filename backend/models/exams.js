@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-
 function validateExam(student) {
   const schema = {
     type_id: Joi.string().min(1).max(1).required(),
@@ -9,6 +8,7 @@ function validateExam(student) {
   };
   return Joi.validate(student, schema);
 }
+
 async function findAll() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM exams`), [], (err, result) => {
@@ -18,6 +18,7 @@ async function findAll() {
     })
   })
 }
+
 async function findExam(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM exams WHERE id=?`, [id], (err, result) => {
@@ -27,6 +28,7 @@ async function findExam(id) {
     });
   })
 }
+
 async function saveExam(newExam) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO exams VALUES(default,?,?, NOW(), NOW())`,
@@ -39,11 +41,11 @@ async function saveExam(newExam) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM exams WHERE id = ?;`,[insertedId], (err, result) => {
+            db.execute(`SELECT * FROM exams WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
-              } else {}
+              } else { }
             });
           }
           else resolve(null);
@@ -51,6 +53,7 @@ async function saveExam(newExam) {
       });
   })
 }
+
 async function updateExam(id, updatedExam) {
   return new Promise((resolve, reject) => {
     db.execute(`Update exams SET type_id=?, name=? WHERE id=?;`,
@@ -68,6 +71,7 @@ async function updateExam(id, updatedExam) {
       })
   })
 }
+
 async function deleteExam(id) {
   return new Promise((resolve, reject) => {
     db.execute(`DELETE FROM exams WHERE id = ${id};`, (err, result) => {
@@ -75,8 +79,8 @@ async function deleteExam(id) {
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
     })
-    });
- }
+  });
+}
 
 exports.validate = validateExam;
 exports.findAll = findAll;
