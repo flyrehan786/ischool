@@ -49,10 +49,10 @@ export class TableComponent implements OnInit {
     if (keyword.length > 0) {
       this.rows = this.BACKUP.filter(x => {
         let flag = false;
-          const value = x[option];
-          if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
-            flag = true;
-          }
+        const value = x[option];
+        if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
+          flag = true;
+        }
         return flag;
       })
     }
@@ -120,11 +120,11 @@ export class TableComponent implements OnInit {
       else return 'x';
     } else return 'x'
   }
-  reset() { 
+  reset() {
     this.rows = JSON.parse(JSON.stringify(this.BACKUP));
-   }
+  }
   filterDataByDate() {
-    let fromDateControl = document.getElementById('from_date') ;
+    let fromDateControl = document.getElementById('from_date');
     let toDateControl = document.getElementById('to_date');
     const fromDate = (fromDateControl as any).value;
     const toDate = (toDateControl as any).value;
@@ -132,7 +132,7 @@ export class TableComponent implements OnInit {
     if (fromDate && toDate) {
       const from = new Date(fromDate).toLocaleDateString();
       const to = new Date(toDate).toLocaleDateString();
-      this.rows =  this.BACKUP.filter((item) => {
+      this.rows = this.BACKUP.filter((item) => {
         const date = new Date(item['created_at']).toLocaleDateString();
         return date >= from && date <= to;
       });
@@ -197,11 +197,29 @@ export class TableComponent implements OnInit {
       rows += `<tr />`;
     }
     return rows;
-  } 
+  }
   infoButtonClick(id) {
     this.commonService.publishEvent({
-        event: this.eventLabel,
-        id
+      event: this.eventLabel,
+      id
     });
+  }
+  convertToReadableString(inputString) {
+    let result = '';
+    if (inputString.match(/(\d+[APMpm]+)_(\d+[APMpm]+)/)) {
+        const match = inputString.match(/(\d+[APMpm]+)_(\d+[APMpm]+)/);
+        if (match && match.length === 3) {
+            const startTime = match[1].replace(/([APMpm])/, ':00 $1');
+            const endTime = match[2].replace(/([APMpm])/, ':00 $1');
+            result = startTime + ' - ' + endTime;
+        }
+    } else {
+        const words = inputString.split('_').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        });
+        result = words.join(' ');
+    }
+
+    return result;
   }
 }
