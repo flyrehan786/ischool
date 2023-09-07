@@ -9,9 +9,9 @@ import { StudentsService } from 'src/app/services/students/students.service';
   styleUrls: ['./student-detail.component.css']
 })
 export class StudentDetailComponent implements OnInit {
+  isLoading = false;
   student: any;
   studentId: number;
-  isLoading = false;
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   constructor(private _studentService: StudentsService, private _route: ActivatedRoute, private _router: Router) { }
 
@@ -21,8 +21,10 @@ export class StudentDetailComponent implements OnInit {
   }
 
   getStudent() {
+    this.isLoading = true;
     this._studentService.getStudent(this.studentId).subscribe(student => {
       this.student = student;
+      this.isLoading = false;
     },
     (error) => {
       console.error('An error occurred:', error);
