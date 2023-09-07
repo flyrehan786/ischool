@@ -63,6 +63,10 @@ import { DetailsComponent } from './components/core/components/details/details.c
 import { FormComponent } from './components/core/components/form/form.component';
 import { TableComponent } from './components/core/components/table/table.component';
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
+import { StudentEnrollComponent } from './components/pages/students/student-enroll/student-enroll/student-enroll.component';
+import { StudentExamResultsComponent } from './components/pages/students/student-exam-results/student-exam-results/student-exam-results.component';
+import { StudentIssueCertificateComponent } from './components/pages/students/student-issue-certificate/student-issue-certificate/student-issue-certificate.component';
+import { StudentFeePaymentsComponent } from './components/pages/students/student-fee-payments/student-fee-payments/student-fee-payments.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +120,10 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
     TypesComponent,
     TypeDetailsComponent,
     TypeFormComponent,
+    StudentEnrollComponent,
+    StudentExamResultsComponent,
+    StudentIssueCertificateComponent,
+    StudentFeePaymentsComponent,
   ],
   imports: [
     BrowserModule,
