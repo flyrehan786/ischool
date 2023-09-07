@@ -6,11 +6,16 @@
     <button class="btn btn-primary mt-4" routerLink="/student/new"><i class="bi bi-person-plus-fill"></i> Add New</button>
    </div>
 </div>
-<core-table 
-    [eventLabel]="eventLabel"
-    [title]="'Students'"
-    [headers]="headers" 
-    [rows]="rows" 
-    [BACKUP]="rows" 
-    [filters]="filters">
-</core-table>
+<section *ngIf="isLoading == true">
+<img src="../../../../../assets/loader.gif" alt="" width="50px">
+</section>
+<section  *ngIf="isLoading == false">
+    <core-table
+        [eventLabel]="eventLabel"
+        [title]="'Students'"
+        [headers]="headers"
+        [rows]="rows"
+        [BACKUP]="rows"
+        [filters]="filters">
+    </core-table>
+</section>

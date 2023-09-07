@@ -9,8 +9,8 @@ import { StudentsService } from 'src/app/services/students/students.service';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
+  isLoading =  false;
   eventLabel = '_students_events';
-  isLoading = false;
   headers = [
     'id',
     'first_name',
@@ -97,8 +97,10 @@ export class StudentsComponent implements OnInit {
     })
   }
   getStudents() {
+    this.isLoading = true;
     this._studentService.getStudents().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }
