@@ -232,26 +232,6 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
         canActivate: [AuthGuard]
       },
       {
-        path: 'exams', 
-        component: ExamsComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'exam/new', 
-        component: ExamFormComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'exam/edit/:id',
-        component: ExamFormComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'exam/details/:id',
-        component: ExamDetailsComponent,
-        canActivate: [AuthGuard]
-      },
-      {
         path: 'exam-types', 
         component: TypesComponent,
         canActivate: [AuthGuard]
@@ -269,6 +249,26 @@ import { ToastComponent } from './components/core/components/toast/toast/toast.c
       {
         path: 'exam-type/details/:id',
         component: TypeDetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exams', 
+        component: ExamsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam/new', 
+        component: ExamFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam/edit/:id',
+        component: ExamFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'exam/details/:id',
+        component: ExamDetailsComponent,
         canActivate: [AuthGuard]
       },
       {

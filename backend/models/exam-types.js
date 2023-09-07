@@ -30,18 +30,19 @@ async function findExamType(id) {
 
 async function saveExamType(newExamType) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO exam_types VALUES(default,?,?, NOW(), NOW())`,
+    console.log(newExamType);
+    db.execute(`INSERT INTO exam_types VALUES(default,?, NOW(), NOW())`,
       [
         newExamType.name,
       ], (err, result) => {
         if (err) reject(err);
         db.execute(`SELECT id FROM exam_types WHERE id = LAST_INSERT_ID();`, (err, result) => {
           if (err) reject(err);
-          if (result.length > 0) {
+          if (result && result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM exam_type WHERE id = ?;`, [insertedId], (err, result) => {
+            db.execute(`SELECT * FROM exam_types WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
-              if (result.length > 0) {
+              if (result && result.length > 0) {
                 resolve(result[0]);
               } else { }
             });
@@ -54,7 +55,7 @@ async function saveExamType(newExamType) {
 
 async function updateExamType(id, updatedExamType) {
   return new Promise((resolve, reject) => {
-    db.execute(`Update exam_type SET name=? WHERE id=?;`,
+    db.execute(`Update exam_types SET name=? WHERE id=?;`,
       [
         updatedExamType.name,
         id
