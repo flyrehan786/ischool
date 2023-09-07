@@ -180,7 +180,7 @@ export class TableComponent implements OnInit {
     let headers = `<tr><th>#</th>`;
     for (let i = 0; i < this.headers.length; i++) {
       const element = this.headers[i];
-      headers += `<th>${element}</th>`;
+      headers += `<th>${this.convertToReadableString(element)}</th>`;
     }
     headers += `<tr />`;
     return headers;
