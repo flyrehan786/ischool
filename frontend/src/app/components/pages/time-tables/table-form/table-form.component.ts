@@ -145,7 +145,15 @@ export class TableFormComponent implements OnInit {
     this._timeTableService.getTimeTable(this.timeTableId).subscribe(timeTable => {
       this.timeTable = timeTable;
       this.config.forEach(c => {
-        if (c.key == 'name') c.defaultValue = this.timeTable.name;
+        if (c.key == 'day_name') c.defaultValue = this.timeTable.day_name;
+        if (c.key == 'grade_id') c.defaultValue = this.timeTable.grade_id;
+        if (c.key == 'time_7AM_8AM') c.defaultValue = this.timeTable.time_7AM_8AM;
+        if (c.key == 'time_8AM_9AM') c.defaultValue = this.timeTable.time_8AM_9AM;
+        if (c.key == 'time_9AM_10AM') c.defaultValue = this.timeTable.time_9AM_10AM;
+        if (c.key == 'time_10AM_11AM') c.defaultValue = this.timeTable.time_10AM_11AM;
+        if (c.key == 'time_11AM_12PM') c.defaultValue = this.timeTable.time_11AM_12PM;
+        if (c.key == 'time_12PM_1PM') c.defaultValue = this.timeTable.time_12PM_1PM;
+        if (c.key == 'time_1PM_2PM') c.defaultValue = this.timeTable.time_1PM_2PM;
       })
     })
   }
