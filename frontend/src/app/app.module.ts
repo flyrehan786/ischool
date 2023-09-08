@@ -68,6 +68,9 @@ import { StudentExamResultsComponent } from './components/pages/students/student
 import { StudentIssueCertificateComponent } from './components/pages/students/student-issue-certificate/student-issue-certificate/student-issue-certificate.component';
 import { StudentFeePaymentsComponent } from './components/pages/students/student-fee-payments/student-fee-payments/student-fee-payments.component';
 
+// Routes
+import { HomrROute}
+
 @NgModule({
   declarations: [
     AppComponent,
