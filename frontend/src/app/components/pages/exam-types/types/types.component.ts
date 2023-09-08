@@ -9,6 +9,7 @@ import { ExamTypeService } from 'src/app/services/exam-type/exam-type.service';
   styleUrls: ['./types.component.css']
 })
 export class TypesComponent implements OnInit {
+  isLoading = false;
   eventLabel = '_exam_type_event';
   title = 'Exam Types';
   headers = [ 'id', 'name', 'created_at', 'updated_at'];
@@ -24,8 +25,10 @@ export class TypesComponent implements OnInit {
     })
   }
   getExamTypes() {
+    this.isLoading = true;
     this._examTypeService.getExamTypes().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }
