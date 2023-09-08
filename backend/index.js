@@ -23,6 +23,7 @@ app.use('/api/students', studentRoute);
 app.use('/api/teachers', teacherRoute);
 app.use('/api/grades', gradesRoute);
 app.use('/api/subjects', subjectsRoute);
+app.use('/api/certificates', certificateRoute);
 app.use('/api/time-tables', timeTableRoute);
 app.use('/api/exam-types', examTypesRoute);
 
