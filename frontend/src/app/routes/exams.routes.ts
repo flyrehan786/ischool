@@ -4,7 +4,7 @@ import { ExamDetailsComponent } from '../components/pages/exams/exam-details/exa
 import { ExamFormComponent } from '../components/pages/exams/exam-form/exam-form/exam-form.component';
 import { ExamsComponent } from '../components/pages/exams/exams/exams/exams.component';
 
-export const teacherRoutes: Routes = [
+export const examRoutes: Routes = [
     {
         path: 'exams',
         component: ExamsComponent,

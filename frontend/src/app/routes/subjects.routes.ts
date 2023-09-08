@@ -4,7 +4,7 @@ import { SubjectDetailsComponent } from '../components/pages/subjects/subject-de
 import { SubjectFormComponent } from '../components/pages/subjects/subject-form/subject-form/subject-form.component';
 import { SubjectsComponent } from '../components/pages/subjects/subjects/subjects/subjects.component';
 
-export const teacherRoutes: Routes = [
+export const subjectRoutes: Routes = [
     {
         path: 'subjects',
         component: SubjectsComponent,

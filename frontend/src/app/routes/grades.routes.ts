@@ -5,7 +5,7 @@ import { GradesComponent } from '../components/pages/grades/grades/grades.compon
 import { GradeDetailsComponent } from '../components/pages/grades/grade-details/grade-details.component';
 import { GradeFormComponent } from '../components/pages/grades/grade-form/grade-form.component';
 
-export const teacherRoutes: Routes = [
+export const gradeRoutes: Routes = [
   {
     path: 'grades',
     component: GradesComponent,

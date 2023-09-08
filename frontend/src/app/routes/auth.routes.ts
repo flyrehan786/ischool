@@ -4,7 +4,7 @@ import { LoginComponent } from '../components/pages/auth/login/login.component';
 import { RegisterComponent } from '../components/pages/auth/register/register.component';
 import { UsersComponent } from '../components/pages/auth/users/users.component';
 
-export const teacherRoutes: Routes = [
+export const authRoutes: Routes = [
     {
         path: 'auth/login',
         component: LoginComponent

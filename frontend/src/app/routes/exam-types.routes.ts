@@ -4,7 +4,7 @@ import { TypeDetailsComponent } from '../components/pages/exam-types/type-detail
 import { TypeFormComponent } from '../components/pages/exam-types/type-form/type-form.component';
 import { TypesComponent } from '../components/pages/exam-types/types/types.component';
 
-export const teacherRoutes: Routes = [
+export const examTypeRoutes: Routes = [
     {
         path: 'exam-types',
         component: TypesComponent,

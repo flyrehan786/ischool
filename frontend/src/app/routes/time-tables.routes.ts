@@ -4,7 +4,7 @@ import { TableDetailComponent } from '../components/pages/time-tables/table-deta
 import { TableFormComponent } from '../components/pages/time-tables/table-form/table-form.component';
 import { TablesComponent } from '../components/pages/time-tables/tables/tables.component';
 
-export const teacherRoutes: Routes = [
+export const timeTableRoutes: Routes = [
     {
         path: 'time-tables',
         component: TablesComponent,

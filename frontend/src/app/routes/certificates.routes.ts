@@ -4,7 +4,7 @@ import { CertificateDetailsComponent } from '../components/pages/certificates/ce
 import { CertificateFormComponent } from '../components/pages/certificates/certificate-form/certificate-form/certificate-form.component';
 import { CertificatesComponent } from '../components/pages/certificates/certificates/certificates.component';
 
-export const teacherRoutes: Routes = [
+export const certificateRoutes: Routes = [
     {
         path: 'certificates',
         component: CertificatesComponent,
