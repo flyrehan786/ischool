@@ -15,7 +15,7 @@ export class TablesComponent implements OnInit {
     'day_name', 
     'time_7AM_8AM', 
     'time_8AM_9AM', 
-    'time_9PM_10PM', 
+    'time_9AM_10AM', 
     'time_10AM_11AM', 
     'time_11AM_12PM', 
     'time_12PM_1PM', 
