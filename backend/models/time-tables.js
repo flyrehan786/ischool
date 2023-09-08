@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
-
 function validateTimeTable(subject) {
   const schema = {
     day_name: Joi.string().min(3).max(45).required(),
+    grade_id: Joi.string().min(1).max(45).required(),
     time_7AM_8AM: Joi.string().min(3).max(45).required(),
     time_8AM_9AM: Joi.string().min(3).max(45).required(),
     time_9AM_10AM: Joi.string().min(3).max(45).required(),
@@ -37,9 +37,10 @@ async function findTimeTable(id) {
 
 async function saveTimeTable(newTimeTable) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?)`,
+    db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?,?)`,
       [
         newTimeTable.day_name,
+        newTimeTable.grade_id,
         newTimeTable.time_7AM_8AM,
         newTimeTable.time_8AM_9AM,
         newTimeTable.time_9AM_10AM,
@@ -68,9 +69,17 @@ async function saveTimeTable(newTimeTable) {
 
 async function updateTimeTable(id, updatedSubject) {
   return new Promise((resolve, reject) => {
-    db.execute(`Update time_table SET name=? WHERE id=?;`,
+    db.execute(`Update time_table SET day_name=?, grade_id=?, time_7AM_8AM=?, time_8AM_9AM=?, time_9AM_10AM=?, time_10AM_11AM=?, time_11AM_12PM=?, time_12PM_1PM=?, time_1PM_2PM=?  WHERE id=?;`,
       [
-        updatedSubject.name,
+        updatedSubject.day_name,
+        updatedSubject.grade_id,
+        updatedSubject.time_7AM_8AM,
+        updatedSubject.time_8AM_9AM,
+        updatedSubject.time_9AM_10AM,
+        updatedSubject.time_10AM_11AM,
+        updatedSubject.time_11AM_12PM,
+        updatedSubject.time_12PM_1PM,
+        updatedSubject.time_1PM_2PM,
         id
       ], (err, result) => {
         if (err) reject(err);

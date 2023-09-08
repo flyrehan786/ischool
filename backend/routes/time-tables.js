@@ -6,12 +6,18 @@ const {
   updateTimeTable, 
   deleteTimeTable,
 } = require("../models/time-tables");
+const gradeModel = require('../models/grade');
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   const timeTables = await findAll();
+  const grades = await gradeModel.findAll();
+  timeTables.forEach(t => {
+    const grade = grades.find(x => t.grade_id == x.id);
+    if(grade) t.grade = grade['name'];
+  });
   res.send(timeTables);
 });
 

@@ -21,8 +21,9 @@
             [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
           <input *ngSwitchCase="'password'" [type]="control.type" [formControlName]="control.key"
             [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control" />
-          <select *ngSwitchCase="'dropdown'" class="form-select" [(ngModel)]="control.defaultValue">
-            <option selected>Open this select menu</option>
+            <!-- {{ control | json  }} -->
+          <select *ngSwitchCase="'dropdown'" class="form-select" [formControlName]="control.key">
+            <option selected>Select</option>
             <option *ngFor="let option of control.options" [value]="option.key">{{ option.value }}</option>
           </select>
           <textarea *ngSwitchCase="'textarea'" cols="30" rows="10" formControlName="{{ control.key }}"

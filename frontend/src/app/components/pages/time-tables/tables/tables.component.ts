@@ -13,6 +13,7 @@ export class TablesComponent implements OnInit {
   title;
   headers = [ 
     'day_name', 
+    'grade', 
     'time_7AM_8AM', 
     'time_8AM_9AM', 
     'time_9AM_10AM', 

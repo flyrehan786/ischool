@@ -2,9 +2,10 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
-import { TYPE_text } from 'src/app/components/core/components/form/deps/control-types';
+import { TYPE_dropdown, TYPE_text } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
+import { GradesService } from 'src/app/services/grades/grades.service';
 import { TimeTableService } from 'src/app/services/time-table/time-table.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class TableFormComponent implements OnInit {
   timeTableId;
   editMode = false;
   timeTable;
+  grades;
   formTitle = 'New Time Table';
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
@@ -28,6 +30,14 @@ export class TableFormComponent implements OnInit {
           { key: 'minLength', value: '5', message: VALIDATION_MESSAGES.minlength(5) },
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
+    {
+      type: TYPE_dropdown,
+      key: 'grade_id', defaultValue: '', label: 'Grade',
+      options: [],
+      validators: [],
       visible: true,
       bsCols: 'col-md-2'
     },
@@ -119,9 +129,11 @@ export class TableFormComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute, 
     private _timeTableService: TimeTableService, 
+    private _gradesService: GradesService,
     private _router: Router) { }
 
   ngOnInit(): void {
+    this.getGrades();
     this.timeTableId = this._route.snapshot.paramMap.get('id');
     if (this.timeTableId) {
       this.editMode = true;
@@ -134,6 +146,21 @@ export class TableFormComponent implements OnInit {
       this.timeTable = timeTable;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.timeTable.name;
+      })
+    })
+  }
+  getGrades() {
+    this._gradesService.getGrades().subscribe(grades => {
+      this.grades = grades;
+      this.setupGradesFormControlOptions();
+    })
+  }
+  setupGradesFormControlOptions() {
+    this.grades.forEach(g => {
+      this.config.forEach(x => {
+        if (x.key == 'grade_id') {
+          x.options.push({ key: g.id, value: g.name })
+        }
       })
     })
   }
