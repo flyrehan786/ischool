@@ -67,9 +67,21 @@ import { StudentEnrollComponent } from './components/pages/students/student-enro
 import { StudentExamResultsComponent } from './components/pages/students/student-exam-results/student-exam-results/student-exam-results.component';
 import { StudentIssueCertificateComponent } from './components/pages/students/student-issue-certificate/student-issue-certificate/student-issue-certificate.component';
 import { StudentFeePaymentsComponent } from './components/pages/students/student-fee-payments/student-fee-payments/student-fee-payments.component';
+import { homeRoutes } from './routes/home.routes';
+import { studentRoutes } from './routes/students.routes';
+import { teacherRoutes } from './routes/teacher.routes';
+import { gradeRoutes } from './routes/grades.routes';
+import { examTypeRoutes } from './routes/exam-types.routes';
+import { examRoutes } from './routes/exams.routes';
+import { subjectRoutes } from './routes/subjects.routes';
+import { certificateRoutes } from './routes/certificates.routes';
+import { reportsRoutes } from './routes/reports.routes';
+import { notificationRoutes } from './routes/notification.routes';
+import { settingsRoutes } from './routes/settings.routes';
+import { authRoutes } from './routes/auth.routes';
+import { timeTableRoutes } from './routes/time-tables.routes';
 
 // Routes
-import { HomrROute}
 
 @NgModule({
   declarations: [
@@ -80,21 +92,21 @@ import { HomrROute}
     LoginComponent,
     RegisterComponent,
     UsersComponent,
-    
+
     HomeComponent,
     TableComponent,     // CORE
     FormComponent,      // CORE
     DetailsComponent,   // CORE
     ToastComponent,     // CORE
-    
+
     StudentsComponent,
     StudentFormComponent,
     StudentDetailComponent,
-    
+
     TeachersComponent,
     TeacherFormComponent,
     TeacherDetailComponent,
-    
+
     CertificatesComponent,
     CertificateFormComponent,
     CertificateDetailsComponent,
@@ -111,15 +123,15 @@ import { HomrROute}
     ExamDetailsComponent,
 
     NotificationsComponent,
-    
+
     TableFormComponent,
     TablesComponent,
     TableDetailComponent,
-    
+
     GradesComponent,
     GradeFormComponent,
     GradeDetailsComponent,
-    
+
     TypesComponent,
     TypeDetailsComponent,
     TypeFormComponent,
@@ -136,6 +148,19 @@ import { HomrROute}
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot([
+      ...homeRoutes, 
+      ...studentRoutes, 
+      ...teacherRoutes, 
+      ...gradeRoutes, 
+      ...subjectRoutes, 
+      ...timeTableRoutes,
+      ...examTypeRoutes, 
+      ...examRoutes, 
+      ...certificateRoutes, 
+      ...reportsRoutes, 
+      ...notificationRoutes, 
+      ...settingsRoutes, 
+      ...authRoutes
     ])
   ],
   providers: [],
