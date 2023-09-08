@@ -9,6 +9,7 @@ import { TeachersService } from 'src/app/services/teachers/teachers.service';
   styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
+  isLoading = false;
   eventLabel="_teachers_events";
   headers = [
     'id',
@@ -43,8 +44,10 @@ export class TeachersComponent implements OnInit {
     })
   }
   getTeachers() {
+    this.isLoading = true;
     this._teacherService.getTeachers().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }
