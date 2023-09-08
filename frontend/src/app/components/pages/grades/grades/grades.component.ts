@@ -9,6 +9,7 @@ import { GradesService } from 'src/app/services/grades/grades.service';
   styleUrls: ['./grades.component.css']
 })
 export class GradesComponent implements OnInit {
+  isLoading = false;
   eventLabel = '_grade_event';
   title;
   headers = [ 'id', 'name', 'created_at', 'updated_at'];
@@ -24,8 +25,10 @@ export class GradesComponent implements OnInit {
     })
   }
   getGrades() {
+    this.isLoading = true;
     this._gradeService.getGrades().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }
