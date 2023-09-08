@@ -9,6 +9,7 @@ import { TimeTableService } from 'src/app/services/time-table/time-table.service
   styleUrls: ['./tables.component.css']
 })
 export class TablesComponent implements OnInit {
+  isLoading = false;
   eventLabel = '_timetable_event';
   title;
   headers = [ 
@@ -37,8 +38,10 @@ export class TablesComponent implements OnInit {
     })
   }
   getTimeTables() {
+    this.isLoading = true;
     this._timeTableService.getTimeTables().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }

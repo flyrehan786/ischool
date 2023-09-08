@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common/common.service';
   styleUrls: ['./certificates.component.css']
 })
 export class CertificatesComponent implements OnInit {
+  isLoading = false;
   eventLabel = '_certificate_event';
   title;
   headers = [ 'name', 'template' ];
@@ -24,8 +25,10 @@ export class CertificatesComponent implements OnInit {
     })
   }
   getCertificates() {
+    this.isLoading = true;
     this._certificatesService.getCertificates().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }

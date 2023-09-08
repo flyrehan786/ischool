@@ -9,6 +9,7 @@ import { SubjectsService } from 'src/app/services/subjects/subjects.service';
   styleUrls: ['./subjects.component.css']
 })
 export class SubjectsComponent implements OnInit {
+  isLoading = false;
   eventLabel = '_subject_event';
   title = 'Subjects';
   headers = [ 'id', 'name', 'created_at', 'updated_at'];
@@ -24,8 +25,10 @@ export class SubjectsComponent implements OnInit {
     })
   }
   getSubjects() {
+    this.isLoading = true;
     this._subjectService.getSubjects().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 
