@@ -9,18 +9,39 @@
 </section>
 <hr />
 <section class="mt-5 d-flex justify-content-between">
-    <div class="d-flex">
-        <input type="text" placeholder="Find..." class="form-control me-2" (keyup)="filter($event.target.value)">
-        <label for="" class="mt-2 me-2">From:</label> <input id="from_date" type="date" placeholder="Find..."
-            class="form-control me-2" (keyup)="filter($event.target.value)">
-        <label for="" class="mt-2 me-2">To:</label> <input id="to_date" type="date" placeholder="Find..."
-            class="form-control me-2" (keyup)="filter($event.target.value)">
-        <button class="btn btn-primary me-2" (click)="filterDataByDate()"><i class="bi bi-funnel-fill"></i></button>
-        <button class="btn btn-warning me-2" (click)="reset()"><i class="bi bi-arrow-clockwise"></i></button>
-        <button class="btn btn-info" (click)="printTable()"><i class="bi bi-printer-fill"></i></button>
-    </div>
     <div>
         <table>
+            <tr>
+                <td>
+                    <br />
+                    <input type="text" placeholder="Find..." class="form-control me-4 mt-2" (keyup)="filter($event.target.value)">
+                </td>
+                <td>
+                    <label for="" class="mt-2 me-2">From:</label> <input id="from_date" type="date" placeholder="Find..."
+                    class="form-control me-2" (keyup)="filter($event.target.value)">
+                </td>
+                <td>
+                    <label for="" class="mt-2 me-2">To:</label> <input id="to_date" type="date" placeholder="Find..."
+                    class="form-control me-2" (keyup)="filter($event.target.value)">
+                </td>
+                <td>
+                    <br />
+                    <button class="btn btn-primary me-2 mt-2" (click)="filterDataByDate()"><i class="bi bi-funnel-fill"></i> Filter</button>
+                </td>
+                <td>
+                    <br />
+                    <button class="btn btn-warning me-2 mt-2" (click)="reset()"><i class="bi bi-arrow-clockwise"></i> Reset Data</button>
+                </td>
+                <td>
+                    <br />
+                    <button class="btn btn-primary mt-2" (click)="printTable()"><i class="bi bi-printer-fill"></i> Print Data</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br />
+        <table class="mt-2">
             <tr>
                 <td>
                     <select name="" id="" class="form-control" [(ngModel)]="itemsPerPage">
@@ -39,7 +60,7 @@
 </section>
 <section>
     <table class="table mt-3">
-        <thead class="thead-border-top table-dark">
+        <thead class="thead-border-top table-primary">
             <tr>
                 <th class="th-border-left th-border-bottom">#</th>
                 <th class="th-border-bottom" *ngFor="let item of headers">{{ convertToReadableString(item) }}</th>
@@ -65,8 +86,8 @@
                     </p>
                 </td>
                 <td class="td-border-right">
-                    <button class="btn btn-sm btn-info me-2" (click)="infoButtonClick(row.id)">
-                        <i class="bi bi-info-circle"></i>
+                    <button class="btn btn-sm btn-primary me-2" (click)="infoButtonClick(row.id)">
+                        <i class="bi bi-info-circle"></i> Details
                     </button>
                 </td>
             </tr>

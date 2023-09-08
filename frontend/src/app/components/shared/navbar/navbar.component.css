@@ -1,7 +1,7 @@
 .navbar {
     padding-top: 14px;
     padding-bottom: 14px;
-    background-color: #911a1a !important
+    color: #fff;
 }
 .nav-link.active {
     margin-left: 14px;
@@ -20,11 +20,11 @@
 #auth-options {
     margin-left: -40px;
 }
-#search-option {    
+/* #search-option {    
     background-color: black;
     color: #fff;
     border: 1px solid #373636;
-}
+} */
 #search-option::placeholder {
     color: #707070;
   }
