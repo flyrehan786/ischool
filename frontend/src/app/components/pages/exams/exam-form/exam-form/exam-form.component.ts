@@ -2,9 +2,10 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
-import { TYPE_text } from 'src/app/components/core/components/form/deps/control-types';
+import { TYPE_dropdown, TYPE_text } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
+import { ExamTypeService } from 'src/app/services/exam-type/exam-type.service';
 import { ExamsService } from 'src/app/services/exams/exams.service';
 
 @Component({
@@ -20,6 +21,14 @@ export class ExamFormComponent implements OnInit {
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   config: IControl[] = [
     {
+      type: TYPE_dropdown,
+      key: 'exam_type_id', defaultValue: '', label: 'Exam Type',
+      options: [],
+      validators: [],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
+    {
       type: TYPE_text,
       key: 'name', defaultValue: '', label: 'Name',
       validators:
@@ -32,12 +41,15 @@ export class ExamFormComponent implements OnInit {
       bsCols: 'col-md-2'
     },
   ];
+  examTypes;
   constructor(
     private _route: ActivatedRoute, 
     private _examService: ExamsService, 
+    private _examTypeService: ExamTypeService,
     private _router: Router) { }
 
   ngOnInit(): void {
+    this.getExamTypes();
     this.examId = this._route.snapshot.paramMap.get('id');
     if (this.examId) {
       this.editMode = true;
@@ -50,6 +62,21 @@ export class ExamFormComponent implements OnInit {
       this.exam = exam;
       this.config.forEach(c => {
         if (c.key == 'name') c.defaultValue = this.exam.name;
+      })
+    })
+  }
+  getExamTypes() {
+    this._examTypeService.getExamTypes().subscribe(examTypes => {
+      this.examTypes = examTypes;
+      this.setupGradesFormControlOptions();
+    })
+  }
+  setupGradesFormControlOptions() {
+    this.examTypes.forEach(t => {
+      this.config.forEach(x => {
+        if (x.key == 'exam_type_id') {
+          x.options.push({ key: t.id, value: t.name })
+        }
       })
     })
   }
@@ -72,7 +99,7 @@ export class ExamFormComponent implements OnInit {
         (res: HttpResponse<any>) => {
           this.toastComponent.show('(Exam Created Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/exam');
+            this._router.navigateByUrl('/exams');
           }, 1500);
         },
         (error) => {

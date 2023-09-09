@@ -16,6 +16,7 @@ const subjectsRoute = require('./routes/subjects');
 const certificateRoute = require('./routes/certificates');
 const timeTableRoute = require('./routes/time-tables');
 const examTypesRoute = require('./routes/exam-types');
+const examsRoute = require('./routes/exams');
 
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoute);
@@ -26,6 +27,7 @@ app.use('/api/subjects', subjectsRoute);
 app.use('/api/certificates', certificateRoute);
 app.use('/api/time-tables', timeTableRoute);
 app.use('/api/exam-types', examTypesRoute);
+app.use('/api/exams', examsRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

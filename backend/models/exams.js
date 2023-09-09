@@ -3,8 +3,8 @@ const db = require('../services/mysql').db;
 
 function validateExam(student) {
   const schema = {
-    type_id: Joi.string().min(1).max(1).required(),
-    name: Joi.string().min(1).max(1).required(),
+    exam_type_id: Joi.string().min(1).max(45).required(),
+    name: Joi.string().min(1).max(45).required(),
   };
   return Joi.validate(student, schema);
 }
@@ -33,7 +33,7 @@ async function saveExam(newExam) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO exams VALUES(default,?,?, NOW(), NOW())`,
       [
-        newExam.type_id,
+        newExam.exam_type_id,
         newExam.name,
       ], (err, result) => {
         if (err) reject(err);
