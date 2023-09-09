@@ -1,1 +1,9 @@
-<p>exam-form works!</p>
+<br />
+<span *ngIf="!editMode">
+    <a routerLink="/exams">Back to List</a>
+</span>
+<span *ngIf="editMode">
+    <a routerLink="/exam/details/{{ examId }}">Go Back</a>
+</span>
+<core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
+<core-toast></core-toast>
