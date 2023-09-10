@@ -9,15 +9,15 @@ import { ExamsService } from 'src/app/services/exams/exams.service';
   styleUrls: ['./exam-details.component.css']
 })
 export class ExamDetailsComponent implements OnInit {
-  examId;
   exam;
+  examId;
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   constructor(private _examService: ExamsService, private _route: ActivatedRoute, private _router: Router) { }
   ngOnInit(): void {
-    this.exam = +this._route.snapshot.paramMap.get('id');
-    this.getSubject();
+    this.examId = +this._route.snapshot.paramMap.get('id');
+    this.getExam();
   }
-  getSubject() {
+  getExam() {
     this._examService.getExam(this.examId).subscribe(exam => {
       this.exam = exam;
     },
@@ -28,7 +28,7 @@ export class ExamDetailsComponent implements OnInit {
   }
   deleteExam() {
     if(confirm('Are you sure you want to delete this exam?')) {
-      this._examService.deleteExam(this.exam).subscribe(res => {
+      this._examService.deleteExam(this.examId).subscribe(res => {
         this._router.navigateByUrl('/exams');
       },
       (error) => {

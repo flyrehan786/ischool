@@ -1,1 +1,38 @@
-<p>exam-details works!</p>
+<br />
+<a class="mt-4" routerLink="/exams">Go Back</a>
+<h1 class="mt-4 mb-4">Exam Details</h1>
+<table class="table">
+    <thead class="table-primary">
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ exam?.id }}</td>
+            <td>{{ exam?.type }}</td>
+            <td>{{ exam?.name }}</td>
+            <td>{{ exam?.created_at }}</td>
+            <td>{{ exam?.updated_at }}</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" routerLink="/exam/edit/{{examId}}"> <i
+                                    class="bi bi-pencil-square"></i> Edit</button>
+                        </td>
+                        <td>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteExam()"><i
+                                    class="bi bi-person-x"></i> Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

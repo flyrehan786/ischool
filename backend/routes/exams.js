@@ -37,6 +37,7 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
+  console.log(req.body);
   const updatedExam = await updateExam(
     req.params.id,
     req.body

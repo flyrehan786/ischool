@@ -55,10 +55,11 @@ async function saveExam(newExam) {
 }
 
 async function updateExam(id, updatedExam) {
+  console.log(updateExam);
   return new Promise((resolve, reject) => {
-    db.execute(`Update exams SET type_id=?, name=? WHERE id=?;`,
+    db.execute(`Update exams SET exam_type_id=?, name=? WHERE id=?;`,
       [
-        updatedExam.type_id,
+        updatedExam.exam_type_id,
         updatedExam.name,
         id
       ], (err, result) => {
