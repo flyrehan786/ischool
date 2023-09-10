@@ -6,16 +6,23 @@ const {
   updateExam, 
   deleteExam,
 } = require("../models/exams");
+const examTypesModel = require('../models/exam-types');
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   const exams = await findAll();
+  const examTypes = await examTypesModel.findAll();
   exams.forEach(s => {
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
-  })
+  });
+
+  exams.forEach(e => {
+    const type = examTypes.find(t => e.exam_type_id == t.id);
+    if(type) e.type = type['name'];
+  });
   res.send(exams);
 });
 
