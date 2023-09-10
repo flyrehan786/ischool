@@ -34,13 +34,13 @@ export class AuthService {
   }
 
   getLoggedInUser() {
-    const token = localStorage.getItem('token'); // Replace with your token storage
+    const token = localStorage.getItem('token'); 
     
     if (token) {
       const decodedToken = jwt_decode(token);
-      console.log(decodedToken);
+      return decodedToken;
     } else {
-      console.error('Token not found.');
+      return {};
     }
   }
   
