@@ -30,7 +30,7 @@ export class ExamFormComponent implements OnInit {
     },
     {
       type: TYPE_text,
-      key: 'name', defaultValue: '', label: 'Name',
+      key: 'description', defaultValue: '', label: 'Description',
       validators:
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },

@@ -15,7 +15,7 @@ export class ExamsComponent implements OnInit {
   headers = [
     'id',
     'type',
-    'name',
+    'description',
     'created_at',
     'updated_at'
   ];

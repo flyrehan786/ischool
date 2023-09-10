@@ -34,7 +34,7 @@ async function saveExam(newExam) {
     db.execute(`INSERT INTO exams VALUES(default,?,?, NOW(), NOW())`,
       [
         newExam.exam_type_id,
-        newExam.name,
+        newExam.description,
       ], (err, result) => {
         if (err) reject(err);
         db.execute(`SELECT id FROM exams WHERE id = LAST_INSERT_ID();`, (err, result) => {
@@ -57,10 +57,10 @@ async function saveExam(newExam) {
 async function updateExam(id, updatedExam) {
   console.log(updateExam);
   return new Promise((resolve, reject) => {
-    db.execute(`Update exams SET exam_type_id=?, name=? WHERE id=?;`,
+    db.execute(`Update exams SET exam_type_id=?, description=? WHERE id=?;`,
       [
         updatedExam.exam_type_id,
-        updatedExam.name,
+        updatedExam.description,
         id
       ], (err, result) => {
         if (err) reject(err);
