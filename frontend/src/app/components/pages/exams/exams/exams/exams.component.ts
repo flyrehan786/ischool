@@ -36,8 +36,10 @@ export class ExamsComponent implements OnInit {
     })
   }
   getExams() {
+    this.isLoading = true;
     this._examService.getExams().subscribe(res => {
       this.rows = res;
+      this.isLoading = false;
     });
   }
 }
