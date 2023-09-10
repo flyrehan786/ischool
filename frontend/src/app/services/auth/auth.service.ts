@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
+import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +12,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute) { 
+      this.getLoggedInUser();
   }
 
   login(credentials) {
@@ -33,6 +34,14 @@ export class AuthService {
   }
 
   getLoggedInUser() {
+    const token = localStorage.getItem('token'); // Replace with your token storage
+    
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
+    } else {
+      console.error('Token not found.');
+    }
   }
   
   register(user) {
