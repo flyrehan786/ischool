@@ -1,9 +1,9 @@
-const { 
-  validate, 
-  findAll, 
-  findExam, 
-  saveExam, 
-  updateExam, 
+const {
+  validate,
+  findAll,
+  findExam,
+  saveExam,
+  updateExam,
   deleteExam,
 } = require("../models/exams");
 const examTypesModel = require('../models/exam-types');
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
   exams.forEach(e => {
     const type = examTypes.find(t => e.exam_type_id == t.id);
-    if(type) e.type = type['name'];
+    if (type) e.type = type['name'];
   });
   res.send(exams);
 });
@@ -54,8 +54,8 @@ router.delete("/:id", async (req, res) => {
   const rowsAffected = await deleteExam(req.params.id);
   if (rowsAffected == false) {
     return res
-    .status(404)
-    .send("The exam with the given ID was not found.");
+      .status(404)
+      .send("The exam with the given ID was not found.");
   }
   res.send({ deleted: true });
 });
@@ -69,6 +69,12 @@ router.get("/:id", async (req, res) => {
 
   exam.created_at = new Date(exam.created_at).toLocaleString();
   exam.updated_at = new Date(exam.updated_at).toLocaleString();
+
+  const examTypes = await examTypesModel.findAll();
+  const type = examTypes.find(t => exam.exam_type_id == t.id);
+  if (type) exam.type = type['name'];
+
+
   res.send(exam);
 });
 
