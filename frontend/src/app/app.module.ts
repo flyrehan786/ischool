@@ -80,6 +80,7 @@ import { notificationRoutes } from './routes/notification.routes';
 import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
+import { UsersDetailsComponent } from './components/pages/auth/users-details/users-details.component';
 
 // Routes
 
@@ -139,6 +140,7 @@ import { timeTableRoutes } from './routes/time-tables.routes';
     StudentExamResultsComponent,
     StudentIssueCertificateComponent,
     StudentFeePaymentsComponent,
+    UsersDetailsComponent,
   ],
   imports: [
     BrowserModule,

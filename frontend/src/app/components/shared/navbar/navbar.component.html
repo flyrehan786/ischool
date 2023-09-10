@@ -62,7 +62,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <i class="bi bi-gear-wide-connected"></i> Rehan Shah
+            <i class="bi bi-gear-wide-connected"></i> {{ authService.getLoggedInUser().username }}
           </a>
           <ul id="auth-options" class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLinkActive="active" routerLink="/auth/change/password">Change Password</a></li>
