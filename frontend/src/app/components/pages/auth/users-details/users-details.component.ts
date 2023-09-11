@@ -37,4 +37,27 @@ export class UsersDetailsComponent implements OnInit {
       });
     }
   }
+  disableUser() {
+    if(confirm('Are you sure you want to disable this user?')) {
+      this._userService.disableUser(this.userId).subscribe(res => {
+        this._router.navigateByUrl('/auth/manage');
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+        this.toastComponent.show('(Updating User API Failed.', false, true, false);
+      });
+    }
+  }
+  activateUser() {
+    if(confirm('Are you sure you want to activate this user?')) {
+      this._userService.activateUser(this.userId).subscribe(res => {
+        this._router.navigateByUrl('/auth/manage');
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+        this.toastComponent.show('(Updating User API Failed.', false, true, false);
+      });
+    }
+  }
+
 }
