@@ -32,10 +32,18 @@
                     <tr>
                         <td>
                             <button class="btn btn-info btn-sm" routerLink="/auth/register/{{userId}}"> <i
-                                    class="bi bi-pencil-square"></i> Edit</button>
-                        </td>
-                        <td>
-                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteUser()"><i
+                                class="bi bi-pencil-square"></i> Edit</button>
+                            </td>
+                            <td>
+                                <button class="ms-2 btn btn-secondary btn-sm" (click)="disableUser()"><i
+                                        class="bi bi-node-minus-fill"></i> Disable</button>
+                            </td>
+                            <td>
+                                <button class="ms-2 btn btn-success btn-sm" (click)="activateUser()"><i
+                                        class="bi bi-node-plus-fill"></i> Activate</button>
+                            </td>
+                            <td>
+                                <button class="ms-2 btn btn-danger btn-sm" (click)="deleteUser()"><i
                                     class="bi bi-person-x"></i> Delete</button>
                         </td>
                     </tr>

@@ -1,6 +1,6 @@
 // const auth = require("../middleware/auth");
 // const _ = require("lodash");
-const { validate, findUser, encryptedPassword, saveUser, findAll } = require("../models/user");
+const { validate, findUser, encryptedPassword, saveUser, findAll, deActivateUser, activateUser } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
@@ -69,5 +69,36 @@ router.post("/register", async (req, res) => {
       status: newUser.status
     });
 });
+
+router.put("/disable/:id", async (req, res) => {
+  const rowsAffected = await deActivateUser(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    return res
+    .status(404)
+    .send("The user with the given ID was not found.");
+  }
+  
+  res.send({ updated: true });
+});
+
+router.put("/activate/:id", async (req, res) => {
+  const rowsAffected = await activateUser(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    return res
+    .status(404)
+    .send("The user with the given ID was not found.");
+  }
+  
+  res.send({ updated: true });
+});
+
 
 module.exports = router;

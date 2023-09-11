@@ -68,6 +68,26 @@ async function saveUser(newUser) {
   })
 }
 
+async function deActivateUser(id) { 
+  return new Promise((resolve,reject) => {
+    db.execute(`UPDATE users SET status=? WHERE id=?`, [0, id], (err, result) => {
+      if (err) reject(err);
+      if (result.affectedRows == 1) resolve(true);
+      else resolve(false);
+    })
+  })
+}
+
+async function activateUser(id) { 
+  return new Promise((resolve,reject) => {
+    db.execute(`UPDATE users SET status=? WHERE id=?`, [1, id], (err, result) => {
+      if (err) reject(err);
+      if (result.affectedRows == 1) resolve(true);
+      else resolve(false);
+    })
+  })
+}
+
 async function findUser(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM users WHERE id=?`, [id], (err, result) => {
@@ -80,9 +100,11 @@ async function findUser(id) {
 
 async function updateUser(id, updatedUser) {}
 
-async function deleteUser(id) {}
-
-async function deActivateUser(id) {}
+async function deleteUser(id) {
+  // Check if user is admin or not.
+  // if admin do not delete user. return 400 response.
+  // other wise delete user and return 200.
+}
 
 async function encryptPassword(password) {
   const salt = await bcrypt.genSalt(10);
@@ -116,3 +138,4 @@ exports.findAll = findAll;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
 exports.deActivateUser = deActivateUser;
+exports.activateUser = activateUser;
