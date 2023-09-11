@@ -111,8 +111,6 @@ export class RegisterComponent implements OnInit {
       is_admin: isAdmin
     };
 
-    console.log('Payload: User Registration::');
-    console.log(payload);
     this.authService.register(payload).subscribe(
       (res: HttpResponse<any>) => {
         this.toastComponent.show('User Registered Successfully.', true, false, false);
