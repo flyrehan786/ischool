@@ -1,20 +1,20 @@
 // const auth = require("../middleware/auth");
 // const _ = require("lodash");
-const { validate, findUser, encryptedPassword, saveUser, findAll   } = require("../models/user");
+const { validate, findUser, encryptedPassword, saveUser, findAll } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
 router.get("", async (req, res) => {
   const users = await findAll();
   const filteredList = users.map(obj => {
-    const { password, created_by, updated_by, ...rest } = obj; 
-    return rest; 
+    const { password, created_by, updated_by, ...rest } = obj;
+    return rest;
   });
   const keys = Object.keys(filteredList[0]);
   filteredList.filter(x => {
     x.created_at = new Date(x.created_at).toLocaleString();
     x.updated_at = new Date(x.updated_at).toLocaleString();
-    if(+x.is_admin === 1) x.is_admin = 'Yes';
+    if (+x.is_admin === 1) x.is_admin = 'Yes';
     else x.is_admin = 'No';
   })
   res.send({
@@ -24,6 +24,18 @@ router.get("", async (req, res) => {
   });
 });
 
+router.get("/:id", async (req, res) => {
+  console.log(req.params);
+  const user = await findUser(req.params.id);
+  if (!user)
+    return res
+      .status(404)
+      .send("The user with the given ID was not found.");
+
+  delete user.password;
+  res.send(user);
+});
+
 router.post("/register", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -31,7 +43,7 @@ router.post("/register", async (req, res) => {
   const queryResult = await findUser(req.body.username);
   if (queryResult) return res.status(400).send("User already registered.");
   const encryptPassword = await encryptedPassword(req.body.username);
-  
+
   const newUser = {
     id: null,
     first_name: req.body.first_name,

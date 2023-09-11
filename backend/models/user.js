@@ -68,6 +68,16 @@ async function saveUser(newUser) {
   })
 }
 
+async function findUser(id) {
+  return new Promise((resolve, reject) => {
+    db.execute(`SELECT * FROM users WHERE id=?`, [id], (err, result) => {
+      if (err) reject(err);
+      if (result.length > 0) resolve(result[0]);
+      else resolve(null);
+    });
+  })
+}
+
 async function updateUser(id, updatedUser) {}
 
 async function deleteUser(id) {}
