@@ -7,7 +7,7 @@ const config = require('../config/default.json');
 function validateUser(user) {
   const schema = {
     first_name: Joi.string()
-      .min(5)
+      .min(2)
       .max(50)
       .required(),
     last_name: Joi.string()
@@ -15,16 +15,16 @@ function validateUser(user) {
       .max(50)
       .required(),
     email: Joi.string()
-      .min(5)
+      .min(3)
       .max(255)
       .required()
       .email(),
     username: Joi.string()
-      .min(5)
+      .min(2)
       .max(255)
       .required(),
     password: Joi.string()
-      .min(5)
+      .min(2)
       .max(1024)
       .required(),
     is_admin: Joi.string()
@@ -45,9 +45,11 @@ async function findAll() {
   })
 }
 
-async function findUser(username) {
+async function findUsername(username) {
+  console.log('user: ' + username);
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM users WHERE username=?`, [username], (err, result) => {
+      console.log(result);
       if (err) reject(err);
       if (result.length > 0) resolve(result[0]);
       else resolve(null);
@@ -140,6 +142,7 @@ function generateAuthToken(user) {
 };
 
 exports.validate = validateUser;
+exports.findUsername = findUsername;
 exports.findUser = findUser;
 exports.encryptedPassword = encryptPassword;
 exports.saveUser = saveUser;

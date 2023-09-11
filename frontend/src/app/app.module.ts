@@ -81,6 +81,7 @@ import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
 import { UsersDetailsComponent } from './components/pages/auth/users-details/users-details.component';
+import { ExamResultsComponent } from './components/pages/exams/exam-results/exam-results.component';
 
 // Routes
 
@@ -141,6 +142,7 @@ import { UsersDetailsComponent } from './components/pages/auth/users-details/use
     StudentIssueCertificateComponent,
     StudentFeePaymentsComponent,
     UsersDetailsComponent,
+    ExamResultsComponent,
   ],
   imports: [
     BrowserModule,
