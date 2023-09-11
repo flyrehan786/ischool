@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.userService.get().subscribe((res: any) => {
+    this.userService.getUsers().subscribe((res: any) => {
       this.users = res.rows;
       this.headers = res.headers;
       this.filters = res.filters;

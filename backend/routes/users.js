@@ -25,7 +25,6 @@ router.get("", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  console.log(req.params);
   const user = await findUser(req.params.id);
   if (!user)
     return res
@@ -33,6 +32,8 @@ router.get("/:id", async (req, res) => {
       .send("The user with the given ID was not found.");
 
   delete user.password;
+  user.created_at = new Date(user.created_at).toLocaleString();
+  user.updated_at = new Date(user.updated_at).toLocaleString();
   res.send(user);
 });
 

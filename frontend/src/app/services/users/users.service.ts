@@ -8,11 +8,13 @@ import { environment } from 'src/environments/environment';
 export class UsersService {
   endPoint = environment.api;
   constructor(private http: HttpClient) { }
-  get() {
+  getUsers() {
     return this.http.get(this.endPoint + 'api/users');
   }
-  getById() {}
-  post() {}
-  put(id) {}
-  delete(id) {}
+  getUser(id) {
+    return this.http.get(this.endPoint + 'api/users/' + id);
+  }
+  deleteUser(id) {
+    return this.http.delete(this.endPoint + 'api/users/' + id);
+  }
 }
