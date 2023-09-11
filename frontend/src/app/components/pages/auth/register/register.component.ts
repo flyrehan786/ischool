@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IControl } from 'src/app/components/core/components/form/deps/IControl';
 import { TYPE_text, TYPE_password, TYPE_radio } from 'src/app/components/core/components/form/deps/control-types';
 import { VALIDATION_MESSAGES } from 'src/app/components/core/components/form/deps/validation-messages';
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-8'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
-      bsCols: 'col-md-8'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -48,7 +49,7 @@ export class RegisterComponent implements OnInit {
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
         ],
       visible: true,
-      bsCols: 'col-md-8'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_text,
@@ -60,7 +61,7 @@ export class RegisterComponent implements OnInit {
           { key: 'maxLength', value: '255', message: VALIDATION_MESSAGES.maxlength(255) },
         ],
       visible: true,
-      bsCols: 'col-md-8'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_password,
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
           { key: 'maxLength', value: '1024', message: VALIDATION_MESSAGES.maxlength(1024) },
         ],
       visible: true,
-      bsCols: 'col-md-8'
+      bsCols: 'col-md-3'
     },
     {
       type: TYPE_radio,
@@ -89,7 +90,7 @@ export class RegisterComponent implements OnInit {
       bsCols: 'col-md-6'
     },
   ];
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private _router: Router) { }
   ngOnInit(): void {
   }
 
@@ -115,6 +116,9 @@ export class RegisterComponent implements OnInit {
     this.authService.register(payload).subscribe(
       (res: HttpResponse<any>) => {
         this.toastComponent.show('User Registered Successfully.', true, false, false);
+        setTimeout(() => {
+          this._router.navigateByUrl('/auth/manage');
+        }, 1000);
       },
       (error) => {
         // Handle error here if needed
