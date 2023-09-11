@@ -17,4 +17,10 @@ export class UsersService {
   deleteUser(id) {
     return this.http.delete(this.endPoint + 'api/users/' + id);
   }
+  disableUser(id) {
+    return this.http.put(this.endPoint + 'api/users/disable/' + id, {});
+  }
+  activateUser(id) {
+    return this.http.put(this.endPoint + 'api/users/activate/' + id, {});
+  }
 }
