@@ -2,14 +2,15 @@
     <section>
         <h1 class="mt-3 mb-3">Registered Users</h1>
     </section>
-   <section>
-    <button class="btn btn-primary mt-4"><i class="bi bi-person-plus-fill" routerLink="/auth/register"></i> Register New</button>
-   </section>
+    <section>
+        <button class="btn btn-primary mt-4"><i class="bi bi-person-plus-fill" routerLink="/auth/register"></i> Register
+            New</button>
+    </section>
 </section>
-<core-table 
-    [title]="'Registered Users'"
-    [headers]="headers" 
-    [rows]="users" 
-    [filters]="filters"
-    [BACKUP]="backup">
-</core-table>
+<section *ngIf="isLoading == true">
+    <img src="../../../../../assets/loader.gif" alt="" width="50px">
+</section>
+<section *ngIf="isLoading == false">
+    <core-table [eventLabel]="eventLabel" [title]="'Registered Users'" [headers]="headers" [rows]="users" [filters]="filters" [BACKUP]="backup">
+    </core-table>
+</section>

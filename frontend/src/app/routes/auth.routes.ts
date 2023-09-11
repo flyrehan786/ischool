@@ -3,6 +3,7 @@ import { AuthGuard } from '../guards/auth-guard';
 import { LoginComponent } from '../components/pages/auth/login/login.component';
 import { RegisterComponent } from '../components/pages/auth/register/register.component';
 import { UsersComponent } from '../components/pages/auth/users/users.component';
+import { UsersDetailsComponent } from '../components/pages/auth/users-details/users-details.component';
 
 export const authRoutes: Routes = [
     {
@@ -17,6 +18,11 @@ export const authRoutes: Routes = [
     {
         path: 'auth/users',
         component: UsersComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'auth/users/details/:id',
+        component: UsersDetailsComponent,
         canActivate: [AuthGuard]
     },
     {
