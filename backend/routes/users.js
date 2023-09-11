@@ -1,6 +1,6 @@
 // const auth = require("../middleware/auth");
 // const _ = require("lodash");
-const { validate, findUser, encryptedPassword, saveUser, findAll, deActivateUser, activateUser } = require("../models/user");
+const { validate, findUser, encryptedPassword, saveUser, findAll, deActivateUser, activateUser, deleteUser } = require("../models/user");
 const express = require("express");
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.get("", async (req, res) => {
     return rest;
   });
   const keys = Object.keys(filteredList[0]);
+  console.log(keys);
   filteredList.filter(x => {
     x.created_at = new Date(x.created_at).toLocaleString();
     x.updated_at = new Date(x.updated_at).toLocaleString();
@@ -98,6 +99,17 @@ router.put("/activate/:id", async (req, res) => {
   }
   
   res.send({ updated: true });
+});
+
+router.delete("/:id", async (req, res) => {
+  const rowsAffected = await deleteUser(req.params.id);
+  if (rowsAffected == false) {
+    return res
+    .status(404)
+    .send("The user with the given ID cannot be deleted.");
+  }
+  
+  res.send({ deleted: true });
 });
 
 

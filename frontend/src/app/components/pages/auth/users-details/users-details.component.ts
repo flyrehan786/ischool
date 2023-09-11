@@ -26,14 +26,14 @@ export class UsersDetailsComponent implements OnInit {
       this.toastComponent.show('(Updating User API Failed).', false, true, false);
     })
   }
-  deleteCertificate() {
+  deleteUser() {
     if(confirm('Are you sure you want to delete this user?')) {
       this._userService.deleteUser(this.userId).subscribe(res => {
         this._router.navigateByUrl('/auth/manage');
       },
       (error) => {
         console.error('An error occurred:', error);
-        this.toastComponent.show('(Updating User API Failed).', false, true, false);
+        this.toastComponent.show('(Deleting User API Failed).', false, true, false);
       });
     }
   }

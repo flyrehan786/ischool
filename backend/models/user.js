@@ -101,9 +101,19 @@ async function findUser(id) {
 async function updateUser(id, updatedUser) {}
 
 async function deleteUser(id) {
-  // Check if user is admin or not.
-  // if admin do not delete user. return 400 response.
-  // other wise delete user and return 200.
+  return new Promise((resolve, reject) => {
+    db.execute(`SELECT * FROM users WHERE id=?`, [id], (err, result) => {
+      console.log(result);
+      if(result[0].is_admin == '1') resolve(false);
+      else {
+        db.execute(`DELETE FROM users WHERE id=?`, [id], (err, result) => {
+          if (err) reject(err);
+          if (result.affectedRows == 1) resolve(true);
+          else resolve(false);
+        });
+      }
+    });
+  })
 }
 
 async function encryptPassword(password) {
