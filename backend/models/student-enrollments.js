@@ -20,7 +20,7 @@ async function findAll() {
     })
 }
 
-async function findStudent(id) {
+async function findStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         db.execute('SELECT * FROM student_enrollments WHERE id=?', [id], (err, result) => {
             if (err) reject(err);
@@ -30,7 +30,7 @@ async function findStudent(id) {
     })
 }
 
-async function saveStudent(newStudent) {
+async function saveStudentEnrollment(newStudent) {
     return new Promise((resolve, reject) => {
         // blocked recent enrollments.
         // insert new active enrollment.
@@ -65,7 +65,7 @@ async function saveStudent(newStudent) {
     })
 }
 
-async function updateStudent(id, updatedStudent) {
+async function updateStudentEnrollment(id, updatedStudent) {
     return new Promise((resolve, reject) => {
         db.execute('Update student_enrollments SET student_id=?, grade_id=? WHERE id=?;',
             [
@@ -83,7 +83,7 @@ async function updateStudent(id, updatedStudent) {
     })
 }
 
-async function deleteStudent(id) {
+async function deleteStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         db.execute(`DELETE FROM student_enrollments WHERE id = ${id};`, (err, result) => {
             if (err) reject(err);
@@ -93,7 +93,7 @@ async function deleteStudent(id) {
     });
 }
 
-async function deActivateStudent(id) {
+async function deActivateStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         db.execute('UPDATE student_enrollments SET status=? WHERE id=?', [0, id], (err, result) => {
             if (err) reject(err);
@@ -103,7 +103,7 @@ async function deActivateStudent(id) {
     })
 }
 
-async function activateStudent(id) {
+async function activateStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         // disable all enrollments first.
         // then activate specific enrollment.
@@ -117,9 +117,9 @@ async function activateStudent(id) {
 
 exports.validate = validateStudent;
 exports.findAll = findAll;
-exports.findStudent = findStudent;
-exports.saveStudent = saveStudent;
-exports.updateStudent = updateStudent;
-exports.deleteStudent = deleteStudent;
-exports.deActivateStudent = deActivateStudent;
-exports.activateStudent = activateStudent;
+exports.findStudentEnrollment = findStudentEnrollment;
+exports.saveStudentEnrollment = saveStudentEnrollment;
+exports.updateStudentEnrollment = updateStudentEnrollment;
+exports.deleteStudentEnrollment = deleteStudentEnrollment;
+exports.deActivateStudentEnrollment = deActivateStudentEnrollment;
+exports.activateStudentEnrollment = activateStudentEnrollment;
