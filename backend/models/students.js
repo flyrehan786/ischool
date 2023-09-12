@@ -19,7 +19,7 @@ function validateStudent(student) {
 
 async function findAll() {
   return new Promise((resolve, reject) => {
-    db.execute((`SELECT * FROM students`), [], (err, result) => {
+    db.execute(('SELECT * FROM students'), [], (err, result) => {
       if (err) reject(err);
       if (result.length > 0) resolve(result);
       else resolve([]);
@@ -29,7 +29,7 @@ async function findAll() {
 
 async function findStudent(id) {
   return new Promise((resolve, reject) => {
-    db.execute(`SELECT * FROM students WHERE id=?`, [id], (err, result) => {
+    db.execute('SELECT * FROM students WHERE id=?', [id], (err, result) => {
       if (err) reject(err);
       if (result.length > 0) resolve(result[0]);
       else resolve(null);
@@ -39,7 +39,7 @@ async function findStudent(id) {
 
 async function saveStudent(newStudent) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO students VALUES(default,?,?,?,?,?,?,?,?,?,?,1, NOW(), NOW(), 1, 1)`,
+    db.execute('INSERT INTO students VALUES(default,?,?,?,?,?,?,?,?,?,?,1, NOW(), NOW(), 1, 1)',
       [
         newStudent.first_name,
         newStudent.last_name,
@@ -53,7 +53,7 @@ async function saveStudent(newStudent) {
         newStudent.district,
       ], (err, result) => {
         if (err) reject(err);
-        db.execute(`SELECT id FROM students WHERE id = LAST_INSERT_ID();`, (err, result) => {
+        db.execute('SELECT id FROM students WHERE id = LAST_INSERT_ID();', (err, result) => {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
@@ -72,7 +72,7 @@ async function saveStudent(newStudent) {
 
 async function updateStudent(id, updatedStudent) {
   return new Promise((resolve, reject) => {
-    db.execute(`Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;`,
+    db.execute('Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;',
       [
         updatedStudent.first_name,
         updatedStudent.last_name,
@@ -108,7 +108,7 @@ async function deleteStudent(id) {
 
 async function deActivateStudent(id) { 
   return new Promise((resolve,reject) => {
-    db.execute(`UPDATE students SET status=? WHERE id=?`, [0, id], (err, result) => {
+    db.execute('UPDATE students SET status=? WHERE id=?', [0, id], (err, result) => {
       if (err) reject(err);
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
@@ -118,7 +118,7 @@ async function deActivateStudent(id) {
 
 async function activateStudent(id) { 
   return new Promise((resolve,reject) => {
-    db.execute(`UPDATE students SET status=? WHERE id=?`, [1, id], (err, result) => {
+    db.execute('UPDATE students SET status=? WHERE id=?', [1, id], (err, result) => {
       if (err) reject(err);
       if (result.affectedRows == 1) resolve(true);
       else resolve(false);
