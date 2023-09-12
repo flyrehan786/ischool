@@ -3,8 +3,8 @@ const db = require('../services/mysql').db;
 
 function validateStudent(student) {
     const schema = {
-        student_id: Joi.string().min(3).max(45).required(),
-        grade_id: Joi.string().min(3).max(45).required(),
+        student_id: Joi.string().min(1).max(45).required(),
+        grade_id: Joi.string().min(1).max(45).required(),
         status: Joi.string().min(1).max(1).required(),
     };
     return Joi.validate(student, schema);
