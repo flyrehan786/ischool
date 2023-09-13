@@ -84,6 +84,10 @@ import { UsersDetailsComponent } from './components/pages/auth/users-details/use
 import { ExamResultsComponent } from './components/pages/exams/exam-results/exam-results.component';
 import { StudentEnrollmentsComponent } from './components/pages/students/student-enrollments/student-enrollments.component';
 import { StudentFeePaymentFormComponent } from './components/pages/students/student-fee-payment-form/student-fee-payment-form.component';
+import { TeacherRequiredSalaryInfoComponent } from './components/pages/teachers/teacher-required-salary-info/teacher-required-salary-info.component';
+import { TeacherRequiredSalaryInfoFormComponent } from './components/pages/teachers/teacher-required-salary-info-form/teacher-required-salary-info-form.component';
+import { TeacherClassesAssignedInfoComponent } from './components/pages/teachers/teacher-classes-assigned-info/teacher-classes-assigned-info.component';
+import { TeacherClassesAssignedInfoFormComponent } from './components/pages/teachers/teacher-classes-assigned-info-form/teacher-classes-assigned-info-form.component';
 
 // Routes
 
@@ -147,6 +151,10 @@ import { StudentFeePaymentFormComponent } from './components/pages/students/stud
     ExamResultsComponent,
     StudentEnrollmentsComponent,
     StudentFeePaymentFormComponent,
+    TeacherRequiredSalaryInfoComponent,
+    TeacherRequiredSalaryInfoFormComponent,
+    TeacherClassesAssignedInfoComponent,
+    TeacherClassesAssignedInfoFormComponent,
   ],
   imports: [
     BrowserModule,
