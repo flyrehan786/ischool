@@ -4,6 +4,59 @@
 <section *ngIf="isLoading == true">
     <img src="../../../../../assets/loader.gif" alt="" width="50px">
 </section>
+<section class="mb-2 flex-end">
+    <p></p>
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-info btn-sm" routerLink="/student/edit/{{studentId}}"> <i
+                        class="bi bi-pencil-square"></i> Edit</button>
+            </td>
+            <td>
+                <button class="ms-2 btn btn-danger btn-sm" (click)="deleteStudent()"><i class="bi bi-person-x"></i>
+                    Delete</button>
+            </td>
+            <td>
+                <button class="ms-2 btn btn-secondary btn-sm" (click)="disableStudent()"><i
+                        class="bi bi-node-minus-fill"></i> Disable</button>
+            </td>
+            <td>
+                <button class="ms-2 btn btn-success btn-sm" (click)="activateStudent()"><i
+                        class="bi bi-node-plus-fill"></i>
+                    Activate</button>
+            </td>
+            <td>
+                <button routerLink="/student/enroll/new" [disabled]="+student?.status === 0"
+                    class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i>
+                    Enroll</button>
+            </td>
+            <td>
+                <button routerLink="/student/enrollments/{{ +student?.id }}" [disabled]="+student?.status === 0"
+                    class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i>
+                    Enrollments</button>
+            </td>
+            <td>
+                <button [disabled]="+student?.status === 0" class="ms-2 btn btn-info btn-sm"><i
+                        class="bi bi-list-check"></i> Results</button>
+            </td>
+            <td>
+                <button routerLink="/student/issue/new" [disabled]="+student?.status === 0"
+                    class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                    Certificate</button>
+            </td>
+            <td>
+                <button routerLink="/student/fee/payments" [disabled]="+student?.status === 0"
+                    class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                    Fee Settings</button>
+            </td>
+            <td>
+                <button routerLink="student/fee/new" [disabled]="+student?.status === 0"
+                    class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                    Fee Payments</button>
+            </td>
+        </tr>
+    </table>
+</section>
 <section *ngIf="isLoading == false">
     <table class="table">
         <thead class="table-primary">
@@ -51,53 +104,6 @@
                 <td>{{ student?.tehsil }}</td>
                 <td>{{ student?.district }}</td>
                 <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <button class="btn btn-info btn-sm" routerLink="/student/edit/{{studentId}}"> <i
-                                        class="bi bi-pencil-square"></i> Edit</button>
-                            </td>
-                            <td>
-                                <button class="ms-2 btn btn-danger btn-sm" (click)="deleteStudent()"><i
-                                        class="bi bi-person-x"></i> Delete</button>
-                            </td>
-                            <td>
-                                <button class="ms-2 btn btn-secondary btn-sm" (click)="disableStudent()"><i
-                                        class="bi bi-node-minus-fill"></i> Disable</button>
-                            </td>
-                            <td>
-                                <button class="ms-2 btn btn-success btn-sm" (click)="activateStudent()"><i
-                                        class="bi bi-node-plus-fill"></i> Activate</button>
-                            </td>
-                            <td>
-                                <button routerLink="/student/enroll/new" [disabled]="+student?.status === 0" class="ms-2 btn btn-primary btn-sm"
-                                    (click)="deleteStudent()"><i class="bi bi-plugin"></i> Enroll</button>
-                            </td>
-                            <td>
-                                <button routerLink="/student/enrollments/{{ +student?.id }}" [disabled]="+student?.status === 0" class="ms-2 btn btn-primary btn-sm"
-                                    (click)="deleteStudent()"><i class="bi bi-plugin"></i> Enrollments Details</button>
-                            </td>
-                            <td>
-                                <button [disabled]="+student?.status === 0" class="ms-2 btn btn-info btn-sm"><i
-                                        class="bi bi-list-check"></i> Results</button>
-                            </td>
-                            <td>
-                                <button routerLink="/student/issue/new" [disabled]="+student?.status === 0" class="ms-2 btn btn-success btn-sm"><i
-                                        class="bi bi-list-check"></i>
-                                    Certificate</button>
-                            </td>
-                            <td>
-                                <button routerLink="/student/fee/payments" [disabled]="+student?.status === 0" class="ms-2 btn btn-success btn-sm"><i
-                                        class="bi bi-list-check"></i>
-                                    Fee Settings</button>
-                            </td>
-                            <td>
-                                <button routerLink="student/fee/new" [disabled]="+student?.status === 0" class="ms-2 btn btn-success btn-sm"><i
-                                        class="bi bi-list-check"></i>
-                                    Fee Payments</button>
-                            </td>
-                        </tr>
-                    </table>
                 </td>
             </tr>
         </tbody>
