@@ -82,6 +82,8 @@ import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
 import { UsersDetailsComponent } from './components/pages/auth/users-details/users-details.component';
 import { ExamResultsComponent } from './components/pages/exams/exam-results/exam-results.component';
+import { StudentEnrollmentsComponent } from './components/pages/students/student-enrollments/student-enrollments.component';
+import { StudentFeePaymentFormComponent } from './components/pages/students/student-fee-payment-form/student-fee-payment-form.component';
 
 // Routes
 
@@ -143,6 +145,8 @@ import { ExamResultsComponent } from './components/pages/exams/exam-results/exam
     StudentFeePaymentsComponent,
     UsersDetailsComponent,
     ExamResultsComponent,
+    StudentEnrollmentsComponent,
+    StudentFeePaymentFormComponent,
   ],
   imports: [
     BrowserModule,
