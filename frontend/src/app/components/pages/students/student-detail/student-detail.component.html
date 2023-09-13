@@ -1,12 +1,16 @@
 <br />
 <a class="mt-4" routerLink="/students">Go Back</a>
-<h1 class="mt-4 mb-4">Student Details</h1>
 <section *ngIf="isLoading == true">
     <img src="../../../../../assets/loader.gif" alt="" width="50px">
 </section>
 <section class="mb-2 d-flex justify-content-between">
-    <p></p>
+    <h1 class="mt-4 mb-4">Student Details</h1>
     <table>
+        <thead>
+            <tr>
+                <td colspan="10" class="mb-2"><hr /> <strong>Actions</strong> <hr /> </td>
+            </tr>
+        </thead>
         <tr>
             <td>
                 <button class="btn btn-info btn-sm" routerLink="/student/edit/{{studentId}}"> <i
@@ -65,7 +69,6 @@
                 <th colspan="2">Parent's Info</th>
                 <th colspan="3">Status</th>
                 <th colspan="3">Address</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <thead class="table-primary">
@@ -103,8 +106,6 @@
                 <td>{{ student?.post_office }}</td>
                 <td>{{ student?.tehsil }}</td>
                 <td>{{ student?.district }}</td>
-                <td>
-                </td>
             </tr>
         </tbody>
     </table>
