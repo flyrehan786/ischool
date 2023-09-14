@@ -31,12 +31,12 @@
             </td>
             <td>
                 <button routerLink="/student/enroll/new" [disabled]="+student?.status === 0"
-                    class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i>
+                    class="ms-2 btn btn-primary btn-sm"><i class="bi bi-plugin"></i>
                     Enroll</button>
             </td>
             <td>
                 <button routerLink="/student/enrollments/{{ +student?.id }}" [disabled]="+student?.status === 0"
-                    class="ms-2 btn btn-primary btn-sm" (click)="deleteStudent()"><i class="bi bi-plugin"></i>
+                    class="ms-2 btn btn-primary btn-sm"><i class="bi bi-plugin"></i>
                     Enrollments</button>
             </td>
             <td>
