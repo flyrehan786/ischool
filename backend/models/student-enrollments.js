@@ -120,7 +120,7 @@ async function activateStudentEnrollment(id) {
     })
 }
 
-exports.validate = validateStudentEnrollment;
+exports.validateStudentEnrollment = validateStudentEnrollment;
 exports.findAll = findAll;
 exports.findStudentEnrollments = findStudentEnrollments;
 exports.saveStudentEnrollment = saveStudentEnrollment;

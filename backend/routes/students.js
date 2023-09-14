@@ -8,6 +8,13 @@ const {
   deActivateStudent,
   activateStudent
 } = require("../models/students");
+const {
+  validateStudentEnrollment,
+  saveStudentEnrollment,
+  updateStudentEnrollment,
+  activateStudentEnrollment,
+  deActivateStudentEnrollment
+} = require('../models/student-enrollments')
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -107,6 +114,59 @@ router.get("/:id", async (req, res) => {
   student.created_at = new Date(student.created_at).toLocaleString();
   student.updated_at = new Date(student.updated_at).toLocaleString();
   res.send(student);
+});
+
+router.post("/enroll", async (req, res) => {
+  const { error } = validateStudentEnrollment(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  const createdStudent = await saveStudentEnrollment(req.body);
+  res.send(createdStudent);
+});
+
+router.put("/enroll/:id", async (req, res) => {
+  const { error } = validateStudentEnrollment(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const updatedStudent = await updateStudentEnrollment(
+    req.params.id,
+    req.body
+  );
+
+  if (!updatedStudent)
+    return res
+      .status(404)
+      .send("The student-enrollment with the given ID was not found.");
+  res.send(updatedStudent);
+});
+
+router.put("/enroll/disable/:id", async (req, res) => {
+  const rowsAffected = await deActivateStudentEnrollment(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    return res
+    .status(404)
+    .send("The student-enrollment with the given ID was not found.");
+  }
+  
+  res.send({ updated: true });
+});
+
+router.put("/enroll/activate/:id", async (req, res) => {
+  const rowsAffected = await activateStudentEnrollment(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    return res
+    .status(404)
+    .send("The student-enrollment with the given ID was not found.");
+  }
+  
+  res.send({ updated: true });
 });
 
 module.exports = router;
