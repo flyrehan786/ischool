@@ -39,12 +39,12 @@
             </div>
           </div>
           <div *ngSwitchCase="'radio'">
-            <div *ngFor="let option of control.options">
-              <label>
-                <input class="radio-form" type="radio" [value]="option.value" [formControlName]="control.key"
-                  [checked]="option.value == control.defaultValue">{{ option.key }}
-              </label>
-            </div>
+            <section *ngFor="let option of control.options">
+              <label for="gender">
+                <input type="radio" name="{{ control.key }}" [formControlName]="control.key"  [value]="option.value" [checked]="option.value == control.defaultValue">
+                {{ option.key }}
+              </label> 
+            </section>
           </div>
         </ng-container>
       </ng-container>
