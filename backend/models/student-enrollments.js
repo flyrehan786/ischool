@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-function validateStudent(student) {
+function validateStudentEnrollment(student) {
     const schema = {
         student_id: Joi.string().min(1).max(45).required(),
         grade_id: Joi.string().min(1).max(45).required(),
@@ -30,19 +30,19 @@ async function findStudentEnrollments(id) {
     })
 }
 
-async function saveStudentEnrollment(newStudent) {
+async function saveStudentEnrollment(newStudentEnrollment) {
     return new Promise((resolve, reject) => {
         // blocked recent enrollments.
         db.execute('Update student_enrollments SET status=0 WHERE student_id=?',
         [
-            newStudent.student_id,
+            newStudentEnrollment.student_id,
         ], (err, result) => {
             if (result.affectedRows == 1) {
                     // insert new active enrollment.
                     db.execute('INSERT INTO student_enrollments VALUES(default,?,?,1, NOW(), NOW(), 1, 1)',
                     [
-                        newStudent.student_id,
-                        newStudent.grade_id,
+                        newStudentEnrollment.student_id,
+                        newStudentEnrollment.grade_id,
                     ], (err, result) => {
                         if (err) reject(err);
                         db.execute('SELECT id FROM student_enrollments WHERE id = LAST_INSERT_ID();', (err, result) => {
@@ -65,11 +65,11 @@ async function saveStudentEnrollment(newStudent) {
     })
 }
 
-async function updateStudentEnrollment(id, updatedStudent) {
+async function updateStudentEnrollment(id, updatedStudentEnrollment) {
     return new Promise((resolve, reject) => {
         db.execute('Update student_enrollments SET grade_id=?, grade_id=? WHERE id=?;',
             [
-                updatedStudent.grade_id,
+                updatedStudentEnrollment.grade_id,
                 id
             ], (err, result) => {
                 if (err) reject(err);
@@ -120,7 +120,7 @@ async function activateStudentEnrollment(id) {
     })
 }
 
-exports.validate = validateStudent;
+exports.validate = validateStudentEnrollment;
 exports.findAll = findAll;
 exports.findStudentEnrollments = findStudentEnrollments;
 exports.saveStudentEnrollment = saveStudentEnrollment;
