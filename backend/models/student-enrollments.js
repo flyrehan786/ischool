@@ -33,23 +33,23 @@ async function findStudentEnrollments(id) {
 async function saveStudentEnrollment(newStudent) {
     return new Promise((resolve, reject) => {
         // blocked recent enrollments.
-        // insert new active enrollment.
-        // return the updated student enrollment.
         db.execute('Update student_enrollments SET status=0 WHERE student_id=?',
-            [
-                newStudent.student_id,
-            ], (err, result) => {
-                if (result.affectedRows == 1) {
+        [
+            newStudent.student_id,
+        ], (err, result) => {
+            if (result.affectedRows == 1) {
+                    // insert new active enrollment.
                     db.execute('INSERT INTO student_enrollments VALUES(default,?,?,1, NOW(), NOW(), 1, 1)',
-                        [
-                            newStudent.student_id,
-                            newStudent.grade_id,
-                        ], (err, result) => {
+                    [
+                        newStudent.student_id,
+                        newStudent.grade_id,
+                    ], (err, result) => {
+                        if (err) reject(err);
+                        db.execute('SELECT id FROM student_enrollments WHERE id = LAST_INSERT_ID();', (err, result) => {
                             if (err) reject(err);
-                            db.execute('SELECT id FROM student_enrollments WHERE id = LAST_INSERT_ID();', (err, result) => {
-                                if (err) reject(err);
-                                if (result.length > 0) {
-                                    const insertedId = result[0].id;
+                            if (result.length > 0) {
+                                const insertedId = result[0].id;
+                                    // return the updated student enrollment.
                                     db.execute(`SELECT * FROM student_enrollments WHERE id = ?;`, [insertedId], (err, result) => {
                                         if (err) reject(err);
                                         if (result.length > 0) {
