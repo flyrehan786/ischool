@@ -100,12 +100,24 @@ router.delete("/:id", async (req, res) => {
   res.send({ deleted: true });
 });
 
+router.get("/enrollments", async (req, res) => {
+  const studentsEnrollments = await findAllEnrollments();
+  studentsEnrollments.forEach(s => {
+    s.created_at = new Date(s.created_at).toLocaleString();
+    s.updated_at = new Date(s.updated_at).toLocaleString();
+  })
+  // Tranform data.
+  // get actual grade by gradeId.
+  // get actual student by studentId.
+  res.send(studentsEnrollments);
+});
+
 router.get("/:id", async (req, res) => {
   const student = await findStudent(req.params.id);
   if (!student)
     return res
       .status(404)
-      .send("The student with the given ID was not found.");
+      .send("+The student with the given ID was not found.");
 
   if (student.gender == 1) student.gender = 'Male';
   else if (student.gender == 0) student.gender = 'Female';
@@ -119,16 +131,10 @@ router.get("/:id", async (req, res) => {
 });
 
 // Enrollments Section.
-router.get("/enrollments", async (req, res) => {
-  const studentsEnrollments = await findAllEnrollments();
-  studentsEnrollments.forEach(s => {
-    s.created_at = new Date(s.created_at).toLocaleString();
-    s.updated_at = new Date(s.updated_at).toLocaleString();
-  })
-  res.send(students);
-});
+
 
 router.post("/enroll", async (req, res) => {
+  console.log('---');
   const { error } = validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const createdStudent = await saveStudentEnrollment(req.body);
@@ -136,6 +142,7 @@ router.post("/enroll", async (req, res) => {
 });
 
 router.put("/enroll/:id", async (req, res) => {
+  console.log('adadd')
   const { error } = validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
