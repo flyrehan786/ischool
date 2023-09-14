@@ -10,7 +10,7 @@ function validateStudentEnrollment(student) {
     return Joi.validate(student, schema);
 }
 
-async function findAll() {
+async function findAllEnrollments() {
     return new Promise((resolve, reject) => {
         db.execute(('SELECT * FROM student_enrollments'), [], (err, result) => {
             if (err) reject(err);
@@ -121,7 +121,7 @@ async function activateStudentEnrollment(id) {
 }
 
 exports.validateStudentEnrollment = validateStudentEnrollment;
-exports.findAll = findAll;
+exports.findAllEnrollments = findAllEnrollments;
 exports.findStudentEnrollments = findStudentEnrollments;
 exports.saveStudentEnrollment = saveStudentEnrollment;
 exports.updateStudentEnrollment = updateStudentEnrollment;

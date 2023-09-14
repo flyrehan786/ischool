@@ -13,7 +13,8 @@ const {
   saveStudentEnrollment,
   updateStudentEnrollment,
   activateStudentEnrollment,
-  deActivateStudentEnrollment
+  deActivateStudentEnrollment,
+  findAllEnrollments
 } = require('../models/student-enrollments')
 const auth = require("../middleware/auth");
 const express = require("express");
@@ -41,6 +42,7 @@ router.post("/", async (req, res) => {
   res.send(createdStudent);
 });
 
+// Crud Section.
 router.put("/disable/:id", async (req, res) => {
   const rowsAffected = await deActivateStudent(
     req.params.id,
@@ -116,6 +118,16 @@ router.get("/:id", async (req, res) => {
   res.send(student);
 });
 
+// Enrollments Section.
+router.get("/enrollments", async (req, res) => {
+  const studentsEnrollments = await findAllEnrollments();
+  studentsEnrollments.forEach(s => {
+    s.created_at = new Date(s.created_at).toLocaleString();
+    s.updated_at = new Date(s.updated_at).toLocaleString();
+  })
+  res.send(students);
+});
+
 router.post("/enroll", async (req, res) => {
   const { error } = validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -168,5 +180,8 @@ router.put("/enroll/activate/:id", async (req, res) => {
   
   res.send({ updated: true });
 });
+
+// Certification Section.
+// Fee Section.
 
 module.exports = router;
