@@ -9,6 +9,7 @@ import { StudentEnrollmentsComponent } from '../components/pages/students/studen
 import { StudentFeePaymentFormComponent } from '../components/pages/students/student-fee-payment-form/student-fee-payment-form.component';
 import { StudentFeePaymentsComponent } from '../components/pages/students/student-fee-payments/student-fee-payments/student-fee-payments.component';
 import { StudentIssueCertificateComponent } from '../components/pages/students/student-issue-certificate/student-issue-certificate/student-issue-certificate.component';
+import { StudentExamResultsComponent } from '../components/pages/students/student-exam-results/student-exam-results/student-exam-results.component';
 
 export const studentRoutes: Routes = [
     {
@@ -49,6 +50,11 @@ export const studentRoutes: Routes = [
     {
         path: 'student/new',
         component: StudentFormComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'student/exam/results',
+        component: StudentExamResultsComponent,
         canActivate: [AuthGuard]
     },
     {
