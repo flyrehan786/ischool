@@ -169,7 +169,6 @@ export class FormComponent implements OnInit, AfterViewChecked {
     let controls = {};
     for (let i = 0; i < this.config.length; i++) {
       let control = this.config[i];
-      console.log(control);
       let controlValidators: ValidatorFn[] = [];
       for (let j = 0; j < control.validators.length; j++) {
         const validator = control.validators[j];
