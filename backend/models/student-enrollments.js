@@ -5,7 +5,6 @@ function validateStudentEnrollment(student) {
     const schema = {
         student_id: Joi.string().min(1).max(45).required(),
         grade_id: Joi.string().min(1).max(45).required(),
-        status: Joi.string().min(1).max(1).required(),
     };
     return Joi.validate(student, schema);
 }
@@ -32,18 +31,21 @@ async function findStudentEnrollments(id) {
 
 async function saveStudentEnrollment(newStudentEnrollment) {
     return new Promise((resolve, reject) => {
+        console.log('***');
+        console.log(newStudentEnrollment);
         // blocked recent enrollments.
         db.execute('Update student_enrollments SET status=0 WHERE student_id=?',
         [
             newStudentEnrollment.student_id,
         ], (err, result) => {
-            if (result.affectedRows == 1) {
+            if (result.affectedRows >= 0) {
                     // insert new active enrollment.
                     db.execute('INSERT INTO student_enrollments VALUES(default,?,?,1, NOW(), NOW(), 1, 1)',
                     [
                         newStudentEnrollment.student_id,
                         newStudentEnrollment.grade_id,
                     ], (err, result) => {
+                        console.log(result);
                         if (err) reject(err);
                         db.execute('SELECT id FROM student_enrollments WHERE id = LAST_INSERT_ID();', (err, result) => {
                             if (err) reject(err);

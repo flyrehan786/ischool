@@ -1,1 +1,12 @@
-<p>student-enroll works!</p>
+<br />
+<span *ngIf="!editMode">
+    <a routerLink="/student/details/{{ studentId }}">Back to List</a>
+</span>
+<span *ngIf="editMode">
+    <a routerLink="/subject/details/{{ subjectId }}">Go Back</a>
+</span>
+<core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
+<core-toast></core-toast>
+
+<hr />
+<h1>Recent Enrollments</h1>

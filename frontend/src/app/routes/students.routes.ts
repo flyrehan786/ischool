@@ -23,7 +23,7 @@ export const studentRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'student/enroll/new',
+        path: 'student/enroll/new/:id',
         component: StudentEnrollComponent,
         canActivate: [AuthGuard]
     },

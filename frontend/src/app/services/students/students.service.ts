@@ -31,7 +31,9 @@ export class StudentsService {
     return this.http.put(environment.api + 'api/students/activate/' + id, {});
   }
 
-  postEnrollStudent(payload) {}
+  postEnrollStudent(enrollmentInfo) {
+    return this.http.post(environment.api + 'api/students/enroll', enrollmentInfo);
+  }
   putEnrollStudent(payload) {}
   deleteEnrollStudent() {}
   
