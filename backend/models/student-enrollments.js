@@ -20,7 +20,7 @@ async function findAll() {
     })
 }
 
-async function findStudentEnrollment(id) {
+async function findStudentEnrollments(id) {
     return new Promise((resolve, reject) => {
         db.execute('SELECT * FROM student_enrollments WHERE id=?', [id], (err, result) => {
             if (err) reject(err);
@@ -40,7 +40,7 @@ async function saveStudentEnrollment(newStudent) {
                 newStudent.student_id,
             ], (err, result) => {
                 if (result.affectedRows == 1) {
-                    db.execute('INSERT INTO student_enrollments VALUES(default,?,1, NOW(), NOW(), 1, 1)',
+                    db.execute('INSERT INTO student_enrollments VALUES(default,?,?,1, NOW(), NOW(), 1, 1)',
                         [
                             newStudent.student_id,
                             newStudent.grade_id,
@@ -67,9 +67,8 @@ async function saveStudentEnrollment(newStudent) {
 
 async function updateStudentEnrollment(id, updatedStudent) {
     return new Promise((resolve, reject) => {
-        db.execute('Update student_enrollments SET student_id=?, grade_id=? WHERE id=?;',
+        db.execute('Update student_enrollments SET grade_id=?, grade_id=? WHERE id=?;',
             [
-                updatedStudent.student_id,
                 updatedStudent.grade_id,
                 id
             ], (err, result) => {
@@ -106,10 +105,16 @@ async function deActivateStudentEnrollment(id) {
 async function activateStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         // disable all enrollments first.
-        // then activate specific enrollment.
-        db.execute('UPDATE student_enrollments SET status=? WHERE id=?', [1, id], (err, result) => {
+        db.execute('UPDATE student_enrollments SET status=0 WHERE id=?', [1, id], (err, result) => {
             if (err) reject(err);
-            if (result.affectedRows == 1) resolve(true);
+            if (result.affectedRows == 1) {
+                // then activate specific enrollment.
+                db.execute('UPDATE student_enrollments SET status=? WHERE id=?', [1, id], (err, result) => {
+                    if (err) reject(err);
+                    if (result.affectedRows == 1) resolve(true);
+                    else resolve(false);
+                })
+            }
             else resolve(false);
         })
     })
@@ -117,7 +122,7 @@ async function activateStudentEnrollment(id) {
 
 exports.validate = validateStudent;
 exports.findAll = findAll;
-exports.findStudentEnrollment = findStudentEnrollment;
+exports.findStudentEnrollments = findStudentEnrollments;
 exports.saveStudentEnrollment = saveStudentEnrollment;
 exports.updateStudentEnrollment = updateStudentEnrollment;
 exports.deleteStudentEnrollment = deleteStudentEnrollment;
