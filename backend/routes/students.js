@@ -15,7 +15,8 @@ const {
   activateStudentEnrollment,
   deActivateStudentEnrollment,
   findAllEnrollments
-} = require('../models/student-enrollments')
+} = require('../models/student-enrollments');
+const { findGrade } = require("../models/grade");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -102,35 +103,16 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/enrollments", async (req, res) => {
   const studentsEnrollments = await findAllEnrollments();
-  studentsEnrollments.forEach(s => {
+
+  for (let i = 0; i < studentsEnrollments.length; i++) {
+    const s = studentsEnrollments[i];
+    s.student = await findStudent(s.student_id);
+    s.grade = await findGrade(s.grade_id);
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
-  })
+    
+  }
 
-  // All Grades.
-  const grades = await findAllGrades();
-  grades.forEach(s => {
-    s.created_at = new Date(s.created_at).toLocaleString();
-    s.updated_at = new Date(s.updated_at).toLocaleString();
-  })
-
-  // All Students.
-  const students = await findAll();
-  students.forEach(s => {
-    if (s.gender == 1) s.gender = 'Male';
-    else if (s.gender == 0) s.gender = 'Female';
-
-    if (s.status == 1) s.status = 'Active';
-    else if (s.status == 0) s.status = 'Not Active';
-
-    s.created_at = new Date(s.created_at).toLocaleString();
-    s.updated_at = new Date(s.updated_at).toLocaleString();
-  })
-
-  
-  // Tranform data.
-  // get actual grade by gradeId.
-  // get actual student by studentId.
   res.send(studentsEnrollments);
 });
 
