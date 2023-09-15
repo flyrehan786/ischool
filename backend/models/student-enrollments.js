@@ -43,7 +43,6 @@ async function saveStudentEnrollment(newStudentEnrollment) {
                         newStudentEnrollment.student_id,
                         newStudentEnrollment.grade_id,
                     ], (err, result) => {
-                        console.log(result);
                         if (err) reject(err);
                         db.execute('SELECT id FROM student_enrollments WHERE id = LAST_INSERT_ID();', (err, result) => {
                             if (err) reject(err);
