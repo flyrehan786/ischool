@@ -8,7 +8,7 @@ function validateGrade(grade) {
   return Joi.validate(grade, schema);
 }
 
-async function findAll() {
+async function findAllGrades() {
   return new Promise((resolve, reject) => {
     db.execute((`SELECT * FROM grades`), [], (err, result) => {
       if (err) reject(err);
@@ -80,7 +80,7 @@ async function deleteGrade(id) {
 }
 
 exports.validate = validateGrade;
-exports.findAll = findAll;
+exports.findAllGrades = findAllGrades;
 exports.findGrade = findGrade;
 exports.saveGrade = saveGrade;
 exports.updateGrade = updateGrade;
