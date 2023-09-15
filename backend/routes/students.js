@@ -110,7 +110,6 @@ router.get("/enrollments", async (req, res) => {
     s.grade = await findGrade(s.grade_id);
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
-    
   }
 
   res.send(studentsEnrollments);
