@@ -138,7 +138,6 @@ router.get("/:id", async (req, res) => {
 
 
 router.post("/enroll", async (req, res) => {
-  console.log('---');
   const { error } = validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const createdStudent = await saveStudentEnrollment(req.body);

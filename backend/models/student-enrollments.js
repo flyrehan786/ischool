@@ -31,8 +31,6 @@ async function findStudentEnrollments(id) {
 
 async function saveStudentEnrollment(newStudentEnrollment) {
     return new Promise((resolve, reject) => {
-        console.log('***');
-        console.log(newStudentEnrollment);
         // blocked recent enrollments.
         db.execute('Update student_enrollments SET status=0 WHERE student_id=?',
         [
