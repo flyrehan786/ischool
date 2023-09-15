@@ -107,9 +107,17 @@ router.get("/enrollments", async (req, res) => {
   for (let i = 0; i < studentsEnrollments.length; i++) {
     const s = studentsEnrollments[i];
     s.student = await findStudent(s.student_id);
+    s.student_name = s.student.first_name + ' ' + s.student.last_name;
+    s.student_father_name = s.student.father_name;
+    s.student_cnic = s.student.cnic;
+
     s.grade = await findGrade(s.grade_id);
+    s.grade_name = s.grade.name;
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
+
+    if(+s.status == 0) s.status = 'Not Active';
+    if(+s.status == 1) s.status = 'Active';
   }
 
   res.send(studentsEnrollments);

@@ -37,7 +37,9 @@ export class StudentsService {
   putEnrollStudent(payload) {}
   deleteEnrollStudent() {}
   
-  getStudentEnrollments() {}
+  getStudentEnrollments() {
+    return this.http.get(environment.api + 'api/students/enrollments');
+  }
   getStudentEnrollmentsAgaintStudent(studentId) {}
 
   postSubmitExamResult(payload) {}

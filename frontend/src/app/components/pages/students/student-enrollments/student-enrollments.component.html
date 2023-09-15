@@ -1,1 +1,14 @@
-<p>student-enrollments works!</p>
+<h1 class="mt-3 mb-3">Students Enrollments</h1>
+<section *ngIf="isLoading == true">
+<img src="../../../../../assets/loader.gif" alt="" width="50px">
+</section>
+<section  *ngIf="isLoading == false">
+    <core-table
+        [eventLabel]="eventLabel"
+        [title]="'Students Enrollments'"
+        [headers]="headers"
+        [rows]="rows"
+        [BACKUP]="rows"
+        [filters]="filters">
+    </core-table>
+</section>
