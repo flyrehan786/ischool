@@ -88,6 +88,7 @@ import { TeacherRequiredSalaryInfoComponent } from './components/pages/teachers/
 import { TeacherRequiredSalaryInfoFormComponent } from './components/pages/teachers/teacher-required-salary-info-form/teacher-required-salary-info-form.component';
 import { TeacherClassesAssignedInfoComponent } from './components/pages/teachers/teacher-classes-assigned-info/teacher-classes-assigned-info.component';
 import { TeacherClassesAssignedInfoFormComponent } from './components/pages/teachers/teacher-classes-assigned-info-form/teacher-classes-assigned-info-form.component';
+import { StudentEnrollmentDetailsComponent } from './components/pages/students/student-enrollment-details/student-enrollment-details.component';
 
 // Routes
 
@@ -155,6 +156,7 @@ import { TeacherClassesAssignedInfoFormComponent } from './components/pages/teac
     TeacherRequiredSalaryInfoFormComponent,
     TeacherClassesAssignedInfoComponent,
     TeacherClassesAssignedInfoFormComponent,
+    StudentEnrollmentDetailsComponent,
   ],
   imports: [
     BrowserModule,
