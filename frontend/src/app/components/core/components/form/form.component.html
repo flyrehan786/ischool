@@ -30,22 +30,22 @@
             [(ngModel)]="control.defaultValue" id="{{ control.key }}"
             [class.input-error]="form.get(control.key).touched && form.get(control.key).invalid" class="form-control">
           </textarea>
-          <div *ngSwitchCase="'checkbox'">
-            <div *ngFor="let option of control.options">
+          <section *ngSwitchCase="'checkbox'">
+            <section *ngFor="let option of control.options">
               <label>
                 <input type="checkbox" [formControlName]="control.key" [value]="option.value">
                 {{ option.key }}
               </label>
-            </div>
-          </div>
-          <div *ngSwitchCase="'radio'">
+            </section>
+          </section>
+          <section *ngSwitchCase="'radio'">
             <section *ngFor="let option of control.options">
               <label for="gender">
                 <input type="radio" name="{{ control.key }}" [formControlName]="control.key"  [value]="option.value" [checked]="option.value == control.defaultValue">
                 {{ option.key }}
               </label> 
             </section>
-          </div>
+          </section>
         </ng-container>
       </ng-container>
       <section *ngIf="form.get(control.key).touched && form.get(control.key).invalid">
