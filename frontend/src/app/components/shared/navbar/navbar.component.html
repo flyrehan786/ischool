@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <section class="container-fluid">
     <a class="navbar-brand" routerLink="/home"><i class="bi bi-alexa"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <section class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul *ngIf="!authService.isloggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
       <ul *ngIf="authService.isloggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -93,6 +93,6 @@
           </ul>
         </li>
       </ul>
-    </div>
-  </div>
+    </section>
+  </section>
 </nav>
