@@ -23,7 +23,7 @@ export class SubjectDetailsComponent implements OnInit {
     },
     (error) => {
       console.error('An error occurred:', error);
-      this.toastComponent.show('(Updating Subject API Failed).', false, true, false);
+      this.toastComponent.show('(Getting Subject API Failed).', false, true, false);
     })
   }
   deleteSubject() {

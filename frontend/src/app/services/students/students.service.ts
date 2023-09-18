@@ -30,17 +30,24 @@ export class StudentsService {
   activateStudent(id) {
     return this.http.put(environment.api + 'api/students/activate/' + id, {});
   }
-
   postEnrollStudent(enrollmentInfo) {
     return this.http.post(environment.api + 'api/students/enroll', enrollmentInfo);
   }
-  putEnrollStudent(payload) {}
-  deleteEnrollStudent() {}
+  putStudentEnrollment(payload) {}
+  deleteStudentEnrollment(enrollmentId) {
+    return this.http.delete(environment.api + 'api/students/enrollments/' + enrollmentId);
+  }
   
   getStudentEnrollments() {
     return this.http.get(environment.api + 'api/students/enrollments');
   }
-  getStudentEnrollmentsAgaintStudent(studentId) {}
+  getStudentEnrollment(enrollmentId) {
+    return this.http.get(environment.api + 'api/students/enrollments/' + enrollmentId);
+  }
+  getStudentEnrollmentsAgaintStudent(studentId) {
+    return this.http.get(environment.api + 'api/students/enrollments/student/' + studentId);
+
+  }
 
   postSubmitExamResult(payload) {}
   putSubmitExamResult(payload) {}

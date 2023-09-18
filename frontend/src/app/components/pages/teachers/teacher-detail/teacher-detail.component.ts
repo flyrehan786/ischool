@@ -25,7 +25,7 @@ export class TeacherDetailComponent implements OnInit {
     },
     (error) => {
       console.error('An error occurred:', error);
-      this.toastComponent.show('(Updating Teacher API Failed).', false, true, false);
+      this.toastComponent.show('(Getting Teacher API Failed).', false, true, false);
     })
   }
   deleteTeacher() {
@@ -35,7 +35,7 @@ export class TeacherDetailComponent implements OnInit {
       },
       (error) => {
         console.error('An error occurred:', error);
-        this.toastComponent.show('(Updating Teacher API Failed).', false, true, false);
+        this.toastComponent.show('(Deleting Teacher API Failed).', false, true, false);
       });
     }
   }
@@ -46,7 +46,7 @@ export class TeacherDetailComponent implements OnInit {
       },
       (error) => {
         console.error('An error occurred:', error);
-        this.toastComponent.show('(Updating Teacher API Failed).', false, true, false);
+        this.toastComponent.show('(Disabling Teacher API Failed).', false, true, false);
       });
     }
   }
@@ -57,7 +57,7 @@ export class TeacherDetailComponent implements OnInit {
       },
       (error) => {
         console.error('An error occurred:', error);
-        this.toastComponent.show('(Updating Teacher API Failed).', false, true, false);
+        this.toastComponent.show('(Activating Teacher API Failed).', false, true, false);
       });
     }
   }

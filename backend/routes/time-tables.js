@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const timeTables = await findAll();
-  const grades = await gradeModel.findAll();
+  const grades = await gradeModel.findAllGrades();
   timeTables.forEach(t => {
     const grade = grades.find(x => t.grade_id == x.id);
     if(grade) t.grade = grade['name'];
