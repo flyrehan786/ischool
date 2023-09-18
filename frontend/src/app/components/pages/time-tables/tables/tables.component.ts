@@ -21,7 +21,9 @@ export class TablesComponent implements OnInit {
     'time_10AM_11AM', 
     'time_11AM_12PM', 
     'time_12PM_1PM', 
-    'time_1PM_2PM' 
+    'time_1PM_2PM' ,
+    'created_at',
+    'updated_at'
   ];
   rows;
   filters = [ 'day_name' ];

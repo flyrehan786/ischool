@@ -37,7 +37,7 @@ async function findTimeTable(id) {
 
 async function saveTimeTable(newTimeTable) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?,?)`,
+    db.execute(`INSERT INTO time_table VALUES(default,?,?,?,?,?,?,?,?,?, NOW(), NOW())`,
       [
         newTimeTable.day_name,
         newTimeTable.grade_id,
