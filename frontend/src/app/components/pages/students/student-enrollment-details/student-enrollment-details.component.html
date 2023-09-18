@@ -4,29 +4,54 @@
 <table class="table">
     <thead class="table-primary">
         <tr>
+            <th colspan="5">Enrollment info</th>
+            <th colspan="1">Grade Info</th>
+            <th colspan="8">Student Info</th>
+            <th></th>
+        </tr>
+    </thead>
+    <thead class="table-primary">
+        <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Student Id</th>
+            <th>Grade Id</th>
+            <th>Status</th>
             <th>Created At</th>
             <th>Updated At</th>
+            <th>Grade Name</th>
+            <th>Student Name</th>
+            <th>Student CNIC</th>
+            <th>Student Father Name</th>
+            <th>Student Father CNIC</th>
+            <th>Post Office</th>
+            <th>Tehsil</th>
+            <th>District</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ subject?.id }}</td>
-            <td>{{ subject?.name }}</td>
-            <td>{{ subject?.created_at }}</td>
-            <td>{{ subject?.updated_at }}</td>
+            <td>{{ enrollment?.id }}</td>
+            <td>{{ enrollment?.student_id }}</td>
+            <td>{{ enrollment?.grade_id }}</td>
+            <td>{{ enrollment?.status }}</td>
+            <td>{{ enrollment?.created_at }}</td>
+            <td>{{ enrollment?.updated_at }}</td>
+            
+            <td>{{ enrollment?.grade_name }}</td>
+            <td>{{ enrollment?.student?.first_name }} {{ enrollment?.student?.last_name }}</td>
+            <td>{{ enrollment?.student?.cnic }}</td>
+            <td>{{ enrollment?.student?.father_name }}</td>
+            <td>{{ enrollment?.student?.father_cnic }}</td>
+            <td>{{ enrollment?.student?.post_office }}</td>
+            <td>{{ enrollment?.student?.tehsil }}</td>
+            <td>{{ enrollment?.student?.district }}</td>
             <td>
                 <table>
                     <tr>
                         <td>
-                            <button class="btn btn-info btn-sm" routerLink="/subject/edit/{{subjectId}}"> <i
-                                    class="bi bi-pencil-square"></i> Edit</button>
-                        </td>
-                        <td>
-                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteSubject()"><i
-                                    class="bi bi-person-x"></i> Delete</button>
+                            <button class="ms-2 btn btn-danger btn-sm" (click)="deleteEnrollment()"><i
+                                    class="bi bi-person-x"></i> Delete Record</button>
                         </td>
                     </tr>
                 </table>

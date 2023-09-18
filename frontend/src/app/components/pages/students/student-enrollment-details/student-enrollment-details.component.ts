@@ -27,9 +27,9 @@ export class StudentEnrollmentDetailsComponent implements OnInit {
     })
   }
   deleteEnrollment() {
-    if(confirm('Are you sure you want to delete this subject?')) {
+    if(confirm('Are you sure you want to delete this student-enrollment?')) {
       this._studentService.deleteStudentEnrollment(this.enrollmentId).subscribe(res => {
-        this._router.navigateByUrl('/subjects');
+        this._router.navigateByUrl('/student/enrollments');
       },
       (error) => {
         console.error('An error occurred:', error);
