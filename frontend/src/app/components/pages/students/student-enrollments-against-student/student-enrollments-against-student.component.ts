@@ -34,7 +34,7 @@ export class StudentEnrollmentsAgainstStudentComponent implements OnInit {
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router, private _route: ActivatedRoute) { }
   ngOnInit(): void {
-    this.studentId = this._route.snapshot.paramMap.get('studentId');
+    this.studentId = this._route.snapshot.paramMap.get('id');
     this.getStudentEnrollments();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
