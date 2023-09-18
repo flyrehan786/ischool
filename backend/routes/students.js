@@ -15,7 +15,8 @@ const {
   activateStudentEnrollment,
   deActivateStudentEnrollment,
   findAllEnrollments,
-  findStudentEnrollments
+  findStudentEnrollments,
+  deleteStudentEnrollment
 } = require('../models/student-enrollments');
 const { findGrade } = require("../models/grade");
 const auth = require("../middleware/auth");
@@ -142,6 +143,17 @@ router.get("/enrollments/:id", async (req, res) => {
   if (+s.status == 1) s.status = 'Active';
 
   res.send(s);
+});
+
+router.delete("/enrollments/:id", async (req, res) => {
+  const rowsAffected = await deleteStudentEnrollment(req.params.id);
+  if (rowsAffected == false) {
+    return res
+      .status(404)
+      .send("The enrollment with the given ID was not found.");
+  }
+
+  res.send({ deleted: true });
 });
 
 router.get("/:id", async (req, res) => {
