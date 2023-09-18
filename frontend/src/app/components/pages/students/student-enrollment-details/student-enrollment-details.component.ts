@@ -37,4 +37,28 @@ export class StudentEnrollmentDetailsComponent implements OnInit {
       });
     }
   }
+
+  disableStudent() {
+    if(confirm('Are you sure you want to disable this student-enrollment?')) {
+      this._studentService.disableStudent(this.enrollmentId).subscribe(res => {
+        this._router.navigateByUrl('/students');
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+        this.toastComponent.show('(Updating Student Enrollment API Failed.', false, true, false);
+      });
+    }
+  }
+  activateStudent() {
+    if(confirm('Are you sure you want to activate this student?')) {
+      this._studentService.activateStudent(this.enrollmentId).subscribe(res => {
+        this._router.navigateByUrl('/students');
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+        this.toastComponent.show('(Updating Student Enrollment API Failed.', false, true, false);
+      });
+    }
+  }
+
 }

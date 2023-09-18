@@ -30,10 +30,12 @@ async function findStudentEnrollments(id) {
 }
 
 async function findStudentEnrollmentsAgainstStudentId(studentId) {
+    console.log(studentId);
     return new Promise((resolve, reject) => {
         db.execute('SELECT * FROM student_enrollments WHERE student_id=?', [studentId], (err, result) => {
             if (err) reject(err);
-            if (result.length > 0) resolve(result[0]);
+            console.log(result);
+            if (result.length > 0) resolve(result);
             else resolve(null);
         });
     })
