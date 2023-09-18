@@ -29,6 +29,16 @@ async function findStudentEnrollments(id) {
     })
 }
 
+async function findStudentEnrollmentsAgainstStudentId(studentId) {
+    return new Promise((resolve, reject) => {
+        db.execute('SELECT * FROM student_enrollments WHERE student_id=?', [studentId], (err, result) => {
+            if (err) reject(err);
+            if (result.length > 0) resolve(result[0]);
+            else resolve(null);
+        });
+    })
+}
+
 async function saveStudentEnrollment(newStudentEnrollment) {
     return new Promise((resolve, reject) => {
         // blocked recent enrollments.
@@ -122,6 +132,7 @@ async function activateStudentEnrollment(id) {
 exports.validateStudentEnrollment = validateStudentEnrollment;
 exports.findAllEnrollments = findAllEnrollments;
 exports.findStudentEnrollments = findStudentEnrollments;
+exports.findStudentEnrollmentsAgainstStudentId = findStudentEnrollmentsAgainstStudentId;
 exports.saveStudentEnrollment = saveStudentEnrollment;
 exports.updateStudentEnrollment = updateStudentEnrollment;
 exports.deleteStudentEnrollment = deleteStudentEnrollment;

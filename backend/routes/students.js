@@ -8,16 +8,7 @@ const {
   deActivateStudent,
   activateStudent
 } = require("../models/students");
-const {
-  validateStudentEnrollment,
-  saveStudentEnrollment,
-  updateStudentEnrollment,
-  activateStudentEnrollment,
-  deActivateStudentEnrollment,
-  findAllEnrollments,
-  findStudentEnrollments,
-  deleteStudentEnrollment
-} = require('../models/student-enrollments');
+const studentEnrollmentModel = require('../models/student-enrollments');
 const { findGrade } = require("../models/grade");
 const auth = require("../middleware/auth");
 const express = require("express");
@@ -104,7 +95,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/enrollments", async (req, res) => {
-  const studentsEnrollments = await findAllEnrollments();
+  const studentsEnrollments = await studentEnrollmentModel.findAllEnrollments();
 
   for (let i = 0; i < studentsEnrollments.length; i++) {
     const s = studentsEnrollments[i];
@@ -126,9 +117,29 @@ router.get("/enrollments", async (req, res) => {
 });
 
 router.get("/enrollments/:id", async (req, res) => {
-  const studentsEnrollment = await findStudentEnrollments(req.params.id);
+  const studentEnrollment = await studentEnrollmentModel.findStudentEnrollments(req.params.id);
 
-  const s = studentsEnrollment;
+  const s = studentEnrollment;
+  s.student = await findStudent(s.student_id);
+  s.student_name = s.student.first_name + ' ' + s.student.last_name;
+  s.student_father_name = s.student.father_name;
+  s.student_cnic = s.student.cnic;
+
+  s.grade = await findGrade(s.grade_id);
+  s.grade_name = s.grade.name;
+  s.created_at = new Date(s.created_at).toLocaleString();
+  s.updated_at = new Date(s.updated_at).toLocaleString();
+
+  if (+s.status == 0) s.status = 'Not Active';
+  if (+s.status == 1) s.status = 'Active';
+
+  res.send(s);
+});
+// enrollments/student/
+router.get("/enrollments/student/:studentId", async (req, res) => {
+  const studentEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(req.params.studentId);
+
+  const s = studentEnrollments;
   s.student = await findStudent(s.student_id);
   s.student_name = s.student.first_name + ' ' + s.student.last_name;
   s.student_father_name = s.student.father_name;
@@ -146,7 +157,7 @@ router.get("/enrollments/:id", async (req, res) => {
 });
 
 router.delete("/enrollments/:id", async (req, res) => {
-  const rowsAffected = await deleteStudentEnrollment(req.params.id);
+  const rowsAffected = await studentEnrollmentModel.deleteStudentEnrollment(req.params.id);
   if (rowsAffected == false) {
     return res
       .status(404)
@@ -178,9 +189,9 @@ router.get("/:id", async (req, res) => {
 
 
 router.post("/enroll", async (req, res) => {
-  const { error } = validateStudentEnrollment(req.body);
+  const { error } = studentEnrollmentModel.validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  const createdStudent = await saveStudentEnrollment(req.body);
+  const createdStudent = await studentEnrollmentModel.saveStudentEnrollment(req.body);
   res.send(createdStudent);
 });
 
@@ -189,7 +200,7 @@ router.put("/enroll/:id", async (req, res) => {
   const { error } = validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const updatedStudent = await updateStudentEnrollment(
+  const updatedStudent = await studentEnrollmentModel.updateStudentEnrollment(
     req.params.id,
     req.body
   );
@@ -202,7 +213,7 @@ router.put("/enroll/:id", async (req, res) => {
 });
 
 router.put("/enroll/disable/:id", async (req, res) => {
-  const rowsAffected = await deActivateStudentEnrollment(
+  const rowsAffected = await studentEnrollmentModel.deActivateStudentEnrollment(
     req.params.id,
     req.body
   );
@@ -217,7 +228,7 @@ router.put("/enroll/disable/:id", async (req, res) => {
 });
 
 router.put("/enroll/activate/:id", async (req, res) => {
-  const rowsAffected = await activateStudentEnrollment(
+  const rowsAffected = await studentEnrollmentModel.activateStudentEnrollment(
     req.params.id,
     req.body
   );
