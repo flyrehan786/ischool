@@ -33,14 +33,14 @@ export class StudentEnrollmentsComponent implements OnInit {
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }
   ngOnInit(): void {
-    this.getStudents();
+    this.getEnrollments();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
         this._router.navigateByUrl("/student/enrollment/details/" + e.id);
       }
     })
   }
-  getStudents() {
+  getEnrollments() {
     this.isLoading = true;
     this._studentService.getStudentEnrollments().subscribe(res => {
       this.rows = res;
