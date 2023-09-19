@@ -46,12 +46,22 @@ export class TableComponent implements OnInit {
     else this.rows = JSON.parse(JSON.stringify(this.BACKUP));
   }
   filterWithOption(keyword: string, option) {
+    console.log(keyword);
+    console.log(option);
     if (keyword.length > 0) {
       this.rows = this.BACKUP.filter(x => {
         let flag = false;
         const value = x[option];
-        if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
-          flag = true;
+        const statusField = 'status';
+        if(option == statusField) {
+          if(value.toString().toLowerCase() == keyword.toLowerCase()) {
+            flag = true;
+          }
+        }
+        else {
+          if (value && value.toString().toLowerCase().includes(keyword.toLowerCase())) {
+            flag = true;
+          }
         }
         return flag;
       })
