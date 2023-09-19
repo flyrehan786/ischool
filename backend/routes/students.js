@@ -97,7 +97,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/enroll/activate/:id", async (req, res) => {
   const rowsAffected = await studentEnrollmentModel.activateStudentEnrollment(
     req.params.id,
-    req.body
+    req.body.student_id
   );
 
   if (rowsAffected == false) {
@@ -233,7 +233,6 @@ router.put("/enroll/:id", async (req, res) => {
 router.put("/enroll/disable/:id", async (req, res) => {
   const rowsAffected = await studentEnrollmentModel.deActivateStudentEnrollment(
     req.params.id,
-    req.body
   );
 
   if (rowsAffected == false) {

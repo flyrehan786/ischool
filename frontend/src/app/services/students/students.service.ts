@@ -45,11 +45,11 @@ export class StudentsService {
     return this.http.get(environment.api + 'api/students/enrollments/student/' + studentId);
 
   }
-  disableStudentEnrollment(id) {
-    return this.http.put(environment.api + 'api/students/enroll/disable/' + id, {});
+  disableStudentEnrollment(id, studentId) {
+    return this.http.put(environment.api + 'api/students/enroll/disable/' + id, { student_id: studentId });
   }
-  activateStudentEnrollment(id) {
-    return this.http.put(environment.api + 'api/students/enroll/activate/' + id, {});
+  activateStudentEnrollment(id, studentId) {
+    return this.http.put(environment.api + 'api/students/enroll/activate/' + id, { student_id: studentId });
   }
 
   postSubmitExamResult(payload) {}

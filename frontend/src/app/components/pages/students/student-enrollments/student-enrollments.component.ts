@@ -24,11 +24,10 @@ export class StudentEnrollmentsComponent implements OnInit {
     'updated_at',
   ];
   filters = [
-    'first_name',
-    'last_name',
-    'cnic',
-    'district',
-    'status'
+    'student_name',
+    'student_cnic',
+    'student_father_name',
+    'grade_name',
   ];
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }

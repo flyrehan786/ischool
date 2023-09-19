@@ -1,7 +1,15 @@
 .navbar {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    color: #fff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    background-color: white !important;
+    border-bottom: 1px solid #ededed;
+    box-shadow: 0 1px 5px #ededed;
+}
+.navbar-brand {
+    font-size: 13px;
+    font-weight: bold;
+    color: red;
 }
 .nav-link.active {
     margin-left: 14px;
@@ -10,8 +18,11 @@
     /* border-bottom:1px solid rgba(255, 255, 255, 0.638); */
 }
 .form-control {
-    width: 350px;
+    width: 230px;
     margin-left: 20px;
+    height: 28px;
+    font-size: 13px;
+    margin-top: 4px;
 }
 :host ::ng-deep #navbarSupportedContent > ul.navbar-nav.me-auto.mb-2.mb-lg-0 > li:nth-child(6) > input {
     background-color: #4f4f4f;
