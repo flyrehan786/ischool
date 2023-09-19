@@ -59,7 +59,7 @@ table {
     padding: 0px;
 }
 
-input {
+input, select {
     font-size: 13px;
 }
 
