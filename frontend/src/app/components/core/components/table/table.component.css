@@ -58,3 +58,11 @@ table {
 :host ng::deep .form-control .filters {
     padding: 0px;
 }
+
+input {
+    font-size: 13px;
+}
+
+hr {
+    color: #cfcfcf;
+}
