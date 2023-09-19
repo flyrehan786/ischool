@@ -59,7 +59,7 @@ table {
     padding: 0px;
 }
 
-input, select {
+input, select, .pagination {
     font-size: 13px;
 }
 
