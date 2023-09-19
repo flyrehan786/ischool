@@ -1,5 +1,5 @@
 <section class="mt-2 mb-2" style="display:flex; justify-content: flex-start ">
-    <strong class="me-3">Filter Results </strong>
+    <strong class="me-3">Filter by: </strong>
     <span class="ms-1 me-5 filters" *ngFor="let f of filters"
         style="display:flex; justify-content: space-between; cursor: pointer;">
         <span id="{{ f }}" (click)="onFilterOptionClick(f)">
@@ -82,7 +82,7 @@
                     <p *ngIf="item !== 'status'">{{ row[item] }}</p>
                     <p *ngIf="item === 'status'">
                         <span class="badge bg-success" *ngIf="row[item] === 'Active'">Active</span>
-                        <span class="badge bg-secondary" *ngIf="row[item] === 'Not Active'">Not Active</span>
+                        <span class="badge bg-danger" *ngIf="row[item] === 'Not Active'">Not Active</span>
                     </p>
                 </td>
                 <td class="td-border-right">
