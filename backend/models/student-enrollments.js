@@ -116,7 +116,7 @@ async function deActivateStudentEnrollment(id) {
 async function activateStudentEnrollment(id) {
     return new Promise((resolve, reject) => {
         // disable all enrollments first.
-        db.execute('UPDATE student_enrollments SET status=0 WHERE id=?', [1, id], (err, result) => {
+        db.execute('UPDATE student_enrollments SET status=0 WHERE id=?', [id], (err, result) => {
             if (err) reject(err);
             if (result.affectedRows == 1) {
                 // then activate specific enrollment.

@@ -40,7 +40,7 @@ export class StudentEnrollmentDetailsComponent implements OnInit {
 
   disableEnrollment() {
     if(confirm('Are you sure you want to disable this student-enrollment?')) {
-      this._studentService.disableStudent(this.enrollmentId).subscribe(res => {
+      this._studentService.disableStudentEnrollment(this.enrollmentId).subscribe(res => {
         this._router.navigateByUrl('/students');
       },
       (error) => {
@@ -53,7 +53,7 @@ export class StudentEnrollmentDetailsComponent implements OnInit {
     if(confirm('Are you sure you want to activate this student?')) {
       if(confirm('Remember: All other enrollments will be disabled except this! Are you want to proceed?')) {
 
-        this._studentService.activateStudent(this.enrollmentId).subscribe(res => {
+        this._studentService.activateStudentEnrollment(this.enrollmentId).subscribe(res => {
           this._router.navigateByUrl('/students');
         },
         (error) => {

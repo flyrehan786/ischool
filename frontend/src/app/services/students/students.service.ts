@@ -13,7 +13,6 @@ export class StudentsService {
   getStudents() { 
     return this.http.get(environment.api + 'api/students');
   }
-  
   postStudent(newStudent) {
     return this.http.post(environment.api + 'api/students', newStudent);
   }
@@ -23,7 +22,6 @@ export class StudentsService {
   deleteStudent(id) {
     return this.http.delete(environment.api + 'api/students/' + id);
   }
-  
   disableStudent(id) {
     return this.http.put(environment.api + 'api/students/disable/' + id, {});
   }
@@ -37,7 +35,6 @@ export class StudentsService {
   deleteStudentEnrollment(enrollmentId) {
     return this.http.delete(environment.api + 'api/students/enrollments/' + enrollmentId);
   }
-  
   getStudentEnrollments() {
     return this.http.get(environment.api + 'api/students/enrollments');
   }
@@ -47,6 +44,12 @@ export class StudentsService {
   getStudentEnrollmentsAgaintStudent(studentId) {
     return this.http.get(environment.api + 'api/students/enrollments/student/' + studentId);
 
+  }
+  disableStudentEnrollment(id) {
+    return this.http.put(environment.api + 'api/students/enroll/disable/' + id, {});
+  }
+  activateStudentEnrollment(id) {
+    return this.http.put(environment.api + 'api/students/enroll/activate/' + id, {});
   }
 
   postSubmitExamResult(payload) {}

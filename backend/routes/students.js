@@ -94,6 +94,21 @@ router.delete("/:id", async (req, res) => {
   res.send({ deleted: true });
 });
 
+router.put("/enroll/activate/:id", async (req, res) => {
+  const rowsAffected = await studentEnrollmentModel.activateStudentEnrollment(
+    req.params.id,
+    req.body
+  );
+
+  if (rowsAffected == false) {
+    return res
+      .status(404)
+      .send("The student-enrollment with the given ID was not found.");
+  }
+
+  res.send({ updated: true });
+});
+
 router.get("/enrollments", async (req, res) => {
   const studentsEnrollments = await studentEnrollmentModel.findAllEnrollments();
 
@@ -187,7 +202,6 @@ router.get("/:id", async (req, res) => {
   res.send(student);
 });
 
-// Enrollments Section.
 
 
 router.post("/enroll", async (req, res) => {
@@ -196,6 +210,7 @@ router.post("/enroll", async (req, res) => {
   const createdStudent = await studentEnrollmentModel.saveStudentEnrollment(req.body);
   res.send(createdStudent);
 });
+
 
 router.put("/enroll/:id", async (req, res) => {
   console.log('adadd')
@@ -214,6 +229,7 @@ router.put("/enroll/:id", async (req, res) => {
   res.send(updatedStudent);
 });
 
+
 router.put("/enroll/disable/:id", async (req, res) => {
   const rowsAffected = await studentEnrollmentModel.deActivateStudentEnrollment(
     req.params.id,
@@ -229,20 +245,6 @@ router.put("/enroll/disable/:id", async (req, res) => {
   res.send({ updated: true });
 });
 
-router.put("/enroll/activate/:id", async (req, res) => {
-  const rowsAffected = await studentEnrollmentModel.activateStudentEnrollment(
-    req.params.id,
-    req.body
-  );
-
-  if (rowsAffected == false) {
-    return res
-      .status(404)
-      .send("The student-enrollment with the given ID was not found.");
-  }
-
-  res.send({ updated: true });
-});
 
 // Certification Section.
 // Fee Section.
