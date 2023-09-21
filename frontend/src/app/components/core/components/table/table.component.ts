@@ -20,7 +20,7 @@ export class TableComponent implements OnInit {
   @Input() eventLabel: string = '';
   @Input() title: string = '';
   currentPage = 1;
-  itemsPerPage = 10;
+  itemsPerPage = 15;
   @Input() headers: any[] = [];
   @Input() rows: any[] = [];
   @Input() filters: any[] = [];

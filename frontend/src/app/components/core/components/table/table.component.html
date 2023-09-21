@@ -1,4 +1,4 @@
-<section class="mt-2 mb-2" style="display:flex; justify-content: flex-start ">
+<section class="mt-2" style="display:flex; justify-content: flex-start ">
     <strong class="me-3">Filter by: </strong>
     <span class="ms-1 me-5 filters" *ngFor="let f of filters"
         style="display:flex; justify-content: space-between; cursor: pointer;">
@@ -10,15 +10,19 @@
 <hr />
 <section class="d-flex justify-content-between">
     <section>
-        <table class="mt-2">
+        <table>
             <tr>
                 <td>
                     <select name="" id="" class="form-control" [(ngModel)]="itemsPerPage">
                         <option>Select</option>
                         <option value="10">10</option>
+                        <option value="15">15</option>
                         <option value="20">20</option>
+                        <option value="25">25</option>
                         <option value="30">30</option>
+                        <option value="35">35</option>
                         <option value="40">40</option>
+                        <option value="45">45</option>
                         <option value="50">50</option>
                     </select>
                 </td>
@@ -58,7 +62,7 @@
     </section>
 </section>
 <section>
-    <table class="table mt-3">
+    <table class="table mt-2">
         <thead class="thead-border-top table-default">
             <tr>
                 <th class="th-border-left th-border-bottom">#</th>
