@@ -4,3 +4,7 @@
 .form-control {
     margin-bottom: 16px;
 }
+.form-section {
+    background-color: rgb(255, 255, 220);
+    border-radius: 8px;
+}
