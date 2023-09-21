@@ -29,7 +29,9 @@
     color: #fdfdfd;
 }
 #auth-options {
-    margin-left: -40px;
+    font-size: 13px;
+    margin-top: 12px;
+    margin-left: -75px;
 }
 /* #search-option {    
     background-color: black;
