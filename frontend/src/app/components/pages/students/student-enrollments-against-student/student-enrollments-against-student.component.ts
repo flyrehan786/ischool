@@ -25,11 +25,10 @@ export class StudentEnrollmentsAgainstStudentComponent implements OnInit {
     'updated_at',
   ];
   filters = [
-    'first_name',
-    'last_name',
-    'cnic',
-    'district',
-    'status'
+    'student_name',
+    'student_father_name',
+    'student_cnic',
+    'status',
   ];
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router, private _route: ActivatedRoute) { }

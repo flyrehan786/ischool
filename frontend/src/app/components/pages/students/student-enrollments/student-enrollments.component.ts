@@ -27,7 +27,7 @@ export class StudentEnrollmentsComponent implements OnInit {
     'student_name',
     'student_cnic',
     'student_father_name',
-    'grade_name',
+    'status',
   ];
   rows: any = [];
   constructor(private _studentService: StudentsService, private _commonService: CommonService, private _router: Router) { }
