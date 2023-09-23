@@ -28,13 +28,13 @@
 
 .tag {
     display: inline-block;
-    padding: 8px 20px;
-    font-size: 14px;
+    padding: 5px 6px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 1;
     color: #fff;
-    background-color: #5db3ff;
-    border: 1px solid #5db3ff;
+    background-color: #1181e3;
+    /* border: 1px solid #5db3ff; */
     border-radius: 100px;
     margin: 4px;
     cursor: pointer;
