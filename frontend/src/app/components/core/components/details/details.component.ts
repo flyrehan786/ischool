@@ -14,11 +14,8 @@ export class DetailsComponent implements OnInit {
     name: 'Rehan Shah',
     cnic: '15402-69990899',
     remarks: 'I am a full stack js-developer.'
-
   }
   constructor() { }
-
   ngOnInit(): void {
   }
-
 }
