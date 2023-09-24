@@ -16,7 +16,26 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const students = await findAll();
-  students.forEach(s => {
+  for (let student = 0; student < students.length; student++) {
+    const s = students[student];
+    const studentEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(s.id);
+    if (studentEnrollments) {
+      const activeEnrollment = studentEnrollments.filter(x => x.status == 1);
+      if (activeEnrollment && activeEnrollment.length > 0) {
+        const gradeInfo = await findGrade(activeEnrollment[0]['grade_id']);
+        s.active_enrollment_grade_id = activeEnrollment[0]['grade_id'];
+        s.active_enrollment_grade_name = gradeInfo['name'];
+        s.active_enrollment_grade_status = activeEnrollment[0]['status'];
+      } else {
+        s.active_enrollment_grade_id = '';
+        s.active_enrollment_grade_name = '';
+        s.active_enrollment_grade_status = '';
+      }
+    } else {
+      s.active_enrollment_grade_id = '';
+      s.active_enrollment_grade_name = '';
+      s.active_enrollment_grade_status = '';
+    }
     if (s.gender == 1) s.gender = 'Male';
     else if (s.gender == 0) s.gender = 'Female';
 
@@ -25,6 +44,10 @@ router.get("/", async (req, res) => {
 
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
+
+  }
+
+  students.forEach(async s => {
   })
   res.send(students);
 });
@@ -152,23 +175,24 @@ router.get("/enrollments/:id", async (req, res) => {
 });
 // enrollments/student/
 router.get("/enrollments/student/:studentId", async (req, res) => {
-  const studentsEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(req.params.studentId);
-
-  for (let i = 0; i < studentsEnrollments.length; i++) {
-    const s = studentsEnrollments[i];
-    s.student = await findStudent(s.student_id);
-    s.student_name = s.student.first_name + ' ' + s.student.last_name;
-    s.student_father_name = s.student.father_name;
-    s.student_cnic = s.student.cnic;
-
-    s.grade = await findGrade(s.grade_id);
-    s.grade_name = s.grade.name;
-    s.created_at = new Date(s.created_at).toLocaleString();
-    s.updated_at = new Date(s.updated_at).toLocaleString();
-
-    if (+s.status == 0) s.status = 'Not Active';
-    if (+s.status == 1) s.status = 'Active';
-  }
+  let studentsEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(req.params.studentId);
+  if(studentsEnrollments) {
+    for (let i = 0; i < studentsEnrollments.length; i++) {
+      const s = studentsEnrollments[i];
+      s.student = await findStudent(s.student_id);
+      s.student_name = s.student.first_name + ' ' + s.student.last_name;
+      s.student_father_name = s.student.father_name;
+      s.student_cnic = s.student.cnic;
+  
+      s.grade = await findGrade(s.grade_id);
+      s.grade_name = s.grade.name;
+      s.created_at = new Date(s.created_at).toLocaleString();
+      s.updated_at = new Date(s.updated_at).toLocaleString();
+  
+      if (+s.status == 0) s.status = 'Not Active';
+      if (+s.status == 1) s.status = 'Active';
+    }
+  } else studentsEnrollments = []
 
   res.send(studentsEnrollments);
 });
