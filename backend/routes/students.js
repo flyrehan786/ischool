@@ -25,16 +25,16 @@ router.get("/", async (req, res) => {
         const gradeInfo = await findGrade(activeEnrollment[0]['grade_id']);
         s.active_enrollment_grade_id = activeEnrollment[0]['grade_id'];
         s.active_enrollment_grade_name = gradeInfo['name'];
-        s.active_enrollment_grade_status = activeEnrollment[0]['status'];
+        s.active_enrollment_grade_status = (activeEnrollment[0]['status'] == 1) ? 'Active' : 'Not Active';
       } else {
-        s.active_enrollment_grade_id = '';
-        s.active_enrollment_grade_name = '';
-        s.active_enrollment_grade_status = '';
+        s.active_enrollment_grade_id = '-';
+        s.active_enrollment_grade_name = '-';
+        s.active_enrollment_grade_status = 'Not Active';
       }
     } else {
-      s.active_enrollment_grade_id = '';
-      s.active_enrollment_grade_name = '';
-      s.active_enrollment_grade_status = '';
+      s.active_enrollment_grade_id = '-';
+      s.active_enrollment_grade_name = '-';
+      s.active_enrollment_grade_status = 'Not Active';
     }
     if (s.gender == 1) s.gender = 'Male';
     else if (s.gender == 0) s.gender = 'Female';
