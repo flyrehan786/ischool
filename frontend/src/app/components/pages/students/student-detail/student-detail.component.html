@@ -100,7 +100,10 @@
                     <td>{{ student?.age }}</td>
                     <td>{{ student?.father_name }}</td>
                     <td>{{ student?.father_cnic }}</td>
-                    <td>{{ student?.status }}</td>
+                    <td>
+                        <span class="badge bg-success" *ngIf="student?.status === 'Active'">Active</span>
+                        <span class="badge bg-danger" *ngIf="student?.status === 'Not Active'">Not Active</span>
+                    </td>
                     <td>{{ student?.created_at }}</td>
                     <td>{{ student?.updated_at }}</td>
                     <td>{{ student?.post_office }}</td>

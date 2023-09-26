@@ -13,8 +13,7 @@ export class StudentsComponent implements OnInit {
   eventLabel = '_students_events';
   headers = [
     'id',
-    'active_enrollment_grade_id', 
-    'status', 
+    // 'active_enrollment_grade_id', 
     'first_name',
     'last_name',
     'gender',
@@ -27,6 +26,7 @@ export class StudentsComponent implements OnInit {
     'post_office', 
     'tehsil', 
     'district',
+    'status', 
     'created_at',
     'updated_at',
   ];
