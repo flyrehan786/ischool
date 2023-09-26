@@ -54,7 +54,7 @@ async function saveTimeTable(newTimeTable) {
           if (err) reject(err);
           if (result.length > 0) {
             const insertedId = result[0].id;
-            db.execute(`SELECT * FROM subjects WHERE id = ?;`, [insertedId], (err, result) => {
+            db.execute(`SELECT * FROM time_table WHERE id = ?;`, [insertedId], (err, result) => {
               if (err) reject(err);
               if (result.length > 0) {
                 resolve(result[0]);
