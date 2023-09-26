@@ -42,7 +42,7 @@
             <section *ngSwitchCase="'radio'">
               <section *ngFor="let option of control.options">
                 <label for="gender">
-                  <input type="radio" name="{{ control.key }}" [formControlName]="control.key"  [value]="option.value" [checked]="option.value == control.defaultValue">
+                  <input type="radio" name="{{ control.key }}" [formControlName]="control.key"  [value]="option.value" [checked]="option.value == control.defaultValue" class="radio-form">
                   {{ option.key }}
                 </label> 
               </section>

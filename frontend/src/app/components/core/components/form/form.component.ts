@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TYPE_text, TYPE_password, TYPE_radio, TYPE_checkbox, TYPE_dropdown } from './deps/control-types';
 import { IControl } from './deps/IControl';
@@ -9,7 +9,7 @@ import { VALIDATION_MESSAGES } from './deps/validation-messages';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit, AfterViewChecked {
+export class FormComponent implements OnInit, AfterViewInit {
   /**
    * Config JSON template
    * --------------------
@@ -152,15 +152,17 @@ export class FormComponent implements OnInit, AfterViewChecked {
   @Input() title: string = 'Form Title @Input()';
   form: FormGroup;
   constructor(private cdr: ChangeDetectorRef,) { }
-  ngAfterViewChecked(): void {
+  ngAfterViewInit(): void {
     setTimeout(() => {
-      const inputElement = document.querySelector("input.radio-form");
+      let inputElement = document.querySelector("input.radio-form");
       if(inputElement) {
         const changeEvent = new Event('change', {
           bubbles: true,  
           cancelable: true  
         });  
+        console.log('dispatched.')
         inputElement.dispatchEvent(changeEvent);
+        inputElement = null;
       }
     }, 1000);
     this.cdr.detectChanges();
