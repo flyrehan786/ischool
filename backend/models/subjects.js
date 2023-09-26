@@ -3,7 +3,7 @@ const db = require('../services/mysql').db;
 
 function validateSubject(subject) {
   const schema = {
-    name: Joi.string().min(3).max(45).required(),
+    name: Joi.string().min(2).max(45).required(),
   };
   return Joi.validate(subject, schema);
 }
