@@ -160,9 +160,7 @@ export class FormComponent implements OnInit, AfterViewInit {
           bubbles: true,  
           cancelable: true  
         });  
-        console.log('dispatched.')
         inputElement.dispatchEvent(changeEvent);
-        inputElement = null;
       }
     }, 1000);
     this.cdr.detectChanges();
