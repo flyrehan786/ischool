@@ -17,6 +17,9 @@ router.get("/", async (req, res) => {
   timeTables.forEach(t => {
     const grade = grades.find(x => t.grade_id == x.id);
     if(grade) t.grade = grade['name'];
+
+    t.created_at = new Date(t.created_at).toLocaleString();
+    t.updated_at = new Date(t.updated_at).toLocaleString();
   });
   res.send(timeTables);
 });
