@@ -2,15 +2,15 @@ const Joi = require('joi');
 const db = require('../services/mysql').db;
 function validateTimeTable(subject) {
   const schema = {
-    day_name: Joi.string().min(3).max(45).required(),
+    day_name: Joi.string().min(2).max(45).required(),
     grade_id: Joi.string().min(1).max(45).required(),
-    time_7AM_8AM: Joi.string().min(3).max(45).required(),
-    time_8AM_9AM: Joi.string().min(3).max(45).required(),
-    time_9AM_10AM: Joi.string().min(3).max(45).required(),
-    time_10AM_11AM: Joi.string().min(3).max(45).required(),
-    time_11AM_12PM: Joi.string().min(3).max(45).required(),
-    time_12PM_1PM: Joi.string().min(3).max(45).required(),
-    time_1PM_2PM: Joi.string().min(3).max(45).required(),
+    time_7AM_8AM: Joi.string().min(2).max(45).required(),
+    time_8AM_9AM: Joi.string().min(2).max(45).required(),
+    time_9AM_10AM: Joi.string().min(2).max(45).required(),
+    time_10AM_11AM: Joi.string().min(2).max(45).required(),
+    time_11AM_12PM: Joi.string().min(2).max(45).required(),
+    time_12PM_1PM: Joi.string().min(2).max(45).required(),
+    time_1PM_2PM: Joi.string().min(2).max(45).required(),
   };
   return Joi.validate(subject, schema);
 }
