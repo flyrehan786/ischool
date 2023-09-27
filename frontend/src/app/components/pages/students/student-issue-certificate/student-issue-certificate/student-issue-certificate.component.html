@@ -1,1 +1,6 @@
-<p>student-issue-certificate works!</p>
+<br />
+<span *ngIf="!editMode">
+    <a routerLink="/student/details/{{ studentId }}">Back to List</a>
+</span>
+<core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
+<core-toast></core-toast>

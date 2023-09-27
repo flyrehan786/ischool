@@ -36,7 +36,7 @@
                         +Enroll / Enrollments</button>
                 </td>
                 <td>
-                    <button routerLink="/student/issue/new" [disabled]="+student?.status === 0"
+                    <button routerLink="/student/issue/new/certificate/{{ +student.id }}" [disabled]="+student?.status === 0"
                     class="ms-2 btn btn-primary btn-sm"><i class="bi bi-list-check"></i>
                     +Certificate / already issued</button>
                 </td>
