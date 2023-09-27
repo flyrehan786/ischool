@@ -1,6 +1,4 @@
 <br />
-<span *ngIf="!editMode">
-    <a routerLink="/student/details/{{ studentId }}">Back to List</a>
-</span>
+<a routerLink="/student/details/{{ studentId }}">Back to List</a>
 <core-form [config]="config" [title]="formTitle" (submitted)="onSubmit($event)"></core-form>
 <core-toast></core-toast>

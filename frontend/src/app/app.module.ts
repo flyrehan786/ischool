@@ -37,7 +37,7 @@ import { TeacherDetailComponent } from './components/pages/teachers/teacher-deta
 import { TeacherRequiredSalaryInfoComponent } from './components/pages/teachers/teacher-required-salary-info/teacher-required-salary-info.component';
 import { TeacherRequiredSalaryInfoFormComponent } from './components/pages/teachers/teacher-required-salary-info-form/teacher-required-salary-info-form.component';
 import { TeacherClassesAssignedInfoComponent } from './components/pages/teachers/teacher-classes-assigned-info/teacher-classes-assigned-info.component';
-import { TeacherClassesAssignedInfoFormComponent } from './components/pages/teachers/teacher-classes-assigned-info-form/teacher-classes-assigned-info-form.component';
+import { TeacherClassesAssignInfoFormComponent } from './components/pages/teachers/teacher-classes-assign-info-form/teacher-classes-assign-info-form.component';
 
 
 import { CertificateFormComponent } from './components/pages/certificates/certificate-form/certificate-form/certificate-form.component';
@@ -161,7 +161,7 @@ import { timeTableRoutes } from './routes/time-tables.routes';
     TeacherRequiredSalaryInfoComponent,
     TeacherRequiredSalaryInfoFormComponent,
     TeacherClassesAssignedInfoComponent,
-    TeacherClassesAssignedInfoFormComponent,
+    TeacherClassesAssignInfoFormComponent,
     StudentEnrollmentDetailsComponent,
     StudentEnrollmentsAgainstStudentComponent,
   ],
