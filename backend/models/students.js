@@ -3,6 +3,7 @@ const db = require('../services/mysql').db;
 
 function validateStudent(student) {
   const schema = {
+    registration_no: Joi.string().min(3).max(45).required(),
     first_name: Joi.string().min(3).max(45).required(),
     last_name: Joi.string().min(3).max(45).required(),
     gender: Joi.string().min(1).max(1).required(),
@@ -39,8 +40,9 @@ async function findStudent(id) {
 
 async function saveStudent(newStudent) {
   return new Promise((resolve, reject) => {
-    db.execute('INSERT INTO students VALUES(default,?,?,?,?,?,?,?,?,?,?,1, NOW(), NOW(), 1, 1)',
+    db.execute('INSERT INTO students VALUES(default,?,?,?,?,?,?,?,?,?,?,?,1, NOW(), NOW(), 1, 1)',
       [
+        newStudent.registration_no,
         newStudent.first_name,
         newStudent.last_name,
         newStudent.gender,
@@ -74,6 +76,7 @@ async function updateStudent(id, updatedStudent) {
   return new Promise((resolve, reject) => {
     db.execute('Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;',
       [
+        updatedStudent.registration_no,
         updatedStudent.first_name,
         updatedStudent.last_name,
         updatedStudent.gender,

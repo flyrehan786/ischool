@@ -21,6 +21,18 @@ export class StudentFormComponent implements OnInit {
   config: IControl[] = [
     {
       type: TYPE_text,
+      key: 'registration_no', defaultValue: '', label: 'Registration No.',
+      validators:
+        [
+          { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
+          { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
+          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
+        ],
+      visible: true,
+      bsCols: 'col-md-2'
+    },
+    {
+      type: TYPE_text,
       key: 'first_name', defaultValue: '', label: 'First Name',
       validators:
         [
@@ -158,6 +170,7 @@ export class StudentFormComponent implements OnInit {
     this._studentService.getStudent(this.studentId).subscribe(student => {
       this.student = student;
       this.config.forEach(c => {
+        if (c.key == 'registration_no') c.defaultValue = this.student.registration_no;
         if (c.key == 'first_name') c.defaultValue = this.student.first_name;
         if (c.key == 'last_name') c.defaultValue = this.student.last_name;
         if (c.key == 'gender') c.defaultValue = (this.student.gender == 'Male') ? '1' : '0';
