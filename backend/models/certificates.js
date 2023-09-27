@@ -29,7 +29,7 @@ async function findCertificate(id) {
   })
 }
 
-async function saveIssueCertificate(newCertificate) {
+async function saveCertificate(newCertificate) {
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO certificates VALUES(default,?,?, NOW(), NOW())`,
       [
@@ -91,6 +91,7 @@ async function deleteCertificate(id) {
 exports.validate = validateCertificate;
 exports.findAll = findAll;
 exports.findCertificate = findCertificate;
-exports.saveCertificate = saveIssueCertificate;
+exports.saveCertificate = saveCertificate;
+exports.saveIssueCertificate = saveIssueCertificate;
 exports.updateCertificate = updateCertificate;
 exports.deleteCertificate = deleteCertificate;
