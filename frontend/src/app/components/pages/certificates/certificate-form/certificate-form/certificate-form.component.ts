@@ -79,7 +79,7 @@ export class CertificateFormComponent implements OnInit {
         })
     }
     else {
-      this._certificateService.postCertificate(e).subscribe(
+      this._certificateService.postIssueCertificate(e).subscribe(
         (res: HttpResponse<any>) => {
           this.toastComponent.show('(Certificate Created Successfully).', true, false, false);
           setTimeout(() => {
