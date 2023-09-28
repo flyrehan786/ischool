@@ -74,7 +74,7 @@ async function saveStudent(newStudent) {
 
 async function updateStudent(id, updatedStudent) {
   return new Promise((resolve, reject) => {
-    db.execute('Update students SET first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;',
+    db.execute('Update students SET registration_no=?,first_name=?, last_name=?, gender=?, cnic=?, age=?, father_name=?, father_cnic=?, post_office=?, tehsil=?, district=? WHERE id=?;',
       [
         updatedStudent.registration_no,
         updatedStudent.first_name,

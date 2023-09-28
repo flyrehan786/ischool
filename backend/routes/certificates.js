@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const certificates = await findAll();
+  const certificates = await certificateModel.findAll();
   certificates.forEach(s => {
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -32,14 +32,14 @@ router.get("/issued", async (req, res) => {
 
 
 router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = certificateModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const createdCertificate = await saveCertificate(req.body);
   res.send(createdCertificate);
 });
 
 router.put("/:id", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = certificateModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const updatedCertificate = await certificateModel.updateCertificate(
