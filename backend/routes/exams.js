@@ -1,18 +1,11 @@
-const {
-  validate,
-  findAll,
-  findExam,
-  saveExam,
-  updateExam,
-  deleteExam,
-} = require("../models/exams");
+const examModel = require("../models/exams");
 const examTypesModel = require('../models/exam-types');
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const exams = await findAll();
+  const exams = await examModel.findAll();
   const examTypes = await examTypesModel.findAll();
   exams.forEach(s => {
     s.created_at = new Date(s.created_at).toLocaleString();
@@ -29,7 +22,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  const createdExam = await saveExam(req.body);
+  const createdExam = await examModel.saveExam(req.body);
   res.send(createdExam);
 });
 
@@ -38,7 +31,7 @@ router.put("/:id", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   console.log(req.body);
-  const updatedExam = await updateExam(
+  const updatedExam = await examModel.updateExam(
     req.params.id,
     req.body
   );
@@ -51,7 +44,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const rowsAffected = await deleteExam(req.params.id);
+  const rowsAffected = await examModel.deleteExam(req.params.id);
   if (rowsAffected == false) {
     return res
       .status(404)
@@ -61,7 +54,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const exam = await findExam(req.params.id);
+  const exam = await examModel.findExam(req.params.id);
   if (!exam)
     return res
       .status(404)

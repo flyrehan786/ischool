@@ -1,11 +1,4 @@
-const { 
-  validate, 
-  findAll, 
-  findExamType, 
-  saveExamType, 
-  updateExamType, 
-  deleteExamType,
-} = require("../models/exam-types");
+const examTypesModel = require("../models/exam-types");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -22,7 +15,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  const createdExamType = await saveExamType(req.body);
+  const createdExamType = await examTypesModel.saveExamType(req.body);
   res.send(createdExamType);
 });
 
@@ -30,7 +23,7 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const updatedExamType = await updateExamType(
+  const updatedExamType = await examTypesModel.updateExamType(
     req.params.id,
     req.body
   );
@@ -43,7 +36,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const rowsAffected = await deleteExamType(req.params.id);
+  const rowsAffected = await examTypesModel.deleteExamType(req.params.id);
   if (rowsAffected == false) {
     return res
     .status(404)
@@ -53,7 +46,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const examType = await findExamType(req.params.id);
+  const examType = await examTypesModel.findExamType(req.params.id);
   if (!examType)
     return res
       .status(404)
