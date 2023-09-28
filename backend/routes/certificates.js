@@ -1,13 +1,5 @@
-const { 
-  validate, 
-  findAll, 
-  findCertificate, 
-  saveCertificate, 
-  updateCertificate, 
-  deleteCertificate,
-  saveIssueCertificate,
-  findIssuedCertificates
-} = require("../models/certificates");
+const certificateModel = require("../models/certificates");
+const studentModel = require('../models/students');
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -23,14 +15,14 @@ router.get("/", async (req, res) => {
 
 router.post("/issue/new", async (req, res) => {
   if(req.body.student_id && req.body.certificate_id) {
-    const createdRecord = await saveIssueCertificate(req.body);
+    const createdRecord = await certificateModel.saveIssueCertificate(req.body);
     if (createdRecord) res.send(createdRecord);
     else res.status(400).send('Something failed while adding record.');
   } else res.status(400).send('Invalid request body')
 });
 
 router.get("/issued", async (req, res) => {
-    const issuedCertificates = await findIssuedCertificates();
+    const issuedCertificates = await certificateModel.findIssuedCertificates();
     // Student Id.
     // Certificate Id.
     // Get Student Detail against Student Id.
@@ -50,7 +42,7 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const updatedCertificate = await updateCertificate(
+  const updatedCertificate = await certificateModel.updateCertificate(
     req.params.id,
     req.body
   );
@@ -63,7 +55,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const rowsAffected = await deleteCertificate(req.params.id);
+  const rowsAffected = await certificateModel.deleteCertificate(req.params.id);
   if (rowsAffected == false) {
     return res
     .status(404)
@@ -73,7 +65,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const certificate = await findCertificate(req.params.id);
+  const certificate = await certificateModel.findCertificate(req.params.id);
   if (!certificate)
     return res
       .status(404)
