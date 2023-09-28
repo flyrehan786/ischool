@@ -5,6 +5,7 @@ const {
   saveCertificate, 
   updateCertificate, 
   deleteCertificate,
+  saveIssueCertificate
 } = require("../models/certificates");
 const auth = require("../middleware/auth");
 const express = require("express");
@@ -20,7 +21,14 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/issue/new", async (req, res) => {
-  console.log(req.body);
+  if(req.body.student_id && req.body.certificate_id) {
+    const result = await saveIssueCertificate(req.body);
+    console.log(result);
+    if (result) res.status(200).send('Record added successfully');
+    else res.status(400).send('Something failed while adding record.');
+  } else {
+    res.status(400).send('Invalid request body')
+  }
 });
 
 

@@ -56,7 +56,15 @@ async function saveCertificate(newCertificate) {
 
 async function saveIssueCertificate(newCertificate) {
   return new Promise((resolve, reject) => {
-    // ...
+    db.execute(`INSERT INTO certificates VALUES(default,?,?, NOW(), NOW())`,
+      [
+        newCertificate.student_id,
+        newCertificate.certificate_id,
+      ], (err, result) => {
+        if (err) reject(err);
+        if(result.affectedRows == 1) resolve(true);
+        else resolve(false);
+      });
   })
 }
 
