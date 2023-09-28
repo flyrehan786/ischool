@@ -19,6 +19,16 @@ async function findAll() {
   })
 }
 
+async function findIssuedCertificates() {
+  return new Promise((resolve, reject) => {
+    db.execute((`SELECT * FROM student_certificate_logs`), [], (err, result) => {
+      if (err) reject(err);
+      if (result.length > 0) resolve(result);
+      else resolve([]);
+    })
+  })
+}
+
 async function findCertificate(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM certificates WHERE id=?`, [id], (err, result) => {
@@ -56,14 +66,25 @@ async function saveCertificate(newCertificate) {
 
 async function saveIssueCertificate(newCertificate) {
   return new Promise((resolve, reject) => {
-    db.execute(`INSERT INTO certificates VALUES(default,?,?, NOW(), NOW())`,
+    db.execute(`INSERT INTO student_certificate_logs VALUES(default,?,?, NOW(), NOW(),1,1)`,
       [
         newCertificate.student_id,
         newCertificate.certificate_id,
       ], (err, result) => {
         if (err) reject(err);
-        if(result.affectedRows == 1) resolve(true);
-        else resolve(false);
+        db.execute(`SELECT id FROM student_certificate_logs WHERE id = LAST_INSERT_ID();`, (err, result) => {
+          if (err) reject(err);
+          if (result.length > 0) {
+            const insertedId = result[0].id;
+            db.execute(`SELECT * FROM student_certificate_logs WHERE id = ?;`, [insertedId], (err, result) => {
+              if (err) reject(err);
+              if (result.length > 0) {
+                resolve(result[0]);
+              } else { }
+            });
+          }
+          else resolve(null);
+        })
       });
   })
 }
@@ -98,6 +119,7 @@ async function deleteCertificate(id) {
 
 exports.validate = validateCertificate;
 exports.findAll = findAll;
+exports.findIssuedCertificates = findIssuedCertificates;
 exports.findCertificate = findCertificate;
 exports.saveCertificate = saveCertificate;
 exports.saveIssueCertificate = saveIssueCertificate;
