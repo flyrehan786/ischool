@@ -1,17 +1,10 @@
-const { 
-  validate, 
-  findAllGrades, 
-  findGrade, 
-  saveGrade, 
-  updateGrade, 
-  deleteGrade,
-} = require("../models/grade");
+const gradeModel = require("../models/grade");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const grades = await findAllGrades();
+  const grades = await gradeModel.findAllGrades();
   grades.forEach(s => {
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -22,7 +15,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  const createdGrade = await saveGrade(req.body);
+  const createdGrade = await gradeModel.saveGrade(req.body);
   res.send(createdGrade);
 });
 
@@ -30,7 +23,7 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const updatedGrade = await updateGrade(
+  const updatedGrade = await gradeModel.updateGrade(
     req.params.id,
     req.body
   );
@@ -43,7 +36,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const rowsAffected = await deleteGrade(req.params.id);
+  const rowsAffected = await gradeModel.deleteGrade(req.params.id);
   if (rowsAffected == false) {
     return res
     .status(404)
@@ -53,7 +46,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const grade = await findGrade(req.params.id);
+  const grade = await gradeModel.findGrade(req.params.id);
   if (!grade)
     return res
       .status(404)
