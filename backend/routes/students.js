@@ -1,13 +1,4 @@
-const {
-  validate,
-  findAll,
-  findStudent,
-  saveStudent,
-  updateStudent,
-  deleteStudent,
-  deActivateStudent,
-  activateStudent
-} = require("../models/students");
+const studentModel = require("../models/students");
 const studentEnrollmentModel = require('../models/student-enrollments');
 const { findGrade } = require("../models/grade");
 const auth = require("../middleware/auth");
@@ -15,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const students = await findAll();
+  const students = await studentModel.findAll();
   for (let student = 0; student < students.length; student++) {
     const s = students[student];
     const studentEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(s.id);
@@ -53,15 +44,15 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = studentModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  const createdStudent = await saveStudent(req.body);
+  const createdStudent = await studentModel.saveStudent(req.body);
   res.send(createdStudent);
 });
 
 // Crud Section.
 router.put("/disable/:id", async (req, res) => {
-  const rowsAffected = await deActivateStudent(
+  const rowsAffected = await studentModel.deActivateStudent(
     req.params.id,
     req.body
   );
@@ -76,7 +67,7 @@ router.put("/disable/:id", async (req, res) => {
 });
 
 router.put("/activate/:id", async (req, res) => {
-  const rowsAffected = await activateStudent(
+  const rowsAffected = await studentModel.activateStudent(
     req.params.id,
     req.body
   );
@@ -91,10 +82,10 @@ router.put("/activate/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = studentModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const updatedStudent = await updateStudent(
+  const updatedStudent = await studentModel.updateStudent(
     req.params.id,
     req.body
   );
@@ -107,7 +98,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const rowsAffected = await deleteStudent(req.params.id);
+  const rowsAffected = await studentModel.deleteStudent(req.params.id);
   if (rowsAffected == false) {
     return res
       .status(404)
@@ -209,7 +200,7 @@ router.delete("/enrollments/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const student = await findStudent(req.params.id);
+  const student = await studentModel.findStudent(req.params.id);
   if (!student)
     return res
       .status(404)

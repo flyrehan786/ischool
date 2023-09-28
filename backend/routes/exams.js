@@ -20,14 +20,14 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = examModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const createdExam = await examModel.saveExam(req.body);
   res.send(createdExam);
 });
 
 router.put("/:id", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = examModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   console.log(req.body);
