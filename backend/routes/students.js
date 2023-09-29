@@ -128,7 +128,7 @@ router.get("/enrollments", async (req, res) => {
 
   for (let i = 0; i < studentsEnrollments.length; i++) {
     const s = studentsEnrollments[i];
-    s.student = await findStudent(s.student_id);
+    s.student = await studentModel.findStudent(s.student_id);
     s.student_name = s.student.first_name + ' ' + s.student.last_name;
     s.student_father_name = s.student.father_name;
     s.student_cnic = s.student.cnic;
