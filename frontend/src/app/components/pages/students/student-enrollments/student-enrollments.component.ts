@@ -13,9 +13,9 @@ export class StudentEnrollmentsComponent implements OnInit {
   eventLabel = '_students_enrollments_events';
   headers = [
     'id',
-    'status', 
     'student_id',
     'grade_id',
+    'status', 
     'student_name',
     'student_father_name',
     'student_cnic',
