@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const grades = await studentModel.findAllGrades();
+  const grades = await gradeModel.findAllGrades();
   grades.forEach(s => {
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = studentModel.validate(req.body);
+  const { error } = gradeModel.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const createdGrade = await gradeModel.saveGrade(req.body);
   res.send(createdGrade);
