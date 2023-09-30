@@ -15,11 +15,11 @@ export class StudentEnrollmentsComponent implements OnInit {
     'id',
     'student_id',
     'grade_id',
-    'status', 
     'student_name',
     'student_father_name',
     'student_cnic',
     'grade_name',
+    'status', 
     'created_at',
     'updated_at',
   ];
