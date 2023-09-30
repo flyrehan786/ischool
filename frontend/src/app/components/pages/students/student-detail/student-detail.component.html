@@ -33,13 +33,13 @@
                 <td>
                     <button routerLink="/student/enroll/new/{{ +student.id }}" [disabled]="+student?.status === 0"
                         class="ms-2 btn btn-primary btn-sm"><i class="bi bi-plugin"></i>
-                        +Enroll / Enrollments</button>
+                        + Enroll / Enrollments</button>
                 </td>
                 <td>
                     <button routerLink="/student/issue/new/certificate/{{ +student.id }}" [disabled]="+student?.status === 0"
                     class="ms-2 btn btn-primary btn-sm"><i
                     class="bi bi-node-plus-fill"></i>
-                    +Certificate</button>
+                    + Certificate</button>
                 </td>
                 <td>
                     <button routerLink="/student/issued/certificates/{{ +student.id }}" [disabled]="+student?.status === 0"
