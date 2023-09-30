@@ -92,6 +92,7 @@ import { notificationRoutes } from './routes/notification.routes';
 import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
+import { StudentIssuedCertificatesComponent } from './components/pages/students/student-issued-certificates/student-issued-certificates.component';
 
 
 
@@ -164,6 +165,7 @@ import { timeTableRoutes } from './routes/time-tables.routes';
     TeacherClassesAssignInfoFormComponent,
     StudentEnrollmentDetailsComponent,
     StudentEnrollmentsAgainstStudentComponent,
+    StudentIssuedCertificatesComponent,
   ],
   imports: [
     BrowserModule,

@@ -58,7 +58,7 @@ export class StudentIssueCertificateComponent implements OnInit {
       (res: HttpResponse<any>) => {
         this.toastComponent.show('(Certificate Issued Successfully).', true, false, false);
         setTimeout(() => {
-          this._router.navigateByUrl('/student/details/' + this.studentId);
+          this._router.navigateByUrl('/student/issued/certificates/' + this.studentId);
         }, 1500);
       },
       (error) => {
