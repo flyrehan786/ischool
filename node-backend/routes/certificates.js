@@ -23,10 +23,15 @@ router.post("/issue/new", async (req, res) => {
 
 router.get("/issued", async (req, res) => {
     const issuedCertificates = await certificateModel.findIssuedCertificates();
-    // Student Id.
-    // Certificate Id.
-    // Get Student Detail against Student Id.
-    // Get Certificate Details against Certificate Id.
+    for (let i = 0; i < issuedCertificates.length; i++) {
+      const issuedCertificate = issuedCertificates[i];
+      const studentId = issuedCertificate['student_id'];
+      const certificateId = issuedCertificate['certificate_id'];
+      const studentInfo = await studentModel.findStudent(studentId);
+      const certificateInfo = await certificateModel.findCertificate(certificateId);
+      issuedCertificate.student = studentInfo;
+      issuedCertificate.certificate = certificateInfo;
+    }
     res.send(issuedCertificates);
 });
 
