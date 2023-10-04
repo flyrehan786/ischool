@@ -30,6 +30,11 @@ export const studentRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'student/issued/certificates',
+        component: StudentIssuedCertificatesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'student/enroll/new/:id',
         component: StudentEnrollComponent,
         canActivate: [AuthGuard]
