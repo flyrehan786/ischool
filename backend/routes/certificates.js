@@ -21,6 +21,40 @@ router.post("/issue/new", async (req, res) => {
   } else res.status(400).send('Invalid request body')
 });
 
+
+router.get("/issued/:studentId", async (req, res) => {
+  const issuedCertificates = await certificateModel.findIssuedCertificatesByStudentId(req.params.studentId);
+  for (let i = 0; i < issuedCertificates.length; i++) {
+    const issuedCertificate = issuedCertificates[i];
+    const studentId = issuedCertificate['student_id'];
+    const certificateId = issuedCertificate['certificate_id'];
+    const studentInfo = await studentModel.findStudent(studentId);
+    const certificateInfo = await certificateModel.findCertificate(certificateId);
+
+    issuedCertificate.student = studentInfo;
+    issuedCertificate.student_registration_no = studentInfo.registration_no;
+    issuedCertificate.student_first_name = studentInfo.first_name;
+    issuedCertificate.student_last_name = studentInfo.last_name;
+    issuedCertificate.student_gender = studentInfo.gender;
+    issuedCertificate.student_cnic = studentInfo.cnic;
+    issuedCertificate.student_age = studentInfo.age;
+    issuedCertificate.student_father_name = studentInfo.father_name;
+    issuedCertificate.student_father_cnic = studentInfo.father_cnic;
+    issuedCertificate.student_post_office = studentInfo.post_office;
+    issuedCertificate.student_tehsil = studentInfo.tehsil;
+    issuedCertificate.student_district = studentInfo.district;
+
+    issuedCertificate.certificate = certificateInfo;
+    issuedCertificate.certificate_name = certificateInfo.name;
+    issuedCertificate.certificate_template = certificateInfo.template
+
+    issuedCertificate.created_at = new Date(issuedCertificate.created_at).toLocaleString();
+    issuedCertificate.updated_at = new Date(issuedCertificate.updated_at).toLocaleString();
+  }
+  res.send(issuedCertificates);
+});
+
+
 router.get("/issued", async (req, res) => {
     const issuedCertificates = await certificateModel.findIssuedCertificates();
     for (let i = 0; i < issuedCertificates.length; i++) {

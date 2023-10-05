@@ -16,6 +16,9 @@ export class CertificatesService {
   getIssuedCertificates() { 
     return this.http.get(environment.api + 'api/certificates/issued');
   }
+  getIssuedCertificatesByStudentId(id) { 
+    return this.http.get(environment.api + 'api/certificates/issued/' + id);
+  }
   postCertificate(newCertificate) {
     return this.http.post(environment.api + 'api/certificates', newCertificate);
   }

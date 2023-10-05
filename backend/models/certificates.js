@@ -29,6 +29,16 @@ async function findIssuedCertificates() {
   })
 }
 
+async function findIssuedCertificatesByStudentId(studentId) {
+  return new Promise((resolve, reject) => {
+    db.execute((`SELECT * FROM student_certificate_logs WHERE student_id=?`), [ studentId], (err, result) => {
+      if (err) reject(err);
+      if (result.length > 0) resolve(result);
+      else resolve([]);
+    })
+  })
+}
+
 async function findCertificate(id) {
   return new Promise((resolve, reject) => {
     db.execute(`SELECT * FROM certificates WHERE id=?`, [id], (err, result) => {
@@ -125,3 +135,4 @@ exports.saveCertificate = saveCertificate;
 exports.saveIssueCertificate = saveIssueCertificate;
 exports.updateCertificate = updateCertificate;
 exports.deleteCertificate = deleteCertificate;
+exports.findIssuedCertificatesByStudentId = findIssuedCertificatesByStudentId;
