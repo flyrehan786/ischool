@@ -149,7 +149,7 @@ router.get("/enrollments/:id", async (req, res) => {
   const studentEnrollment = await studentEnrollmentModel.findStudentEnrollments(req.params.id);
 
   const s = studentEnrollment;
-  s.student = await findStudent(s.student_id);
+  s.student = await studentModel.findStudent(s.student_id);
   s.student_name = s.student.first_name + ' ' + s.student.last_name;
   s.student_father_name = s.student.father_name;
   s.student_cnic = s.student.cnic;
@@ -170,7 +170,7 @@ router.get("/enrollments/student/:studentId", async (req, res) => {
   if(studentsEnrollments) {
     for (let i = 0; i < studentsEnrollments.length; i++) {
       const s = studentsEnrollments[i];
-      s.student = await findStudent(s.student_id);
+      s.student = await studentModel.findStudent(s.student_id);
       s.student_name = s.student.first_name + ' ' + s.student.last_name;
       s.student_father_name = s.student.father_name;
       s.student_cnic = s.student.cnic;
@@ -217,8 +217,6 @@ router.get("/:id", async (req, res) => {
   res.send(student);
 });
 
-
-
 router.post("/enroll", async (req, res) => {
   const { error } = studentEnrollmentModel.validateStudentEnrollment(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -244,7 +242,6 @@ router.put("/enroll/:id", async (req, res) => {
   res.send(updatedStudent);
 });
 
-
 router.put("/enroll/disable/:id", async (req, res) => {
   const rowsAffected = await studentEnrollmentModel.deActivateStudentEnrollment(
     req.params.id,
@@ -258,7 +255,6 @@ router.put("/enroll/disable/:id", async (req, res) => {
 
   res.send({ updated: true });
 });
-
 
 // Certification Section.
 // Fee Section.
