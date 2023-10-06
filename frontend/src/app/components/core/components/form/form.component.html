@@ -1,5 +1,9 @@
 <section class="form-section mt-3 p-3">
-  <h4 class="mt-4 mb-4">{{ title }}</h4>
+  <section *ngIf="title === 'Please Sign In'" class="logo-section text-center">
+    <a class="navbar-brand"><i class="bi bi-alexa"></i> iSchool<strong>365</strong></a>
+    <h4 class="mt-4 mb-4">{{ title }}</h4>
+  </section>
+  <h4 *ngIf="title !== 'Please Sign In'" class="mt-4 mb-4">{{ title }}</h4>
   <hr />
   <form [formGroup]="form" (ngSubmit)="submit(form)">
     <section class="row">

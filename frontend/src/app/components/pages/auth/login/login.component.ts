@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
         visible: true,
-        bsCols: 'col-md-3'
+        bsCols: 'col-md-12'
     },
     {
       type: TYPE_password,
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(30) },
         ],
         visible: true,
-        bsCols: 'col-md-3'
+        bsCols: 'col-md-12'
     },
   ];
   constructor(private _authService: AuthService,private _router: Router) { }
@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
     const payload = { username, password };
     this._authService.login(payload).subscribe(
       (res: HttpResponse<any>) => {
-        console.log('Response:::');
         localStorage.setItem('token', (res as any).token);
         this._router.navigateByUrl('/');
         this.toastComponent.show('User Login Successfully.', true, false, false);

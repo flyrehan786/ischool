@@ -5,6 +5,10 @@
     margin-bottom: 16px;
 }
 .form-section {
-    background-color: rgb(255, 255, 220);
-    border-radius: 8px;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px rgb(212, 212, 212);
+}
+.navbar-brand {
+    color: red;
 }
