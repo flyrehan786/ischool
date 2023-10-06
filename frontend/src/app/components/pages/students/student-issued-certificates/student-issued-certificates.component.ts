@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CertificatesService } from 'src/app/services/certificates/certificates.service';
 import { CommonService } from 'src/app/services/common/common.service';
 
@@ -34,8 +34,14 @@ export class StudentIssuedCertificatesComponent implements OnInit {
     'student_cnic',
   ];
   rows: any = [];
-  constructor(private _certificateService: CertificatesService, private _commonService: CommonService, private _router: Router) { }
+  studentId;
+  constructor(
+    private _route: ActivatedRoute,
+    private _certificateService: CertificatesService, 
+    private _commonService: CommonService, 
+    private _router: Router) { }
   ngOnInit(): void {
+    this.studentId = this._route.snapshot.paramMap.get('id');
     this.getStudents();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
@@ -45,9 +51,16 @@ export class StudentIssuedCertificatesComponent implements OnInit {
   }
   getStudents() {
     this.isLoading = true;
-    this._certificateService.getIssuedCertificates().subscribe(res => {
-      this.rows = res;
-      this.isLoading = false;
-    });
+    if(this.studentId) {
+      this._certificateService.getIssuedCertificatesByStudentId(this.studentId).subscribe(res => {
+        this.rows = res;
+        this.isLoading = false;
+      });
+    } else {
+      this._certificateService.getIssuedCertificates().subscribe(res => {
+        this.rows = res;
+        this.isLoading = false;
+      });
+    }
   }
 }
