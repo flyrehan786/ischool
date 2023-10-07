@@ -80,7 +80,7 @@
     </section>
     <hr />
     <section *ngIf="title === 'Please Sign In'" class="text-center">
-      <button type="submit" class="btn btn-primary mt-2 mb-4" [disabled]="form?.invalid">Submit</button>
+      <button type="submit" class="btn btn-success mt-2 mb-4" [disabled]="form?.invalid">Sign In</button>
     </section>
     <button *ngIf="title !== 'Please Sign In'" type="submit" class="btn btn-primary mt-2 mb-4" [disabled]="form?.invalid">Submit</button>
   </form>
