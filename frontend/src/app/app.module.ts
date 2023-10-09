@@ -29,6 +29,8 @@ import { StudentEnrollmentsComponent } from './components/pages/students/student
 import { StudentFeePaymentFormComponent } from './components/pages/students/student-fee-payment-form/student-fee-payment-form.component';
 import { StudentEnrollmentDetailsComponent } from './components/pages/students/student-enrollment-details/student-enrollment-details.component';
 import { StudentEnrollmentsAgainstStudentComponent } from './components/pages/students/student-enrollments-against-student/student-enrollments-against-student.component';
+import { StudentIssuedCertificatesComponent } from './components/pages/students/student-issued-certificates/student-issued-certificates.component';
+import { StudentIssuedCertificateDetailsComponent } from './components/pages/students/student-issued-certificate-details/student-issued-certificate-details.component';
 
 
 import { TeachersComponent } from './components/pages/teachers/teachers/teachers.component';
@@ -78,7 +80,7 @@ import { TableComponent } from './components/core/components/table/table.compone
 import { ToastComponent } from './components/core/components/toast/toast/toast.component';
 
 
-
+// ROUTES
 import { homeRoutes } from './routes/home.routes';
 import { studentRoutes } from './routes/students.routes';
 import { teacherRoutes } from './routes/teacher.routes';
@@ -92,9 +94,6 @@ import { notificationRoutes } from './routes/notification.routes';
 import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
-import { StudentIssuedCertificatesComponent } from './components/pages/students/student-issued-certificates/student-issued-certificates.component';
-import { StudentIssuedCertificateDetailsComponent } from './components/pages/students/student-issued-certificate-details/student-issued-certificate-details.component';
-
 
 
 
