@@ -12,6 +12,7 @@ import { StudentIssueCertificateComponent } from '../components/pages/students/s
 import { StudentExamResultsComponent } from '../components/pages/students/student-exam-results/student-exam-results/student-exam-results.component';
 import { StudentEnrollmentDetailsComponent } from '../components/pages/students/student-enrollment-details/student-enrollment-details.component';
 import { StudentIssuedCertificatesComponent } from '../components/pages/students/student-issued-certificates/student-issued-certificates.component';
+import { StudentIssuedCertificateDetailsComponent } from '../components/pages/students/student-issued-certificate-details/student-issued-certificate-details.component';
 
 export const studentRoutes: Routes = [
     {
@@ -27,6 +28,11 @@ export const studentRoutes: Routes = [
     {
         path: 'student/issued/certificates/:id',
         component: StudentIssuedCertificatesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'student/issued/certificate/details/:id',
+        component: StudentIssuedCertificateDetailsComponent,
         canActivate: [AuthGuard]
     },
     {
