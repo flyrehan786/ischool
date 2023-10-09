@@ -93,6 +93,7 @@ import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
 import { StudentIssuedCertificatesComponent } from './components/pages/students/student-issued-certificates/student-issued-certificates.component';
+import { StudentIssuedCertificateDetailsComponent } from './components/pages/students/student-issued-certificate-details/student-issued-certificate-details.component';
 
 
 
@@ -166,6 +167,7 @@ import { StudentIssuedCertificatesComponent } from './components/pages/students/
     StudentEnrollmentDetailsComponent,
     StudentEnrollmentsAgainstStudentComponent,
     StudentIssuedCertificatesComponent,
+    StudentIssuedCertificateDetailsComponent,
   ],
   imports: [
     BrowserModule,

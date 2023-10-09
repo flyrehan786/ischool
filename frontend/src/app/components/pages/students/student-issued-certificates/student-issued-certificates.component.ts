@@ -45,7 +45,7 @@ export class StudentIssuedCertificatesComponent implements OnInit {
     this.getStudents();
     this._commonService.getEvent().subscribe(e => {
       if(e.event == this.eventLabel) {
-        this._router.navigateByUrl("/student/details/" + e.id);
+        this._router.navigateByUrl("/student/issued/certificate/details/" + e.id);
       }
     })
   }
