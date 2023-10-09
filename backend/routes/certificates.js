@@ -18,7 +18,9 @@ router.post("/issue/new", async (req, res) => {
     const createdRecord = await certificateModel.saveIssueCertificate(req.body);
     if (createdRecord) res.send(createdRecord);
     else res.status(400).send('Something failed while adding record.');
-  } else res.status(400).send('Invalid request body')
+  } else {
+    res.status(400).send('Invalid request body')
+  }
 });
 
 

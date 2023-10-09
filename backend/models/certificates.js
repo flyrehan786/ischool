@@ -31,7 +31,7 @@ async function findIssuedCertificates() {
 
 async function findIssuedCertificatesByStudentId(studentId) {
   return new Promise((resolve, reject) => {
-    db.execute((`SELECT * FROM student_certificate_logs WHERE student_id=?`), [ studentId], (err, result) => {
+    db.execute((`SELECT * FROM student_certificate_logs WHERE student_id=?`), [studentId], (err, result) => {
       if (err) reject(err);
       if (result.length > 0) resolve(result);
       else resolve([]);
@@ -75,6 +75,7 @@ async function saveCertificate(newCertificate) {
 }
 
 async function saveIssueCertificate(newCertificate) {
+  console.log('callled +++');
   return new Promise((resolve, reject) => {
     db.execute(`INSERT INTO student_certificate_logs VALUES(default,?,?, NOW(), NOW(),1,1)`,
       [
@@ -82,18 +83,11 @@ async function saveIssueCertificate(newCertificate) {
         newCertificate.certificate_id,
       ], (err, result) => {
         if (err) reject(err);
-        db.execute(`SELECT id FROM student_certificate_logs WHERE id = LAST_INSERT_ID();`, (err, result) => {
+        db.execute(`SELECT * FROM student_certificate_logs WHERE id = ?;`, [result.insertId], (err, result) => {
           if (err) reject(err);
           if (result.length > 0) {
-            const insertedId = result[0].id;
-            db.execute(`SELECT * FROM student_certificate_logs WHERE id = ?;`, [insertedId], (err, result) => {
-              if (err) reject(err);
-              if (result.length > 0) {
-                resolve(result[0]);
-              } else { }
-            });
-          }
-          else resolve(null);
+            resolve(result[0]);
+          } else resolve(null);
         })
       });
   })
