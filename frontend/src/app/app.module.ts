@@ -60,7 +60,6 @@ import { ExamResultsComponent } from './components/pages/exams/exam-results/exam
 
 import { NotificationsComponent } from './components/pages/notifications/notifications/notifications.component';
 
-// Time Table Components.
 import { TableFormComponent } from './components/pages/time-tables/table-form/table-form.component';
 import { TablesComponent } from './components/pages/time-tables/tables/tables.component';
 import { TableDetailComponent } from './components/pages/time-tables/table-detail/table-detail/table-detail.component';
