@@ -164,7 +164,7 @@ router.get("/enrollments/:id", async (req, res) => {
 
   res.send(s);
 });
-// enrollments/student/
+
 router.get("/enrollments/student/:studentId", async (req, res) => {
   let studentsEnrollments = await studentEnrollmentModel.findStudentEnrollmentsAgainstStudentId(req.params.studentId);
   if(studentsEnrollments) {
@@ -223,7 +223,6 @@ router.post("/enroll", async (req, res) => {
   const createdStudent = await studentEnrollmentModel.saveStudentEnrollment(req.body);
   res.send(createdStudent);
 });
-
 
 router.put("/enroll/:id", async (req, res) => {
   console.log('adadd')
