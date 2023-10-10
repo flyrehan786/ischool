@@ -1,5 +1,6 @@
 const studentModel = require("../models/students");
 const studentEnrollmentModel = require('../models/student-enrollments');
+const studentRequiredFeeModel = require('../models/student-required-fee-info')
 const { findGrade } = require("../models/grade");
 const auth = require("../middleware/auth");
 const express = require("express");
