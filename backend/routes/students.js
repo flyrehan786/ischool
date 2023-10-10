@@ -1,7 +1,7 @@
 const studentModel = require("../models/students");
 const studentEnrollmentModel = require('../models/student-enrollments');
 const studentRequiredFeeModel = require('../models/student-required-fee-info')
-const { findGrade } = require("../models/grade");
+const gradeModel = require("../models/grade");
 const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     if (studentEnrollments) {
       const activeEnrollment = studentEnrollments.filter(x => x.status == 1);
       if (activeEnrollment && activeEnrollment.length > 0) {
-        const gradeInfo = await findGrade(activeEnrollment[0]['grade_id']);
+        const gradeInfo = await gradeModel.findGrade(activeEnrollment[0]['grade_id']);
         s.active_enrollment_grade_id = activeEnrollment[0]['grade_id'];
         s.active_enrollment_grade_name = gradeInfo['name'];
         s.active_enrollment_grade_status = (activeEnrollment[0]['status'] == 1) ? 'Active' : 'Not Active';
@@ -134,7 +134,7 @@ router.get("/enrollments", async (req, res) => {
     s.student_father_name = s.student.father_name;
     s.student_cnic = s.student.cnic;
 
-    s.grade = await findGrade(s.grade_id);
+    s.grade = await gradeModel.findGrade(s.grade_id);
     s.grade_name = s.grade.name;
     s.created_at = new Date(s.created_at).toLocaleString();
     s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -155,7 +155,7 @@ router.get("/enrollments/:id", async (req, res) => {
   s.student_father_name = s.student.father_name;
   s.student_cnic = s.student.cnic;
 
-  s.grade = await findGrade(s.grade_id);
+  s.grade = await gradeModel.findGrade(s.grade_id);
   s.grade_name = s.grade.name;
   s.created_at = new Date(s.created_at).toLocaleString();
   s.updated_at = new Date(s.updated_at).toLocaleString();
@@ -176,7 +176,7 @@ router.get("/enrollments/student/:studentId", async (req, res) => {
       s.student_father_name = s.student.father_name;
       s.student_cnic = s.student.cnic;
   
-      s.grade = await findGrade(s.grade_id);
+      s.grade = await gradeModel.findGrade(s.grade_id);
       s.grade_name = s.grade.name;
       s.created_at = new Date(s.created_at).toLocaleString();
       s.updated_at = new Date(s.updated_at).toLocaleString();
