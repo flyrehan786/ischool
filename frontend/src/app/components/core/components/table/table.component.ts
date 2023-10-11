@@ -157,6 +157,7 @@ export class TableComponent implements OnInit {
           <title>${this.title}</title>
           <style>
             table {
+              font-size: 12px;
               border-collapse: collapse;
               width: 100%;
             }
@@ -229,7 +230,6 @@ export class TableComponent implements OnInit {
         });
         result = words.join(' ');
     }
-
     return result.toUpperCase();
   }
 }
