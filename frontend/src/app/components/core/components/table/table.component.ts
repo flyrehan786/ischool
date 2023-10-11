@@ -230,6 +230,6 @@ export class TableComponent implements OnInit {
         result = words.join(' ');
     }
 
-    return result;
+    return result.toUpperCase();
   }
 }
