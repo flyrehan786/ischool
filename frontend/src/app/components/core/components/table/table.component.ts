@@ -156,10 +156,11 @@ export class TableComponent implements OnInit {
         <head>
           <title>${this.title}</title>
           <style>
-            table {
-              font-size: 12px;
-              border-collapse: collapse;
-              width: 100%;
+              table {
+                border: 1px solid #d3d0d0;
+                font-size: 12px;
+                border-collapse: collapse;
+                width: 100%;
             }
             th, td {
               text-align: left;
@@ -167,13 +168,13 @@ export class TableComponent implements OnInit {
               border-bottom: 1px solid #ddd;
             }
             th {
-              background-color: #f2f2f2;
-            }
+              background-color: #4494f1;
+          }
           </style>
         </head>
         <body>
-          <h1>${this.title} Report</h1>
-          <table>
+          <h3>${this.title} Report (${this.rows?.length})</h3>
+          <table border='1'>
             <thead
               ${this.getHeaders()}
             </thead>
@@ -199,7 +200,7 @@ export class TableComponent implements OnInit {
   getRows() {
     let rows = ``;
     for (let i = 0; i < this.rows?.length; i++) {
-      rows += `<tr><td>#</td>`;
+      rows += `<tr><td></td>`;
       const row = this.rows[i];
       for (let j = 0; j < this.headers.length; j++) {
         const head = this.headers[j];
