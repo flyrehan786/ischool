@@ -1,12 +1,12 @@
 const Joi = require('joi');
 const db = require('../services/mysql').db;
 
-function validateStudent(student) {
+function validateStudent(studentRequiredFee) {
     const schema = {
         student_id: Joi.string().min(1).max(45).required(),
         required_fee_amount: Joi.string().min(1).max(45).required(),
     };
-    return Joi.validate(student, schema);
+    return Joi.validate(studentRequiredFee, schema);
 }
 
 async function findAll() {
@@ -31,26 +31,33 @@ async function findStudentRequiredFeeInfo(id) {
 
 async function saveStudentRequiredFeeInfo(newStudent) {
     return new Promise((resolve, reject) => {
-        db.execute('INSERT INTO student_required_fee_info VALUES(default,?,?, NOW(), NOW(), 1, 1)',
+        // de-activate all previous.
+        db.execute('Update student_required_fee_info SET status=0 WHERE student_id=?;',
             [
-                newStudent.student_id,
-                newStudent.required_fee_amount,
+                newStudent.student_id
             ], (err, result) => {
                 if (err) reject(err);
-                db.execute('SELECT id FROM student_required_fee_info WHERE id = LAST_INSERT_ID();', (err, result) => {
-                    if (err) reject(err);
-                    if (result.length > 0) {
-                        const insertedId = result[0].id;
-                        db.execute(`SELECT * FROM student_required_fee_info WHERE id = ?;`, [insertedId], (err, result) => {
+                db.execute('INSERT INTO student_required_fee_info VALUES(default,?,?,1, NOW(), NOW(), 1, 1)',
+                    [
+                        newStudent.student_id,
+                        newStudent.required_fee_amount,
+                    ], (err, result) => {
+                        if (err) reject(err);
+                        db.execute('SELECT id FROM student_required_fee_info WHERE id = LAST_INSERT_ID();', (err, result) => {
                             if (err) reject(err);
                             if (result.length > 0) {
-                                resolve(result[0]);
-                            } else { }
-                        });
-                    }
-                    else resolve(null);
-                })
-            });
+                                const insertedId = result[0].id;
+                                db.execute(`SELECT * FROM student_required_fee_info WHERE id = ?;`, [insertedId], (err, result) => {
+                                    if (err) reject(err);
+                                    if (result.length > 0) {
+                                        resolve(result[0]);
+                                    } else { }
+                                });
+                            }
+                            else resolve(null);
+                        })
+                    });
+            })
     })
 }
 

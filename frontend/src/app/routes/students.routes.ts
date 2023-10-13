@@ -13,6 +13,8 @@ import { StudentExamResultsComponent } from '../components/pages/students/studen
 import { StudentEnrollmentDetailsComponent } from '../components/pages/students/student-enrollment-details/student-enrollment-details.component';
 import { StudentIssuedCertificatesComponent } from '../components/pages/students/student-issued-certificates/student-issued-certificates.component';
 import { StudentIssuedCertificateDetailsComponent } from '../components/pages/students/student-issued-certificate-details/student-issued-certificate-details.component';
+import { StudentRequiredFeeInfoFormComponent } from '../components/pages/students/student-required-fee-info-form/student-required-fee-info-form.component';
+import { StudentRequiredFeeInfoComponent } from '../components/pages/students/student-required-fee-info/student-required-fee-info.component';
 
 export const studentRoutes: Routes = [
     {
@@ -51,6 +53,16 @@ export const studentRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'student/required/fee/info/new/:id',
+        component: StudentRequiredFeeInfoFormComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'student/required/fee/info/:id',
+        component: StudentRequiredFeeInfoComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'student/fee/payments',
         component: StudentFeePaymentsComponent,
         canActivate: [AuthGuard]
@@ -60,7 +72,6 @@ export const studentRoutes: Routes = [
         component: StudentEnrollmentsComponent,
         canActivate: [AuthGuard]
     },
-    // 
     {
         path: 'student/enrollments',
         component: StudentEnrollmentsComponent,

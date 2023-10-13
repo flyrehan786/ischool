@@ -93,6 +93,8 @@ import { notificationRoutes } from './routes/notification.routes';
 import { settingsRoutes } from './routes/settings.routes';
 import { authRoutes } from './routes/auth.routes';
 import { timeTableRoutes } from './routes/time-tables.routes';
+import { StudentRequiredFeeInfoFormComponent } from './components/pages/students/student-required-fee-info-form/student-required-fee-info-form.component';
+import { StudentRequiredFeeInfoComponent } from './components/pages/students/student-required-fee-info/student-required-fee-info.component';
 
 
 
@@ -166,6 +168,8 @@ import { timeTableRoutes } from './routes/time-tables.routes';
     StudentEnrollmentsAgainstStudentComponent,
     StudentIssuedCertificatesComponent,
     StudentIssuedCertificateDetailsComponent,
+    StudentRequiredFeeInfoFormComponent,
+    StudentRequiredFeeInfoComponent,
   ],
   imports: [
     BrowserModule,

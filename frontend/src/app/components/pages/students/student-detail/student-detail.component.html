@@ -4,7 +4,7 @@
     <img src="../../../../../assets/loader.gif" alt="" width="50px">
 </section>
 <section *ngIf="isLoading == false">
-    <section class="mb-2 d-flex justify-content-between">
+    <section *ngIf="showActions == true" class="mb-2 d-flex justify-content-between">
         <h4 class="mt-4 mb-4">Student Details</h4>
         <table>
             <thead>
@@ -46,14 +46,14 @@
                     class="ms-2 btn btn-primary btn-sm"><i class="bi bi-list-check"></i>
                     Issued Certificates</button>
                 </td>
+                <td>
+                    <button routerLink="/student/required/fee/info/new/{{ +student.id }}" [disabled]="+student?.status === 0"
+                        class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
+                        Required Fee Info</button>
+                </td>
                 <!-- <td>
                     <button routerLink="/student/exam/results" [disabled]="+student?.status === 0" class="ms-2 btn btn-info btn-sm"><i
                             class="bi bi-list-check"></i> Results</button>
-                </td>
-                <td>
-                    <button routerLink="/student/fee/payments" [disabled]="+student?.status === 0"
-                        class="ms-2 btn btn-success btn-sm"><i class="bi bi-list-check"></i>
-                        Fee Settings</button>
                 </td>
                 <td>
                     <button routerLink="/student/fee/new" [disabled]="+student?.status === 0"
@@ -62,6 +62,9 @@
                 </td>  -->
             </tr>
         </table>
+    </section>
+    <section *ngIf="showActions == false">
+        <h4 class="mt-4 mb-4">Student Details</h4>
     </section>
     <section>
         <table class="table">

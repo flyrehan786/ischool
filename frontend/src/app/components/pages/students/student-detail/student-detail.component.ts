@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastComponent } from 'src/app/components/core/components/toast/toast/toast.component';
 import { StudentsService } from 'src/app/services/students/students.service';
@@ -9,9 +9,11 @@ import { StudentsService } from 'src/app/services/students/students.service';
   styleUrls: ['./student-detail.component.css']
 })
 export class StudentDetailComponent implements OnInit {
+
   isLoading = false;
   student: any;
   studentId: number;
+  @Input() showActions = true;
   @ViewChild(ToastComponent) toastComponent: ToastComponent;
   constructor(private _studentService: StudentsService, private _route: ActivatedRoute, private _router: Router) { }
 

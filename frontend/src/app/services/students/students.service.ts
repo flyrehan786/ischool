@@ -51,6 +51,10 @@ export class StudentsService {
   activateStudentEnrollment(id, studentId) {
     return this.http.put(environment.api + 'api/students/enroll/activate/' + id, { student_id: studentId });
   }
+  
+  postSubmitRequiredFee(payload) {
+    return this.http.post(environment.api + 'api/students/required/fee/info', payload);
+  }
 
   postSubmitExamResult(payload) {}
   putSubmitExamResult(payload) {}

@@ -258,5 +258,11 @@ router.put("/enroll/disable/:id", async (req, res) => {
 
 // Certification Section.
 // Fee Section.
+router.post("/required/fee/info", async (req, res) => {
+  const { error } = studentRequiredFeeModel.validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  const created = await studentRequiredFeeModel.saveStudentRequiredFeeInfo(req.body);
+  res.send(created);
+})
 
 module.exports = router;
