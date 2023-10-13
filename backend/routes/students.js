@@ -265,4 +265,14 @@ router.post("/required/fee/info", async (req, res) => {
   res.send(created);
 })
 
+router.get("/required/fee/info/:id", async (req, res) => {
+  const result = await studentRequiredFeeModel.findStudentRequiredFeeInfoByStudentId(req.params.id)
+  res.send(result);
+})
+
+router.delete("/required/fee/info/:id", async (req, res) => {
+  const result = await studentRequiredFeeModel.deleteStudentRequiredFeeInfo(req.params.id)
+  res.send(result);
+})
+
 module.exports = router;

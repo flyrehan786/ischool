@@ -52,8 +52,16 @@ export class StudentsService {
     return this.http.put(environment.api + 'api/students/enroll/activate/' + id, { student_id: studentId });
   }
   
+  getRequiredFee(studentId) {
+    return this.http.get(environment.api + 'api/students/required/fee/info/' +  studentId);
+  }
+
   postSubmitRequiredFee(payload) {
     return this.http.post(environment.api + 'api/students/required/fee/info', payload);
+  }
+
+  deleteRequiredFee(id) {
+    return this.http.delete(environment.api + 'api/students/required/fee/info/' + id);
   }
 
   postSubmitExamResult(payload) {}

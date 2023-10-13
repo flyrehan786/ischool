@@ -29,6 +29,16 @@ async function findStudentRequiredFeeInfo(id) {
     })
 }
 
+async function findStudentRequiredFeeInfoByStudentId(id) {
+    return new Promise((resolve, reject) => {
+        db.execute('SELECT * FROM student_required_fee_info WHERE student_id=?', [id], (err, result) => {
+            if (err) reject(err);
+            if (result.length > 0) resolve(result);
+            else resolve(null);
+        });
+    })
+}
+
 async function saveStudentRequiredFeeInfo(newStudent) {
     return new Promise((resolve, reject) => {
         // de-activate all previous.
@@ -92,6 +102,7 @@ async function deleteStudentRequiredFeeInfo(id) {
 exports.validate = validateStudent;
 exports.findAll = findAll;
 exports.findStudentRequiredFeeInfo = findStudentRequiredFeeInfo;
+exports.findStudentRequiredFeeInfoByStudentId = findStudentRequiredFeeInfoByStudentId;
 exports.saveStudentRequiredFeeInfo = saveStudentRequiredFeeInfo;
 exports.updateStudentRequiredFeeInfo = updateStudentRequiredFeeInfo;
 exports.deleteStudentRequiredFeeInfo = deleteStudentRequiredFeeInfo;

@@ -44,7 +44,7 @@ export class StudentRequiredFeeInfoFormComponent implements OnInit {
         (res: HttpResponse<any>) => {
           this.toastComponent.show('(Required Fee Created Successfully).', true, false, false);
           setTimeout(() => {
-            this._router.navigateByUrl('/students');
+            window.location.reload();
           }, 1500);
         },
         (error) => {

@@ -1,1 +1,25 @@
-<p>student-required-fee-info works!</p>
+<h4>Student Fee Info</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="4">Details</th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of requiredFeeInfo">
+            <td>{{x.id}}</td>
+            <td>{{x.required_fee_amount}}</td>
+            <td>{{x.status}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="deleteRequiredFeeInfo(x.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+<core-toast></core-toast>
