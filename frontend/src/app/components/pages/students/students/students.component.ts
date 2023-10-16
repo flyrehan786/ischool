@@ -29,7 +29,6 @@ export class StudentsComponent implements OnInit {
     'district',
     'status', 
     'created_at',
-    'updated_at',
   ];
   filters = [
     'first_name',

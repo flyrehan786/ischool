@@ -12,7 +12,7 @@ export class CertificatesComponent implements OnInit {
   isLoading = false;
   eventLabel = '_certificate_event';
   title;
-  headers = [ 'name', 'template' ];
+  headers = [ 'name', 'template', 'created_at' ];
   rows;
   filters = [ 'name' ];
   constructor(private _certificatesService: CertificatesService, private _commonService: CommonService, private _router: Router) { }

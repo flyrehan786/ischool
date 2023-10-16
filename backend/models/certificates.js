@@ -4,7 +4,7 @@ const db = require('../services/mysql').db;
 function validateCertificate(certificate) {
   const schema = {
     name: Joi.string().min(3).max(45).required(),
-    template: Joi.string().min(3).max(45).required(),
+    template: Joi.string().min(3).required(),
   };
   return Joi.validate(certificate, schema);
 }

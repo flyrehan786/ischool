@@ -38,7 +38,6 @@ export class CertificateFormComponent implements OnInit {
         [
           { key: 'required', value: 'required', message: VALIDATION_MESSAGES.required },
           { key: 'minLength', value: '2', message: VALIDATION_MESSAGES.minlength(5) },
-          { key: 'maxLength', value: '45', message: VALIDATION_MESSAGES.maxlength(45) },
         ],
       visible: true,
       bsCols: 'col-md-12'
